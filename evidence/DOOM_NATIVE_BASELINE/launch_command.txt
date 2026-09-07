@@ -1,7 +1,7 @@
-C:\Development\ISyCo Git\MALDOOM\doom_native_win.exe -iwad freedoom1.wad
+./doom_native_win.exe -iwad freedoom1.wad
 # pinned doomgeneric dcb7a8db, built via gcc -std=gnu99 as above
 # WAD: https://github.com/freedoom/freedoom/releases/download/v0.13.0/freedoom-0.13.0.zip -> freedoom1.wad
 
 # capture build (framebuffer dump):
-C:\Development\ISyCo Git\MALDOOM\doom_native_capture.exe -iwad freedoom1.wad
+./doom_native_capture.exe -iwad freedoom1.wad
 # dumps evidence/DOOM_NATIVE_BASELINE/frame_*.raw at frames 35,70,105,150,300 (640x400x4 raw RGBA)

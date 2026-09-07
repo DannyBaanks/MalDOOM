@@ -16,7 +16,7 @@ is required.
 |---|---|---|
 | CLASSIC_VM_SELF_CONTAINED | DEMONSTRATED | `vendor/malbolge/malbolge.py` runs Wikipedia Hello World → HALTED |
 | NO_PRIVATE_IMPORTS | DEMONSTRATED | `git grep` for ISyCo/`workspace/assembly` in `src/` and `README` → empty |
-| NO_PRIVATE_PATHS | DEMONSTRATED | no absolute `C:\Development\...` paths in tracked source (only in historical evidence + this audit doc) |
+| NO_PRIVATE_PATHS | DEMONSTRATED | no absolute host-specific paths in tracked source (only in historical evidence + this audit doc) |
 | NO_4D_RESEARCH_DEPENDENCY | DEMONSTRATED | `git grep` for `xeno4d`/`4D/holograph`/`cell4d` in tracked non-evidence → empty |
 | NO_TOROIDAL_PRIVATE_DEPENDENCY | DEMONSTRATED | "toroidal" removed from experiment; wraparound described from model semantics |
 | QUINE_PROVENANCE | DEMONSTRATED | `vendor/quines/quine_lutter.malbolge` + `vendor/malbolge/PROVENANCE.md` (SHA `DCA8476F...`) |

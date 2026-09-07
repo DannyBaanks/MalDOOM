@@ -10,7 +10,8 @@ Classification legend: `KEEP` | `REWRITE_NEUTRAL` | `REMOVE` | `PRIVATE_DEPENDEN
 
 The public repo is mostly self-contained. The **only hard runtime dependency on
 private machinery** is in the QUINE_OUTWARD_V0 experiment scripts, which import
-`C:\Development\ISyCo\workspace\assembly\malbolge\malbolge_interpreter.py`.
+the ISyCo workspace assembly interpreter
+(`workspace/assembly/malbolge/malbolge_interpreter.py`) by absolute, host-specific path.
 Everything else is doc/reference language that must be reframed or kept as
 historical evidence.
 
@@ -24,10 +25,10 @@ But its scripts and a few docs leak private research.
 
 ### Scripts `src/*.py` — PRIVATE_DEPENDENCY (hard)
 
-13 scripts import the ISyCo interpreter by absolute path:
-`C:\Development\ISyCo\workspace\assembly\malbolge\malbolge_interpreter.py`,
-and read the quine by absolute path
-`C:\Development\ISyCo\workspace\assembly\malbolge\quine_lutter.malbolge`.
+13 scripts import the ISyCo workspace assembly interpreter
+(`workspace/assembly/malbolge/malbolge_interpreter.py`) by absolute host path,
+and read the quine (`workspace/assembly/malbolge/quine_lutter.malbolge`) the
+same way.
 
 Files: `ca_model.py, duplicate.py, input_state.py, macrocell.py, mechanism.py,
 microcell.py, odometer.py, perturb.py, regen.py, regions.py, seam.py,
@@ -40,7 +41,7 @@ ISyCo.
 
 ### `AUDIT.md` — PRIVATE_DEPENDENCY (narrative)
 
-- Line "Root: `C:\Development\ISyCo\workspace\assembly\malbolge\`"
+- Line "Root: `<absolute path to the private workspace's assembly/malbolge dir>`"
 - Section "Files found — ISyCo (reusable machinery)"
 - References `4D/holographic/malbolge_fast/` and
   `4D/holographic/COMPARATIVA_HOST_VS_MALBOLGE.md`
@@ -53,7 +54,7 @@ the audit to reference repo-local paths only. Keep the quine provenance
 
 - `CA_MODEL.md` calls the model "toroidal, mod N" (line 12) and "geometry of
   the toroidal" (line 35).
-- `SUMMARY.md` says "Repo: `C:\Development\ISyCo Git\MALDOOM`".
+- `SUMMARY.md` gives "Repo:" as an absolute local path instead of the repo name.
 
 Action: `REWRITE_NEUTRAL` — describe wraparound from the experiment's own
 semantics ("memory indices modeled with explicit wraparound"), not as inherited
@@ -82,9 +83,9 @@ be fully clean.
 
 ### `DOOM_NATIVE_BASELINE/` — KEEP (historical raw evidence)
 - `baseline_report.md`, `launch_command.txt` contain the local command line
-  `C:\Development\ISyCo Git\MALDOOM\doom_native_win.exe ...`. This is a real
-  historical run command. KEEP as evidence (it was produced here); do not
-  rewrite raw evidence.
+  (originally recorded with the host-local absolute path to the repo checkout;
+  sanitized to repo-relative `./doom_native_win.exe ...`). This is a real
+  historical run command. KEEP as evidence (it was produced here).
 
 ### `M0_REPORT.md` — KEEP (historical evidence)
 - Lines 180-185 are the WSL build command used at the time (with local paths).
@@ -106,8 +107,8 @@ Implements Malbolge from the public Iizawa (2005) pseudocode / malbolge.c, MIT.
 No private dependency. This is the legitimate public control interpreter.
 
 ## 5. `vendor/classic/extract.py` — REMOVE (private one-off)
-Reads `C:\Development\ISyCo Git\malbolge-oracle\test_oracle.py` (private
-sibling). It was a one-off to regenerate `hello.mal`. Not needed at runtime.
+Reads `test_oracle.py` from the private sibling repo `malbolge-oracle`. It was
+a one-off to regenerate `hello.mal`. Not needed at runtime.
 Action: `REMOVE` from public (or move to `tools/legacy/` with a neutral note;
 it is a tiny extractor, safer to remove).
 
@@ -121,12 +122,12 @@ malbolge-oracle. KEEP the C; the comment is historical.
 
 | Term | Where | Class |
 |---|---|---|
-| `C:\Development\ISyCo\workspace\assembly\...` | QUINE_OUTWARD_V0/src/*.py | PRIVATE_DEPENDENCY → fix |
+| absolute host path into ISyCo `workspace/assembly/` | QUINE_OUTWARD_V0/src/*.py | PRIVATE_DEPENDENCY → fix |
 | `4D/holographic/...` | QUINE_OUTWARD_V0/AUDIT.md | PRIVATE_DEPENDENCY (narrative) → rewrite |
 | `toroidal / torus / topology` | QUINE_OUTWARD_V0/CA_MODEL.md, src/ca_model.py | REWRITE_NEUTRAL |
 | `ISyCo` (as standalone repo name) | AGENTS.md:17, M0_REPORT.md:4 | KEEP (guard/historical) |
 | `malbolge-oracle` | vendor/classic/extract.py, gost.c comment, INTERPRETER_LOCK | REMOVE (extract.py) / KEEP (historical note) |
-| `C:\Development\ISyCo Git\MALDOOM` (local run cmds) | evidence/, M0_REPORT.md | KEEP (historical evidence) |
+| absolute local checkout path (local run cmds) | evidence/, M0_REPORT.md | KEEP (historical evidence) |
 
 ## 8. Not found (search term sweep)
 
@@ -140,9 +141,9 @@ The QUINE_OUTWARD_V0 experiment was committed (as `50316b0`, created during
 this sanitization session, on `master` — the current HEAD branch) **before**
 the sanitization audit ran. That commit contains private-path references:
 
-- 13 scripts import `C:\Development\ISyCo\workspace\assembly\malbolge\
-  malbolge_interpreter.py` (private interpreter) and read the quine from the
-  same private tree.
+- 13 scripts import the private workspace assembly interpreter
+  (`workspace/assembly/malbolge/malbolge_interpreter.py`) by absolute path and
+  read the quine from the same private tree.
 - `AUDIT.md` references `4D/holographic/` (private research) and the ISyCo tree.
 - `QUINE_MECHANISM.md` references `workspace/assembly/malbolge`.
 

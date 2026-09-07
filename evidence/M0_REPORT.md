@@ -177,12 +177,12 @@ Total evidence files: 7×6 + 7 ≈ 49, each with SHA.
 1. **Build `8cc` + `elvm` on Linux/WSL:**
    ```bash
    wsl bash -c "sudo apt-get update && sudo apt-get install -y build-essential flex bison \
-     && cd /mnt/c/Development'/ISyCo Git/MALDOOM/vendor/8cc' && make CC=gcc 8cc \
-     && cd /mnt/c/Development'/ISyCo Git/MALDOOM/vendor/elvm' && make -j4 8cc out/eli out/elc"
+     && cd <REPO>/vendor/8cc && make CC=gcc 8cc \
+     && cd <REPO>/vendor/elvm && make -j4 8cc out/eli out/elc"
    ```
    Then:
    ```bash
-   wsl bash -c "cd /mnt/c/Development'/ISyCo Git/MALDOOM' && py3 scripts/build_m0.py --all --verify-hell"
+   wsl bash -c "cd <REPO> && py3 scripts/build_m0.py --all --verify-hell"
    ```
    Expected: `vendor/8cc/8cc` exists, `artifact.eir` → `artifact.hell` via `elvm hell` → `artifact.mu` via `LMFAO` → `Unshackled` run. Record real wall time + SHA in `evidence/M0_*/artifact.mu`.
 

@@ -33,8 +33,8 @@ Both execute `doomgeneric_Create(argc,argv)` + loop `doomgeneric_Tick()` — the
 
 **Command:**
 ```
-C:\Development\ISyCo Git\MALDOOM\doom_native_win.exe -iwad freedoom1.wad
-C:\Development\ISyCo Git\MALDOOM\doom_native_capture.exe -iwad freedoom1.wad
+./doom_native_win.exe -iwad freedoom1.wad
+./doom_native_capture.exe -iwad freedoom1.wad
 ```
 
 **Observed on this machine (Windows):**

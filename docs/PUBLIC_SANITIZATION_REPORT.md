@@ -15,8 +15,9 @@ tree; `PRIVATE_HISTORY_FOUND = YES` (see below).
 
 - `vendor/classic/extract.py` — one-off that read a private sibling tree
   (`C:\...\malbolge-oracle\...`). Not used at runtime.
-- Absolute-path imports of `C:\Development\ISyCo\workspace\assembly\malbolge\
-  malbolge_interpreter.py` from all 13 QUINE_OUTWARD_V0 scripts.
+- Absolute-path imports of the private workspace assembly Malbolge interpreter
+  (`workspace/assembly/malbolge/malbolge_interpreter.py`) from all 13
+  QUINE_OUTWARD_V0 scripts.
 - Narrative references to `4D/holographic/` and `ISyCo` in the experiment docs.
 
 ## What was REWRITTEN
