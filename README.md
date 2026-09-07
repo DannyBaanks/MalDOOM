@@ -1,182 +1,180 @@
 # MALDOOM
 
-> A research project attempting to build progressively richer interactive
-> state inside Classic Malbolge (3^10 / 59049-cell memory).
+> Un proyecto de investigacion que intenta construir estado interactivo
+> progresivamente mas rico dentro de Malbolge Clasico (3^10 / 59049 celdas de memoria).
 
-The project treats Malbolge itself as the computational substrate. Host code
-may run experiments, feed input, collect traces and render evidence, but it
-must not implement the game semantics being claimed.
+El proyecto trata a Malbolge mismo como sustrato computacional. El codigo host
+puede correr experimentos, alimentar input, colectar traces y renderizar evidencia, pero
+no debe implementar la semantica del juego que se reclama.
 
-**Evidence before narrative.**
-
----
-
-## First Law
-
-$$\boxed{\text{IF THE HOST COMPUTES A DOOM GAMEPLAY TRANSITION, THE DEMONSTRATION FAILS.}}$$
-
-The host may **only** do I/O: present a framebuffer, transport keyboard input,
-keep timing, and move WAD bytes (no semantic WAD parsing). It may NOT compute
-gameplay, position, AI, collisions, RNG, or produce `S_t → S_{t+1}`.
-`grep doomgeneric_Tick host/` must return 0 hits, or the host stole the
-computation.
+**Evidencia antes de narrativa.**
 
 ---
 
-## Why this exists
+## Primera Ley
 
-Doom has run on calculators, pregnancy tests and potatoes. Can it be made to
-run *on* Malbolge semantics — with the host reduced to a dumb framebuffer — and
-not merely *print* "Doom" from Malbolge?
+$$\boxed{\text{SI EL HOST COMPUTA UNA TRANSICION DE GAMEPLAY DE DOOM, LA DEMOSTRACION FALLA.}}$$
 
-Classic Malbolge is **bounded-storage** (59049 cells) and famously hostile: the
-code self-encrypts as it runs, `crazy` is a tritwise operation, and pointers
-`c`/`d` advance each step. Building even a tiny stateful unit inside it is the
-hard problem. That is the actual research question.
+El host **solo** puede hacer I/O: presentar un framebuffer, transportar input de teclado,
+mantener timing, y mover bytes de WAD (sin parsing semantico de WAD). NO puede computar
+gameplay, posicion, AI, colisiones, RNG, o producir `S_t → S_{t+1}`.
+`grep doomgeneric_Tick host/` debe retornar 0 hits, o el host se robo la
+computacion.
 
 ---
 
-## Classic Malbolge constraints
+## Por que existe esto
 
-- Memory: exactly `3^10 = 59049` cells. Unused cells are filled by
+Doom ha corrido en calculadoras, pruebas de embarazo y papas. ¿Puede hacerse correr
+*sobre* semantica de Malbolge — con el host reducido a un framebuffer tonto — y
+no simplemente *imprimir* "Doom" desde Malbolge?
+
+Malbolge Clasico es de **almacenamiento acotado** (59049 celdas) y famosamente hostil: el
+codigo se auto-encripta mientras corre, `crazy` es una operacion tritwise, y los punteros
+`c`/`d` avanzan cada paso. Construir incluso una unidad minima con estado adentro es el
+problema dificil. Esa es la verdadera pregunta de investigacion.
+
+---
+
+## Restricciones de Malbolge Clasico
+
+- Memoria: exactamente `3^10 = 59049` celdas. Celdas sin usar se llenan con
   `mem[i] = crazy(mem[i-1], mem[i-2])`.
-- Self-encryption: each executed code cell is rewritten via the encryption
-  table.
-- `crazy(a,b)`: deterministic, tritwise (ternary) operation.
-- Pointers: `c` (code) and `d` (data) advance by 1 each step, wrapping mod 59049.
-- I/O: `mod 256`. Not Turing-complete (bounded storage).
+- Auto-encriptacion: cada celda de codigo ejecutada se reescribe via la tabla de encriptacion.
+- `crazy(a,b)`: deterministica, tritwise (ternaria) operacion.
+- Punteros: `c` (codigo) y `d` (datos) avanzan en 1 cada paso, wrapping mod 59049.
+- I/O: `mod 256`. No es Turing-completo (almacenamiento acotado).
 
-`MALBOLGE_MEMORY_AS_CA_MODEL` is an *experimental model* used in the quine
-experiment to study observed memory dynamics; it is **not** a claim that
-"Malbolge is a cellular automaton".
+`MALBOLGE_MEMORY_AS_CA_MODEL` es un *modelo experimental* usado en el experimento
+de quine para estudiar la dinamica de memoria observada; **no** es un reclamo de que
+"Malbolge es un automata celular".
 
 ---
 
-## Milestone ladder
+## Escalon de hitos
 
-We stop at the first `NOT_DEMONSTRATED`; no skipping.
+Paramos en el primer `NOT_DEMONSTRATED`; sin saltos.
 
 ```
-M0  Malbolge backend executes arbitrary EIR arithmetic/control flow
-M1  WAD header parsed inside Malbolge semantics
-M2  Doom game state S_0 initializes inside
-M3  one deterministic Doom tick  H(S_{t+1}) == H(S_t)_C
-M4  player input changes game state
-M5  one correct framebuffer (pixel hash vs C)
-M6  repeated ticks without reset/recompilation
-M7  E1M1 technically playable
+M0  El backend de Malbolge ejecuta aritmetica/flujo de control EIR arbitrario
+M1  Header de WAD parseado dentro de semantica de Malbolge
+M2  El estado de juego Doom S_0 se inicializa adentro
+M3  un tick deterministico de Doom  H(S_{t+1}) == H(S_t)_C
+M4  input del jugador cambia el estado del juego
+M5  un framebuffer correcto (hash de pixel vs C)
+M6  ticks repetidos sin reset/recompilacion
+M7  E1M1 tecnicamente jugable
 ```
 
-Two targets, never conflated:
+Dos targets, nunca conflados:
 
-| Target | Variant | Memory | Status |
+| Target | Variante | Memoria | Estado |
 |---|---|---|---|
-| TARGET_A | Malbolge Unshackled | unbounded, Turing-complete | full-Doom candidate |
-| TARGET_B | Classic Malbolge | 59049 fixed, bounded | `FULL_DOOM = NOT_DEMONSTRATED` |
+| TARGET_A | Malbolge Unshackled | ilimitado, Turing-completo | candidato para Doom completo |
+| TARGET_B | Malbolge Clasico | 59049 fijo, acotado | `FULL_DOOM = NOT_DEMONSTRATED` |
 
 ---
 
-## Quine-outward experiment
+## Experimento quine-outward
 
-`experiments/QUINE_OUTWARD_V0/` studies the real Lutter Malbolge quine
-(vendored at `vendor/quines/`, interpreter at `vendor/malbolge/`) to extract a
-composable state primitive:
+`experiments/QUINE_OUTWARD_V0/` estudia el quine real de Lutter Malbolge
+(vendored en `vendor/quines/`, interprete en `vendor/malbolge/`) para extraer una
+primitiva de estado componible:
 
-1. **Mechanism** — the quine is a *reader + source tape*: code block ~29.2–29.5k
-   reads its own bytes at `29516+k` sequentially; each tape cell maps to exactly
-   one output byte (causal, verified by perturbation).
-2. **Discrete-ring model** — a finite wrapped ring under the real `crazy` fill
-   rule; searches *configurations* (not programs) for stable, distinguishable
-   signatures.
-3. **Microcell** — smallest ring (N=3) whose window signature distinguishes two
-   states stably.
-4. **Composition** — two microcells destroy each other unless separated by a
-   seam; a 1-cell seam preserves both. Lifting to a macrocell works at one
-   specific inter-unit gap.
-5. **Regeneration** — passive fill does not repair (3/8 single-cell, 0/8
-   double-cell). Real regeneration must come from directed code rewrites.
-6. **Input → state** — a 0/1 input bit yields distinguishable signatures at
-   long horizon (1000 steps) but not short (100 steps).
-7. **VM parity** — the discrete-ring model matches the real VM in the passive
-   fill region (12/13, one fill-boundary exception).
+1. **Mecanismo** — el quine es un *lector + cinta de fuente*: bloque de codigo ~29.2-29.5k
+   lee sus propios bytes en `29516+k` secuencialmente; cada celda de cinta mapea a exactamente
+   un byte de output (causal, verificado por perturbacion).
+2. **Modelo de anillo discreto** — un anillo finito wrappeado bajo la regla de fill real `crazy`;
+   busca *configuraciones* (no programas) para firmas estables y distinguibles.
+3. **Microcelda** — anillo mas pequeno (N=3) cuya firma de ventana distingue dos
+   estados estables.
+4. **Composicion** — dos microceldas se destruyen mutuamente a menos que esten separadas por una
+   costura; una costura de 1 celda preserva ambas. Elevar a macrocelda funciona en un
+   gap inter-unitario especifico.
+5. **Regeneracion** — fill pasivo no repara (3/8 single-cell, 0/8
+   double-cell). La regeneracion real debe venir de reescrituras de codigo dirigidas.
+6. **Input → estado** — un bit de input 0/1 produce firmas distinguibles en
+   horizonte largo (1000 pasos) pero no corto (100 pasos).
+7. **Paridad VM** — el modelo de anillo discreto concuerda con la VM real en la region
+   de fill pasivo (12/13, una excepcion de frontera de fill).
 
-Full honest verdicts in `experiments/QUINE_OUTWARD_V0/SUMMARY.md`.
+Veredictos honestos completos en `experiments/QUINE_OUTWARD_V0/SUMMARY.md`.
 
 ---
 
-## Demonstrated
+## Demostrado
 
-- Real quine reader/tape mechanism (on the real VM, perturbation-verified).
-- Passive-fill rule parity between the ring model and the real VM (12/13).
-- Smallest distinguishable microcell in the model (N=3).
-- A 1-cell seam that lets two microcells coexist in the model.
-- Macrocell lifting at one inter-unit gap in the model.
+- Mecanismo real de lector/cinta de quine (en la VM real, verificado por perturbacion).
+- Paridad de regla de fill pasivo entre el modelo de anillo y la VM real (12/13).
+- Microcelda mas pequena distinguible en el modelo (N=3).
+- Una costura de 1 celda que deja coexistir a dos microceldas en el modelo.
+- Elevacion a macrocelda en un gap inter-unitario en el modelo.
 
-## Not demonstrated
+## No demostrado
 
-- Robust regeneration after damage (passive fill).
-- Input → persistent state at short horizon.
+- Regeneracion robusta despues de dano (fill pasivo).
+- Input → estado persistente en horizonte corto.
 - `FULL_DOOM_ON_CLASSIC_MALBOLGE`.
-- Any "Malbolge is a cellular automaton" equivalence.
+- Cualquier equivalencia de "Malbolge es un automata celular".
 
 ---
 
-## Reproduce
+## Reproducir
 
-From a clean clone (self-contained; no external/private dependency):
+Desde un clone limpio (autosuficiente; sin dependencia externa/privada):
 
 ```bash
-# vendored interpreter self-test (Wikipedia Hello World -> HALTED)
+# self-test del interprete vendored (Wikipedia Hello World -> HALTED)
 py vendor/malbolge/malbolge.py
 
-# quine-outward experiments (from experiments/QUINE_OUTWARD_V0/src/)
-py microcell.py        # smallest distinguishable microcell
-py seam.py             # minimal seam for coexistence
-py macrocell.py        # lifting
-py regen.py            # regeneration / basin
-py input_state.py      # input -> persistent state
-py vm_parity.py        # model vs real VM parity (passive region)
+# experimentos quine-outward (desde experiments/QUINE_OUTWARD_V0/src/)
+py microcell.py        # microcelda mas pequena distinguible
+py seam.py             # costura minima para coexistencia
+py macrocell.py        # elevacion
+py regen.py            # regeneracion / cuenca
+py input_state.py      # input -> estado persistente
+py vm_parity.py        # paridad modelo vs VM real (region pasiva)
 ```
 
-Each script writes its evidence JSON next to it (or prints). Tools run with
-`py <script>.py` from the `src/` directory so the vendored `_common.py` resolves
-the repo root.
+Cada script escribe su JSON de evidencia al lado (o imprime). Las herramientas corren con
+`py <script>.py` desde el directorio `src/` para que el `_common.py` vendored resuelva
+la raiz del repositorio.
 
 ---
 
-## Evidence
+## Evidencia
 
 - `experiments/QUINE_OUTWARD_V0/` — docs + results JSON + scripts.
-- `evidence/CLASSIC_ANCHOR_SMOKE_V1/` — Classic checkpoint/search evidence
-  (P1–P5, honest negatives for cross-read state).
-- `evidence/M0*/` — Unshackled/HeLL pipeline evidence.
-- `evidence/DOOM_NATIVE_BASELINE/` — native Doom reference runs.
+- `evidence/CLASSIC_ANCHOR_SMOKE_V1/` — Evidencia de checkpoint/busqueda clasica
+  (P1-P5, negativos honrosos para cross-read state).
+- `evidence/M0*/` — Evidencia del pipeline Unshackled/HeLL.
+- `evidence/DOOM_NATIVE_BASELINE/` — runs de referencia nativos de Doom.
 
-Raw evidence is historical and is never rewritten to fit a narrative.
-
----
-
-## Limitations
-
-- The quine-outward microcell/macrocell/seam results are **model-level**; they
-  are validated against the real VM only in the passive-fill region, not yet as
-  a running Classic program.
-- No Doom game state has been produced inside Malbolge.
-- Classic Malbolge is bounded-storage; `FULL_DOOM` on Classic is not claimed.
+La evidencia cruda es historica y nunca se reescribe para encajar en una narrativa.
 
 ---
 
-## References
+## Limitaciones
 
-- `ozkl/doomgeneric` — 5-function porting layer (`DG_Init, DG_DrawFrame,
+- Los resultados de microcelda/macrocelda/costura quine-outward son de **nivel modelo**; se
+  validan contra la VM real solo en la region de fill pasivo, no aun como
+  programa clasico corriendo.
+- No se ha producido ningun estado de juego Doom dentro de Malbolge.
+- Malbolge Clasico es de almacenamiento acotado; `FULL_DOOM` en Clasico no se reclama.
+
+---
+
+## Referencias
+
+- `ozkl/doomgeneric` — capa de porting de 5 funciones (`DG_Init, DG_DrawFrame,
   DG_SleepMs, DG_GetTicksMs, DG_GetKey`).
-- `shinh/elvm` + `shinh/8cc` (eir) — `C → EIR → HeLL` pipeline.
-- HeLL / LMFAO — Malbolge/Unshackled assembly and assembler.
+- `shinh/elvm` + `shinh/8cc` (eir) — pipeline `C → EIR → HeLL`.
+- HeLL / LMFAO — ensamblador y assembler de Malbolge/Unshackled.
 - Malbolge Unshackled — `oerjan.nvg.org/esoteric/Unshackled.hs`,
   `lutter.cc/unshackled/`.
-- Classic Malbolge — Iizawa (2005) / reference `malbolge.c` (public language).
+- Malbolge Clasico — Iizawa (2005) / `malbolge.c` de referencia (lenguaje publico).
 
 ---
 
-*If the host computes a Doom gameplay transition, the demonstration fails. Not
-a slogan — a gate.*
+*Si el host computa una transicion de gameplay de Doom, la demostracion falla. No
+es un slogan — es una puerta.*
