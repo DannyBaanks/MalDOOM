@@ -1,0 +1,32 @@
+{
+  "wad": "doom1.wad",
+  "wad_sha256": "1d7d43be501e67d927e415e0b8f3e29c3bf33075e859721816f652a526cac771",
+  "dir_offset": 4175796,
+  "entry_range": [
+    0,
+    4
+  ],
+  "entries": [
+    {
+      "name": "PLAYPAL",
+      "filepos": 12,
+      "size": 10752
+    },
+    {
+      "name": "COLORMAP",
+      "filepos": 10764,
+      "size": 8704
+    },
+    {
+      "name": "ENDOOM",
+      "filepos": 19468,
+      "size": 4000
+    },
+    {
+      "name": "DEMO1",
+      "filepos": 23468,
+      "size": 20118
+    }
+  ],
+  "framing": "query(8B) + 4 records(16B) hex-framed to 144 ASCII chars; decode+scan all in-VM"
+}

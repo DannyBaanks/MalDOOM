@@ -1,0 +1,3254 @@
+{
+  "data_read_addresses": [
+    0,
+    2,
+    3,
+    7,
+    8,
+    9,
+    10,
+    11,
+    14,
+    15,
+    16,
+    20,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    29,
+    31,
+    33,
+    36,
+    38,
+    39,
+    40,
+    45,
+    46,
+    47,
+    48,
+    49,
+    51,
+    53,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    65,
+    66,
+    67,
+    68,
+    70,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    80,
+    81,
+    82,
+    83,
+    85,
+    86,
+    87,
+    88,
+    89,
+    91,
+    92,
+    94,
+    95,
+    96,
+    98,
+    99,
+    100,
+    101,
+    106,
+    107,
+    108,
+    111,
+    112,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    122,
+    123,
+    124,
+    126,
+    128,
+    129,
+    130,
+    131,
+    133,
+    135,
+    136,
+    140,
+    142,
+    144,
+    146,
+    149,
+    150,
+    152,
+    155,
+    156,
+    157,
+    158,
+    159,
+    160,
+    164,
+    168,
+    170,
+    171,
+    172,
+    173,
+    174,
+    177,
+    179,
+    185,
+    187,
+    188,
+    189,
+    190,
+    192,
+    193,
+    199,
+    200,
+    203,
+    204,
+    207,
+    208,
+    209,
+    210,
+    213,
+    214,
+    215,
+    216,
+    217,
+    218,
+    219,
+    220,
+    222,
+    223,
+    224,
+    225,
+    226,
+    227,
+    228,
+    230,
+    232
+  ],
+  "data_write_addresses": [
+    2,
+    3,
+    7,
+    8,
+    9,
+    10,
+    11,
+    14,
+    15,
+    16,
+    20,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    29,
+    31,
+    33,
+    36,
+    38,
+    39,
+    40,
+    45,
+    46,
+    47,
+    48,
+    49,
+    51,
+    53,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    65,
+    66,
+    67,
+    68,
+    70,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    80,
+    81,
+    82,
+    83,
+    85,
+    86,
+    87,
+    88,
+    89,
+    91,
+    92,
+    94,
+    95,
+    96,
+    98,
+    99,
+    100,
+    101,
+    106,
+    107,
+    108,
+    111,
+    112,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    122,
+    123,
+    124,
+    126,
+    128,
+    129,
+    130,
+    131,
+    133,
+    135,
+    136,
+    140,
+    142,
+    144,
+    146,
+    149,
+    150,
+    152,
+    155,
+    156,
+    157,
+    158,
+    159,
+    160,
+    164,
+    168,
+    170,
+    171,
+    172,
+    173,
+    174,
+    177,
+    179,
+    185,
+    187,
+    188,
+    189,
+    190,
+    192,
+    193,
+    199,
+    200,
+    203,
+    204,
+    207,
+    208,
+    209,
+    210,
+    213,
+    214,
+    215,
+    216,
+    217,
+    218,
+    219,
+    220,
+    222,
+    223,
+    224,
+    225,
+    226,
+    227,
+    228,
+    230,
+    232
+  ],
+  "edges": [
+    {
+      "from": 0,
+      "to": 99
+    },
+    {
+      "from": 99,
+      "to": 100
+    },
+    {
+      "from": 100,
+      "to": 101
+    },
+    {
+      "from": 101,
+      "to": 102
+    },
+    {
+      "from": 102,
+      "to": 103
+    },
+    {
+      "from": 103,
+      "to": 104
+    },
+    {
+      "from": 104,
+      "to": 105
+    },
+    {
+      "from": 105,
+      "to": 106
+    },
+    {
+      "from": 106,
+      "to": 107
+    },
+    {
+      "from": 107,
+      "to": 108
+    },
+    {
+      "from": 108,
+      "to": 109
+    },
+    {
+      "from": 109,
+      "to": 110
+    },
+    {
+      "from": 110,
+      "to": 111
+    },
+    {
+      "from": 111,
+      "to": 112
+    },
+    {
+      "from": 112,
+      "to": 113
+    },
+    {
+      "from": 113,
+      "to": 114
+    },
+    {
+      "from": 114,
+      "to": 115
+    },
+    {
+      "from": 115,
+      "to": 116
+    },
+    {
+      "from": 116,
+      "to": 117
+    },
+    {
+      "from": 117,
+      "to": 118
+    },
+    {
+      "from": 118,
+      "to": 119
+    },
+    {
+      "from": 119,
+      "to": 120
+    },
+    {
+      "from": 120,
+      "to": 121
+    },
+    {
+      "from": 121,
+      "to": 122
+    },
+    {
+      "from": 122,
+      "to": 123
+    },
+    {
+      "from": 123,
+      "to": 124
+    },
+    {
+      "from": 124,
+      "to": 125
+    },
+    {
+      "from": 125,
+      "to": 126
+    },
+    {
+      "from": 126,
+      "to": 127
+    },
+    {
+      "from": 127,
+      "to": 128
+    },
+    {
+      "from": 128,
+      "to": 129
+    },
+    {
+      "from": 129,
+      "to": 130
+    },
+    {
+      "from": 130,
+      "to": 131
+    },
+    {
+      "from": 131,
+      "to": 132
+    },
+    {
+      "from": 132,
+      "to": 133
+    },
+    {
+      "from": 133,
+      "to": 134
+    },
+    {
+      "from": 134,
+      "to": 135
+    },
+    {
+      "from": 135,
+      "to": 136
+    },
+    {
+      "from": 136,
+      "to": 137
+    },
+    {
+      "from": 137,
+      "to": 138
+    },
+    {
+      "from": 138,
+      "to": 139
+    },
+    {
+      "from": 139,
+      "to": 140
+    },
+    {
+      "from": 140,
+      "to": 141
+    },
+    {
+      "from": 141,
+      "to": 142
+    },
+    {
+      "from": 142,
+      "to": 143
+    },
+    {
+      "from": 143,
+      "to": 144
+    },
+    {
+      "from": 144,
+      "to": 145
+    },
+    {
+      "from": 145,
+      "to": 146
+    },
+    {
+      "from": 146,
+      "to": 147
+    },
+    {
+      "from": 147,
+      "to": 148
+    },
+    {
+      "from": 148,
+      "to": 149
+    },
+    {
+      "from": 149,
+      "to": 150
+    },
+    {
+      "from": 150,
+      "to": 151
+    },
+    {
+      "from": 151,
+      "to": 152
+    },
+    {
+      "from": 152,
+      "to": 153
+    },
+    {
+      "from": 153,
+      "to": 154
+    },
+    {
+      "from": 154,
+      "to": 155
+    },
+    {
+      "from": 155,
+      "to": 156
+    },
+    {
+      "from": 156,
+      "to": 157
+    },
+    {
+      "from": 157,
+      "to": 158
+    },
+    {
+      "from": 158,
+      "to": 159
+    },
+    {
+      "from": 159,
+      "to": 160
+    },
+    {
+      "from": 160,
+      "to": 161
+    },
+    {
+      "from": 161,
+      "to": 162
+    },
+    {
+      "from": 162,
+      "to": 163
+    },
+    {
+      "from": 163,
+      "to": 164
+    },
+    {
+      "from": 164,
+      "to": 165
+    },
+    {
+      "from": 165,
+      "to": 166
+    },
+    {
+      "from": 166,
+      "to": 167
+    },
+    {
+      "from": 167,
+      "to": 168
+    },
+    {
+      "from": 168,
+      "to": 169
+    },
+    {
+      "from": 169,
+      "to": 170
+    },
+    {
+      "from": 170,
+      "to": 171
+    },
+    {
+      "from": 171,
+      "to": 172
+    },
+    {
+      "from": 172,
+      "to": 173
+    },
+    {
+      "from": 173,
+      "to": 174
+    },
+    {
+      "from": 174,
+      "to": 175
+    },
+    {
+      "from": 175,
+      "to": 176
+    },
+    {
+      "from": 176,
+      "to": 177
+    },
+    {
+      "from": 177,
+      "to": 178
+    },
+    {
+      "from": 178,
+      "to": 179
+    },
+    {
+      "from": 179,
+      "to": 180
+    },
+    {
+      "from": 180,
+      "to": 181
+    },
+    {
+      "from": 181,
+      "to": 182
+    },
+    {
+      "from": 182,
+      "to": 183
+    },
+    {
+      "from": 183,
+      "to": 184
+    },
+    {
+      "from": 184,
+      "to": 185
+    },
+    {
+      "from": 185,
+      "to": 186
+    },
+    {
+      "from": 186,
+      "to": 187
+    },
+    {
+      "from": 187,
+      "to": 188
+    },
+    {
+      "from": 188,
+      "to": 189
+    },
+    {
+      "from": 189,
+      "to": 190
+    },
+    {
+      "from": 190,
+      "to": 191
+    },
+    {
+      "from": 191,
+      "to": 192
+    },
+    {
+      "from": 192,
+      "to": 193
+    },
+    {
+      "from": 193,
+      "to": 194
+    },
+    {
+      "from": 194,
+      "to": 195
+    },
+    {
+      "from": 195,
+      "to": 196
+    },
+    {
+      "from": 196,
+      "to": 197
+    },
+    {
+      "from": 197,
+      "to": 198
+    },
+    {
+      "from": 198,
+      "to": 199
+    },
+    {
+      "from": 199,
+      "to": 200
+    },
+    {
+      "from": 200,
+      "to": 201
+    },
+    {
+      "from": 201,
+      "to": 202
+    },
+    {
+      "from": 202,
+      "to": 203
+    },
+    {
+      "from": 203,
+      "to": 204
+    },
+    {
+      "from": 204,
+      "to": 205
+    },
+    {
+      "from": 205,
+      "to": 206
+    },
+    {
+      "from": 206,
+      "to": 207
+    },
+    {
+      "from": 207,
+      "to": 208
+    },
+    {
+      "from": 208,
+      "to": 209
+    },
+    {
+      "from": 209,
+      "to": 210
+    },
+    {
+      "from": 210,
+      "to": 211
+    },
+    {
+      "from": 211,
+      "to": 212
+    },
+    {
+      "from": 212,
+      "to": 213
+    },
+    {
+      "from": 213,
+      "to": 214
+    },
+    {
+      "from": 214,
+      "to": 215
+    },
+    {
+      "from": 215,
+      "to": 216
+    },
+    {
+      "from": 216,
+      "to": 217
+    },
+    {
+      "from": 217,
+      "to": 218
+    },
+    {
+      "from": 218,
+      "to": 219
+    },
+    {
+      "from": 219,
+      "to": 220
+    },
+    {
+      "from": 220,
+      "to": 221
+    },
+    {
+      "from": 221,
+      "to": 222
+    },
+    {
+      "from": 222,
+      "to": 223
+    },
+    {
+      "from": 223,
+      "to": 224
+    },
+    {
+      "from": 224,
+      "to": 225
+    },
+    {
+      "from": 225,
+      "to": 226
+    },
+    {
+      "from": 226,
+      "to": 227
+    },
+    {
+      "from": 227,
+      "to": 228
+    },
+    {
+      "from": 228,
+      "to": 229
+    },
+    {
+      "from": 229,
+      "to": 230
+    },
+    {
+      "from": 230,
+      "to": 231
+    },
+    {
+      "from": 231,
+      "to": 232
+    },
+    {
+      "from": 232,
+      "to": 233
+    },
+    {
+      "from": 233,
+      "to": 234
+    },
+    {
+      "from": 234,
+      "to": 235
+    },
+    {
+      "from": 235,
+      "to": 236
+    },
+    {
+      "from": 236,
+      "to": 237
+    },
+    {
+      "from": 237,
+      "to": 238
+    },
+    {
+      "from": 238,
+      "to": 239
+    },
+    {
+      "from": 239,
+      "to": 240
+    },
+    {
+      "from": 240,
+      "to": 241
+    },
+    {
+      "from": 241,
+      "to": 242
+    },
+    {
+      "from": 242,
+      "to": 243
+    },
+    {
+      "from": 243,
+      "to": 244
+    },
+    {
+      "from": 244,
+      "to": 245
+    },
+    {
+      "from": 245,
+      "to": 246
+    },
+    {
+      "from": 246,
+      "to": 247
+    },
+    {
+      "from": 247,
+      "to": 248
+    },
+    {
+      "from": 248,
+      "to": 249
+    },
+    {
+      "from": 249,
+      "to": 250
+    },
+    {
+      "from": 250,
+      "to": 251
+    },
+    {
+      "from": 251,
+      "to": 252
+    },
+    {
+      "from": 252,
+      "to": 253
+    },
+    {
+      "from": 253,
+      "to": 254
+    },
+    {
+      "from": 254,
+      "to": 255
+    },
+    {
+      "from": 255,
+      "to": 256
+    },
+    {
+      "from": 256,
+      "to": 257
+    },
+    {
+      "from": 257,
+      "to": 258
+    },
+    {
+      "from": 258,
+      "to": 259
+    },
+    {
+      "from": 259,
+      "to": 260
+    },
+    {
+      "from": 260,
+      "to": 261
+    },
+    {
+      "from": 261,
+      "to": 262
+    },
+    {
+      "from": 262,
+      "to": 263
+    },
+    {
+      "from": 263,
+      "to": 264
+    },
+    {
+      "from": 264,
+      "to": 265
+    },
+    {
+      "from": 265,
+      "to": 266
+    },
+    {
+      "from": 266,
+      "to": 267
+    },
+    {
+      "from": 267,
+      "to": 268
+    },
+    {
+      "from": 268,
+      "to": 269
+    },
+    {
+      "from": 269,
+      "to": 270
+    },
+    {
+      "from": 270,
+      "to": 271
+    },
+    {
+      "from": 271,
+      "to": 272
+    },
+    {
+      "from": 272,
+      "to": 273
+    },
+    {
+      "from": 273,
+      "to": 274
+    },
+    {
+      "from": 274,
+      "to": 275
+    },
+    {
+      "from": 275,
+      "to": 276
+    },
+    {
+      "from": 276,
+      "to": 277
+    },
+    {
+      "from": 277,
+      "to": 278
+    },
+    {
+      "from": 278,
+      "to": 279
+    },
+    {
+      "from": 279,
+      "to": 280
+    },
+    {
+      "from": 280,
+      "to": 281
+    },
+    {
+      "from": 281,
+      "to": 282
+    },
+    {
+      "from": 282,
+      "to": 283
+    },
+    {
+      "from": 283,
+      "to": 284
+    },
+    {
+      "from": 284,
+      "to": 285
+    },
+    {
+      "from": 285,
+      "to": 286
+    },
+    {
+      "from": 286,
+      "to": 287
+    },
+    {
+      "from": 287,
+      "to": 288
+    },
+    {
+      "from": 288,
+      "to": 289
+    },
+    {
+      "from": 289,
+      "to": 290
+    },
+    {
+      "from": 290,
+      "to": 291
+    },
+    {
+      "from": 291,
+      "to": 292
+    },
+    {
+      "from": 292,
+      "to": 293
+    },
+    {
+      "from": 293,
+      "to": 294
+    },
+    {
+      "from": 294,
+      "to": 295
+    },
+    {
+      "from": 295,
+      "to": 296
+    },
+    {
+      "from": 296,
+      "to": 297
+    },
+    {
+      "from": 297,
+      "to": 298
+    },
+    {
+      "from": 298,
+      "to": 299
+    },
+    {
+      "from": 299,
+      "to": 300
+    },
+    {
+      "from": 300,
+      "to": 301
+    },
+    {
+      "from": 301,
+      "to": 302
+    },
+    {
+      "from": 302,
+      "to": 303
+    },
+    {
+      "from": 303,
+      "to": 304
+    },
+    {
+      "from": 304,
+      "to": 305
+    },
+    {
+      "from": 305,
+      "to": 306
+    },
+    {
+      "from": 306,
+      "to": 307
+    },
+    {
+      "from": 307,
+      "to": 308
+    },
+    {
+      "from": 308,
+      "to": 309
+    },
+    {
+      "from": 309,
+      "to": 310
+    },
+    {
+      "from": 310,
+      "to": 311
+    },
+    {
+      "from": 311,
+      "to": 312
+    },
+    {
+      "from": 312,
+      "to": 313
+    },
+    {
+      "from": 313,
+      "to": 314
+    },
+    {
+      "from": 314,
+      "to": 315
+    },
+    {
+      "from": 315,
+      "to": 316
+    },
+    {
+      "from": 316,
+      "to": 317
+    },
+    {
+      "from": 317,
+      "to": 318
+    },
+    {
+      "from": 318,
+      "to": 319
+    },
+    {
+      "from": 319,
+      "to": 320
+    },
+    {
+      "from": 320,
+      "to": 321
+    },
+    {
+      "from": 321,
+      "to": 322
+    },
+    {
+      "from": 322,
+      "to": 323
+    },
+    {
+      "from": 323,
+      "to": 324
+    },
+    {
+      "from": 324,
+      "to": 325
+    },
+    {
+      "from": 325,
+      "to": 326
+    },
+    {
+      "from": 326,
+      "to": 327
+    },
+    {
+      "from": 327,
+      "to": 328
+    },
+    {
+      "from": 328,
+      "to": 329
+    },
+    {
+      "from": 329,
+      "to": 330
+    },
+    {
+      "from": 330,
+      "to": 331
+    },
+    {
+      "from": 331,
+      "to": 332
+    },
+    {
+      "from": 332,
+      "to": 332
+    }
+  ],
+  "encryption_addresses": [
+    98,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127,
+    128,
+    129,
+    130,
+    131,
+    132,
+    133,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147,
+    148,
+    149,
+    150,
+    151,
+    152,
+    153,
+    154,
+    155,
+    156,
+    157,
+    158,
+    159,
+    160,
+    161,
+    162,
+    163,
+    164,
+    165,
+    166,
+    167,
+    168,
+    169,
+    170,
+    171,
+    172,
+    173,
+    174,
+    175,
+    176,
+    177,
+    178,
+    179,
+    180,
+    181,
+    182,
+    183,
+    184,
+    185,
+    186,
+    187,
+    188,
+    189,
+    190,
+    191,
+    192,
+    193,
+    194,
+    195,
+    196,
+    197,
+    198,
+    199,
+    200,
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210,
+    211,
+    212,
+    213,
+    214,
+    215,
+    216,
+    217,
+    218,
+    219,
+    220,
+    221,
+    222,
+    223,
+    224,
+    225,
+    226,
+    227,
+    228,
+    229,
+    230,
+    231,
+    232,
+    233,
+    234,
+    235,
+    236,
+    237,
+    238,
+    239,
+    240,
+    241,
+    242,
+    243,
+    244,
+    245,
+    246,
+    247,
+    248,
+    249,
+    250,
+    251,
+    252,
+    253,
+    254,
+    255,
+    256,
+    257,
+    258,
+    259,
+    260,
+    261,
+    262,
+    263,
+    264,
+    265,
+    266,
+    267,
+    268,
+    269,
+    270,
+    271,
+    272,
+    273,
+    274,
+    275,
+    276,
+    277,
+    278,
+    279,
+    280,
+    281,
+    282,
+    283,
+    284,
+    285,
+    286,
+    287,
+    288,
+    289,
+    290,
+    291,
+    292,
+    293,
+    294,
+    295,
+    296,
+    297,
+    298,
+    299,
+    300,
+    301,
+    302,
+    303,
+    304,
+    305,
+    306,
+    307,
+    308,
+    309,
+    310,
+    311,
+    312,
+    313,
+    314,
+    315,
+    316,
+    317,
+    318,
+    319,
+    320,
+    321,
+    322,
+    323,
+    324,
+    325,
+    326,
+    327,
+    328,
+    329,
+    330,
+    331
+  ],
+  "executed_instruction_addresses": [
+    0,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127,
+    128,
+    129,
+    130,
+    131,
+    132,
+    133,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147,
+    148,
+    149,
+    150,
+    151,
+    152,
+    153,
+    154,
+    155,
+    156,
+    157,
+    158,
+    159,
+    160,
+    161,
+    162,
+    163,
+    164,
+    165,
+    166,
+    167,
+    168,
+    169,
+    170,
+    171,
+    172,
+    173,
+    174,
+    175,
+    176,
+    177,
+    178,
+    179,
+    180,
+    181,
+    182,
+    183,
+    184,
+    185,
+    186,
+    187,
+    188,
+    189,
+    190,
+    191,
+    192,
+    193,
+    194,
+    195,
+    196,
+    197,
+    198,
+    199,
+    200,
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210,
+    211,
+    212,
+    213,
+    214,
+    215,
+    216,
+    217,
+    218,
+    219,
+    220,
+    221,
+    222,
+    223,
+    224,
+    225,
+    226,
+    227,
+    228,
+    229,
+    230,
+    231,
+    232,
+    233,
+    234,
+    235,
+    236,
+    237,
+    238,
+    239,
+    240,
+    241,
+    242,
+    243,
+    244,
+    245,
+    246,
+    247,
+    248,
+    249,
+    250,
+    251,
+    252,
+    253,
+    254,
+    255,
+    256,
+    257,
+    258,
+    259,
+    260,
+    261,
+    262,
+    263,
+    264,
+    265,
+    266,
+    267,
+    268,
+    269,
+    270,
+    271,
+    272,
+    273,
+    274,
+    275,
+    276,
+    277,
+    278,
+    279,
+    280,
+    281,
+    282,
+    283,
+    284,
+    285,
+    286,
+    287,
+    288,
+    289,
+    290,
+    291,
+    292,
+    293,
+    294,
+    295,
+    296,
+    297,
+    298,
+    299,
+    300,
+    301,
+    302,
+    303,
+    304,
+    305,
+    306,
+    307,
+    308,
+    309,
+    310,
+    311,
+    312,
+    313,
+    314,
+    315,
+    316,
+    317,
+    318,
+    319,
+    320,
+    321,
+    322,
+    323,
+    324,
+    325,
+    326,
+    327,
+    328,
+    329,
+    330,
+    331,
+    332
+  ],
+  "jumps": [
+    {
+      "from": 0,
+      "step": 1,
+      "to": 98
+    }
+  ],
+  "phase_boundaries": [
+    {
+      "byte": 65,
+      "c_after": 201,
+      "c_before": 200,
+      "step": 103
+    },
+    {
+      "byte": 66,
+      "c_after": 279,
+      "c_before": 278,
+      "step": 181
+    },
+    {
+      "byte": 67,
+      "c_after": 332,
+      "c_before": 331,
+      "step": 234
+    }
+  ],
+  "phase_transition_paths": [
+    {
+      "from_byte": 65,
+      "from_phase_step": 103,
+      "next_instruction_after_from": 201,
+      "observed_path_nodes": [
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224,
+        225,
+        226,
+        227,
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254,
+        255,
+        256,
+        257,
+        258,
+        259,
+        260,
+        261,
+        262,
+        263,
+        264,
+        265,
+        266,
+        267,
+        268,
+        269,
+        270,
+        271,
+        272,
+        273,
+        274,
+        275,
+        276,
+        277,
+        278
+      ],
+      "to_byte": 66,
+      "to_phase_step": 181
+    },
+    {
+      "from_byte": 66,
+      "from_phase_step": 181,
+      "next_instruction_after_from": 279,
+      "observed_path_nodes": [
+        278,
+        279,
+        280,
+        281,
+        282,
+        283,
+        284,
+        285,
+        286,
+        287,
+        288,
+        289,
+        290,
+        291,
+        292,
+        293,
+        294,
+        295,
+        296,
+        297,
+        298,
+        299,
+        300,
+        301,
+        302,
+        303,
+        304,
+        305,
+        306,
+        307,
+        308,
+        309,
+        310,
+        311,
+        312,
+        313,
+        314,
+        315,
+        316,
+        317,
+        318,
+        319,
+        320,
+        321,
+        322,
+        323,
+        324,
+        325,
+        326,
+        327,
+        328,
+        329,
+        330,
+        331
+      ],
+      "to_byte": 67,
+      "to_phase_step": 234
+    }
+  ],
+  "schema": "malbolge-dynamic-flow-v1",
+  "scope": "observed dynamic execution only; no universal articulation claim",
+  "selected_address_classification": {
+    "0": [
+      "executed_instruction",
+      "data_read"
+    ],
+    "10": [
+      "data_read",
+      "data_written"
+    ],
+    "100": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "101": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "102": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "103": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "104": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "105": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "106": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "107": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "108": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "109": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "11": [
+      "data_read",
+      "data_written"
+    ],
+    "110": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "111": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "112": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "113": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "114": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "115": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "116": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "117": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "118": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "119": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "120": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "121": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "122": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "123": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "124": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "125": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "126": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "127": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "128": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "129": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "130": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "131": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "132": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "133": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "134": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "135": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "136": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "137": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "138": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "139": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "14": [
+      "data_read",
+      "data_written"
+    ],
+    "140": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "141": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "142": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "143": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "144": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "145": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "146": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "147": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "148": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "149": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "15": [
+      "data_read",
+      "data_written"
+    ],
+    "150": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "151": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "152": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "153": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "154": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "155": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "156": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "157": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "158": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "159": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "16": [
+      "data_read",
+      "data_written"
+    ],
+    "160": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "161": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "162": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "163": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "164": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "165": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "166": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "167": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "168": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "169": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "170": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "171": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "172": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "173": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "174": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "175": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "176": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "177": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "178": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "179": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "180": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "181": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "182": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "183": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "184": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "185": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "186": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "187": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "188": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "189": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "190": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "191": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "192": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "193": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "194": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "195": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "196": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "197": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "198": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "199": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "2": [
+      "data_read",
+      "data_written"
+    ],
+    "20": [
+      "data_read",
+      "data_written"
+    ],
+    "200": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "201": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "202": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "203": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "204": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "205": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "206": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "207": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "208": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "209": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "210": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "211": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "212": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "213": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "214": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "215": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "216": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "217": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "218": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "219": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "22": [
+      "data_read",
+      "data_written"
+    ],
+    "220": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "221": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "222": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "223": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "224": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "225": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "226": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "227": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "228": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "229": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "23": [
+      "data_read",
+      "data_written"
+    ],
+    "230": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "231": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "232": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ],
+    "233": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "234": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "235": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "236": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "237": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "238": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "239": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "24": [
+      "data_read",
+      "data_written"
+    ],
+    "240": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "241": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "242": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "243": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "244": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "245": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "246": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "247": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "248": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "249": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "25": [
+      "data_read",
+      "data_written"
+    ],
+    "250": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "251": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "252": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "253": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "254": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "255": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "256": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "257": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "258": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "259": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "26": [
+      "data_read",
+      "data_written"
+    ],
+    "260": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "261": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "262": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "263": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "264": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "265": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "266": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "267": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "268": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "269": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "27": [
+      "data_read",
+      "data_written"
+    ],
+    "270": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "271": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "272": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "273": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "274": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "275": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "276": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "277": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "278": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "279": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "280": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "281": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "282": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "283": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "284": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "285": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "286": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "287": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "288": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "289": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "29": [
+      "data_read",
+      "data_written"
+    ],
+    "290": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "291": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "292": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "293": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "294": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "295": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "296": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "297": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "298": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "299": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "3": [
+      "data_read",
+      "data_written"
+    ],
+    "300": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "301": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "302": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "303": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "304": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "305": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "306": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "307": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "308": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "309": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "31": [
+      "data_read",
+      "data_written"
+    ],
+    "310": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "311": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "312": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "313": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "314": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "315": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "316": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "317": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "318": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "319": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "320": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "321": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "322": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "323": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "324": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "325": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "326": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "327": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "328": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "329": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "33": [
+      "data_read",
+      "data_written"
+    ],
+    "330": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "331": [
+      "executed_instruction",
+      "encryption_written"
+    ],
+    "332": [
+      "executed_instruction"
+    ],
+    "36": [
+      "data_read",
+      "data_written"
+    ],
+    "38": [
+      "data_read",
+      "data_written"
+    ],
+    "39": [
+      "data_read",
+      "data_written"
+    ],
+    "40": [
+      "data_read",
+      "data_written"
+    ],
+    "45": [
+      "data_read",
+      "data_written"
+    ],
+    "46": [
+      "data_read",
+      "data_written"
+    ],
+    "47": [
+      "data_read",
+      "data_written"
+    ],
+    "48": [
+      "data_read",
+      "data_written"
+    ],
+    "49": [
+      "data_read",
+      "data_written"
+    ],
+    "51": [
+      "data_read",
+      "data_written"
+    ],
+    "53": [
+      "data_read",
+      "data_written"
+    ],
+    "55": [
+      "data_read",
+      "data_written"
+    ],
+    "56": [
+      "data_read",
+      "data_written"
+    ],
+    "57": [
+      "data_read",
+      "data_written"
+    ],
+    "58": [
+      "data_read",
+      "data_written"
+    ],
+    "59": [
+      "data_read",
+      "data_written"
+    ],
+    "60": [
+      "data_read",
+      "data_written"
+    ],
+    "61": [
+      "data_read",
+      "data_written"
+    ],
+    "62": [
+      "data_read",
+      "data_written"
+    ],
+    "65": [
+      "data_read",
+      "data_written"
+    ],
+    "66": [
+      "data_read",
+      "data_written"
+    ],
+    "67": [
+      "data_read",
+      "data_written"
+    ],
+    "68": [
+      "data_read",
+      "data_written"
+    ],
+    "7": [
+      "data_read",
+      "data_written"
+    ],
+    "70": [
+      "data_read",
+      "data_written"
+    ],
+    "72": [
+      "data_read",
+      "data_written"
+    ],
+    "73": [
+      "data_read",
+      "data_written"
+    ],
+    "74": [
+      "data_read",
+      "data_written"
+    ],
+    "75": [
+      "data_read",
+      "data_written"
+    ],
+    "76": [
+      "data_read",
+      "data_written"
+    ],
+    "77": [
+      "data_read",
+      "data_written"
+    ],
+    "8": [
+      "data_read",
+      "data_written"
+    ],
+    "80": [
+      "data_read",
+      "data_written"
+    ],
+    "81": [
+      "data_read",
+      "data_written"
+    ],
+    "82": [
+      "data_read",
+      "data_written"
+    ],
+    "83": [
+      "data_read",
+      "data_written"
+    ],
+    "85": [
+      "data_read",
+      "data_written"
+    ],
+    "86": [
+      "data_read",
+      "data_written"
+    ],
+    "87": [
+      "data_read",
+      "data_written"
+    ],
+    "88": [
+      "data_read",
+      "data_written"
+    ],
+    "89": [
+      "data_read",
+      "data_written"
+    ],
+    "9": [
+      "data_read",
+      "data_written"
+    ],
+    "91": [
+      "data_read",
+      "data_written"
+    ],
+    "92": [
+      "data_read",
+      "data_written"
+    ],
+    "94": [
+      "data_read",
+      "data_written"
+    ],
+    "95": [
+      "data_read",
+      "data_written"
+    ],
+    "96": [
+      "data_read",
+      "data_written"
+    ],
+    "98": [
+      "data_read",
+      "data_written",
+      "encryption_written",
+      "jump_target"
+    ],
+    "99": [
+      "executed_instruction",
+      "data_read",
+      "data_written",
+      "encryption_written"
+    ]
+  },
+  "trace_lines": 235
+}

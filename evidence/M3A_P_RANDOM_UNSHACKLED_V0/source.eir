@@ -1,0 +1,814 @@
+# M3A_P_RANDOM: Doom P_Random ticks inside the VM. Table = vendored rndtable.
+# stdin: leveltime(4B LE) + prndindex(1B), hex-framed = 10 chars.
+jmp main
+hexpair:
+mov D, 0
+jlt hex_hi09, A, 48
+jgt hex_hiAF, A, 57
+sub A, 48
+jmp hex_hidone
+hex_hiAF:
+jlt hex_hierr, A, 65
+jgt hex_hiAF2, A, 70
+sub A, 55
+jmp hex_hidone
+hex_hiAF2:
+jlt hex_hierr, A, 97
+jgt hex_hierr, A, 102
+sub A, 87
+hex_hidone:
+mov D, A
+add D, D
+add D, D
+add D, D
+add D, D
+jlt hex_lo09, B, 48
+jgt hex_loAF, B, 57
+sub B, 48
+add D, B
+load C, 1999
+jmp C
+hex_loAF:
+jlt hex_loerr, B, 65
+jgt hex_loAF2, B, 70
+sub B, 55
+add D, B
+load C, 1999
+jmp C
+hex_loAF2:
+jlt hex_loerr, B, 97
+jgt hex_loerr, B, 102
+sub B, 87
+add D, B
+load C, 1999
+jmp C
+hex_hi09:
+hex_lo09:
+hex_hierr:
+hex_loerr:
+putc 72
+putc 10
+exit
+main:
+mov A, 0
+store A, 5000
+mov A, 8
+store A, 5001
+mov A, 109
+store A, 5002
+mov A, 220
+store A, 5003
+mov A, 222
+store A, 5004
+mov A, 241
+store A, 5005
+mov A, 149
+store A, 5006
+mov A, 107
+store A, 5007
+mov A, 75
+store A, 5008
+mov A, 248
+store A, 5009
+mov A, 254
+store A, 5010
+mov A, 140
+store A, 5011
+mov A, 16
+store A, 5012
+mov A, 66
+store A, 5013
+mov A, 74
+store A, 5014
+mov A, 21
+store A, 5015
+mov A, 211
+store A, 5016
+mov A, 47
+store A, 5017
+mov A, 80
+store A, 5018
+mov A, 242
+store A, 5019
+mov A, 154
+store A, 5020
+mov A, 27
+store A, 5021
+mov A, 205
+store A, 5022
+mov A, 128
+store A, 5023
+mov A, 161
+store A, 5024
+mov A, 89
+store A, 5025
+mov A, 77
+store A, 5026
+mov A, 36
+store A, 5027
+mov A, 95
+store A, 5028
+mov A, 110
+store A, 5029
+mov A, 85
+store A, 5030
+mov A, 48
+store A, 5031
+mov A, 212
+store A, 5032
+mov A, 140
+store A, 5033
+mov A, 211
+store A, 5034
+mov A, 249
+store A, 5035
+mov A, 22
+store A, 5036
+mov A, 79
+store A, 5037
+mov A, 200
+store A, 5038
+mov A, 50
+store A, 5039
+mov A, 28
+store A, 5040
+mov A, 188
+store A, 5041
+mov A, 52
+store A, 5042
+mov A, 140
+store A, 5043
+mov A, 202
+store A, 5044
+mov A, 120
+store A, 5045
+mov A, 68
+store A, 5046
+mov A, 145
+store A, 5047
+mov A, 62
+store A, 5048
+mov A, 70
+store A, 5049
+mov A, 184
+store A, 5050
+mov A, 190
+store A, 5051
+mov A, 91
+store A, 5052
+mov A, 197
+store A, 5053
+mov A, 152
+store A, 5054
+mov A, 224
+store A, 5055
+mov A, 149
+store A, 5056
+mov A, 104
+store A, 5057
+mov A, 25
+store A, 5058
+mov A, 178
+store A, 5059
+mov A, 252
+store A, 5060
+mov A, 182
+store A, 5061
+mov A, 202
+store A, 5062
+mov A, 182
+store A, 5063
+mov A, 141
+store A, 5064
+mov A, 197
+store A, 5065
+mov A, 4
+store A, 5066
+mov A, 81
+store A, 5067
+mov A, 181
+store A, 5068
+mov A, 242
+store A, 5069
+mov A, 145
+store A, 5070
+mov A, 42
+store A, 5071
+mov A, 39
+store A, 5072
+mov A, 227
+store A, 5073
+mov A, 156
+store A, 5074
+mov A, 198
+store A, 5075
+mov A, 225
+store A, 5076
+mov A, 193
+store A, 5077
+mov A, 219
+store A, 5078
+mov A, 93
+store A, 5079
+mov A, 122
+store A, 5080
+mov A, 175
+store A, 5081
+mov A, 249
+store A, 5082
+mov A, 0
+store A, 5083
+mov A, 175
+store A, 5084
+mov A, 143
+store A, 5085
+mov A, 70
+store A, 5086
+mov A, 239
+store A, 5087
+mov A, 46
+store A, 5088
+mov A, 246
+store A, 5089
+mov A, 163
+store A, 5090
+mov A, 53
+store A, 5091
+mov A, 163
+store A, 5092
+mov A, 109
+store A, 5093
+mov A, 168
+store A, 5094
+mov A, 135
+store A, 5095
+mov A, 2
+store A, 5096
+mov A, 235
+store A, 5097
+mov A, 25
+store A, 5098
+mov A, 92
+store A, 5099
+mov A, 20
+store A, 5100
+mov A, 145
+store A, 5101
+mov A, 138
+store A, 5102
+mov A, 77
+store A, 5103
+mov A, 69
+store A, 5104
+mov A, 166
+store A, 5105
+mov A, 78
+store A, 5106
+mov A, 176
+store A, 5107
+mov A, 173
+store A, 5108
+mov A, 212
+store A, 5109
+mov A, 166
+store A, 5110
+mov A, 113
+store A, 5111
+mov A, 94
+store A, 5112
+mov A, 161
+store A, 5113
+mov A, 41
+store A, 5114
+mov A, 50
+store A, 5115
+mov A, 239
+store A, 5116
+mov A, 49
+store A, 5117
+mov A, 111
+store A, 5118
+mov A, 164
+store A, 5119
+mov A, 70
+store A, 5120
+mov A, 60
+store A, 5121
+mov A, 2
+store A, 5122
+mov A, 37
+store A, 5123
+mov A, 171
+store A, 5124
+mov A, 75
+store A, 5125
+mov A, 136
+store A, 5126
+mov A, 156
+store A, 5127
+mov A, 11
+store A, 5128
+mov A, 56
+store A, 5129
+mov A, 42
+store A, 5130
+mov A, 146
+store A, 5131
+mov A, 138
+store A, 5132
+mov A, 229
+store A, 5133
+mov A, 73
+store A, 5134
+mov A, 146
+store A, 5135
+mov A, 77
+store A, 5136
+mov A, 61
+store A, 5137
+mov A, 98
+store A, 5138
+mov A, 196
+store A, 5139
+mov A, 135
+store A, 5140
+mov A, 106
+store A, 5141
+mov A, 63
+store A, 5142
+mov A, 197
+store A, 5143
+mov A, 195
+store A, 5144
+mov A, 86
+store A, 5145
+mov A, 96
+store A, 5146
+mov A, 203
+store A, 5147
+mov A, 113
+store A, 5148
+mov A, 101
+store A, 5149
+mov A, 170
+store A, 5150
+mov A, 247
+store A, 5151
+mov A, 181
+store A, 5152
+mov A, 113
+store A, 5153
+mov A, 80
+store A, 5154
+mov A, 250
+store A, 5155
+mov A, 108
+store A, 5156
+mov A, 7
+store A, 5157
+mov A, 255
+store A, 5158
+mov A, 237
+store A, 5159
+mov A, 129
+store A, 5160
+mov A, 226
+store A, 5161
+mov A, 79
+store A, 5162
+mov A, 107
+store A, 5163
+mov A, 112
+store A, 5164
+mov A, 166
+store A, 5165
+mov A, 103
+store A, 5166
+mov A, 241
+store A, 5167
+mov A, 24
+store A, 5168
+mov A, 223
+store A, 5169
+mov A, 239
+store A, 5170
+mov A, 120
+store A, 5171
+mov A, 198
+store A, 5172
+mov A, 58
+store A, 5173
+mov A, 60
+store A, 5174
+mov A, 82
+store A, 5175
+mov A, 128
+store A, 5176
+mov A, 3
+store A, 5177
+mov A, 184
+store A, 5178
+mov A, 66
+store A, 5179
+mov A, 143
+store A, 5180
+mov A, 224
+store A, 5181
+mov A, 145
+store A, 5182
+mov A, 224
+store A, 5183
+mov A, 81
+store A, 5184
+mov A, 206
+store A, 5185
+mov A, 163
+store A, 5186
+mov A, 45
+store A, 5187
+mov A, 63
+store A, 5188
+mov A, 90
+store A, 5189
+mov A, 168
+store A, 5190
+mov A, 114
+store A, 5191
+mov A, 59
+store A, 5192
+mov A, 33
+store A, 5193
+mov A, 159
+store A, 5194
+mov A, 95
+store A, 5195
+mov A, 28
+store A, 5196
+mov A, 139
+store A, 5197
+mov A, 123
+store A, 5198
+mov A, 98
+store A, 5199
+mov A, 125
+store A, 5200
+mov A, 196
+store A, 5201
+mov A, 15
+store A, 5202
+mov A, 70
+store A, 5203
+mov A, 194
+store A, 5204
+mov A, 253
+store A, 5205
+mov A, 54
+store A, 5206
+mov A, 14
+store A, 5207
+mov A, 109
+store A, 5208
+mov A, 226
+store A, 5209
+mov A, 71
+store A, 5210
+mov A, 17
+store A, 5211
+mov A, 161
+store A, 5212
+mov A, 93
+store A, 5213
+mov A, 186
+store A, 5214
+mov A, 87
+store A, 5215
+mov A, 244
+store A, 5216
+mov A, 138
+store A, 5217
+mov A, 20
+store A, 5218
+mov A, 52
+store A, 5219
+mov A, 123
+store A, 5220
+mov A, 251
+store A, 5221
+mov A, 26
+store A, 5222
+mov A, 36
+store A, 5223
+mov A, 17
+store A, 5224
+mov A, 46
+store A, 5225
+mov A, 52
+store A, 5226
+mov A, 231
+store A, 5227
+mov A, 232
+store A, 5228
+mov A, 76
+store A, 5229
+mov A, 31
+store A, 5230
+mov A, 221
+store A, 5231
+mov A, 84
+store A, 5232
+mov A, 37
+store A, 5233
+mov A, 216
+store A, 5234
+mov A, 165
+store A, 5235
+mov A, 212
+store A, 5236
+mov A, 106
+store A, 5237
+mov A, 197
+store A, 5238
+mov A, 242
+store A, 5239
+mov A, 98
+store A, 5240
+mov A, 43
+store A, 5241
+mov A, 39
+store A, 5242
+mov A, 175
+store A, 5243
+mov A, 254
+store A, 5244
+mov A, 145
+store A, 5245
+mov A, 190
+store A, 5246
+mov A, 84
+store A, 5247
+mov A, 118
+store A, 5248
+mov A, 222
+store A, 5249
+mov A, 187
+store A, 5250
+mov A, 136
+store A, 5251
+mov A, 120
+store A, 5252
+mov A, 163
+store A, 5253
+mov A, 236
+store A, 5254
+mov A, 249
+store A, 5255
+# decode leveltime 4B LE -> A, check top byte 0 (24-bit)
+mov BP, 6000
+mov SP, 5
+dec_loop:
+jeq dec_done, SP, 0
+mov C, dec_ret
+store C, 1999
+getc A
+getc B
+jmp hexpair
+dec_ret:
+store D, BP
+add BP, 1
+sub SP, 1
+jmp dec_loop
+dec_done:
+load D, 6000
+mov A, D
+load D, 6001
+mov B, D
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add A, B
+load D, 6002
+mov B, D
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add A, B
+load D, 6003
+jeq lt_ok, D, 0
+putc 88
+putc 10
+exit
+lt_ok:
+store A, 1997
+load D, 6004
+store D, 1998
+# 3 ticks x 8 draws
+mov SP, 0
+tick_loop:
+jge ticks_done, SP, 3
+mov BP, 0
+draw_loop:
+jge draw_done, BP, 8
+load D, 1998
+add D, 1
+jeq idx_wrap, D, 256
+jmp idx_nowrap
+idx_wrap:
+mov D, 0
+idx_nowrap:
+store D, 1998
+mov A, 5000
+add A, D
+load A, A
+# emit A (0-255) decimal
+mov B, 0
+mov D, 0
+em100:
+jlt e100, A, 100
+sub A, 100
+add D, 1
+jmp em100
+e100:
+jgt w100, D, 0
+jgt w100, B, 0
+jmp n100
+w100:
+add D, 48
+putc D
+mov B, 1
+n100:
+mov D, 0
+em10:
+jlt e10, A, 10
+sub A, 10
+add D, 1
+jmp em10
+e10:
+jgt w10, D, 0
+jgt w10, B, 0
+jmp n10
+w10:
+add D, 48
+putc D
+mov B, 1
+n10:
+add A, 48
+putc A
+putc 10
+add BP, 1
+jmp draw_loop
+draw_done:
+load A, 1997
+add A, 1
+store A, 1997
+add SP, 1
+jmp tick_loop
+ticks_done:
+# emit final leveltime then final idx
+load A, 1997
+mov B, 0
+mov D, 0
+lt_d1000000:
+jlt lt_e1000000, A, 1000000
+sub A, 1000000
+add D, 1
+jmp lt_d1000000
+lt_e1000000:
+jgt lt_w1000000, D, 0
+jgt lt_w1000000, B, 0
+jmp lt_n1000000
+lt_w1000000:
+add D, 48
+putc D
+mov B, 1
+lt_n1000000:
+mov D, 0
+lt_d100000:
+jlt lt_e100000, A, 100000
+sub A, 100000
+add D, 1
+jmp lt_d100000
+lt_e100000:
+jgt lt_w100000, D, 0
+jgt lt_w100000, B, 0
+jmp lt_n100000
+lt_w100000:
+add D, 48
+putc D
+mov B, 1
+lt_n100000:
+mov D, 0
+lt_d10000:
+jlt lt_e10000, A, 10000
+sub A, 10000
+add D, 1
+jmp lt_d10000
+lt_e10000:
+jgt lt_w10000, D, 0
+jgt lt_w10000, B, 0
+jmp lt_n10000
+lt_w10000:
+add D, 48
+putc D
+mov B, 1
+lt_n10000:
+mov D, 0
+lt_d1000:
+jlt lt_e1000, A, 1000
+sub A, 1000
+add D, 1
+jmp lt_d1000
+lt_e1000:
+jgt lt_w1000, D, 0
+jgt lt_w1000, B, 0
+jmp lt_n1000
+lt_w1000:
+add D, 48
+putc D
+mov B, 1
+lt_n1000:
+mov D, 0
+lt_d100:
+jlt lt_e100, A, 100
+sub A, 100
+add D, 1
+jmp lt_d100
+lt_e100:
+jgt lt_w100, D, 0
+jgt lt_w100, B, 0
+jmp lt_n100
+lt_w100:
+add D, 48
+putc D
+mov B, 1
+lt_n100:
+mov D, 0
+lt_d10:
+jlt lt_e10, A, 10
+sub A, 10
+add D, 1
+jmp lt_d10
+lt_e10:
+jgt lt_w10, D, 0
+jgt lt_w10, B, 0
+jmp lt_n10
+lt_w10:
+add D, 48
+putc D
+mov B, 1
+lt_n10:
+add A, 48
+putc A
+putc 10
+load A, 1998
+mov B, 0
+mov D, 0
+ix100:
+jlt ix100e, A, 100
+sub A, 100
+add D, 1
+jmp ix100
+ix100e:
+jgt ix100w, D, 0
+jmp ix10s
+ix100w:
+add D, 48
+putc D
+mov B, 1
+ix10s:
+mov D, 0
+ix10:
+jlt ix10e, A, 10
+sub A, 10
+add D, 1
+jmp ix10
+ix10e:
+jgt ix10w, D, 0
+jgt ix10w, B, 0
+jmp ix1s
+ix10w:
+add D, 48
+putc D
+mov B, 1
+ix1s:
+add A, 48
+putc A
+putc 10
+exit

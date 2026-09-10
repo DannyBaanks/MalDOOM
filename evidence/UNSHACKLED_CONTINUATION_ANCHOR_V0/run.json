@@ -1,0 +1,85 @@
+{
+  "experiment": "UNSHACKLED_CONTINUATION_ANCHOR_V0",
+  "target": "TARGET_A Malbolge Unshackled",
+  "toolchain": {
+    "elc": "vendor/elvm/out/elc.exe built with gcc 16.1 from vendor/elvm sources",
+    "lmfao": "LMFAO v0.1.5 vendor/LMFAO/bin/lmfao.exe",
+    "vm": "vendor/Unshackled.exe from Unshackled.c",
+    "eir": "hand-written putc/exit"
+  },
+  "runs": [
+    {
+      "program": "A",
+      "artifact": "A.mu",
+      "sha256": "760c0fec900871a6cd1477d9ef3e3b410558e3cd8a6bf1df536bd559c0016c23",
+      "hell_sha256": "74dddbf6359b1299585dc152adad4a799a780817b74fb118629ceaec3955cde8",
+      "eir_sha256": "c3924496ace8f84721ae278785b5b6aa11b426393a365fcf50c4149b6d4dad30",
+      "stdin": "",
+      "expected": "A",
+      "observed": "A",
+      "stderr": "",
+      "exit_code": 0,
+      "wall_s": 1.6,
+      "match": true
+    },
+    {
+      "program": "AA",
+      "artifact": "AA.mu",
+      "sha256": "4b96af20911a590aba61728a12a8d746b4f1ca050478cec7c17b17ee06a8f600",
+      "hell_sha256": "a4195c340058329118c4da4b633b118085cf60bbc29278830991a3cd259b48c7",
+      "eir_sha256": "e74b6c285946fe55055fe9d1014b9bc1b2f81be9e9d33fd71d14b518d10cc52c",
+      "stdin": "",
+      "expected": "AA",
+      "observed": "AA",
+      "stderr": "",
+      "exit_code": 0,
+      "wall_s": 1.93,
+      "match": true
+    },
+    {
+      "program": "AB",
+      "artifact": "AB.mu",
+      "sha256": "6447233bd4b19eb0b1ce879ca4d0400e5fe3aa611ab8c656c505c33abeb6cb2b",
+      "hell_sha256": "daba00f6858b79d2fce7c31c6d9ec40f38e18e22479dc5093ff410aa5a9ed406",
+      "eir_sha256": "f0c23bb10df86f6f7954e7dfe3514caa179363ed5e9c51e8373e4c7a96085a09",
+      "stdin": "",
+      "expected": "AB",
+      "observed": "AB",
+      "stderr": "",
+      "exit_code": 0,
+      "wall_s": 1.72,
+      "match": true
+    },
+    {
+      "program": "ABC",
+      "artifact": "ABC.mu",
+      "sha256": "16c5cea6fff17bc037c9dee3bb7477489978c0ac4625e375a05ce38cbcd6c792",
+      "hell_sha256": "7563664aaa17c5cdae7b631965e34358d19fe5ae4cfb8e69fa1a4a2f2a5cfb0a",
+      "eir_sha256": "1c80e709647edfbf66f612f0a6fb399a6e4a54ab49a32c024ab9e844f0361034",
+      "stdin": "",
+      "expected": "ABC",
+      "observed": "ABC",
+      "stderr": "",
+      "exit_code": 0,
+      "wall_s": 2.03,
+      "match": true
+    },
+    {
+      "program": "CLASSIC_ABC.mal_under_Unshackled",
+      "expected": "NOT_TRANSFERABLE",
+      "observed": "AB",
+      "stderr": "invalid unicode codepoint",
+      "exit_code": 1,
+      "match": true
+    }
+  ],
+  "claims": {
+    "ABC_single_vm_A_B_C_HALT": "PASS (observed, black-box receipt)",
+    "family_A_AA_AB_ABC": "PASS (4/4 single-VM)",
+    "classic_transfer": "NOT_TRANSFERABLE (Classic ABC.mal -> AB + invalid unicode codepoint, exit 1)",
+    "causal_perturb_controls": "NOT_DEMONSTRATED (no Unshackled tracer)",
+    "dynamic_flow_map": "NOT_DEMONSTRATED (no trace-jsonl for Unshackled)",
+    "haskell_reference_crosscheck": "NOT_DEMONSTRATED (GHC not probed)"
+  },
+  "status": "PASS"
+}

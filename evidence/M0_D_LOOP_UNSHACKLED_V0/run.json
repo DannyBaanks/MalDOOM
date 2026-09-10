@@ -1,0 +1,28 @@
+{
+  "program": "M0_D_LOOP",
+  "target": "TARGET_A Malbolge Unshackled",
+  "pipeline": "EIR(hand-written)->HeLL(elc)->mu(LMFAO)->VM; 8cc bypassed, C source is reference-only",
+  "toolchain_sha256": {
+    "elc": "a64b20487b12d42246c12a2d20790451dc990027d58e9b6558c4f03e3c5e0a39",
+    "lmfao": "350fb581f014d6913bd3c3a0ba86a6342e01a47dd9a2c1c3583225a348f33240",
+    "vm": "818ebd42729686d507fc60c0dabd1b5f5a840d4e9af3d0b3b2682310aa487a46"
+  },
+  "artifact_sha256": {
+    "source.eir": "f76eb627c4af3609d92ca16bed2e57e370e8a78e2ef51ca5bb4b903e255d0645",
+    "artifact.hell": "130797f04c59d4ac1139c4df98e72e4fc76d54fddfc00c1ae040f46d356233e2",
+    "artifact.mu": "7429abc814a3fc2ce37d20fddeb91171af4c2354604de9f534ec8818e02e14d2"
+  },
+  "runs": [
+    {
+      "input": "",
+      "expected": "*****\n",
+      "observed": "*****\n",
+      "stderr": "",
+      "exit_code": 0,
+      "wall_s": 5.49,
+      "match": true
+    }
+  ],
+  "status": "PASS",
+  "host_audit": "PASS - host only launches VM process, no gameplay symbols involved"
+}

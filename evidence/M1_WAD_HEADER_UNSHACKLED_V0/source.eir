@@ -1,0 +1,411 @@
+# M1_WAD_HEADER v2: stdin = 24 ASCII hex chars = 12 header bytes hex-framed by host transport.
+# Unshackled stdin is UTF-8-gated: raw binary (e.g. 0xF0) dies in read_utf8_character.
+# Host framing is content-blind hex; ALL decode+parse happens in-VM. C slot 1999 = ret addr.
+jmp main
+hexpair:
+mov D, 0
+jlt hex_hi09, A, 48
+jgt hex_hiaf, A, 57
+sub A, 48
+jmp hex_hidone
+hex_hiaf:
+jlt hex_hiAF, A, 65
+jgt hex_hiAF, A, 70
+sub A, 55
+jmp hex_hidone
+hex_hiAF:
+jlt hex_hierr, A, 97
+jgt hex_hierr, A, 102
+sub A, 87
+hex_hidone:
+mov D, A
+add D, D
+add D, D
+add D, D
+add D, D
+jlt hex_lo09, B, 48
+jgt hex_loaf, B, 57
+sub B, 48
+add D, B
+load C, 1999
+jmp C
+hex_loaf:
+jlt hex_loAF, B, 65
+jgt hex_loAF, B, 70
+sub B, 55
+add D, B
+load C, 1999
+jmp C
+hex_loAF:
+jlt hex_loerr, B, 97
+jgt hex_loerr, B, 102
+sub B, 87
+add D, B
+load C, 1999
+jmp C
+hex_hi09:
+hex_lo09:
+hex_hierr:
+hex_loerr:
+putc 72
+putc 10
+exit
+main:
+mov C, ret_0
+store C, 1999
+getc A
+getc B
+jmp hexpair
+ret_0:
+store D, 2000
+mov C, ret_1
+store C, 1999
+getc A
+getc B
+jmp hexpair
+ret_1:
+store D, 2001
+mov C, ret_2
+store C, 1999
+getc A
+getc B
+jmp hexpair
+ret_2:
+store D, 2002
+mov C, ret_3
+store C, 1999
+getc A
+getc B
+jmp hexpair
+ret_3:
+store D, 2003
+mov C, ret_4
+store C, 1999
+getc A
+getc B
+jmp hexpair
+ret_4:
+store D, 2004
+mov C, ret_5
+store C, 1999
+getc A
+getc B
+jmp hexpair
+ret_5:
+store D, 2005
+mov C, ret_6
+store C, 1999
+getc A
+getc B
+jmp hexpair
+ret_6:
+store D, 2006
+mov C, ret_7
+store C, 1999
+getc A
+getc B
+jmp hexpair
+ret_7:
+store D, 2007
+mov C, ret_8
+store C, 1999
+getc A
+getc B
+jmp hexpair
+ret_8:
+store D, 2008
+mov C, ret_9
+store C, 1999
+getc A
+getc B
+jmp hexpair
+ret_9:
+store D, 2009
+mov C, ret_10
+store C, 1999
+getc A
+getc B
+jmp hexpair
+ret_10:
+store D, 2010
+mov C, ret_11
+store C, 1999
+getc A
+getc B
+jmp hexpair
+ret_11:
+store D, 2011
+load A, 2000
+putc A
+load A, 2001
+putc A
+load A, 2002
+putc A
+load A, 2003
+putc A
+putc 10
+load D, 2004
+mov A, D
+load D, 2005
+mov B, D
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add A, B
+load D, 2006
+mov B, D
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add A, B
+load D, 2007
+jeq numlumps_ok, D, 0
+putc 88
+putc 10
+exit
+numlumps_ok:
+mov B, 0
+mov C, 0
+nl_d1000000:
+jlt nl_e1000000, A, 1000000
+sub A, 1000000
+add C, 1
+jmp nl_d1000000
+nl_e1000000:
+jgt nl_w1000000, C, 0
+jgt nl_w1000000, B, 0
+jmp nl_n1000000
+nl_w1000000:
+add C, 48
+putc C
+mov B, 1
+nl_n1000000:
+mov C, 0
+nl_d100000:
+jlt nl_e100000, A, 100000
+sub A, 100000
+add C, 1
+jmp nl_d100000
+nl_e100000:
+jgt nl_w100000, C, 0
+jgt nl_w100000, B, 0
+jmp nl_n100000
+nl_w100000:
+add C, 48
+putc C
+mov B, 1
+nl_n100000:
+mov C, 0
+nl_d10000:
+jlt nl_e10000, A, 10000
+sub A, 10000
+add C, 1
+jmp nl_d10000
+nl_e10000:
+jgt nl_w10000, C, 0
+jgt nl_w10000, B, 0
+jmp nl_n10000
+nl_w10000:
+add C, 48
+putc C
+mov B, 1
+nl_n10000:
+mov C, 0
+nl_d1000:
+jlt nl_e1000, A, 1000
+sub A, 1000
+add C, 1
+jmp nl_d1000
+nl_e1000:
+jgt nl_w1000, C, 0
+jgt nl_w1000, B, 0
+jmp nl_n1000
+nl_w1000:
+add C, 48
+putc C
+mov B, 1
+nl_n1000:
+mov C, 0
+nl_d100:
+jlt nl_e100, A, 100
+sub A, 100
+add C, 1
+jmp nl_d100
+nl_e100:
+jgt nl_w100, C, 0
+jgt nl_w100, B, 0
+jmp nl_n100
+nl_w100:
+add C, 48
+putc C
+mov B, 1
+nl_n100:
+mov C, 0
+nl_d10:
+jlt nl_e10, A, 10
+sub A, 10
+add C, 1
+jmp nl_d10
+nl_e10:
+jgt nl_w10, C, 0
+jgt nl_w10, B, 0
+jmp nl_n10
+nl_w10:
+add C, 48
+putc C
+mov B, 1
+nl_n10:
+add A, 48
+putc A
+putc 10
+load D, 2008
+mov A, D
+load D, 2009
+mov B, D
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add A, B
+load D, 2010
+mov B, D
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add A, B
+load D, 2011
+jeq infoofs_ok, D, 0
+putc 88
+putc 10
+exit
+infoofs_ok:
+mov B, 0
+mov C, 0
+io_d1000000:
+jlt io_e1000000, A, 1000000
+sub A, 1000000
+add C, 1
+jmp io_d1000000
+io_e1000000:
+jgt io_w1000000, C, 0
+jgt io_w1000000, B, 0
+jmp io_n1000000
+io_w1000000:
+add C, 48
+putc C
+mov B, 1
+io_n1000000:
+mov C, 0
+io_d100000:
+jlt io_e100000, A, 100000
+sub A, 100000
+add C, 1
+jmp io_d100000
+io_e100000:
+jgt io_w100000, C, 0
+jgt io_w100000, B, 0
+jmp io_n100000
+io_w100000:
+add C, 48
+putc C
+mov B, 1
+io_n100000:
+mov C, 0
+io_d10000:
+jlt io_e10000, A, 10000
+sub A, 10000
+add C, 1
+jmp io_d10000
+io_e10000:
+jgt io_w10000, C, 0
+jgt io_w10000, B, 0
+jmp io_n10000
+io_w10000:
+add C, 48
+putc C
+mov B, 1
+io_n10000:
+mov C, 0
+io_d1000:
+jlt io_e1000, A, 1000
+sub A, 1000
+add C, 1
+jmp io_d1000
+io_e1000:
+jgt io_w1000, C, 0
+jgt io_w1000, B, 0
+jmp io_n1000
+io_w1000:
+add C, 48
+putc C
+mov B, 1
+io_n1000:
+mov C, 0
+io_d100:
+jlt io_e100, A, 100
+sub A, 100
+add C, 1
+jmp io_d100
+io_e100:
+jgt io_w100, C, 0
+jgt io_w100, B, 0
+jmp io_n100
+io_w100:
+add C, 48
+putc C
+mov B, 1
+io_n100:
+mov C, 0
+io_d10:
+jlt io_e10, A, 10
+sub A, 10
+add C, 1
+jmp io_d10
+io_e10:
+jgt io_w10, C, 0
+jgt io_w10, B, 0
+jmp io_n10
+io_w10:
+add C, 48
+putc C
+mov B, 1
+io_n10:
+add A, 48
+putc A
+putc 10
+exit

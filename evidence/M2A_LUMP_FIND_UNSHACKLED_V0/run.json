@@ -1,0 +1,92 @@
+{
+  "program": "M2A_LUMP_FIND",
+  "target": "TARGET_A Malbolge Unshackled",
+  "gate": "M2a (lump-addressing primitive toward S_0): VM scans real directory records, matches an 8-byte lump name, returns index/filepos/size. Full S_0 map load is NOT claimed (getc throughput bounds bulk transfer; measured below).",
+  "pipeline": "EIR(hand-written, gen_m2a.py)->HeLL(elc)->mu(LMFAO)->VM; 8cc bypassed",
+  "toolchain_sha256": {
+    "elc": "A64B20487B12D42246C12A2D20790451DC990027D58E9B6558C4F03E3C5E0A39",
+    "lmfao": "350FB581F014D6913BD3C3A0BA86A6342E01A47DD9A2C1C3583225A348F33240",
+    "vm": "818EBD42729686D507FC60C0DABD1B5F5A840D4E9AF3D0B3B2682310AA487A46"
+  },
+  "artifacts": {
+    "source.eir": "46a81fdd941cca13d1a0ab4d0ebd2de4783c33d3fddeb33b3c8dd61ca94988e0",
+    "artifact.hell": "0b1b31bb0e70cb9e3ecbeacdbcfd7a250108f04aa6760825e4aa75bf4f56e73b",
+    "artifact.mu": "f5df66fcd37cbd7fda847595b12e899a63c7c3f49d3bfceb3087dc1adf8e29d7",
+    "gen_m2a.py": "a62c67eb8d00d7c26a7aceb7781514dd46be7b01e5c9e4777d2f1e72eeead207",
+    "reference.c": "0d00976bcaadacc644471de2f3ca22975517297af3c487566300ee3c28c603b4"
+  },
+  "transport": "query(8B) + 4 real directory records(16B) hex-framed to 144 ASCII chars on stdin (Unshackled stdin is UTF-8-gated; raw binary cannot cross). Framing is content-blind; hex-decode, record scan, name match, LE32 and decimal emit all execute in-VM. Same .mu answers every query (killer-style).",
+  "slice": {
+    "wad": "doom1.wad",
+    "wad_sha256": "1d7d43be501e67d927e415e0b8f3e29c3bf33075e859721816f652a526cac771",
+    "dir_offset": 4175796,
+    "entry_range": [
+      0,
+      4
+    ],
+    "entries": [
+      {
+        "name": "PLAYPAL",
+        "filepos": 12,
+        "size": 10752
+      },
+      {
+        "name": "COLORMAP",
+        "filepos": 10764,
+        "size": 8704
+      },
+      {
+        "name": "ENDOOM",
+        "filepos": 19468,
+        "size": 4000
+      },
+      {
+        "name": "DEMO1",
+        "filepos": 23468,
+        "size": 20118
+      }
+    ],
+    "framing": "query(8B) + 4 records(16B) hex-framed to 144 ASCII chars; decode+scan all in-VM"
+  },
+  "cases": [
+    {
+      "case": "match-ENDOOM-idx2",
+      "observed_text": "MATCH,2,19468,4000",
+      "vm_walls_s": [
+        344.3,
+        493.5
+      ],
+      "exit_code": 0,
+      "verifier_match": true
+    },
+    {
+      "case": "match-PLAYPAL-idx0",
+      "observed_text": "MATCH,0,12,10752",
+      "vm_walls_s": [
+        306.5,
+        759.4
+      ],
+      "exit_code": 0,
+      "verifier_match": true
+    },
+    {
+      "case": "nomatch-ZZ",
+      "observed_text": "NOMATCH",
+      "vm_walls_s": [
+        340.6,
+        254.2
+      ],
+      "exit_code": 0,
+      "verifier_match": true
+    }
+  ],
+  "crosschecks": "EIR program verified under reference interpreter eli (5/5: 4 matches + nomatch); C reference agrees with eli 5/5; VM outputs byte-match the C reference 3/3.",
+  "repair_note": "case-1 stdin/expected files were found NUL-corrupted after an interrupted freeze run and were regenerated deterministically (head 454e444f4f4d0000 verified, reference re-run); the VM observed file is self-authenticating (19468/4000 are the real ENDOOM filepos/size, only derivable from real directory bytes).",
+  "limits": [
+    "EIR values are 24-bit; same 2^24 bound as M1",
+    "4-record window per run; full 1264-entry walk not attempted (est. hours at measured getc throughput)",
+    "full Doom S_0 (map geometry, things, states) NOT_DEMONSTRATED"
+  ],
+  "status": "PASS",
+  "host_audit": "PASS via host.py verify-audit; host performed read plus hex-framing only"
+}

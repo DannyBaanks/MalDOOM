@@ -1,0 +1,61 @@
+source_len=333
+status=halted steps=235
+output_len=3 output=ABC
+final a=29507 c=332 d=234
+writes: enc=234 crazy=76 rotate=68 dload=0
+audit: memory_loads=1 vm_initializations=1 snapshots=0 host_injections=0
+phases=3
+  phase[0] byte=0x41 step=103 a=65 c=200 d=102 hash=d0158a11063e4f5abc5f0421a5dee3c81a71a9b8472e2a0eaf56b0f4b9d1e1a8
+  phase[1] byte=0x42 step=181 a=66 c=278 d=180 hash=f972a9125eebf37a8ffbfac58258568589c860469298aa53021d2034c284f612
+  phase[2] byte=0x43 step=234 a=29507 c=331 d=233 hash=6aba6d8df353c411f00347b9c252b6e2c63d2245f485221c971c464065760cb4
+writes_sample=50
+  w[0] addr=98 kind=enc 64->81
+  w[1] addr=99 kind=enc 63->43
+  w[2] addr=2 kind=crazy 66->29551
+  w[3] addr=100 kind=enc 56->44
+  w[4] addr=3 kind=rotate 65->39387
+  w[5] addr=101 kind=enc 126->64
+  w[6] addr=102 kind=enc 60->51
+  w[7] addr=103 kind=enc 59->92
+  w[8] addr=104 kind=enc 58->37
+  w[9] addr=7 kind=rotate 61->19703
+  w[10] addr=105 kind=enc 122->63
+  w[11] addr=8 kind=crazy 60->9861
+  w[12] addr=106 kind=enc 50->80
+  w[13] addr=9 kind=rotate 59->39385
+  w[14] addr=107 kind=enc 120->58
+  w[15] addr=10 kind=rotate 58->19702
+  w[16] addr=108 kind=enc 119->78
+  w[17] addr=11 kind=rotate 57->19
+  w[18] addr=109 kind=enc 118->107
+  w[19] addr=110 kind=enc 52->72
+  w[20] addr=111 kind=enc 51->41
+  w[21] addr=14 kind=crazy 54->29541
+  w[22] addr=112 kind=enc 44->40
+  w[23] addr=15 kind=crazy 53->80
+  w[24] addr=113 kind=enc 43->36
+  w[25] addr=16 kind=rotate 52->19700
+  w[26] addr=114 kind=enc 113->108
+  w[27] addr=115 kind=enc 47->52
+  w[28] addr=116 kind=enc 46->101
+  w[29] addr=117 kind=enc 45->119
+  w[30] addr=20 kind=crazy 48->9852
+  w[31] addr=118 kind=enc 38->113
+  w[32] addr=119 kind=enc 43->36
+  w[33] addr=22 kind=rotate 46->19698
+  w[34] addr=120 kind=enc 107->75
+  w[35] addr=23 kind=rotate 45->15
+  w[36] addr=121 kind=enc 106->77
+  w[37] addr=24 kind=crazy 44->29516
+  w[38] addr=122 kind=enc 34->122
+  w[39] addr=25 kind=rotate 43->19697
+  w[40] addr=123 kind=enc 104->89
+  w[41] addr=26 kind=crazy 42->9834
+  w[42] addr=124 kind=enc 126->64
+  w[43] addr=27 kind=crazy 41->19700
+  w[44] addr=125 kind=enc 125->105
+  w[45] addr=126 kind=enc 36->38
+  w[46] addr=29 kind=rotate 39->13
+  w[47] addr=127 kind=enc 100->97
+  w[48] addr=128 kind=enc 34->122
+  w[49] addr=31 kind=crazy 37->29511

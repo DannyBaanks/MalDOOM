@@ -1,0 +1,52 @@
+{
+  "program": "M3A_P_RANDOM",
+  "target": "TARGET_A Malbolge Unshackled",
+  "gate": "M3a pilot (NOT full M3): Doom P_Random tick kernel executes in-VM; 3 ticks x 8 draws, state (leveltime, prndindex) carried in-VM; output hash-compared vs C reference that links Doom's ACTUAL P_Random from vendored m_random.c. Full doomgeneric_Tick hash equality remains NOT_DEMONSTRATED (state transport and compute infeasible at measured throughput; see limits).",
+  "pipeline": "EIR(hand-written, gen_m3a.py)->HeLL(elc)->mu(LMFAO)->VM; 8cc bypassed",
+  "toolchain_sha256": {
+    "elc": "A64B20487B12D42246C12A2D20790451DC990027D58E9B6558C4F03E3C5E0A39",
+    "lmfao": "350FB581F014D6913BD3C3A0BA86A6342E01A47DD9A2C1C3583225A348F33240",
+    "vm": "818EBD42729686D507FC60C0DABD1B5F5A840D4E9AF3D0B3B2682310AA487A46"
+  },
+  "doom_source": {
+    "file": "vendor/doomgeneric/doomgeneric/m_random.c",
+    "sha256": "3f85e18bc1ea297a9760d2b8ead40d2618025f46e608987ee2eb5edff537dc42",
+    "note": "rndtable extracted from this file into EIR immediates; reference.exe links this file and calls its P_Random"
+  },
+  "transport": "stdin = leveltime(4B LE) + prndindex(1B), hex-framed to 10 ASCII chars (UTF-8-gated stdin). Table is code-embedded, not transported.",
+  "cases": [
+    {
+      "case": "start-0-0",
+      "draws_head": [
+        8,
+        109,
+        220,
+        222
+      ],
+      "final": "leveltime=3, prndindex=24",
+      "wall_s": 706.3,
+      "exit_code": 0,
+      "verifier_match": true
+    },
+    {
+      "case": "start-1000-200",
+      "draws_head": [
+        196,
+        15,
+        70,
+        194
+      ],
+      "final": "leveltime=1003, prndindex=224",
+      "wall_s": 468.6,
+      "exit_code": 0,
+      "verifier_match": true
+    }
+  ],
+  "crosschecks": "EIR verified under eli 2/2 before VM; C reference runs vendored P_Random.",
+  "limits": [
+    "full doomgeneric_Tick (thinkers, map, 32-bit fixed point) NOT_DEMONSTRATED; EIR is 24-bit so Doom fixed-point physics cannot transfer directly",
+    "measured tick-kernel rate bounds full-tick feasibility (see report)"
+  ],
+  "status": "PASS",
+  "host_audit": "PASS via host.py verify-audit; host did read plus hex-framing only"
+}

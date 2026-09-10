@@ -1,0 +1,9 @@
+mov A, 0
+loop:
+jge done, A, 5
+putc 42  # *
+add A, 1
+jmp loop
+done:
+putc 10
+exit

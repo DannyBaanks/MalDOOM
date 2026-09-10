@@ -1,0 +1,3507 @@
+.DATA
+
+// memory array
+@1t1111111111111022222
+MEMORY_0:
+  1+0t10000 1t01111
+
+unused:
+  16777215*9 // force rot_width to be large enough
+
+.DATA
+ENTRY:
+  R_BASIS_ALU1
+  MOVD generate_1222
+
+generate_1222_ret1:
+prepare_label_pc0:
+  MOVD direct_jmp_label_pc0
+label_pc0:
+  R_MOVDMOVD ?- ?- ?- ?-
+  direct_jmp_label_pc0:
+  R_MOVD
+  MOVD direct_jmp_label_pc1
+
+prepare_label_pc1:
+  MOVD direct_jmp_label_pc1
+label_pc1:
+  R_MOVDMOVD ?- ?- ?- ?-
+  direct_jmp_label_pc1:
+  R_MOVD
+  ROT C1 R_ROT
+  OPR 0t202 R_OPR
+  OPR 1t010 R_OPR
+  OPR 0t101 R_OPR
+  R_MODIFY_VAR_RETURN1
+  MOVD WRITE_reg_a
+
+write_reg_a_ret1:
+  ROT C1 R_ROT
+  OPR 0t2202002 R_OPR
+  OPR 1t0010110 R_OPR
+  OPR 0t1101001 R_OPR
+  R_MODIFY_VAR_RETURN1
+  MOVD WRITE_alu_src
+
+write_alu_src_ret1:
+  R_MODIFY_VAR_RETURN1
+  MOVD copy_var_to_aludst_reg_a
+
+copy_var_to_aludst_reg_a_ret1:
+  R_MEM_ACCESS1
+  MOVD write_memory
+
+write_memory_ret1:
+  ROT C1 R_ROT
+  OPR 0t202 R_OPR
+  R_MODIFY_VAR_RETURN2
+  MOVD WRITE_reg_a
+
+write_reg_a_ret2:
+  ROT C1 R_ROT
+  OPR 0t2202000 R_OPR
+  OPR 1t0010111 R_OPR
+  OPR 0t1101002 R_OPR
+  R_MODIFY_VAR_RETURN2
+  MOVD WRITE_alu_src
+
+write_alu_src_ret2:
+  R_MODIFY_VAR_RETURN2
+  MOVD copy_var_to_aludst_reg_a
+
+copy_var_to_aludst_reg_a_ret2:
+  R_MEM_ACCESS2
+  MOVD write_memory
+
+write_memory_ret2:
+  ROT C1 R_ROT
+  OPR 0t2020 R_OPR
+  OPR 1t0101 R_OPR
+  OPR 0t1010 R_OPR
+  R_MODIFY_VAR_RETURN3
+  MOVD WRITE_reg_a
+
+write_reg_a_ret3:
+  ROT C1 R_ROT
+  OPR 0t2202020 R_OPR
+  OPR 1t0010101 R_OPR
+  OPR 0t1101010 R_OPR
+  R_MODIFY_VAR_RETURN3
+  MOVD WRITE_alu_src
+
+write_alu_src_ret3:
+  R_MODIFY_VAR_RETURN3
+  MOVD copy_var_to_aludst_reg_a
+
+copy_var_to_aludst_reg_a_ret3:
+  R_MEM_ACCESS3
+  MOVD write_memory
+
+write_memory_ret3:
+  ROT C1 R_ROT
+  OPR 0t2202002 R_OPR
+  OPR 1t0010110 R_OPR
+  OPR 0t1101001 R_OPR
+  R_MODIFY_VAR_RETURN4
+  MOVD WRITE_alu_src
+
+write_alu_src_ret4:
+  R_MEM_ACCESS1
+  MOVD read_memory
+
+read_memory_ret1:
+  R_MODIFY_VAR_RETURN1
+  MOVD copy_aludst_to_var_reg_a
+
+copy_aludst_to_var_reg_a_ret1:
+  ROT C1 R_ROT
+  OPR 0t2202000 R_OPR
+  OPR 1t0010111 R_OPR
+  OPR 0t1101002 R_OPR
+  R_MODIFY_VAR_RETURN5
+  MOVD WRITE_alu_src
+
+write_alu_src_ret5:
+  R_MEM_ACCESS2
+  MOVD read_memory
+
+read_memory_ret2:
+  R_MODIFY_VAR_RETURN1
+  MOVD copy_aludst_to_var_reg_b
+
+copy_aludst_to_var_reg_b_ret1:
+  R_MODIFY_VAR_RETURN4
+  MOVD copy_var_to_aludst_reg_a
+
+copy_var_to_aludst_reg_a_ret4:
+  R_MODIFY_VAR_RETURN1
+  MOVD read_var_0t_reg_b
+
+read_var_0t_reg_b_ret1:
+  R_MODIFY_VAR_RETURN6
+  MOVD WRITE_alu_src
+
+write_alu_src_ret6:
+  R_ARITHMETIC_OR_IO1
+  MOVD add_uint24
+
+add_uint24_ret1:
+  R_MODIFY_VAR_RETURN2
+  MOVD copy_aludst_to_var_reg_a
+
+copy_aludst_to_var_reg_a_ret2:
+  ROT C1 R_ROT
+  OPR 0t2202020 R_OPR
+  OPR 1t0010101 R_OPR
+  OPR 0t1101010 R_OPR
+  R_MODIFY_VAR_RETURN7
+  MOVD WRITE_alu_src
+
+write_alu_src_ret7:
+  R_MEM_ACCESS3
+  MOVD read_memory
+
+read_memory_ret3:
+  R_MODIFY_VAR_RETURN2
+  MOVD copy_aludst_to_var_reg_b
+
+copy_aludst_to_var_reg_b_ret2:
+  R_MODIFY_VAR_RETURN5
+  MOVD copy_var_to_aludst_reg_a
+
+copy_var_to_aludst_reg_a_ret5:
+  R_MODIFY_VAR_RETURN2
+  MOVD read_var_0t_reg_b
+
+read_var_0t_reg_b_ret2:
+  R_MODIFY_VAR_RETURN8
+  MOVD WRITE_alu_src
+
+write_alu_src_ret8:
+  R_ARITHMETIC_OR_IO2
+  MOVD add_uint24
+
+add_uint24_ret2:
+  R_MODIFY_VAR_RETURN3
+  MOVD copy_aludst_to_var_reg_a
+
+copy_aludst_to_var_reg_a_ret3:
+  ROT C0 R_ROT
+  R_MODIFY_VAR_RETURN1
+  MOVD WRITE_reg_b
+
+write_reg_b_ret1:
+prepare_label_pc2:
+  MOVD direct_jmp_label_pc2
+label_pc2:
+  R_MOVDMOVD ?- ?- ?- ?-
+  direct_jmp_label_pc2:
+  R_MOVD
+  R_MODIFY_VAR_RETURN6
+  MOVD copy_var_to_aludst_reg_a
+
+copy_var_to_aludst_reg_a_ret6:
+  ROT C1 R_ROT
+  OPR 0t202 R_OPR
+  OPR 1t010 R_OPR
+  OPR 0t101 R_OPR
+  R_MODIFY_VAR_RETURN9
+  MOVD WRITE_alu_src
+
+write_alu_src_ret9:
+  R_TEST_LT1
+  MOVD test_lt
+
+test_lt_ret1:
+  R_BASIS_ALU1
+  MOVD test_alu_dst
+
+test_alu_dst_ret1:
+  carry_IS_C1 dont_jmp_1
+  MOVD direct_jmp_label_pc4
+
+dont_jmp_1:
+  NOP
+prepare_label_pc3:
+  MOVD direct_jmp_label_pc3
+label_pc3:
+  R_MOVDMOVD ?- ?- ?- ?-
+  direct_jmp_label_pc3:
+  R_MOVD
+  R_MODIFY_VAR_RETURN7
+  MOVD copy_var_to_aludst_reg_a
+
+copy_var_to_aludst_reg_a_ret7:
+  ROT C1 R_ROT
+  OPR 0t202 R_OPR
+  OPR 1t010 R_OPR
+  OPR 0t101 R_OPR
+  R_MODIFY_VAR_RETURN10
+  MOVD WRITE_alu_src
+
+write_alu_src_ret10:
+  R_ARITHMETIC_OR_IO1
+  MOVD sub_uint24
+
+sub_uint24_ret1:
+  R_MODIFY_VAR_RETURN4
+  MOVD copy_aludst_to_var_reg_a
+
+copy_aludst_to_var_reg_a_ret4:
+  R_MODIFY_VAR_RETURN1
+  MOVD copy_var_to_aludst_reg_b
+
+copy_var_to_aludst_reg_b_ret1:
+  ROT C1 R_ROT
+  OPR 0t2 R_OPR
+  OPR 1t0 R_OPR
+  OPR 0t1 R_OPR
+  R_MODIFY_VAR_RETURN11
+  MOVD WRITE_alu_src
+
+write_alu_src_ret11:
+  R_ARITHMETIC_OR_IO3
+  MOVD add_uint24
+
+add_uint24_ret3:
+  R_MODIFY_VAR_RETURN3
+  MOVD copy_aludst_to_var_reg_b
+
+copy_aludst_to_var_reg_b_ret3:
+  MOVD direct_jmp_label_pc2
+
+prepare_label_pc4:
+  MOVD direct_jmp_label_pc4
+label_pc4:
+  R_MOVDMOVD ?- ?- ?- ?-
+  direct_jmp_label_pc4:
+  R_MOVD
+  R_MODIFY_VAR_RETURN2
+  MOVD copy_var_to_aludst_reg_b
+
+copy_var_to_aludst_reg_b_ret2:
+  ROT C1 R_ROT
+  OPR 0t2020 R_OPR
+  OPR 1t0101 R_OPR
+  OPR 0t1210 R_OPR
+  R_MODIFY_VAR_RETURN12
+  MOVD WRITE_alu_src
+
+write_alu_src_ret12:
+  R_ARITHMETIC_OR_IO4
+  MOVD add_uint24
+
+add_uint24_ret4:
+  R_MODIFY_VAR_RETURN4
+  MOVD copy_aludst_to_var_reg_b
+
+copy_aludst_to_var_reg_b_ret4:
+  R_MODIFY_VAR_RETURN3
+  MOVD read_var_0t_reg_b
+
+read_var_0t_reg_b_ret3:
+  R_MODIFY_VAR_RETURN1
+  MOVD WRITE_alu_dst
+
+write_alu_dst_ret1:
+  R_ARITHMETIC_OR_IO1
+  MOVD putc
+
+putc_ret1:
+  R_MODIFY_VAR_RETURN8
+  MOVD copy_var_to_aludst_reg_a
+
+copy_var_to_aludst_reg_a_ret8:
+  ROT C1 R_ROT
+  OPR 0t2020 R_OPR
+  OPR 1t0101 R_OPR
+  OPR 0t1210 R_OPR
+  R_MODIFY_VAR_RETURN13
+  MOVD WRITE_alu_src
+
+write_alu_src_ret13:
+  R_ARITHMETIC_OR_IO5
+  MOVD add_uint24
+
+add_uint24_ret5:
+  R_MODIFY_VAR_RETURN5
+  MOVD copy_aludst_to_var_reg_a
+
+copy_aludst_to_var_reg_a_ret5:
+  R_MODIFY_VAR_RETURN1
+  MOVD read_var_0t_reg_a
+
+read_var_0t_reg_a_ret1:
+  R_MODIFY_VAR_RETURN2
+  MOVD WRITE_alu_dst
+
+write_alu_dst_ret2:
+  R_ARITHMETIC_OR_IO2
+  MOVD putc
+
+putc_ret2:
+  ROT C1 R_ROT
+  OPR 0t202 R_OPR
+  OPR 1t010 R_OPR
+  OPR 0t101 R_OPR
+  R_MODIFY_VAR_RETURN3
+  MOVD WRITE_alu_dst
+
+write_alu_dst_ret3:
+  R_ARITHMETIC_OR_IO3
+  MOVD putc
+
+putc_ret3:
+  HALT
+end:
+  HALT
+
+jmp_to_alu_src:
+  R_MOVD
+  ROT C1 R_ROT
+local_label_2:
+  R_VAR_RETURN1
+  MOVD opr_tmp2
+
+tmp2_ret1:
+  LOOP2 local_label_2
+local_label_3:
+  R_VAR_RETURN1
+  MOVD opr_tmp
+
+tmp_ret1:
+  LOOP2 local_label_3
+local_label_4:
+  ROT C0 R_ROT
+  R_VAR_RETURN1
+  MOVD opr_val_1222
+
+val_1222_ret1:
+  R_VAR_RETURN1
+  MOVD opr_alu_src
+
+alu_src_ret1:
+  LOOP2 local_label_4
+  R_VAR_RETURN2
+  MOVD opr_tmp
+
+tmp_ret2:
+  R_VAR_RETURN2
+  MOVD opr_tmp2
+
+tmp2_ret2:
+local_label_5:
+  ROT C1 R_ROT
+  R_VAR_RETURN2
+  MOVD opr_val_1222
+
+val_1222_ret2:
+  OPR pc_lookup_table R_OPR
+  LOOP2 local_label_5
+  R_MODIFY_VAR_RETURN4
+  MOVD WRITE_alu_dst
+
+write_alu_dst_ret4:
+  R_BASIS_ALU1
+  MOVD add
+
+add_ret1:
+local_label_6:
+  ROT C0 R_ROT
+  R_VAR_RETURN3
+  MOVD opr_val_1222
+
+val_1222_ret3:
+  R_VAR_RETURN3
+  MOVD opr_tmp2
+
+tmp2_ret3:
+  LOOP2 local_label_6
+  R_MODIFY_VAR_RETURN14
+  MOVD WRITE_alu_src
+
+write_alu_src_ret14:
+  R_BASIS_ALU2
+  MOVD add
+
+add_ret2:
+  ROT C1 R_ROT
+local_label_7:
+  R_VAR_RETURN2
+  MOVD opr_alu_src
+
+alu_src_ret2:
+  LOOP2 local_label_7
+local_label_8:
+  R_VAR_RETURN3
+  MOVD opr_tmp
+
+tmp_ret3:
+  LOOP2 local_label_8
+local_label_9:
+  ROT C1 R_ROT
+  R_VAR_RETURN4
+  MOVD opr_val_1222
+
+val_1222_ret4:
+  R_VAR_RETURN1
+  MOVD opr_alu_dst
+
+alu_dst_ret1:
+  LOOP2 local_label_9
+  R_VAR_RETURN4
+  MOVD opr_tmp
+
+tmp_ret4:
+  R_VAR_RETURN3
+  MOVD opr_alu_src
+
+alu_src_ret3:
+  MOVDMOVD alu_src-3
+test_alu_dst:
+  R_MOVD
+  ROT C1 R_ROT
+local_label_10:
+  R_VAR_RETURN1
+  MOVD opr_carry
+
+carry_ret1:
+  LOOP2 local_label_10
+local_label_11:
+  R_VAR_RETURN5
+  MOVD opr_tmp
+
+tmp_ret5:
+  LOOP2 local_label_11
+local_label_12:
+  ROT C0 R_ROT
+  R_VAR_RETURN5
+  MOVD opr_val_1222
+
+val_1222_ret5:
+  R_VAR_RETURN2
+  MOVD opr_alu_dst
+
+alu_dst_ret2:
+  LOOP2 local_label_12
+  R_VAR_RETURN2
+  MOVD opr_carry
+
+carry_ret2:
+  R_VAR_RETURN3
+  MOVD carry
+
+carry_ret3:
+  BASIS_ALU1 test_alu_dst_ret1 R_BASIS_ALU1
+
+putc:
+  R_MOVD
+  ROT C1 R_ROT
+local_label_13:
+  R_VAR_RETURN4
+  MOVD opr_alu_src
+
+alu_src_ret4:
+  LOOP2 local_label_13
+local_label_14:
+  R_VAR_RETURN6
+  MOVD opr_tmp
+
+tmp_ret6:
+  LOOP2 local_label_14
+  ROT C1 R_ROT
+  OPR 0t200222 R_OPR
+  OPR 1t011000 R_OPR
+  OPR 0t100111 R_OPR
+  R_VAR_RETURN7
+  MOVD opr_tmp
+
+tmp_ret7:
+  R_VAR_RETURN5
+  MOVD opr_alu_src
+
+alu_src_ret5:
+  R_MODULO1
+  MOVD modulo
+
+modulo_ret1:
+local_label_15:
+  ROT C0 R_ROT
+  R_VAR_RETURN6
+  MOVD opr_val_1222
+
+val_1222_ret6:
+  R_VAR_RETURN3
+  MOVD opr_alu_dst
+
+alu_dst_ret3:
+  LOOP2 local_label_15
+  OUT ?- R_OUT
+  ARITHMETIC_OR_IO1 putc_ret1 R_ARITHMETIC_OR_IO1
+  ARITHMETIC_OR_IO2 putc_ret2 R_ARITHMETIC_OR_IO2
+  ARITHMETIC_OR_IO3 putc_ret3 R_ARITHMETIC_OR_IO3
+
+add_uint24:
+  R_MOVD
+  R_BASIS_ALU3
+  MOVD add
+
+add_ret3:
+  ROT C1 R_ROT
+local_label_16:
+  R_VAR_RETURN6
+  MOVD opr_alu_src
+
+alu_src_ret6:
+  LOOP2 local_label_16
+local_label_17:
+  R_VAR_RETURN8
+  MOVD opr_tmp
+
+tmp_ret8:
+  LOOP2 local_label_17
+local_label_18:
+  ROT C0 R_ROT
+  R_VAR_RETURN7
+  MOVD opr_val_1222
+
+val_1222_ret7:
+  OPR 16777215+1 R_OPR
+  LOOP2 local_label_18
+  R_VAR_RETURN9
+  MOVD opr_tmp
+
+tmp_ret9:
+  R_VAR_RETURN7
+  MOVD opr_alu_src
+
+alu_src_ret7:
+  R_MODULO2
+  MOVD modulo
+
+modulo_ret2:
+  ARITHMETIC_OR_IO1 add_uint24_ret1 R_ARITHMETIC_OR_IO1
+  ARITHMETIC_OR_IO2 add_uint24_ret2 R_ARITHMETIC_OR_IO2
+  ARITHMETIC_OR_IO3 add_uint24_ret3 R_ARITHMETIC_OR_IO3
+  ARITHMETIC_OR_IO4 add_uint24_ret4 R_ARITHMETIC_OR_IO4
+  ARITHMETIC_OR_IO5 add_uint24_ret5 R_ARITHMETIC_OR_IO5
+
+sub_uint24:
+  R_MOVD
+  ROT C1 R_ROT
+local_label_19:
+  R_VAR_RETURN4
+  MOVD opr_tmp2
+
+tmp2_ret4:
+  LOOP2 local_label_19
+local_label_20:
+  R_VAR_RETURN10
+  MOVD opr_tmp
+
+tmp_ret10:
+  LOOP2 local_label_20
+local_label_21:
+  ROT C0 R_ROT
+  R_VAR_RETURN8
+  MOVD opr_val_1222
+
+val_1222_ret8:
+  R_VAR_RETURN8
+  MOVD opr_alu_src
+
+alu_src_ret8:
+  LOOP2 local_label_21
+  R_VAR_RETURN11
+  MOVD opr_tmp
+
+tmp_ret11:
+  R_VAR_RETURN5
+  MOVD opr_tmp2
+
+tmp2_ret5:
+  ROT C1 R_ROT
+local_label_22:
+  R_VAR_RETURN9
+  MOVD opr_alu_src
+
+alu_src_ret9:
+  LOOP2 local_label_22
+local_label_23:
+  R_VAR_RETURN12
+  MOVD opr_tmp
+
+tmp_ret12:
+  LOOP2 local_label_23
+local_label_24:
+  ROT C0 R_ROT
+  R_VAR_RETURN9
+  MOVD opr_val_1222
+
+val_1222_ret9:
+  OPR 16777215+1 R_OPR
+  LOOP2 local_label_24
+  R_VAR_RETURN13
+  MOVD opr_tmp
+
+tmp_ret13:
+  R_VAR_RETURN10
+  MOVD opr_alu_src
+
+alu_src_ret10:
+  R_BASIS_ALU4
+  MOVD add
+
+add_ret4:
+  ROT C1 R_ROT
+local_label_25:
+  R_VAR_RETURN11
+  MOVD opr_alu_src
+
+alu_src_ret11:
+  LOOP2 local_label_25
+local_label_26:
+  R_VAR_RETURN14
+  MOVD opr_tmp
+
+tmp_ret14:
+  LOOP2 local_label_26
+local_label_27:
+  ROT C0 R_ROT
+  R_VAR_RETURN10
+  MOVD opr_val_1222
+
+val_1222_ret10:
+  R_VAR_RETURN6
+  MOVD opr_tmp2
+
+tmp2_ret6:
+  LOOP2 local_label_27
+  R_VAR_RETURN15
+  MOVD opr_tmp
+
+tmp_ret15:
+  R_VAR_RETURN12
+  MOVD opr_alu_src
+
+alu_src_ret12:
+  R_BASIS_ALU1
+  MOVD sub
+
+sub_ret1:
+  ROT C1 R_ROT
+local_label_28:
+  R_VAR_RETURN13
+  MOVD opr_alu_src
+
+alu_src_ret13:
+  LOOP2 local_label_28
+local_label_29:
+  R_VAR_RETURN16
+  MOVD opr_tmp
+
+tmp_ret16:
+  LOOP2 local_label_29
+local_label_30:
+  ROT C0 R_ROT
+  R_VAR_RETURN11
+  MOVD opr_val_1222
+
+val_1222_ret11:
+  OPR 16777215+1 R_OPR
+  LOOP2 local_label_30
+  R_VAR_RETURN17
+  MOVD opr_tmp
+
+tmp_ret17:
+  R_VAR_RETURN14
+  MOVD opr_alu_src
+
+alu_src_ret14:
+  R_MODULO3
+  MOVD modulo
+
+modulo_ret3:
+  ARITHMETIC_OR_IO1 sub_uint24_ret1 R_ARITHMETIC_OR_IO1
+
+modulo:
+  R_MOVD
+  ROT C1 R_ROT
+local_label_31:
+  R_VAR_RETURN1
+  MOVD opr_tmp3
+
+tmp3_ret1:
+  LOOP2 local_label_31
+local_label_32:
+  R_VAR_RETURN18
+  MOVD opr_tmp
+
+tmp_ret18:
+  LOOP2 local_label_32
+local_label_33:
+  ROT C0 R_ROT
+  R_VAR_RETURN12
+  MOVD opr_val_1222
+
+val_1222_ret12:
+  R_VAR_RETURN15
+  MOVD opr_alu_src
+
+alu_src_ret15:
+  LOOP2 local_label_33
+  R_VAR_RETURN19
+  MOVD opr_tmp
+
+tmp_ret19:
+  R_VAR_RETURN2
+  MOVD opr_tmp3
+
+tmp3_ret2:
+continue_modulo:
+  ROT C1 R_ROT
+local_label_34:
+  R_VAR_RETURN7
+  MOVD opr_tmp2
+
+tmp2_ret7:
+  LOOP2 local_label_34
+local_label_35:
+  R_VAR_RETURN20
+  MOVD opr_tmp
+
+tmp_ret20:
+  LOOP2 local_label_35
+local_label_36:
+  ROT C0 R_ROT
+  R_VAR_RETURN13
+  MOVD opr_val_1222
+
+val_1222_ret13:
+  R_VAR_RETURN4
+  MOVD opr_alu_dst
+
+alu_dst_ret4:
+  LOOP2 local_label_36
+  R_VAR_RETURN21
+  MOVD opr_tmp
+
+tmp_ret21:
+  R_VAR_RETURN8
+  MOVD opr_tmp2
+
+tmp2_ret8:
+  R_BASIS_ALU2
+  MOVD sub
+
+sub_ret2:
+  ROT C1 R_ROT
+local_label_37:
+  R_VAR_RETURN16
+  MOVD opr_alu_src
+
+alu_src_ret16:
+  LOOP2 local_label_37
+local_label_38:
+  R_VAR_RETURN22
+  MOVD opr_tmp
+
+tmp_ret22:
+  LOOP2 local_label_38
+local_label_39:
+  ROT C0 R_ROT
+  R_VAR_RETURN14
+  MOVD opr_val_1222
+
+val_1222_ret14:
+  R_VAR_RETURN3
+  MOVD opr_tmp3
+
+tmp3_ret3:
+  LOOP2 local_label_39
+  R_VAR_RETURN23
+  MOVD opr_tmp
+
+tmp_ret23:
+  R_VAR_RETURN17
+  MOVD opr_alu_src
+
+alu_src_ret17:
+  R_tmp_IS_C1
+  tmp_IS_C1 continue_modulo
+  ROT C1 R_ROT
+local_label_40:
+  R_VAR_RETURN5
+  MOVD opr_alu_dst
+
+alu_dst_ret5:
+  LOOP2 local_label_40
+local_label_41:
+  R_VAR_RETURN24
+  MOVD opr_tmp
+
+tmp_ret24:
+  LOOP2 local_label_41
+local_label_42:
+  ROT C0 R_ROT
+  R_VAR_RETURN15
+  MOVD opr_val_1222
+
+val_1222_ret15:
+  R_VAR_RETURN9
+  MOVD opr_tmp2
+
+tmp2_ret9:
+  LOOP2 local_label_42
+  R_VAR_RETURN25
+  MOVD opr_tmp
+
+tmp_ret25:
+  R_VAR_RETURN6
+  MOVD opr_alu_dst
+
+alu_dst_ret6:
+  MODULO1 modulo_ret1 R_MODULO1
+  MODULO2 modulo_ret2 R_MODULO2
+  MODULO3 modulo_ret3 R_MODULO3
+
+test_lt:
+  R_MOVD
+  R_BASIS_ALU3
+  MOVD sub
+
+sub_ret3:
+  ROT C1 R_ROT
+local_label_43:
+  R_VAR_RETURN7
+  MOVD opr_alu_dst
+
+alu_dst_ret7:
+  LOOP2 local_label_43
+local_label_44:
+  R_VAR_RETURN26
+  MOVD opr_tmp
+
+tmp_ret26:
+  LOOP2 local_label_44
+  ROT C1 R_ROT
+  R_tmp_IS_C1
+  tmp_IS_C1 is_ge
+  OPR 0t2 R_OPR
+  OPR 1t0 R_OPR
+is_ge:
+  R_VAR_RETURN8
+  MOVD opr_alu_dst
+
+alu_dst_ret8:
+  TEST_LT1 test_lt_ret1 R_TEST_LT1
+
+write_memory:
+  R_MOVD
+  ROT C1 R_ROT
+local_label_45:
+  R_VAR_RETURN4
+  MOVD opr_tmp3
+
+tmp3_ret4:
+  LOOP2 local_label_45
+local_label_46:
+  R_VAR_RETURN27
+  MOVD opr_tmp
+
+tmp_ret27:
+  LOOP2 local_label_46
+local_label_47:
+  ROT C0 R_ROT
+  R_VAR_RETURN16
+  MOVD opr_val_1222
+
+val_1222_ret16:
+  R_VAR_RETURN9
+  MOVD opr_alu_dst
+
+alu_dst_ret9:
+  LOOP2 local_label_47
+  R_VAR_RETURN28
+  MOVD opr_tmp
+
+tmp_ret28:
+  R_VAR_RETURN5
+  MOVD opr_tmp3
+
+tmp3_ret5:
+  R_MEM_COMPUTE1
+  MOVD compute_memptr
+
+compute_memptr_ret1:
+  ROT C1 R_ROT
+local_label_48:
+  R_VAR_RETURN10
+  MOVD opr_alu_dst
+
+alu_dst_ret10:
+  LOOP2 local_label_48
+local_label_49:
+  R_VAR_RETURN29
+  MOVD opr_tmp
+
+tmp_ret29:
+  LOOP2 local_label_49
+local_label_50:
+  ROT C0 R_ROT
+  R_VAR_RETURN17
+  MOVD opr_val_1222
+
+val_1222_ret17:
+  R_VAR_RETURN6
+  MOVD opr_tmp3
+
+tmp3_ret6:
+  LOOP2 local_label_50
+  R_VAR_RETURN30
+  MOVD opr_tmp
+
+tmp_ret30:
+  R_VAR_RETURN11
+  MOVD opr_alu_dst
+
+alu_dst_ret11:
+  ROT C1 R_ROT
+local_label_51:
+  R_VAR_RETURN18
+  MOVD opr_alu_src
+
+alu_src_ret18:
+  LOOP2 local_label_51
+local_label_52:
+  R_VAR_RETURN31
+  MOVD opr_tmp
+
+tmp_ret31:
+  LOOP2 local_label_52
+  ROT C1 R_ROT
+  OPR 0t20000 R_OPR
+  OPR 1t01111 R_OPR
+  OPR 0t10000 R_OPR
+  R_VAR_RETURN32
+  MOVD opr_tmp
+
+tmp_ret32:
+  R_VAR_RETURN19
+  MOVD opr_alu_src
+
+alu_src_ret19:
+  R_BASIS_ALU5
+  MOVD add
+
+add_ret5:
+  ROT C1 R_ROT
+  R_OPR_MEM1
+  MOVD opr_memory
+
+opr_memory_ret1:
+  R_OPR_MEM2
+  MOVD opr_memory
+
+opr_memory_ret2:
+  R_VAR_RETURN33
+  MOVD opr_tmp
+
+tmp_ret33:
+  R_VAR_RETURN34
+  MOVD opr_tmp
+
+tmp_ret34:
+local_label_53:
+  ROT C0 R_ROT
+  R_VAR_RETURN18
+  MOVD opr_val_1222
+
+val_1222_ret18:
+  R_VAR_RETURN12
+  MOVD opr_alu_dst
+
+alu_dst_ret12:
+  LOOP2 local_label_53
+  R_VAR_RETURN35
+  MOVD opr_tmp
+
+tmp_ret35:
+  R_OPR_MEM3
+  MOVD opr_memory
+
+opr_memory_ret3:
+  MEM_ACCESS1 write_memory_ret1 R_MEM_ACCESS1
+  MEM_ACCESS2 write_memory_ret2 R_MEM_ACCESS2
+  MEM_ACCESS3 write_memory_ret3 R_MEM_ACCESS3
+
+read_memory:
+  R_MOVD
+  R_MEM_COMPUTE2
+  MOVD compute_memptr
+
+compute_memptr_ret2:
+  ROT C1 R_ROT
+local_label_54:
+  R_VAR_RETURN13
+  MOVD opr_alu_dst
+
+alu_dst_ret13:
+  LOOP2 local_label_54
+local_label_55:
+  R_VAR_RETURN36
+  MOVD opr_tmp
+
+tmp_ret36:
+  LOOP2 local_label_55
+local_label_56:
+  ROT C0 R_ROT
+  R_VAR_RETURN19
+  MOVD opr_val_1222
+
+val_1222_ret19:
+  R_OPR_MEM4
+  MOVD opr_memory
+
+opr_memory_ret4:
+  LOOP2 local_label_56
+  R_VAR_RETURN37
+  MOVD opr_tmp
+
+tmp_ret37:
+  R_VAR_RETURN14
+  MOVD opr_alu_dst
+
+alu_dst_ret14:
+  ROT C1 R_ROT
+local_label_57:
+  R_VAR_RETURN10
+  MOVD opr_tmp2
+
+tmp2_ret10:
+  LOOP2 local_label_57
+local_label_58:
+  R_VAR_RETURN38
+  MOVD opr_tmp
+
+tmp_ret38:
+  LOOP2 local_label_58
+local_label_59:
+  ROT C0 R_ROT
+  R_VAR_RETURN20
+  MOVD opr_val_1222
+
+val_1222_ret20:
+  R_VAR_RETURN15
+  MOVD opr_alu_dst
+
+alu_dst_ret15:
+  LOOP2 local_label_59
+  R_VAR_RETURN39
+  MOVD opr_tmp
+
+tmp_ret39:
+  R_VAR_RETURN11
+  MOVD opr_tmp2
+
+tmp2_ret11:
+  ROT C1 R_ROT
+local_label_60:
+  R_VAR_RETURN20
+  MOVD opr_alu_src
+
+alu_src_ret20:
+  LOOP2 local_label_60
+local_label_61:
+  R_VAR_RETURN40
+  MOVD opr_tmp
+
+tmp_ret40:
+  LOOP2 local_label_61
+  ROT C1 R_ROT
+  OPR 0t20000 R_OPR
+  OPR 1t01111 R_OPR
+  OPR 0t10000 R_OPR
+  R_VAR_RETURN41
+  MOVD opr_tmp
+
+tmp_ret41:
+  R_VAR_RETURN21
+  MOVD opr_alu_src
+
+alu_src_ret21:
+  R_BASIS_ALU4
+  MOVD sub
+
+sub_ret4:
+  MEM_ACCESS1 read_memory_ret1 R_MEM_ACCESS1
+  MEM_ACCESS2 read_memory_ret2 R_MEM_ACCESS2
+  MEM_ACCESS3 read_memory_ret3 R_MEM_ACCESS3
+
+compute_memptr:
+  R_MOVD
+  ROT C1 R_ROT
+local_label_62:
+  R_VAR_RETURN16
+  MOVD opr_alu_dst
+
+alu_dst_ret16:
+  LOOP2 local_label_62
+local_label_63:
+  R_VAR_RETURN42
+  MOVD opr_tmp
+
+tmp_ret42:
+  LOOP2 local_label_63
+local_label_64:
+  ROT C1 R_ROT
+  R_VAR_RETURN21
+  MOVD opr_val_1222
+
+val_1222_ret21:
+  OPR MEMORY_0-2 R_OPR
+  LOOP2 local_label_64
+  R_VAR_RETURN43
+  MOVD opr_tmp
+
+tmp_ret43:
+  R_VAR_RETURN17
+  MOVD opr_alu_dst
+
+alu_dst_ret17:
+  ROT C1 R_ROT
+local_label_65:
+  R_VAR_RETURN12
+  MOVD opr_tmp2
+
+tmp2_ret12:
+  LOOP2 local_label_65
+local_label_66:
+  R_VAR_RETURN44
+  MOVD opr_tmp
+
+tmp_ret44:
+  LOOP2 local_label_66
+local_label_67:
+  ROT C0 R_ROT
+  R_VAR_RETURN22
+  MOVD opr_val_1222
+
+val_1222_ret22:
+  R_VAR_RETURN22
+  MOVD opr_alu_src
+
+alu_src_ret22:
+  LOOP2 local_label_67
+  R_VAR_RETURN45
+  MOVD opr_tmp
+
+tmp_ret45:
+  R_VAR_RETURN13
+  MOVD opr_tmp2
+
+tmp2_ret13:
+  R_BASIS_ALU5
+  MOVD sub
+
+sub_ret5:
+  ROT C1 R_ROT
+local_label_68:
+  R_VAR_RETURN23
+  MOVD opr_alu_src
+
+alu_src_ret23:
+  LOOP2 local_label_68
+local_label_69:
+  R_VAR_RETURN46
+  MOVD opr_tmp
+
+tmp_ret46:
+  LOOP2 local_label_69
+local_label_70:
+  ROT C0 R_ROT
+  R_VAR_RETURN23
+  MOVD opr_val_1222
+
+val_1222_ret23:
+  R_VAR_RETURN14
+  MOVD opr_tmp2
+
+tmp2_ret14:
+  LOOP2 local_label_70
+  R_VAR_RETURN47
+  MOVD opr_tmp
+
+tmp_ret47:
+  R_VAR_RETURN24
+  MOVD opr_alu_src
+
+alu_src_ret24:
+  R_BASIS_ALU6
+  MOVD sub
+
+sub_ret6:
+  ROT C1 R_ROT
+  R_OPR_MEM1
+  MOVD opr_memptr
+
+opr_memptr_ret1:
+  R_OPR_MEM2
+  MOVD opr_memptr
+
+opr_memptr_ret2:
+  R_VAR_RETURN48
+  MOVD opr_tmp
+
+tmp_ret48:
+  R_VAR_RETURN49
+  MOVD opr_tmp
+
+tmp_ret49:
+local_label_71:
+  ROT C1 R_ROT
+  R_VAR_RETURN24
+  MOVD opr_val_1222
+
+val_1222_ret24:
+  R_VAR_RETURN18
+  MOVD opr_alu_dst
+
+alu_dst_ret18:
+  LOOP2 local_label_71
+  R_VAR_RETURN50
+  MOVD opr_tmp
+
+tmp_ret50:
+  R_OPR_MEM3
+  MOVD opr_memptr
+
+opr_memptr_ret3:
+  MEM_COMPUTE1 compute_memptr_ret1 R_MEM_COMPUTE1
+  MEM_COMPUTE2 compute_memptr_ret2 R_MEM_COMPUTE2
+
+
+opr_memory:
+  U_MOVDOPRMOVD memptr
+opr_memptr:
+  OPR
+memptr:
+  MEMORY_0 - 2
+  R_OPR
+  R_MOVD
+  OPR_MEM1 opr_memptr_ret1 R_OPR_MEM1
+  OPR_MEM2 opr_memptr_ret2 R_OPR_MEM2
+  OPR_MEM3 opr_memptr_ret3 R_OPR_MEM3
+
+
+// backjump
+@1t01112 return_from_memory_cell:
+  R_MOVD
+  MOVD restore_opr_memory
+
+restore_opr_memory:
+  R_MOVD
+restore_opr_memory_no_r_moved:
+  PARTIAL_MOVDOPRMOVD ?-
+  R_MOVDOPRMOVD ?- ?- ?- ?-
+  LOOP4 half_of_restore_opr_memory_done
+  MOVD restore_opr_memory
+
+half_of_restore_opr_memory_done:
+  LOOP2_2 restore_opr_memory_done
+  PARTIAL_MOVDOPRMOVD
+  restore_opr_memory_no_r_moved
+
+restore_opr_memory_done:
+  OPR_MEM1 opr_memory_ret1 R_OPR_MEM1
+  OPR_MEM2 opr_memory_ret2 R_OPR_MEM2
+  OPR_MEM3 opr_memory_ret3 R_OPR_MEM3
+  OPR_MEM4 opr_memory_ret4 R_OPR_MEM4
+
+add:
+  tmp_IS_C1 add
+  R_tmp_IS_C1
+  R_MOVD
+  R_ROTWIDTH_LOOP1
+  MOVD init_loop
+
+rotwidth_loop_inner1:
+  R_ROTWIDTH_LOOP1
+  R_tmp_IS_C1
+  tmp_IS_C1 no_increment_during_add
+  R_tmp_IS_C1
+force_increment_during_add:
+  ROT C1 R_ROT
+local_label_72:
+  R_VAR_RETURN4
+  MOVD opr_carry
+
+carry_ret4:
+  LOOP2 local_label_72
+local_label_73:
+  R_VAR_RETURN51
+  MOVD opr_tmp
+
+tmp_ret51:
+  LOOP2 local_label_73
+  R_VAR_RETURN52
+  MOVD opr_tmp
+
+tmp_ret52:
+  R_VAR_RETURN25
+  MOVD opr_val_1222
+
+val_1222_ret25:
+  R_VAR_RETURN5
+  MOVD opr_carry
+
+carry_ret5:
+  ROT C1 R_ROT
+  OPR 0t2 R_OPR
+  R_VAR_RETURN6
+  MOVD opr_carry
+
+carry_ret6:
+  ROT C1 R_ROT
+  R_VAR_RETURN26
+  MOVD opr_val_1222
+
+val_1222_ret26:
+local_label_74:
+  R_VAR_RETURN19
+  MOVD opr_alu_dst
+
+alu_dst_ret19:
+  R_VAR_RETURN53
+  MOVD opr_tmp
+
+tmp_ret53:
+  R_VAR_RETURN7
+  MOVD opr_carry
+
+carry_ret7:
+  LOOP2 local_label_74
+local_label_75:
+  ROT C1 R_ROT
+  OPR 0t2 R_OPR
+  R_VAR_RETURN54
+  MOVD opr_tmp
+
+tmp_ret54:
+  LOOP2 local_label_75
+  tmp_IS_C1 keep_carry_during_add
+  R_VAR_RETURN55
+  MOVD tmp
+
+tmp_ret55:
+  R_tmp_IS_C1
+keep_carry_during_add:
+  R_tmp_IS_C1
+no_increment_during_add:
+  ROT C1 R_ROT
+local_label_76:
+  R_VAR_RETURN8
+  MOVD opr_carry
+
+carry_ret8:
+  LOOP2 local_label_76
+local_label_77:
+  R_VAR_RETURN56
+  MOVD opr_tmp
+
+tmp_ret56:
+  LOOP2 local_label_77
+  R_VAR_RETURN57
+  MOVD opr_tmp
+
+tmp_ret57:
+  R_VAR_RETURN27
+  MOVD opr_val_1222
+
+val_1222_ret27:
+  R_VAR_RETURN9
+  MOVD opr_carry
+
+carry_ret9:
+  ROT C1 R_ROT
+  OPR 0t2 R_OPR
+  R_VAR_RETURN10
+  MOVD opr_carry
+
+carry_ret10:
+  ROT C1 R_ROT
+  R_VAR_RETURN28
+  MOVD opr_val_1222
+
+val_1222_ret28:
+  R_VAR_RETURN25
+  MOVD opr_alu_src
+
+alu_src_ret25:
+  ROT C1 R_ROT
+  R_VAR_RETURN29
+  MOVD opr_val_1222
+
+val_1222_ret29:
+  R_VAR_RETURN26
+  MOVD opr_alu_src
+
+alu_src_ret26:
+  R_VAR_RETURN58
+  MOVD opr_tmp
+
+tmp_ret58:
+  R_VAR_RETURN11
+  MOVD opr_carry
+
+carry_ret11:
+  R_VAR_RETURN27
+  MOVD opr_alu_src
+
+alu_src_ret27:
+  ROT C1 R_ROT
+  R_VAR_RETURN30
+  MOVD opr_val_1222
+
+val_1222_ret30:
+  R_VAR_RETURN28
+  MOVD opr_alu_src
+
+alu_src_ret28:
+  ROT C1 R_ROT
+  R_VAR_RETURN31
+  MOVD opr_val_1222
+
+val_1222_ret31:
+  R_VAR_RETURN12
+  MOVD opr_carry
+
+carry_ret12:
+  ROT C1 R_ROT
+  OPR 0t2 R_OPR
+  R_VAR_RETURN13
+  MOVD opr_carry
+
+carry_ret13:
+  R_VAR_RETURN14
+  MOVD carry
+
+carry_ret14:
+  carry_IS_C1 force_increment_during_add
+  MOVD end_of_inner_loop_body
+
+rotwidth_loop_inner_always1:
+  R_ROTWIDTH_LOOP1
+  R_VAR_RETURN20
+  MOVD rot_alu_dst
+
+alu_dst_ret20:
+  R_VAR_RETURN29
+  MOVD rot_alu_src
+
+alu_src_ret29:
+  R_VAR_RETURN32
+  MOVD rot_val_1222
+
+val_1222_ret32:
+  MOVD end_of_loop_body
+
+rotwidth_loop_ret1:
+  BASIS_ALU1 add_ret1 R_BASIS_ALU1
+  BASIS_ALU2 add_ret2 R_BASIS_ALU2
+  BASIS_ALU3 add_ret3 R_BASIS_ALU3
+  BASIS_ALU4 add_ret4 R_BASIS_ALU4
+  BASIS_ALU5 add_ret5 R_BASIS_ALU5
+
+sub:
+  tmp_IS_C1 sub
+  R_tmp_IS_C1
+  R_MOVD
+  R_ROTWIDTH_LOOP2
+  MOVD init_loop
+
+rotwidth_loop_inner2:
+  R_ROTWIDTH_LOOP2
+  R_tmp_IS_C1
+  tmp_IS_C1 no_decrement_during_sub
+  R_tmp_IS_C1
+force_decrement_during_sub:
+  ROT C1 R_ROT
+local_label_78:
+  R_VAR_RETURN15
+  MOVD opr_carry
+
+carry_ret15:
+  LOOP2 local_label_78
+local_label_79:
+  R_VAR_RETURN59
+  MOVD opr_tmp
+
+tmp_ret59:
+  LOOP2 local_label_79
+  R_VAR_RETURN60
+  MOVD opr_tmp
+
+tmp_ret60:
+  R_VAR_RETURN33
+  MOVD opr_val_1222
+
+val_1222_ret33:
+  R_VAR_RETURN16
+  MOVD opr_carry
+
+carry_ret16:
+  ROT C1 R_ROT
+  OPR 0t2 R_OPR
+  R_VAR_RETURN17
+  MOVD opr_carry
+
+carry_ret17:
+  ROT C1 R_ROT
+  R_VAR_RETURN34
+  MOVD opr_val_1222
+
+val_1222_ret34:
+  R_VAR_RETURN21
+  MOVD opr_alu_dst
+
+alu_dst_ret21:
+  ROT C1 R_ROT
+  R_VAR_RETURN35
+  MOVD opr_val_1222
+
+val_1222_ret35:
+  R_VAR_RETURN22
+  MOVD opr_alu_dst
+
+alu_dst_ret22:
+  R_VAR_RETURN61
+  MOVD opr_tmp
+
+tmp_ret61:
+  R_VAR_RETURN18
+  MOVD opr_carry
+
+carry_ret18:
+  R_VAR_RETURN23
+  MOVD opr_alu_dst
+
+alu_dst_ret23:
+  ROT C1 R_ROT
+  R_VAR_RETURN36
+  MOVD opr_val_1222
+
+val_1222_ret36:
+  R_VAR_RETURN24
+  MOVD opr_alu_dst
+
+alu_dst_ret24:
+  ROT C1 R_ROT
+  R_VAR_RETURN37
+  MOVD opr_val_1222
+
+val_1222_ret37:
+  R_VAR_RETURN19
+  MOVD opr_carry
+
+carry_ret19:
+  ROT C1 R_ROT
+  OPR 0t2 R_OPR
+  R_VAR_RETURN20
+  MOVD opr_carry
+
+carry_ret20:
+  R_VAR_RETURN21
+  MOVD carry
+
+carry_ret21:
+  tmp_IS_C1 keep_carry_during_sub
+  R_VAR_RETURN22
+  MOVD carry
+
+carry_ret22:
+  carry_IS_C1 keep_carry_during_sub
+  R_tmp_IS_C1
+keep_carry_during_sub:
+  R_tmp_IS_C1
+no_decrement_during_sub:
+  ROT C1 R_ROT
+local_label_80:
+  R_VAR_RETURN23
+  MOVD opr_carry
+
+carry_ret23:
+  LOOP2 local_label_80
+local_label_81:
+  R_VAR_RETURN62
+  MOVD opr_tmp
+
+tmp_ret62:
+  LOOP2 local_label_81
+  R_VAR_RETURN63
+  MOVD opr_tmp
+
+tmp_ret63:
+  R_VAR_RETURN38
+  MOVD opr_val_1222
+
+val_1222_ret38:
+  R_VAR_RETURN24
+  MOVD opr_carry
+
+carry_ret24:
+  ROT C1 R_ROT
+  OPR 0t2 R_OPR
+  R_VAR_RETURN25
+  MOVD opr_carry
+
+carry_ret25:
+  ROT C1 R_ROT
+  R_VAR_RETURN39
+  MOVD opr_val_1222
+
+val_1222_ret39:
+  R_VAR_RETURN30
+  MOVD opr_alu_src
+
+alu_src_ret30:
+  ROT C1 R_ROT
+  R_VAR_RETURN40
+  MOVD opr_val_1222
+
+val_1222_ret40:
+  R_VAR_RETURN31
+  MOVD opr_alu_src
+
+alu_src_ret31:
+  R_VAR_RETURN64
+  MOVD opr_tmp
+
+tmp_ret64:
+  R_VAR_RETURN26
+  MOVD opr_carry
+
+carry_ret26:
+  R_VAR_RETURN32
+  MOVD opr_alu_src
+
+alu_src_ret32:
+  ROT C1 R_ROT
+  R_VAR_RETURN41
+  MOVD opr_val_1222
+
+val_1222_ret41:
+  R_VAR_RETURN33
+  MOVD opr_alu_src
+
+alu_src_ret33:
+  ROT C1 R_ROT
+  R_VAR_RETURN42
+  MOVD opr_val_1222
+
+val_1222_ret42:
+  R_VAR_RETURN27
+  MOVD opr_carry
+
+carry_ret27:
+  ROT C1 R_ROT
+  OPR 0t2 R_OPR
+  R_VAR_RETURN28
+  MOVD opr_carry
+
+carry_ret28:
+  R_VAR_RETURN29
+  MOVD carry
+
+carry_ret29:
+  carry_IS_C1 force_decrement_during_sub
+  MOVD end_of_inner_loop_body
+
+rotwidth_loop_inner_always2:
+  R_ROTWIDTH_LOOP2
+  R_VAR_RETURN25
+  MOVD rot_alu_dst
+
+alu_dst_ret25:
+  R_VAR_RETURN34
+  MOVD rot_alu_src
+
+alu_src_ret34:
+  R_VAR_RETURN43
+  MOVD rot_val_1222
+
+val_1222_ret43:
+  MOVD end_of_loop_body
+
+rotwidth_loop_ret2:
+  BASIS_ALU1 sub_ret1 R_BASIS_ALU1
+  BASIS_ALU2 sub_ret2 R_BASIS_ALU2
+  BASIS_ALU3 sub_ret3 R_BASIS_ALU3
+  BASIS_ALU4 sub_ret4 R_BASIS_ALU4
+  BASIS_ALU5 sub_ret5 R_BASIS_ALU5
+  BASIS_ALU6 sub_ret6 R_BASIS_ALU6
+
+generate_1222:
+  R_MOVD
+  ROT C1 R_ROT
+generate_1222_2loop:
+  R_VAR_RETURN44
+  MOVD opr_val_1222
+
+val_1222_ret44:
+  LOOP2 generate_1222_2loop
+  R_ROTWIDTH_LOOP3
+  MOVD init_loop
+
+rotwidth_loop_inner3:
+  R_ROTWIDTH_LOOP3
+  ROT C1 R_ROT
+  OPR 0t2 R_OPR
+  R_VAR_RETURN45
+  MOVD opr_val_1222
+
+val_1222_ret45:
+  MOVD end_of_inner_loop_body
+
+rotwidth_loop_inner_always3:
+  R_ROTWIDTH_LOOP3
+  R_VAR_RETURN46
+  MOVD rot_val_1222
+
+val_1222_ret46:
+  MOVD end_of_loop_body
+
+rotwidth_loop_ret3:
+  BASIS_ALU1 generate_1222_ret1 R_BASIS_ALU1
+
+.DATA
+opr_loop_tmp:
+  R_MOVD
+  OPR
+loop_tmp:
+  ?
+  U_NOP no_decision
+  U_NOP was_C1
+  U_NOP was_C10
+was_C1:
+  R_LOOP2
+  MOVD leave_loop
+was_C10:
+  R_LOOP2
+  MOVD loop
+no_decision:
+  R_OPR
+  FLAG1 loop_tmp_ret1 R_FLAG1
+  FLAG2 loop_tmp_ret2 R_FLAG2
+  FLAG3 loop_tmp_ret3 R_FLAG3
+  FLAG4 loop_tmp_ret4 R_FLAG4
+
+init_loop:
+  R_MOVD
+  LOOP5_rw reset_loop5_successful
+  MOVD init_loop
+restore_loop4:
+  R_MOVD
+reset_loop5_successful:
+  LOOP4_rw reset_loop4_successful
+  MOVD restore_loop4
+reset_loop4_successful:
+  SKIP_rw_FLAG rw_flag_is_reset
+  SKIP_rw_FLAG rw_flag_is_reset
+loop:
+  R_MOVD
+rw_flag_is_reset:
+  SKIP_rw_FLAG skip_inner_loop R_SKIP_rw_FLAG
+  ROTWIDTH_LOOP1 rotwidth_loop_inner1 R_ROTWIDTH_LOOP1
+  ROTWIDTH_LOOP2 rotwidth_loop_inner2 R_ROTWIDTH_LOOP2
+  ROTWIDTH_LOOP3 rotwidth_loop_inner3 R_ROTWIDTH_LOOP3
+
+skip_inner_loop:
+  R_SKIP_rw_FLAG
+  R_MOVD
+end_of_inner_loop_body:
+  R_MOVD
+  ROTWIDTH_LOOP1 rotwidth_loop_inner_always1 R_ROTWIDTH_LOOP1
+  ROTWIDTH_LOOP2 rotwidth_loop_inner_always2 R_ROTWIDTH_LOOP2
+  ROTWIDTH_LOOP3 rotwidth_loop_inner_always3 R_ROTWIDTH_LOOP3
+
+end_of_loop_body:
+  SKIP_rw_FLAG set_skip_flag R_SKIP_rw_FLAG
+  LOOP5_rw maybe_set_skipflag
+update_skip_flag_finished:
+  R_MOVD
+  ROT C1 R_ROT
+reset_loop_tmp_loop:
+  R_FLAG1
+  MOVD opr_loop_tmp
+
+maybe_set_skipflag:
+  LOOP4_rw set_skip_flag
+  R_MOVD MOVD update_skip_flag_finished
+
+set_skip_flag:
+  R_SKIP_rw_FLAG
+  R_MOVD MOVD update_skip_flag_finished
+
+loop_tmp_ret1:
+  LOOP2 reset_loop_tmp_loop
+do_twice:
+  ROT C1 R_ROT
+  OPR C02 R_OPR
+  R_FLAG2
+  MOVD opr_loop_tmp
+
+loop_tmp_ret2:
+  R_LOOP2
+  LOOP2 loop_tmp
+  R_FLAG3
+  MOVD opr_loop_tmp
+
+loop_tmp_ret3:
+  ROT C12 R_ROT
+  R_FLAG4
+  MOVD opr_loop_tmp
+
+loop_tmp_ret4:
+  LOOP2 do_twice
+
+leave_loop:
+  R_MOVD
+  ROTWIDTH_LOOP1 rotwidth_loop_ret1 R_ROTWIDTH_LOOP1
+  ROTWIDTH_LOOP2 rotwidth_loop_ret2 R_ROTWIDTH_LOOP2
+  ROTWIDTH_LOOP3 rotwidth_loop_ret3 R_ROTWIDTH_LOOP3
+
+.CODE
+ROTWIDTH_LOOP1:
+  Nop/MovD
+  Jmp
+
+ROTWIDTH_LOOP2:
+  Nop/MovD
+  Jmp
+
+ROTWIDTH_LOOP3:
+  Nop/MovD
+  Jmp
+
+LOOP4_rw:
+  Nop/Nop/Nop/MovD
+  Jmp
+
+LOOP5_rw:
+  Nop/Nop/Nop/Nop/MovD
+  Jmp
+
+SKIP_rw_FLAG:
+  Nop/MovD
+  Jmp
+
+
+.DATA
+copy_var_to_aludst_reg_a:
+  R_MOVD
+  ROT C1 R_ROT
+local_label_82:
+  R_VAR_RETURN26
+  MOVD opr_alu_dst
+
+alu_dst_ret26:
+  LOOP2 local_label_82
+local_label_83:
+  R_VAR_RETURN65
+  MOVD opr_tmp
+
+tmp_ret65:
+  LOOP2 local_label_83
+local_label_84:
+  ROT C0 R_ROT
+  R_VAR_RETURN47
+  MOVD opr_val_1222
+
+val_1222_ret47:
+  R_VAR_RETURN1
+  MOVD opr_reg_a
+
+reg_a_ret1:
+  LOOP2 local_label_84
+  R_VAR_RETURN66
+  MOVD opr_tmp
+
+tmp_ret66:
+  R_VAR_RETURN27
+  MOVD opr_alu_dst
+
+alu_dst_ret27:
+MODIFY_VAR_RETURN1 copy_var_to_aludst_reg_a_ret1 R_MODIFY_VAR_RETURN1
+MODIFY_VAR_RETURN2 copy_var_to_aludst_reg_a_ret2 R_MODIFY_VAR_RETURN2
+MODIFY_VAR_RETURN3 copy_var_to_aludst_reg_a_ret3 R_MODIFY_VAR_RETURN3
+MODIFY_VAR_RETURN4 copy_var_to_aludst_reg_a_ret4 R_MODIFY_VAR_RETURN4
+MODIFY_VAR_RETURN5 copy_var_to_aludst_reg_a_ret5 R_MODIFY_VAR_RETURN5
+MODIFY_VAR_RETURN6 copy_var_to_aludst_reg_a_ret6 R_MODIFY_VAR_RETURN6
+MODIFY_VAR_RETURN7 copy_var_to_aludst_reg_a_ret7 R_MODIFY_VAR_RETURN7
+MODIFY_VAR_RETURN8 copy_var_to_aludst_reg_a_ret8 R_MODIFY_VAR_RETURN8
+
+read_var_0t_reg_a:
+  R_MOVD
+local_label_85:
+  ROT C0 R_ROT
+  R_VAR_RETURN48
+  MOVD opr_val_1222
+
+val_1222_ret48:
+  R_VAR_RETURN2
+  MOVD opr_reg_a
+
+reg_a_ret2:
+  LOOP2 local_label_85
+MODIFY_VAR_RETURN1 read_var_0t_reg_a_ret1 R_MODIFY_VAR_RETURN1
+
+WRITE_reg_a:
+  R_MOVD
+  R_FLAG5 MOVD write_reg_a_opr_tmp
+
+write_reg_a_tmp_ret1:
+  R_FLAG5 MOVD write_reg_a_opr_tmp2
+
+write_reg_a_tmp2_ret1:
+  ROT C1 R_ROT
+local_label_86:
+  R_VAR_RETURN3
+  MOVD opr_reg_a
+
+reg_a_ret3:
+  LOOP2 local_label_86
+local_label_87:
+  R_VAR_RETURN67
+  MOVD opr_tmp
+
+tmp_ret67:
+  LOOP2 local_label_87
+local_label_88:
+  ROT C0 R_ROT
+  R_VAR_RETURN49
+  MOVD opr_val_1222
+
+val_1222_ret49:
+  R_FLAG6 MOVD write_reg_a_opr_tmp2
+
+write_reg_a_tmp2_ret2:
+  LOOP2 local_label_88
+  R_VAR_RETURN68
+  MOVD opr_tmp
+
+tmp_ret68:
+  R_VAR_RETURN4
+  MOVD opr_reg_a
+
+reg_a_ret4:
+  ROT C1 R_ROT
+  R_FLAG6 MOVD write_reg_a_opr_tmp
+
+write_reg_a_tmp_ret2:
+  R_FLAG7 MOVD write_reg_a_opr_tmp
+
+write_reg_a_tmp_ret3:
+  R_FLAG7 MOVD write_reg_a_opr_tmp2
+
+write_reg_a_tmp2_ret3:
+  R_FLAG8 MOVD write_reg_a_opr_tmp2
+
+write_reg_a_tmp2_ret4:
+MODIFY_VAR_RETURN1 write_reg_a_ret1 R_MODIFY_VAR_RETURN1
+MODIFY_VAR_RETURN2 write_reg_a_ret2 R_MODIFY_VAR_RETURN2
+MODIFY_VAR_RETURN3 write_reg_a_ret3 R_MODIFY_VAR_RETURN3
+
+write_reg_a_opr_tmp:
+  OPR C1 R_OPR R_MOVD
+  FLAG5 write_reg_a_tmp_ret1 R_FLAG5
+  FLAG6 write_reg_a_tmp_ret2 R_FLAG6
+  FLAG7 write_reg_a_tmp_ret3 R_FLAG7
+
+write_reg_a_opr_tmp2:
+  OPR C1 R_OPR R_MOVD
+  FLAG5 write_reg_a_tmp2_ret1 R_FLAG5
+  FLAG6 write_reg_a_tmp2_ret2 R_FLAG6
+  FLAG7 write_reg_a_tmp2_ret3 R_FLAG7
+  FLAG8 write_reg_a_tmp2_ret4 R_FLAG8
+
+copy_aludst_to_var_reg_a:
+  R_MOVD
+  ROT C1 R_ROT
+local_label_89:
+  R_VAR_RETURN5
+  MOVD opr_reg_a
+
+reg_a_ret5:
+  LOOP2 local_label_89
+local_label_90:
+  R_VAR_RETURN69
+  MOVD opr_tmp
+
+tmp_ret69:
+  LOOP2 local_label_90
+local_label_91:
+  ROT C0 R_ROT
+  R_VAR_RETURN50
+  MOVD opr_val_1222
+
+val_1222_ret50:
+  R_VAR_RETURN28
+  MOVD opr_alu_dst
+
+alu_dst_ret28:
+  LOOP2 local_label_91
+  R_VAR_RETURN70
+  MOVD opr_tmp
+
+tmp_ret70:
+  R_VAR_RETURN6
+  MOVD opr_reg_a
+
+reg_a_ret6:
+MODIFY_VAR_RETURN1 copy_aludst_to_var_reg_a_ret1 R_MODIFY_VAR_RETURN1
+MODIFY_VAR_RETURN2 copy_aludst_to_var_reg_a_ret2 R_MODIFY_VAR_RETURN2
+MODIFY_VAR_RETURN3 copy_aludst_to_var_reg_a_ret3 R_MODIFY_VAR_RETURN3
+MODIFY_VAR_RETURN4 copy_aludst_to_var_reg_a_ret4 R_MODIFY_VAR_RETURN4
+MODIFY_VAR_RETURN5 copy_aludst_to_var_reg_a_ret5 R_MODIFY_VAR_RETURN5
+
+copy_var_to_aludst_reg_b:
+  R_MOVD
+  ROT C1 R_ROT
+local_label_92:
+  R_VAR_RETURN29
+  MOVD opr_alu_dst
+
+alu_dst_ret29:
+  LOOP2 local_label_92
+local_label_93:
+  R_VAR_RETURN71
+  MOVD opr_tmp
+
+tmp_ret71:
+  LOOP2 local_label_93
+local_label_94:
+  ROT C0 R_ROT
+  R_VAR_RETURN51
+  MOVD opr_val_1222
+
+val_1222_ret51:
+  R_VAR_RETURN1
+  MOVD opr_reg_b
+
+reg_b_ret1:
+  LOOP2 local_label_94
+  R_VAR_RETURN72
+  MOVD opr_tmp
+
+tmp_ret72:
+  R_VAR_RETURN30
+  MOVD opr_alu_dst
+
+alu_dst_ret30:
+MODIFY_VAR_RETURN1 copy_var_to_aludst_reg_b_ret1 R_MODIFY_VAR_RETURN1
+MODIFY_VAR_RETURN2 copy_var_to_aludst_reg_b_ret2 R_MODIFY_VAR_RETURN2
+
+read_var_0t_reg_b:
+  R_MOVD
+local_label_95:
+  ROT C0 R_ROT
+  R_VAR_RETURN52
+  MOVD opr_val_1222
+
+val_1222_ret52:
+  R_VAR_RETURN2
+  MOVD opr_reg_b
+
+reg_b_ret2:
+  LOOP2 local_label_95
+MODIFY_VAR_RETURN1 read_var_0t_reg_b_ret1 R_MODIFY_VAR_RETURN1
+MODIFY_VAR_RETURN2 read_var_0t_reg_b_ret2 R_MODIFY_VAR_RETURN2
+MODIFY_VAR_RETURN3 read_var_0t_reg_b_ret3 R_MODIFY_VAR_RETURN3
+
+WRITE_reg_b:
+  R_MOVD
+  R_FLAG9 MOVD write_reg_b_opr_tmp
+
+write_reg_b_tmp_ret1:
+  R_FLAG9 MOVD write_reg_b_opr_tmp2
+
+write_reg_b_tmp2_ret1:
+  ROT C1 R_ROT
+local_label_96:
+  R_VAR_RETURN3
+  MOVD opr_reg_b
+
+reg_b_ret3:
+  LOOP2 local_label_96
+local_label_97:
+  R_VAR_RETURN73
+  MOVD opr_tmp
+
+tmp_ret73:
+  LOOP2 local_label_97
+local_label_98:
+  ROT C0 R_ROT
+  R_VAR_RETURN53
+  MOVD opr_val_1222
+
+val_1222_ret53:
+  R_FLAG10 MOVD write_reg_b_opr_tmp2
+
+write_reg_b_tmp2_ret2:
+  LOOP2 local_label_98
+  R_VAR_RETURN74
+  MOVD opr_tmp
+
+tmp_ret74:
+  R_VAR_RETURN4
+  MOVD opr_reg_b
+
+reg_b_ret4:
+  ROT C1 R_ROT
+  R_FLAG10 MOVD write_reg_b_opr_tmp
+
+write_reg_b_tmp_ret2:
+  R_FLAG11 MOVD write_reg_b_opr_tmp
+
+write_reg_b_tmp_ret3:
+  R_FLAG11 MOVD write_reg_b_opr_tmp2
+
+write_reg_b_tmp2_ret3:
+  R_FLAG12 MOVD write_reg_b_opr_tmp2
+
+write_reg_b_tmp2_ret4:
+MODIFY_VAR_RETURN1 write_reg_b_ret1 R_MODIFY_VAR_RETURN1
+
+write_reg_b_opr_tmp:
+  OPR C1 R_OPR R_MOVD
+  FLAG9 write_reg_b_tmp_ret1 R_FLAG9
+  FLAG10 write_reg_b_tmp_ret2 R_FLAG10
+  FLAG11 write_reg_b_tmp_ret3 R_FLAG11
+
+write_reg_b_opr_tmp2:
+  OPR C1 R_OPR R_MOVD
+  FLAG9 write_reg_b_tmp2_ret1 R_FLAG9
+  FLAG10 write_reg_b_tmp2_ret2 R_FLAG10
+  FLAG11 write_reg_b_tmp2_ret3 R_FLAG11
+  FLAG12 write_reg_b_tmp2_ret4 R_FLAG12
+
+copy_aludst_to_var_reg_b:
+  R_MOVD
+  ROT C1 R_ROT
+local_label_99:
+  R_VAR_RETURN5
+  MOVD opr_reg_b
+
+reg_b_ret5:
+  LOOP2 local_label_99
+local_label_100:
+  R_VAR_RETURN75
+  MOVD opr_tmp
+
+tmp_ret75:
+  LOOP2 local_label_100
+local_label_101:
+  ROT C0 R_ROT
+  R_VAR_RETURN54
+  MOVD opr_val_1222
+
+val_1222_ret54:
+  R_VAR_RETURN31
+  MOVD opr_alu_dst
+
+alu_dst_ret31:
+  LOOP2 local_label_101
+  R_VAR_RETURN76
+  MOVD opr_tmp
+
+tmp_ret76:
+  R_VAR_RETURN6
+  MOVD opr_reg_b
+
+reg_b_ret6:
+MODIFY_VAR_RETURN1 copy_aludst_to_var_reg_b_ret1 R_MODIFY_VAR_RETURN1
+MODIFY_VAR_RETURN2 copy_aludst_to_var_reg_b_ret2 R_MODIFY_VAR_RETURN2
+MODIFY_VAR_RETURN3 copy_aludst_to_var_reg_b_ret3 R_MODIFY_VAR_RETURN3
+MODIFY_VAR_RETURN4 copy_aludst_to_var_reg_b_ret4 R_MODIFY_VAR_RETURN4
+
+WRITE_alu_src:
+  R_MOVD
+  R_FLAG13 MOVD write_alu_src_opr_tmp
+
+write_alu_src_tmp_ret1:
+  R_FLAG13 MOVD write_alu_src_opr_tmp2
+
+write_alu_src_tmp2_ret1:
+  ROT C1 R_ROT
+local_label_102:
+  R_VAR_RETURN35
+  MOVD opr_alu_src
+
+alu_src_ret35:
+  LOOP2 local_label_102
+local_label_103:
+  R_VAR_RETURN77
+  MOVD opr_tmp
+
+tmp_ret77:
+  LOOP2 local_label_103
+local_label_104:
+  ROT C0 R_ROT
+  R_VAR_RETURN55
+  MOVD opr_val_1222
+
+val_1222_ret55:
+  R_FLAG14 MOVD write_alu_src_opr_tmp2
+
+write_alu_src_tmp2_ret2:
+  LOOP2 local_label_104
+  R_VAR_RETURN78
+  MOVD opr_tmp
+
+tmp_ret78:
+  R_VAR_RETURN36
+  MOVD opr_alu_src
+
+alu_src_ret36:
+  ROT C1 R_ROT
+  R_FLAG14 MOVD write_alu_src_opr_tmp
+
+write_alu_src_tmp_ret2:
+  R_FLAG15 MOVD write_alu_src_opr_tmp
+
+write_alu_src_tmp_ret3:
+  R_FLAG15 MOVD write_alu_src_opr_tmp2
+
+write_alu_src_tmp2_ret3:
+  R_FLAG16 MOVD write_alu_src_opr_tmp2
+
+write_alu_src_tmp2_ret4:
+MODIFY_VAR_RETURN1 write_alu_src_ret1 R_MODIFY_VAR_RETURN1
+MODIFY_VAR_RETURN2 write_alu_src_ret2 R_MODIFY_VAR_RETURN2
+MODIFY_VAR_RETURN3 write_alu_src_ret3 R_MODIFY_VAR_RETURN3
+MODIFY_VAR_RETURN4 write_alu_src_ret4 R_MODIFY_VAR_RETURN4
+MODIFY_VAR_RETURN5 write_alu_src_ret5 R_MODIFY_VAR_RETURN5
+MODIFY_VAR_RETURN6 write_alu_src_ret6 R_MODIFY_VAR_RETURN6
+MODIFY_VAR_RETURN7 write_alu_src_ret7 R_MODIFY_VAR_RETURN7
+MODIFY_VAR_RETURN8 write_alu_src_ret8 R_MODIFY_VAR_RETURN8
+MODIFY_VAR_RETURN9 write_alu_src_ret9 R_MODIFY_VAR_RETURN9
+MODIFY_VAR_RETURN10 write_alu_src_ret10 R_MODIFY_VAR_RETURN10
+MODIFY_VAR_RETURN11 write_alu_src_ret11 R_MODIFY_VAR_RETURN11
+MODIFY_VAR_RETURN12 write_alu_src_ret12 R_MODIFY_VAR_RETURN12
+MODIFY_VAR_RETURN13 write_alu_src_ret13 R_MODIFY_VAR_RETURN13
+MODIFY_VAR_RETURN14 write_alu_src_ret14 R_MODIFY_VAR_RETURN14
+
+write_alu_src_opr_tmp:
+  OPR C1 R_OPR R_MOVD
+  FLAG13 write_alu_src_tmp_ret1 R_FLAG13
+  FLAG14 write_alu_src_tmp_ret2 R_FLAG14
+  FLAG15 write_alu_src_tmp_ret3 R_FLAG15
+
+write_alu_src_opr_tmp2:
+  OPR C1 R_OPR R_MOVD
+  FLAG13 write_alu_src_tmp2_ret1 R_FLAG13
+  FLAG14 write_alu_src_tmp2_ret2 R_FLAG14
+  FLAG15 write_alu_src_tmp2_ret3 R_FLAG15
+  FLAG16 write_alu_src_tmp2_ret4 R_FLAG16
+
+WRITE_alu_dst:
+  R_MOVD
+  R_FLAG17 MOVD write_alu_dst_opr_tmp
+
+write_alu_dst_tmp_ret1:
+  R_FLAG17 MOVD write_alu_dst_opr_tmp2
+
+write_alu_dst_tmp2_ret1:
+  ROT C1 R_ROT
+local_label_105:
+  R_VAR_RETURN32
+  MOVD opr_alu_dst
+
+alu_dst_ret32:
+  LOOP2 local_label_105
+local_label_106:
+  R_VAR_RETURN79
+  MOVD opr_tmp
+
+tmp_ret79:
+  LOOP2 local_label_106
+local_label_107:
+  ROT C0 R_ROT
+  R_VAR_RETURN56
+  MOVD opr_val_1222
+
+val_1222_ret56:
+  R_FLAG18 MOVD write_alu_dst_opr_tmp2
+
+write_alu_dst_tmp2_ret2:
+  LOOP2 local_label_107
+  R_VAR_RETURN80
+  MOVD opr_tmp
+
+tmp_ret80:
+  R_VAR_RETURN33
+  MOVD opr_alu_dst
+
+alu_dst_ret33:
+  ROT C1 R_ROT
+  R_FLAG18 MOVD write_alu_dst_opr_tmp
+
+write_alu_dst_tmp_ret2:
+  R_FLAG19 MOVD write_alu_dst_opr_tmp
+
+write_alu_dst_tmp_ret3:
+  R_FLAG19 MOVD write_alu_dst_opr_tmp2
+
+write_alu_dst_tmp2_ret3:
+  R_FLAG20 MOVD write_alu_dst_opr_tmp2
+
+write_alu_dst_tmp2_ret4:
+MODIFY_VAR_RETURN1 write_alu_dst_ret1 R_MODIFY_VAR_RETURN1
+MODIFY_VAR_RETURN2 write_alu_dst_ret2 R_MODIFY_VAR_RETURN2
+MODIFY_VAR_RETURN3 write_alu_dst_ret3 R_MODIFY_VAR_RETURN3
+MODIFY_VAR_RETURN4 write_alu_dst_ret4 R_MODIFY_VAR_RETURN4
+
+write_alu_dst_opr_tmp:
+  OPR C1 R_OPR R_MOVD
+  FLAG17 write_alu_dst_tmp_ret1 R_FLAG17
+  FLAG18 write_alu_dst_tmp_ret2 R_FLAG18
+  FLAG19 write_alu_dst_tmp_ret3 R_FLAG19
+
+write_alu_dst_opr_tmp2:
+  OPR C1 R_OPR R_MOVD
+  FLAG17 write_alu_dst_tmp2_ret1 R_FLAG17
+  FLAG18 write_alu_dst_tmp2_ret2 R_FLAG18
+  FLAG19 write_alu_dst_tmp2_ret3 R_FLAG19
+  FLAG20 write_alu_dst_tmp2_ret4 R_FLAG20
+
+opr_reg_a:
+  R_ROT
+  U_OPR reg_a
+rot_reg_a:
+  R_OPR
+  U_ROT reg_a
+reg_a:
+  0
+  U_NOP continue_reg_a
+  U_NOP reg_a_was_c1
+  U_NOP reg_a_was_c0
+reg_a_was_c1:
+  reg_a_IS_C1 reg_a_was_c1
+  U_NOP return_from_reg_a
+reg_a_was_c0:
+  reg_a_IS_C1 reg_a_was_c0
+  R_reg_a_IS_C1
+  U_NOP return_from_reg_a
+continue_reg_a:
+  R_ROT R_OPR
+return_from_reg_a:
+  R_MOVD
+  VAR_RETURN1 reg_a_ret1 R_VAR_RETURN1
+  VAR_RETURN2 reg_a_ret2 R_VAR_RETURN2
+  VAR_RETURN3 reg_a_ret3 R_VAR_RETURN3
+  VAR_RETURN4 reg_a_ret4 R_VAR_RETURN4
+  VAR_RETURN5 reg_a_ret5 R_VAR_RETURN5
+  VAR_RETURN6 reg_a_ret6 R_VAR_RETURN6
+
+opr_reg_b:
+  R_ROT
+  U_OPR reg_b
+rot_reg_b:
+  R_OPR
+  U_ROT reg_b
+reg_b:
+  0
+  U_NOP continue_reg_b
+  U_NOP reg_b_was_c1
+  U_NOP reg_b_was_c0
+reg_b_was_c1:
+  reg_b_IS_C1 reg_b_was_c1
+  U_NOP return_from_reg_b
+reg_b_was_c0:
+  reg_b_IS_C1 reg_b_was_c0
+  R_reg_b_IS_C1
+  U_NOP return_from_reg_b
+continue_reg_b:
+  R_ROT R_OPR
+return_from_reg_b:
+  R_MOVD
+  VAR_RETURN1 reg_b_ret1 R_VAR_RETURN1
+  VAR_RETURN2 reg_b_ret2 R_VAR_RETURN2
+  VAR_RETURN3 reg_b_ret3 R_VAR_RETURN3
+  VAR_RETURN4 reg_b_ret4 R_VAR_RETURN4
+  VAR_RETURN5 reg_b_ret5 R_VAR_RETURN5
+  VAR_RETURN6 reg_b_ret6 R_VAR_RETURN6
+
+opr_alu_src:
+  R_ROT
+  U_OPR alu_src
+rot_alu_src:
+  R_OPR
+  U_ROT alu_src
+alu_src:
+  0
+  U_NOP continue_alu_src
+  U_NOP alu_src_was_c1
+  U_NOP alu_src_was_c0
+alu_src_was_c1:
+  alu_src_IS_C1 alu_src_was_c1
+  U_NOP return_from_alu_src
+alu_src_was_c0:
+  alu_src_IS_C1 alu_src_was_c0
+  R_alu_src_IS_C1
+  U_NOP return_from_alu_src
+continue_alu_src:
+  R_ROT R_OPR
+return_from_alu_src:
+  R_MOVD
+  VAR_RETURN1 alu_src_ret1 R_VAR_RETURN1
+  VAR_RETURN2 alu_src_ret2 R_VAR_RETURN2
+  VAR_RETURN3 alu_src_ret3 R_VAR_RETURN3
+  VAR_RETURN4 alu_src_ret4 R_VAR_RETURN4
+  VAR_RETURN5 alu_src_ret5 R_VAR_RETURN5
+  VAR_RETURN6 alu_src_ret6 R_VAR_RETURN6
+  VAR_RETURN7 alu_src_ret7 R_VAR_RETURN7
+  VAR_RETURN8 alu_src_ret8 R_VAR_RETURN8
+  VAR_RETURN9 alu_src_ret9 R_VAR_RETURN9
+  VAR_RETURN10 alu_src_ret10 R_VAR_RETURN10
+  VAR_RETURN11 alu_src_ret11 R_VAR_RETURN11
+  VAR_RETURN12 alu_src_ret12 R_VAR_RETURN12
+  VAR_RETURN13 alu_src_ret13 R_VAR_RETURN13
+  VAR_RETURN14 alu_src_ret14 R_VAR_RETURN14
+  VAR_RETURN15 alu_src_ret15 R_VAR_RETURN15
+  VAR_RETURN16 alu_src_ret16 R_VAR_RETURN16
+  VAR_RETURN17 alu_src_ret17 R_VAR_RETURN17
+  VAR_RETURN18 alu_src_ret18 R_VAR_RETURN18
+  VAR_RETURN19 alu_src_ret19 R_VAR_RETURN19
+  VAR_RETURN20 alu_src_ret20 R_VAR_RETURN20
+  VAR_RETURN21 alu_src_ret21 R_VAR_RETURN21
+  VAR_RETURN22 alu_src_ret22 R_VAR_RETURN22
+  VAR_RETURN23 alu_src_ret23 R_VAR_RETURN23
+  VAR_RETURN24 alu_src_ret24 R_VAR_RETURN24
+  VAR_RETURN25 alu_src_ret25 R_VAR_RETURN25
+  VAR_RETURN26 alu_src_ret26 R_VAR_RETURN26
+  VAR_RETURN27 alu_src_ret27 R_VAR_RETURN27
+  VAR_RETURN28 alu_src_ret28 R_VAR_RETURN28
+  VAR_RETURN29 alu_src_ret29 R_VAR_RETURN29
+  VAR_RETURN30 alu_src_ret30 R_VAR_RETURN30
+  VAR_RETURN31 alu_src_ret31 R_VAR_RETURN31
+  VAR_RETURN32 alu_src_ret32 R_VAR_RETURN32
+  VAR_RETURN33 alu_src_ret33 R_VAR_RETURN33
+  VAR_RETURN34 alu_src_ret34 R_VAR_RETURN34
+  VAR_RETURN35 alu_src_ret35 R_VAR_RETURN35
+  VAR_RETURN36 alu_src_ret36 R_VAR_RETURN36
+
+opr_alu_dst:
+  R_ROT
+  U_OPR alu_dst
+rot_alu_dst:
+  R_OPR
+  U_ROT alu_dst
+alu_dst:
+  0
+  U_NOP continue_alu_dst
+  U_NOP alu_dst_was_c1
+  U_NOP alu_dst_was_c0
+alu_dst_was_c1:
+  alu_dst_IS_C1 alu_dst_was_c1
+  U_NOP return_from_alu_dst
+alu_dst_was_c0:
+  alu_dst_IS_C1 alu_dst_was_c0
+  R_alu_dst_IS_C1
+  U_NOP return_from_alu_dst
+continue_alu_dst:
+  R_ROT R_OPR
+return_from_alu_dst:
+  R_MOVD
+  VAR_RETURN1 alu_dst_ret1 R_VAR_RETURN1
+  VAR_RETURN2 alu_dst_ret2 R_VAR_RETURN2
+  VAR_RETURN3 alu_dst_ret3 R_VAR_RETURN3
+  VAR_RETURN4 alu_dst_ret4 R_VAR_RETURN4
+  VAR_RETURN5 alu_dst_ret5 R_VAR_RETURN5
+  VAR_RETURN6 alu_dst_ret6 R_VAR_RETURN6
+  VAR_RETURN7 alu_dst_ret7 R_VAR_RETURN7
+  VAR_RETURN8 alu_dst_ret8 R_VAR_RETURN8
+  VAR_RETURN9 alu_dst_ret9 R_VAR_RETURN9
+  VAR_RETURN10 alu_dst_ret10 R_VAR_RETURN10
+  VAR_RETURN11 alu_dst_ret11 R_VAR_RETURN11
+  VAR_RETURN12 alu_dst_ret12 R_VAR_RETURN12
+  VAR_RETURN13 alu_dst_ret13 R_VAR_RETURN13
+  VAR_RETURN14 alu_dst_ret14 R_VAR_RETURN14
+  VAR_RETURN15 alu_dst_ret15 R_VAR_RETURN15
+  VAR_RETURN16 alu_dst_ret16 R_VAR_RETURN16
+  VAR_RETURN17 alu_dst_ret17 R_VAR_RETURN17
+  VAR_RETURN18 alu_dst_ret18 R_VAR_RETURN18
+  VAR_RETURN19 alu_dst_ret19 R_VAR_RETURN19
+  VAR_RETURN20 alu_dst_ret20 R_VAR_RETURN20
+  VAR_RETURN21 alu_dst_ret21 R_VAR_RETURN21
+  VAR_RETURN22 alu_dst_ret22 R_VAR_RETURN22
+  VAR_RETURN23 alu_dst_ret23 R_VAR_RETURN23
+  VAR_RETURN24 alu_dst_ret24 R_VAR_RETURN24
+  VAR_RETURN25 alu_dst_ret25 R_VAR_RETURN25
+  VAR_RETURN26 alu_dst_ret26 R_VAR_RETURN26
+  VAR_RETURN27 alu_dst_ret27 R_VAR_RETURN27
+  VAR_RETURN28 alu_dst_ret28 R_VAR_RETURN28
+  VAR_RETURN29 alu_dst_ret29 R_VAR_RETURN29
+  VAR_RETURN30 alu_dst_ret30 R_VAR_RETURN30
+  VAR_RETURN31 alu_dst_ret31 R_VAR_RETURN31
+  VAR_RETURN32 alu_dst_ret32 R_VAR_RETURN32
+  VAR_RETURN33 alu_dst_ret33 R_VAR_RETURN33
+
+opr_tmp:
+  R_ROT
+  U_OPR tmp
+rot_tmp:
+  R_OPR
+  U_ROT tmp
+tmp:
+  0
+  U_NOP continue_tmp
+  U_NOP tmp_was_c1
+  U_NOP tmp_was_c0
+tmp_was_c1:
+  tmp_IS_C1 tmp_was_c1
+  U_NOP return_from_tmp
+tmp_was_c0:
+  tmp_IS_C1 tmp_was_c0
+  R_tmp_IS_C1
+  U_NOP return_from_tmp
+continue_tmp:
+  R_ROT R_OPR
+return_from_tmp:
+  R_MOVD
+  VAR_RETURN1 tmp_ret1 R_VAR_RETURN1
+  VAR_RETURN2 tmp_ret2 R_VAR_RETURN2
+  VAR_RETURN3 tmp_ret3 R_VAR_RETURN3
+  VAR_RETURN4 tmp_ret4 R_VAR_RETURN4
+  VAR_RETURN5 tmp_ret5 R_VAR_RETURN5
+  VAR_RETURN6 tmp_ret6 R_VAR_RETURN6
+  VAR_RETURN7 tmp_ret7 R_VAR_RETURN7
+  VAR_RETURN8 tmp_ret8 R_VAR_RETURN8
+  VAR_RETURN9 tmp_ret9 R_VAR_RETURN9
+  VAR_RETURN10 tmp_ret10 R_VAR_RETURN10
+  VAR_RETURN11 tmp_ret11 R_VAR_RETURN11
+  VAR_RETURN12 tmp_ret12 R_VAR_RETURN12
+  VAR_RETURN13 tmp_ret13 R_VAR_RETURN13
+  VAR_RETURN14 tmp_ret14 R_VAR_RETURN14
+  VAR_RETURN15 tmp_ret15 R_VAR_RETURN15
+  VAR_RETURN16 tmp_ret16 R_VAR_RETURN16
+  VAR_RETURN17 tmp_ret17 R_VAR_RETURN17
+  VAR_RETURN18 tmp_ret18 R_VAR_RETURN18
+  VAR_RETURN19 tmp_ret19 R_VAR_RETURN19
+  VAR_RETURN20 tmp_ret20 R_VAR_RETURN20
+  VAR_RETURN21 tmp_ret21 R_VAR_RETURN21
+  VAR_RETURN22 tmp_ret22 R_VAR_RETURN22
+  VAR_RETURN23 tmp_ret23 R_VAR_RETURN23
+  VAR_RETURN24 tmp_ret24 R_VAR_RETURN24
+  VAR_RETURN25 tmp_ret25 R_VAR_RETURN25
+  VAR_RETURN26 tmp_ret26 R_VAR_RETURN26
+  VAR_RETURN27 tmp_ret27 R_VAR_RETURN27
+  VAR_RETURN28 tmp_ret28 R_VAR_RETURN28
+  VAR_RETURN29 tmp_ret29 R_VAR_RETURN29
+  VAR_RETURN30 tmp_ret30 R_VAR_RETURN30
+  VAR_RETURN31 tmp_ret31 R_VAR_RETURN31
+  VAR_RETURN32 tmp_ret32 R_VAR_RETURN32
+  VAR_RETURN33 tmp_ret33 R_VAR_RETURN33
+  VAR_RETURN34 tmp_ret34 R_VAR_RETURN34
+  VAR_RETURN35 tmp_ret35 R_VAR_RETURN35
+  VAR_RETURN36 tmp_ret36 R_VAR_RETURN36
+  VAR_RETURN37 tmp_ret37 R_VAR_RETURN37
+  VAR_RETURN38 tmp_ret38 R_VAR_RETURN38
+  VAR_RETURN39 tmp_ret39 R_VAR_RETURN39
+  VAR_RETURN40 tmp_ret40 R_VAR_RETURN40
+  VAR_RETURN41 tmp_ret41 R_VAR_RETURN41
+  VAR_RETURN42 tmp_ret42 R_VAR_RETURN42
+  VAR_RETURN43 tmp_ret43 R_VAR_RETURN43
+  VAR_RETURN44 tmp_ret44 R_VAR_RETURN44
+  VAR_RETURN45 tmp_ret45 R_VAR_RETURN45
+  VAR_RETURN46 tmp_ret46 R_VAR_RETURN46
+  VAR_RETURN47 tmp_ret47 R_VAR_RETURN47
+  VAR_RETURN48 tmp_ret48 R_VAR_RETURN48
+  VAR_RETURN49 tmp_ret49 R_VAR_RETURN49
+  VAR_RETURN50 tmp_ret50 R_VAR_RETURN50
+  VAR_RETURN51 tmp_ret51 R_VAR_RETURN51
+  VAR_RETURN52 tmp_ret52 R_VAR_RETURN52
+  VAR_RETURN53 tmp_ret53 R_VAR_RETURN53
+  VAR_RETURN54 tmp_ret54 R_VAR_RETURN54
+  VAR_RETURN55 tmp_ret55 R_VAR_RETURN55
+  VAR_RETURN56 tmp_ret56 R_VAR_RETURN56
+  VAR_RETURN57 tmp_ret57 R_VAR_RETURN57
+  VAR_RETURN58 tmp_ret58 R_VAR_RETURN58
+  VAR_RETURN59 tmp_ret59 R_VAR_RETURN59
+  VAR_RETURN60 tmp_ret60 R_VAR_RETURN60
+  VAR_RETURN61 tmp_ret61 R_VAR_RETURN61
+  VAR_RETURN62 tmp_ret62 R_VAR_RETURN62
+  VAR_RETURN63 tmp_ret63 R_VAR_RETURN63
+  VAR_RETURN64 tmp_ret64 R_VAR_RETURN64
+  VAR_RETURN65 tmp_ret65 R_VAR_RETURN65
+  VAR_RETURN66 tmp_ret66 R_VAR_RETURN66
+  VAR_RETURN67 tmp_ret67 R_VAR_RETURN67
+  VAR_RETURN68 tmp_ret68 R_VAR_RETURN68
+  VAR_RETURN69 tmp_ret69 R_VAR_RETURN69
+  VAR_RETURN70 tmp_ret70 R_VAR_RETURN70
+  VAR_RETURN71 tmp_ret71 R_VAR_RETURN71
+  VAR_RETURN72 tmp_ret72 R_VAR_RETURN72
+  VAR_RETURN73 tmp_ret73 R_VAR_RETURN73
+  VAR_RETURN74 tmp_ret74 R_VAR_RETURN74
+  VAR_RETURN75 tmp_ret75 R_VAR_RETURN75
+  VAR_RETURN76 tmp_ret76 R_VAR_RETURN76
+  VAR_RETURN77 tmp_ret77 R_VAR_RETURN77
+  VAR_RETURN78 tmp_ret78 R_VAR_RETURN78
+  VAR_RETURN79 tmp_ret79 R_VAR_RETURN79
+  VAR_RETURN80 tmp_ret80 R_VAR_RETURN80
+
+opr_carry:
+  R_ROT
+  U_OPR carry
+rot_carry:
+  R_OPR
+  U_ROT carry
+carry:
+  0
+  U_NOP continue_carry
+  U_NOP carry_was_c1
+  U_NOP carry_was_c0
+carry_was_c1:
+  carry_IS_C1 carry_was_c1
+  U_NOP return_from_carry
+carry_was_c0:
+  carry_IS_C1 carry_was_c0
+  R_carry_IS_C1
+  U_NOP return_from_carry
+continue_carry:
+  R_ROT R_OPR
+return_from_carry:
+  R_MOVD
+  VAR_RETURN1 carry_ret1 R_VAR_RETURN1
+  VAR_RETURN2 carry_ret2 R_VAR_RETURN2
+  VAR_RETURN3 carry_ret3 R_VAR_RETURN3
+  VAR_RETURN4 carry_ret4 R_VAR_RETURN4
+  VAR_RETURN5 carry_ret5 R_VAR_RETURN5
+  VAR_RETURN6 carry_ret6 R_VAR_RETURN6
+  VAR_RETURN7 carry_ret7 R_VAR_RETURN7
+  VAR_RETURN8 carry_ret8 R_VAR_RETURN8
+  VAR_RETURN9 carry_ret9 R_VAR_RETURN9
+  VAR_RETURN10 carry_ret10 R_VAR_RETURN10
+  VAR_RETURN11 carry_ret11 R_VAR_RETURN11
+  VAR_RETURN12 carry_ret12 R_VAR_RETURN12
+  VAR_RETURN13 carry_ret13 R_VAR_RETURN13
+  VAR_RETURN14 carry_ret14 R_VAR_RETURN14
+  VAR_RETURN15 carry_ret15 R_VAR_RETURN15
+  VAR_RETURN16 carry_ret16 R_VAR_RETURN16
+  VAR_RETURN17 carry_ret17 R_VAR_RETURN17
+  VAR_RETURN18 carry_ret18 R_VAR_RETURN18
+  VAR_RETURN19 carry_ret19 R_VAR_RETURN19
+  VAR_RETURN20 carry_ret20 R_VAR_RETURN20
+  VAR_RETURN21 carry_ret21 R_VAR_RETURN21
+  VAR_RETURN22 carry_ret22 R_VAR_RETURN22
+  VAR_RETURN23 carry_ret23 R_VAR_RETURN23
+  VAR_RETURN24 carry_ret24 R_VAR_RETURN24
+  VAR_RETURN25 carry_ret25 R_VAR_RETURN25
+  VAR_RETURN26 carry_ret26 R_VAR_RETURN26
+  VAR_RETURN27 carry_ret27 R_VAR_RETURN27
+  VAR_RETURN28 carry_ret28 R_VAR_RETURN28
+  VAR_RETURN29 carry_ret29 R_VAR_RETURN29
+
+opr_val_1222:
+  R_ROT
+  U_OPR val_1222
+rot_val_1222:
+  R_OPR
+  U_ROT val_1222
+val_1222:
+  0
+  U_NOP continue_val_1222
+  U_NOP val_1222_was_c1
+  U_NOP val_1222_was_c0
+val_1222_was_c1:
+  val_1222_IS_C1 val_1222_was_c1
+  U_NOP return_from_val_1222
+val_1222_was_c0:
+  val_1222_IS_C1 val_1222_was_c0
+  R_val_1222_IS_C1
+  U_NOP return_from_val_1222
+continue_val_1222:
+  R_ROT R_OPR
+return_from_val_1222:
+  R_MOVD
+  VAR_RETURN1 val_1222_ret1 R_VAR_RETURN1
+  VAR_RETURN2 val_1222_ret2 R_VAR_RETURN2
+  VAR_RETURN3 val_1222_ret3 R_VAR_RETURN3
+  VAR_RETURN4 val_1222_ret4 R_VAR_RETURN4
+  VAR_RETURN5 val_1222_ret5 R_VAR_RETURN5
+  VAR_RETURN6 val_1222_ret6 R_VAR_RETURN6
+  VAR_RETURN7 val_1222_ret7 R_VAR_RETURN7
+  VAR_RETURN8 val_1222_ret8 R_VAR_RETURN8
+  VAR_RETURN9 val_1222_ret9 R_VAR_RETURN9
+  VAR_RETURN10 val_1222_ret10 R_VAR_RETURN10
+  VAR_RETURN11 val_1222_ret11 R_VAR_RETURN11
+  VAR_RETURN12 val_1222_ret12 R_VAR_RETURN12
+  VAR_RETURN13 val_1222_ret13 R_VAR_RETURN13
+  VAR_RETURN14 val_1222_ret14 R_VAR_RETURN14
+  VAR_RETURN15 val_1222_ret15 R_VAR_RETURN15
+  VAR_RETURN16 val_1222_ret16 R_VAR_RETURN16
+  VAR_RETURN17 val_1222_ret17 R_VAR_RETURN17
+  VAR_RETURN18 val_1222_ret18 R_VAR_RETURN18
+  VAR_RETURN19 val_1222_ret19 R_VAR_RETURN19
+  VAR_RETURN20 val_1222_ret20 R_VAR_RETURN20
+  VAR_RETURN21 val_1222_ret21 R_VAR_RETURN21
+  VAR_RETURN22 val_1222_ret22 R_VAR_RETURN22
+  VAR_RETURN23 val_1222_ret23 R_VAR_RETURN23
+  VAR_RETURN24 val_1222_ret24 R_VAR_RETURN24
+  VAR_RETURN25 val_1222_ret25 R_VAR_RETURN25
+  VAR_RETURN26 val_1222_ret26 R_VAR_RETURN26
+  VAR_RETURN27 val_1222_ret27 R_VAR_RETURN27
+  VAR_RETURN28 val_1222_ret28 R_VAR_RETURN28
+  VAR_RETURN29 val_1222_ret29 R_VAR_RETURN29
+  VAR_RETURN30 val_1222_ret30 R_VAR_RETURN30
+  VAR_RETURN31 val_1222_ret31 R_VAR_RETURN31
+  VAR_RETURN32 val_1222_ret32 R_VAR_RETURN32
+  VAR_RETURN33 val_1222_ret33 R_VAR_RETURN33
+  VAR_RETURN34 val_1222_ret34 R_VAR_RETURN34
+  VAR_RETURN35 val_1222_ret35 R_VAR_RETURN35
+  VAR_RETURN36 val_1222_ret36 R_VAR_RETURN36
+  VAR_RETURN37 val_1222_ret37 R_VAR_RETURN37
+  VAR_RETURN38 val_1222_ret38 R_VAR_RETURN38
+  VAR_RETURN39 val_1222_ret39 R_VAR_RETURN39
+  VAR_RETURN40 val_1222_ret40 R_VAR_RETURN40
+  VAR_RETURN41 val_1222_ret41 R_VAR_RETURN41
+  VAR_RETURN42 val_1222_ret42 R_VAR_RETURN42
+  VAR_RETURN43 val_1222_ret43 R_VAR_RETURN43
+  VAR_RETURN44 val_1222_ret44 R_VAR_RETURN44
+  VAR_RETURN45 val_1222_ret45 R_VAR_RETURN45
+  VAR_RETURN46 val_1222_ret46 R_VAR_RETURN46
+  VAR_RETURN47 val_1222_ret47 R_VAR_RETURN47
+  VAR_RETURN48 val_1222_ret48 R_VAR_RETURN48
+  VAR_RETURN49 val_1222_ret49 R_VAR_RETURN49
+  VAR_RETURN50 val_1222_ret50 R_VAR_RETURN50
+  VAR_RETURN51 val_1222_ret51 R_VAR_RETURN51
+  VAR_RETURN52 val_1222_ret52 R_VAR_RETURN52
+  VAR_RETURN53 val_1222_ret53 R_VAR_RETURN53
+  VAR_RETURN54 val_1222_ret54 R_VAR_RETURN54
+  VAR_RETURN55 val_1222_ret55 R_VAR_RETURN55
+  VAR_RETURN56 val_1222_ret56 R_VAR_RETURN56
+
+opr_tmp2:
+  R_ROT
+  U_OPR tmp2
+rot_tmp2:
+  R_OPR
+  U_ROT tmp2
+tmp2:
+  0
+  U_NOP continue_tmp2
+  U_NOP tmp2_was_c1
+  U_NOP tmp2_was_c0
+tmp2_was_c1:
+  tmp2_IS_C1 tmp2_was_c1
+  U_NOP return_from_tmp2
+tmp2_was_c0:
+  tmp2_IS_C1 tmp2_was_c0
+  R_tmp2_IS_C1
+  U_NOP return_from_tmp2
+continue_tmp2:
+  R_ROT R_OPR
+return_from_tmp2:
+  R_MOVD
+  VAR_RETURN1 tmp2_ret1 R_VAR_RETURN1
+  VAR_RETURN2 tmp2_ret2 R_VAR_RETURN2
+  VAR_RETURN3 tmp2_ret3 R_VAR_RETURN3
+  VAR_RETURN4 tmp2_ret4 R_VAR_RETURN4
+  VAR_RETURN5 tmp2_ret5 R_VAR_RETURN5
+  VAR_RETURN6 tmp2_ret6 R_VAR_RETURN6
+  VAR_RETURN7 tmp2_ret7 R_VAR_RETURN7
+  VAR_RETURN8 tmp2_ret8 R_VAR_RETURN8
+  VAR_RETURN9 tmp2_ret9 R_VAR_RETURN9
+  VAR_RETURN10 tmp2_ret10 R_VAR_RETURN10
+  VAR_RETURN11 tmp2_ret11 R_VAR_RETURN11
+  VAR_RETURN12 tmp2_ret12 R_VAR_RETURN12
+  VAR_RETURN13 tmp2_ret13 R_VAR_RETURN13
+  VAR_RETURN14 tmp2_ret14 R_VAR_RETURN14
+
+opr_tmp3:
+  R_ROT
+  U_OPR tmp3
+rot_tmp3:
+  R_OPR
+  U_ROT tmp3
+tmp3:
+  0
+  U_NOP continue_tmp3
+  U_NOP tmp3_was_c1
+  U_NOP tmp3_was_c0
+tmp3_was_c1:
+  tmp3_IS_C1 tmp3_was_c1
+  U_NOP return_from_tmp3
+tmp3_was_c0:
+  tmp3_IS_C1 tmp3_was_c0
+  R_tmp3_IS_C1
+  U_NOP return_from_tmp3
+continue_tmp3:
+  R_ROT R_OPR
+return_from_tmp3:
+  R_MOVD
+  VAR_RETURN1 tmp3_ret1 R_VAR_RETURN1
+  VAR_RETURN2 tmp3_ret2 R_VAR_RETURN2
+  VAR_RETURN3 tmp3_ret3 R_VAR_RETURN3
+  VAR_RETURN4 tmp3_ret4 R_VAR_RETURN4
+  VAR_RETURN5 tmp3_ret5 R_VAR_RETURN5
+  VAR_RETURN6 tmp3_ret6 R_VAR_RETURN6
+
+.CODE
+
+reg_a_IS_C1:
+  Nop/MovD
+  Jmp
+
+reg_b_IS_C1:
+  Nop/MovD
+  Jmp
+
+alu_src_IS_C1:
+  Nop/MovD
+  Jmp
+
+alu_dst_IS_C1:
+  Nop/MovD
+  Jmp
+
+tmp_IS_C1:
+  Nop/MovD
+  Jmp
+
+carry_IS_C1:
+  Nop/MovD
+  Jmp
+
+val_1222_IS_C1:
+  Nop/MovD
+  Jmp
+
+tmp2_IS_C1:
+  Nop/MovD
+  Jmp
+
+tmp3_IS_C1:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN1:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN2:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN3:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN4:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN5:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN6:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN7:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN8:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN9:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN10:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN11:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN12:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN13:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN14:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN15:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN16:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN17:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN18:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN19:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN20:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN21:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN22:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN23:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN24:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN25:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN26:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN27:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN28:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN29:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN30:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN31:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN32:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN33:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN34:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN35:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN36:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN37:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN38:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN39:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN40:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN41:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN42:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN43:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN44:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN45:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN46:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN47:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN48:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN49:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN50:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN51:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN52:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN53:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN54:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN55:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN56:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN57:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN58:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN59:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN60:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN61:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN62:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN63:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN64:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN65:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN66:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN67:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN68:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN69:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN70:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN71:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN72:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN73:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN74:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN75:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN76:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN77:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN78:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN79:
+  Nop/MovD
+  Jmp
+
+VAR_RETURN80:
+  Nop/MovD
+  Jmp
+
+.DATA
+
+@1t200000
+pc_lookup_table:
+  MOVD label_pc0
+  MOVD label_pc1
+  MOVD label_pc2
+  MOVD label_pc3
+  MOVD label_pc4
+
+.CODE
+
+MOVD:
+  MovD/Nop
+  Jmp
+
+ROT:
+  Rot/Nop
+  Jmp
+
+OPR:
+  Opr/Nop
+  Jmp
+
+IN:
+  In/Nop
+  Jmp
+
+OUT:
+  Out/Nop
+  Jmp
+
+NOP:
+  Jmp
+
+HALT:
+  Hlt
+
+MOVDMOVD:
+  MovD/Nop
+  RNop
+  RNop
+  RNop
+  MovD/Nop
+  Jmp
+
+LOOP2:
+  MovD/Nop
+  Jmp
+
+LOOP4:
+  Nop/Nop/Nop/MovD
+  Jmp
+
+LOOP2_2:
+  Nop/MovD
+  Jmp
+
+MOVDOPRMOVD:
+  MovD/Nop/Nop/Nop/Nop/Nop/Nop/Nop/Nop
+  RNop
+  RNop
+  Opr/Nop/Nop/Nop/Nop/Rot/Nop/Nop/Nop
+PARTIAL_MOVDOPRMOVD:
+  MovD/Nop/Nop/Nop/Nop/Nop/Nop/Nop/Nop
+  Jmp
+
+FLAG1:
+  Nop/MovD
+  Jmp
+
+FLAG2:
+  Nop/MovD
+  Jmp
+
+FLAG3:
+  Nop/MovD
+  Jmp
+
+FLAG4:
+  Nop/MovD
+  Jmp
+
+FLAG5:
+  Nop/MovD
+  Jmp
+
+FLAG6:
+  Nop/MovD
+  Jmp
+
+FLAG7:
+  Nop/MovD
+  Jmp
+
+FLAG8:
+  Nop/MovD
+  Jmp
+
+FLAG9:
+  Nop/MovD
+  Jmp
+
+FLAG10:
+  Nop/MovD
+  Jmp
+
+FLAG11:
+  Nop/MovD
+  Jmp
+
+FLAG12:
+  Nop/MovD
+  Jmp
+
+FLAG13:
+  Nop/MovD
+  Jmp
+
+FLAG14:
+  Nop/MovD
+  Jmp
+
+FLAG15:
+  Nop/MovD
+  Jmp
+
+FLAG16:
+  Nop/MovD
+  Jmp
+
+FLAG17:
+  Nop/MovD
+  Jmp
+
+FLAG18:
+  Nop/MovD
+  Jmp
+
+FLAG19:
+  Nop/MovD
+  Jmp
+
+FLAG20:
+  Nop/MovD
+  Jmp
+
+MODIFY_VAR_RETURN1:
+  Nop/MovD
+  Jmp
+
+MODIFY_VAR_RETURN2:
+  Nop/MovD
+  Jmp
+
+MODIFY_VAR_RETURN3:
+  Nop/MovD
+  Jmp
+
+MODIFY_VAR_RETURN4:
+  Nop/MovD
+  Jmp
+
+MODIFY_VAR_RETURN5:
+  Nop/MovD
+  Jmp
+
+MODIFY_VAR_RETURN6:
+  Nop/MovD
+  Jmp
+
+MODIFY_VAR_RETURN7:
+  Nop/MovD
+  Jmp
+
+MODIFY_VAR_RETURN8:
+  Nop/MovD
+  Jmp
+
+MODIFY_VAR_RETURN9:
+  Nop/MovD
+  Jmp
+
+MODIFY_VAR_RETURN10:
+  Nop/MovD
+  Jmp
+
+MODIFY_VAR_RETURN11:
+  Nop/MovD
+  Jmp
+
+MODIFY_VAR_RETURN12:
+  Nop/MovD
+  Jmp
+
+MODIFY_VAR_RETURN13:
+  Nop/MovD
+  Jmp
+
+MODIFY_VAR_RETURN14:
+  Nop/MovD
+  Jmp
+
+BASIS_ALU1:
+  Nop/MovD
+  Jmp
+
+BASIS_ALU2:
+  Nop/MovD
+  Jmp
+
+BASIS_ALU3:
+  Nop/MovD
+  Jmp
+
+BASIS_ALU4:
+  Nop/MovD
+  Jmp
+
+BASIS_ALU5:
+  Nop/MovD
+  Jmp
+
+BASIS_ALU6:
+  Nop/MovD
+  Jmp
+
+OPR_MEM1:
+  Nop/MovD
+  Jmp
+
+OPR_MEM2:
+  Nop/MovD
+  Jmp
+
+OPR_MEM3:
+  Nop/MovD
+  Jmp
+
+OPR_MEM4:
+  Nop/MovD
+  Jmp
+
+MEM_COMPUTE1:
+  Nop/MovD
+  Jmp
+
+MEM_COMPUTE2:
+  Nop/MovD
+  Jmp
+
+MEM_ACCESS1:
+  Nop/MovD
+  Jmp
+
+MEM_ACCESS2:
+  Nop/MovD
+  Jmp
+
+MEM_ACCESS3:
+  Nop/MovD
+  Jmp
+
+TEST_LT1:
+  Nop/MovD
+  Jmp
+
+MODULO1:
+  Nop/MovD
+  Jmp
+
+MODULO2:
+  Nop/MovD
+  Jmp
+
+MODULO3:
+  Nop/MovD
+  Jmp
+
+ARITHMETIC_OR_IO1:
+  Nop/MovD
+  Jmp
+
+ARITHMETIC_OR_IO2:
+  Nop/MovD
+  Jmp
+
+ARITHMETIC_OR_IO3:
+  Nop/MovD
+  Jmp
+
+ARITHMETIC_OR_IO4:
+  Nop/MovD
+  Jmp
+
+ARITHMETIC_OR_IO5:
+  Nop/MovD
+  Jmp
+

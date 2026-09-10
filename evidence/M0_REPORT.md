@@ -232,3 +232,31 @@ test_killer_same_artifact PASSED (same SHA for 0..4)
 
 *This report is the evidence machine. The meme comes after correctness.*
 
+---
+
+## 2026-09-10 UPDATE — Unshackled path closed without 8cc (hand-written EIR)
+
+The "EXACT_NEXT_STEP" above (wait for a Linux build host) was superseded, not
+violated: instead of `8cc`, EIR was hand-written and checked against
+`ir/ir.h`, then compiled with a locally built ELVM backend
+(`gcc -O2 -w -I. -o out/elc.exe ir/ir.c ir/table.c target/*.c`, gcc 16.1).
+The C sources stay reference-only; every new `run.json` declares
+`EIR(hand-written)->HeLL(elc)->mu(LMFAO)->VM; 8cc bypassed`. Old gcc-ref
+`evidence/M0_*` dirs were left untouched; new dirs carry the
+`*_UNSHACKLED_V0` suffix (repo V0/V1 precedent).
+
+| Claim | Old status | New status | Evidence |
+|---|---|---|---|
+| `MALBOLGE_UNSHACKLED_EIR_PIPELINE_DEMONSTRATED` | PARTIAL | **DEMONSTRATED** (hand-EIR edge; `8cc` edge still open) | `M0_*_UNSHACKLED_V0` + `M1/M2A/M3A` |
+| `RUNTIME_STATEFUL_EXECUTION_DEMONSTRATED` | PARTIAL (gcc) | **DEMONSTRATED on TARGET_A** (M0 7/7 in-VM, KILLER same-`.mu` ×5) | `M0_KILLER_UNSHACKLED_V0/run.json` |
+| `WAD_HEADER_PARSE_IN_MALBOLGE_DEMONSTRATED` | NOT_DEMONSTRATED | **DEMONSTRATED** (`IWAD/1264/4175796`, verifier byte-match ×2) | `M1_WAD_HEADER_UNSHACKLED_V0` |
+| lump addressing (toward M2) | — | **PILOT M2a PASS** (4 real records, same-`.mu` ×3 queries) | `M2A_LUMP_FIND_UNSHACKLED_V0` |
+| Doom tick kernel (toward M3) | — | **PILOT M3a PASS** (vendored `P_Random`, 3×8 ticks, byte-match ×2) | `M3A_P_RANDOM_UNSHACKLED_V0` |
+| `DOOM_TICK_IN_MALBOLGE_DEMONSTRATED` (full) | NOT_DEMONSTRATED | **still NOT_DEMONSTRATED** (24-bit EIR vs 32-bit fixed point; throughput) | `M3A/run.json` limits |
+| full S_0 (M2) | NOT_DEMONSTRATED | **still NOT_DEMONSTRATED** (getc ~2 s/byte bounds bulk) | `M2A/run.json` limits |
+
+Transport rule learned (M1): Unshackled stdin is UTF-8-gated
+(`read_utf8_character` rejects bytes like `0xF0`), so binary travels
+hex-framed; framing is content-blind and all parsing runs in-VM. Host audit
+stays PASS (`host.py --verify-audit` re-run for M1/M2a/M3a).
+

@@ -1,0 +1,63 @@
+{
+  "claims": [
+    {
+      "evidence": [
+        "R3_ABC.raw.txt",
+        "ABC.trace.jsonl"
+      ],
+      "id": "ABC_single_vm_A_B_C_HALT",
+      "scope": "ABC.mal, one Zig VM run",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "R4_controls.json"
+      ],
+      "id": "residual_S1_S2_causally_necessary_under_selected_perturbations",
+      "scope": "specified S1/S2 instruction and data perturbations",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "R6_engine_crosscheck.json",
+        "R7_engine_crosscheck.json"
+      ],
+      "id": "independent_engine_agreement_for_measured_family",
+      "scope": "Python canonical + independent C VM, 7 programs",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "R5_flow.json",
+        "R8_anchor_isolation.json"
+      ],
+      "id": "dynamic_anchor_isolation_for_measured_family",
+      "scope": "6 programs, 10 observed phase anchors",
+      "status": "PASS"
+    },
+    {
+      "evidence": [],
+      "id": "all_legal_residual_states_are_continuation_anchors",
+      "scope": "universal claim",
+      "status": "NOT_DEMONSTRATED"
+    },
+    {
+      "evidence": [],
+      "id": "universal_anchor_isolated_generator",
+      "scope": "all programs and seeds",
+      "status": "NOT_DEMONSTRATED"
+    },
+    {
+      "evidence": [],
+      "id": "FULL_DOOM_ON_CLASSIC",
+      "scope": "MALDOOM TARGET_B",
+      "status": "NOT_DEMONSTRATED"
+    }
+  ],
+  "evidence_failures": [],
+  "hash_validation": "PASS",
+  "hashes_checked": 32,
+  "schema": "pure-continuation-anchor-final-v1",
+  "scope": "hash-pinned Classic Malbolge micro-experiment; not a universal theorem or Doom milestone",
+  "status": "PASS"
+}

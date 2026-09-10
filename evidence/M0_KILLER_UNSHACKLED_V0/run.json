@@ -1,0 +1,64 @@
+{
+  "program": "M0_KILLER",
+  "target": "TARGET_A Malbolge Unshackled",
+  "pipeline": "EIR(hand-written)->HeLL(elc)->mu(LMFAO)->VM; 8cc bypassed, C source is reference-only",
+  "toolchain_sha256": {
+    "elc": "a64b20487b12d42246c12a2d20790451dc990027d58e9b6558c4f03e3c5e0a39",
+    "lmfao": "350fb581f014d6913bd3c3a0ba86a6342e01a47dd9a2c1c3583225a348f33240",
+    "vm": "818ebd42729686d507fc60c0dabd1b5f5a840d4e9af3d0b3b2682310aa487a46"
+  },
+  "artifact_sha256": {
+    "source.eir": "beb9d967c48708a45f64da40cee371e45fb1ea82162c4e18795796e6821cf797",
+    "artifact.hell": "b6508b850a528d4bc99f69393d03c05a6053f1ae39406793e10016d766d1dcf0",
+    "artifact.mu": "3b9bdf37eb708ec751d10f0dea32edde4375e526ce56fd2dd440f5a22819ba10"
+  },
+  "runs": [
+    {
+      "input": "0\n",
+      "expected": "1\n",
+      "observed": "1\n",
+      "stderr": "",
+      "exit_code": 0,
+      "wall_s": 17.83,
+      "match": true
+    },
+    {
+      "input": "1\n",
+      "expected": "3\n",
+      "observed": "3\n",
+      "stderr": "",
+      "exit_code": 0,
+      "wall_s": 24.25,
+      "match": true
+    },
+    {
+      "input": "2\n",
+      "expected": "5\n",
+      "observed": "5\n",
+      "stderr": "",
+      "exit_code": 0,
+      "wall_s": 11.69,
+      "match": true
+    },
+    {
+      "input": "3\n",
+      "expected": "7\n",
+      "observed": "7\n",
+      "stderr": "",
+      "exit_code": 0,
+      "wall_s": 11.93,
+      "match": true
+    },
+    {
+      "input": "4\n",
+      "expected": "9\n",
+      "observed": "9\n",
+      "stderr": "",
+      "exit_code": 0,
+      "wall_s": 21.01,
+      "match": true
+    }
+  ],
+  "status": "PASS",
+  "host_audit": "PASS - host only launches VM process, no gameplay symbols involved"
+}

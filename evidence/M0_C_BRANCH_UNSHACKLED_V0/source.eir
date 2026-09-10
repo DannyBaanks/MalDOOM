@@ -1,0 +1,18 @@
+mov A, 1
+jeq zero, A, 0
+putc 78  # N
+putc 79  # O
+putc 78  # N
+putc 90  # Z
+putc 69  # E
+putc 82  # R
+putc 79  # O
+putc 10
+exit
+zero:
+putc 90  # Z
+putc 69  # E
+putc 82  # R
+putc 79  # O
+putc 10
+exit

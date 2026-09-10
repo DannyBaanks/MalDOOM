@@ -1,0 +1,15 @@
+mov A, 40
+add A, 2  # A = 42, host never sees 42
+mov B, 0  # tens
+divloop:
+jlt divdone, A, 10
+sub A, 10
+add B, 1
+jmp divloop
+divdone:
+add B, 48
+putc B
+add A, 48
+putc A
+putc 10
+exit

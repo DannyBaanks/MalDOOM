@@ -56,14 +56,14 @@ de quine para estudiar la dinamica de memoria observada; **no** es un reclamo de
 Paramos en el primer `NOT_DEMONSTRATED`; sin saltos.
 
 ```
-M0  El backend de Malbolge ejecuta aritmetica/flujo de control EIR arbitrario
-M1  Header de WAD parseado dentro de semantica de Malbolge
-M2  El estado de juego Doom S_0 se inicializa adentro
-M3  un tick deterministico de Doom  H(S_{t+1}) == H(S_t)_C
-M4  input del jugador cambia el estado del juego
-M5  un framebuffer correcto (hash de pixel vs C)
-M6  ticks repetidos sin reset/recompilacion
-M7  E1M1 tecnicamente jugable
+M0  El backend de Malbolge ejecuta aritmetica/flujo de control EIR arbitrario  [DEMOSTRADO en TARGET_A, 2026-09]
+M1  Header de WAD parseado dentro de semantica de Malbolge                      [DEMOSTRADO en TARGET_A, 2026-09]
+M2  El estado de juego Doom S_0 se inicializa adentro                           [solo PILOTO M2a; S_0 completo NOT_DEMONSTRATED]
+M3  un tick deterministico de Doom  H(S_{t+1}) == H(S_t)_C                      [solo PILOTO M3a; tick completo NOT_DEMONSTRATED]
+M4  input del jugador cambia el estado del juego                                [NOT_DEMONSTRATED]
+M5  un framebuffer correcto (hash de pixel vs C)                                [NOT_DEMONSTRATED]
+M6  ticks repetidos sin reset/recompilacion                                     [NOT_DEMONSTRATED]
+M7  E1M1 tecnicamente jugable                                                   [NOT_DEMONSTRATED]
 ```
 
 Dos targets, nunca conflados:
@@ -110,6 +110,38 @@ Veredictos honestos completos en `experiments/QUINE_OUTWARD_V0/SUMMARY.md`.
 - Una costura de 1 celda que deja coexistir a dos microceldas en el modelo.
 - Elevacion a macrocelda en un gap inter-unitario en el modelo.
 
+## Demostrado — TARGET_A Unshackled (2026-09, ruta EIR a mano)
+
+`8cc` nunca compilo en este host, asi que el borde `C → EIR` se sorteo con
+EIR escrito a mano en vez de trampearse con computo del host:
+`EIR → HeLL` via `elvm/out/elc.exe` compilado local, `HeLL → .mu` via
+LMFAO v0.1.5, ejecucion en `vendor/Unshackled.exe`. Los fuentes C quedan como
+referencia y asi se declara en cada `run.json`.
+
+- **M0 7/7 en la VM real** (`evidence/M0_*_UNSHACKLED_V0/`): output fijo,
+  `40+2` con digitos calculados, branch, loop ×5, suma con store/load,
+  incremento con wrap `9→0`, y el killer `n*2+1` con el **mismo `.mu` para
+  5 inputs**.
+- **M1**: header de `doom1.wad` parseado dentro de la VM → `IWAD / 1264 / 4175796`,
+  byte-identico a la referencia C (`evidence/M1_WAD_HEADER_UNSHACKLED_V0/`).
+  Binario crudo no cruza el stdin de Unshackled (UTF-8-gated), asi que el host
+  hex-enmarca los 12 bytes del header (ciego al contenido); todo el
+  decode/parse corre en-VM.
+- **M2a (piloto)**: direccionamiento de lumps sobre 4 registros reales del
+  directorio — `ENDOOM → MATCH 2/19468/4000`, `PLAYPAL → MATCH 0/12/10752`,
+  nombre desconocido → `NOMATCH`, mismo `.mu`
+  (`evidence/M2A_LUMP_FIND_UNSHACKLED_V0/`). S_0 completo NOT_DEMONSTRATED
+  (throughput de getc acota el bulk; medido ~2 s/byte).
+- **M3a (piloto)**: el `P_Random` real de Doom (tabla parseada del `m_random.c`
+  vendored; la referencia linka ese archivo) corre 3 ticks × 8 draws en-VM con
+  estado acarreado entre ticks, byte-identico a C
+  (`evidence/M3A_P_RANDOM_UNSHACKLED_V0/`). Hash de `doomgeneric_Tick`
+  completo NOT_DEMONSTRATED (EIR es 24-bit; la fisica fixed-point de Doom no
+  cabe en el tipo).
+- **Separacion TARGET**: `ABC.mal` clasico bajo Unshackled da `AB` +
+  `invalid unicode codepoint`, exit 1 — artefactos `.mal` no transfieren;
+  documentado en `docs/UNSHACKLED_CONTINUATION_ANCHOR_V0.md`.
+
 ## No demostrado
 
 - Regeneracion robusta despues de dano (fill pasivo).
@@ -148,6 +180,12 @@ la raiz del repositorio.
 - `evidence/CLASSIC_ANCHOR_SMOKE_V1/` — Evidencia de checkpoint/busqueda clasica
   (P1-P5, negativos honrosos para cross-read state).
 - `evidence/M0*/` — Evidencia del pipeline Unshackled/HeLL.
+- `evidence/M0_*_UNSHACKLED_V0/` — M0 A..KILLER en la VM real (EIR a mano).
+- `evidence/M1_WAD_HEADER_UNSHACKLED_V0/` — parse de header WAD en-VM.
+- `evidence/M2A_LUMP_FIND_UNSHACKLED_V0/` — piloto de direccionamiento de lumps.
+- `evidence/M3A_P_RANDOM_UNSHACKLED_V0/` — piloto de tick P_Random.
+- `evidence/PURE_CONTINUATION_ANCHOR_V0/` — A→B→C→HALT clasico en una VM (TARGET_B).
+- `evidence/UNSHACKLED_CONTINUATION_ANCHOR_V0/` — A/AA/AB/ABC HeLL nativo (TARGET_A).
 - `evidence/DOOM_NATIVE_BASELINE/` — runs de referencia nativos de Doom.
 
 La evidencia cruda es historica y nunca se reescribe para encajar en una narrativa.
@@ -159,8 +197,19 @@ La evidencia cruda es historica y nunca se reescribe para encajar en una narrati
 - Los resultados de microcelda/macrocelda/costura quine-outward son de **nivel modelo**; se
   validan contra la VM real solo en la region de fill pasivo, no aun como
   programa clasico corriendo.
-- No se ha producido ningun estado de juego Doom dentro de Malbolge.
+- No se ha producido ningun estado de juego Doom completo (S_0) dentro de
+  Malbolge; solo el primitivo de direccionamiento (M2a) y el kernel RNG (M3a).
 - Malbolge Clasico es de almacenamiento acotado; `FULL_DOOM` en Clasico no se reclama.
+- EIR a mano corre en valores de 24-bit: lo que necesite mas de `2^24`
+  (fisica fixed-point de 32-bit de Doom, `infotableofs` de WADs de 28 MB)
+  esta fuera de esta ruta por construccion, no por esfuerzo.
+- Throughput medido acota lo intentable: ~2 s por byte de stdin (`getc`),
+  ~0.3 s por paso EIR. Streaming bulk de WAD y compute de tick completo
+  exceden cualquier presupuesto a este ritmo.
+- Replay requiere el drop de vendor (`vendor/Unshackled.exe`, LMFAO, fuentes
+  `elvm`): `vendor/*` esta git-ignored, asi que un clone limpio trae los
+  artefactos `.mu` y sus hashes pero no los binarios del toolchain. Recetas de
+  build y SHAs en cada `run.json`.
 
 ---
 

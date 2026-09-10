@@ -1,0 +1,24 @@
+getc A
+jeq reread, A, 10
+jeq check, A, 13
+jmp check
+reread:
+getc A
+check:
+jlt bad, A, 48
+jgt bad, A, 57
+sub A, 48
+add A, 1
+jeq wrap, A, 10
+jmp emit
+wrap:
+mov A, 0
+emit:
+add A, 48
+putc A
+putc 10
+exit
+bad:
+putc 63  # ?
+putc 10
+exit

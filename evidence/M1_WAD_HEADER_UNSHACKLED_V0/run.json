@@ -1,0 +1,47 @@
+{
+  "program": "M1_WAD_HEADER",
+  "target": "TARGET_A Malbolge Unshackled",
+  "gate": "M1: parse identification/numlumps/infotableofs inside the VM; host only transports bytes",
+  "pipeline": "EIR(hand-written)->HeLL(elc)->mu(LMFAO)->VM; 8cc bypassed",
+  "toolchain_sha256": {
+    "elc": "A64B20487B12D42246C12A2D20790451DC990027D58E9B6558C4F03E3C5E0A39",
+    "lmfao": "350FB581F014D6913BD3C3A0BA86A6342E01A47DD9A2C1C3583225A348F33240",
+    "vm": "818EBD42729686D507FC60C0DABD1B5F5A840D4E9AF3D0B3B2682310AA487A46"
+  },
+  "artifacts": {
+    "source.eir": "76e779a3ae4dfde6d66748a95bc30f774fe15d0879ded7af149d8f616c96bc92",
+    "artifact.hell": "84da42e1c21f9df6f5afe276eab8adffa2f9d0f1a655d85bf548f3ea4a99fa7b",
+    "artifact.mu": "4d60c73d882616bba6e6b5f0c8838721c2cedfb795f670c6403efaad51a5d0b7",
+    "reference.c": "1a04a2e9ffde99fd7e64a3069c1a2773da963253ccb6e13756ddc876a36c4989"
+  },
+  "wad": {
+    "wad": "doom1.wad",
+    "bytes": 4196020,
+    "sha256": "1d7d43be501e67d927e415e0b8f3e29c3bf33075e859721816f652a526cac771",
+    "header_hex": "49574144f0040000b4b73f00",
+    "framing": "host hex-encodes 12 header bytes to 24 ASCII chars; decode+parse all in-VM; raw binary cannot cross Unshackled UTF-8-gated stdin"
+  },
+  "transport": "host wad_byte_transport reads doom1.wad; first 12 bytes hex-framed to 24 ASCII chars on stdin (raw binary cannot cross the UTF-8-gated stdin). Framing is content-blind; hex-decode plus LE32 plus decimal emit all execute in-VM.",
+  "cases": [
+    {
+      "case": "doom1",
+      "observed_text": "IWAD,1264,4175796",
+      "wall_s": 257.3,
+      "exit_code": 0,
+      "verifier_match": true
+    },
+    {
+      "case": "synthetic-PWAD",
+      "observed_text": "PWAD,1,0",
+      "wall_s": 76.0,
+      "exit_code": 0,
+      "verifier_match": true
+    }
+  ],
+  "limits": [
+    "EIR values are 24-bit: infotableofs above 2^24 prints X and exits; doom1.wad fits",
+    "stdin carries 12 header bytes only, not the 4MB WAD"
+  ],
+  "status": "PASS",
+  "host_audit": "PASS via host.py verify-audit; host did read plus hex-framing only"
+}

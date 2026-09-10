@@ -1,0 +1,391 @@
+# M2A_LUMP_FIND: stdin = 8 query bytes + 4x16 directory-record bytes, hex-framed.
+# VM scans 4 real records, matches 8-byte name, prints MATCH idx/filepos/size or NOMATCH.
+# Layout: 1999 ret slot; 4000-4007 query; 4008+16i records (filepos 0-3 LE, size 4-7 LE, name 8-15).
+jmp main
+hexpair:
+mov D, 0
+jlt hex_hi09, A, 48
+jgt hex_hiAF, A, 57
+sub A, 48
+jmp hex_hidone
+hex_hiAF:
+jlt hex_hierr, A, 65
+jgt hex_hiAF2, A, 70
+sub A, 55
+jmp hex_hidone
+hex_hiAF2:
+jlt hex_hierr, A, 97
+jgt hex_hierr, A, 102
+sub A, 87
+hex_hidone:
+mov D, A
+add D, D
+add D, D
+add D, D
+add D, D
+jlt hex_lo09, B, 48
+jgt hex_loAF, B, 57
+sub B, 48
+add D, B
+load C, 1999
+jmp C
+hex_loAF:
+jlt hex_loerr, B, 65
+jgt hex_loAF2, B, 70
+sub B, 55
+add D, B
+load C, 1999
+jmp C
+hex_loAF2:
+jlt hex_loerr, B, 97
+jgt hex_loerr, B, 102
+sub B, 87
+add D, B
+load C, 1999
+jmp C
+hex_hi09:
+hex_lo09:
+hex_hierr:
+hex_loerr:
+putc 72
+putc 10
+exit
+main:
+mov BP, 4000
+mov SP, 72
+byte_loop:
+jeq bytes_done, SP, 0
+mov C, byte_ret
+store C, 1999
+getc A
+getc B
+jmp hexpair
+byte_ret:
+store D, BP
+add BP, 1
+sub SP, 1
+jmp byte_loop
+bytes_done:
+mov SP, 0
+rec_loop:
+jge nomatch, SP, 4
+mov C, SP
+add C, C
+add C, C
+add C, C
+add C, C
+add C, 4008
+mov D, 0
+cmp_loop:
+jge matched, D, 8
+mov A, 4000
+add A, D
+load B, A
+mov A, C
+add A, 8
+add A, D
+load A, A
+jne next_rec, B, A
+add D, 1
+jmp cmp_loop
+next_rec:
+add SP, 1
+jmp rec_loop
+matched:
+putc 77
+putc 65
+putc 84
+putc 67
+putc 72
+putc 10
+mov A, SP
+add A, 48
+putc A
+putc 10
+mov A, C
+add A, 0
+load B, A
+mov A, B
+mov B, C
+add B, 1
+load B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add A, B
+mov B, C
+add B, 2
+load B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add A, B
+mov B, C
+add B, 3
+load B, B
+jeq fp_ok, B, 0
+putc 88
+putc 10
+exit
+fp_ok:
+mov B, 0
+mov D, 0
+fp_d1000000:
+jlt fp_e1000000, A, 1000000
+sub A, 1000000
+add D, 1
+jmp fp_d1000000
+fp_e1000000:
+jgt fp_w1000000, D, 0
+jgt fp_w1000000, B, 0
+jmp fp_n1000000
+fp_w1000000:
+add D, 48
+putc D
+mov B, 1
+fp_n1000000:
+mov D, 0
+fp_d100000:
+jlt fp_e100000, A, 100000
+sub A, 100000
+add D, 1
+jmp fp_d100000
+fp_e100000:
+jgt fp_w100000, D, 0
+jgt fp_w100000, B, 0
+jmp fp_n100000
+fp_w100000:
+add D, 48
+putc D
+mov B, 1
+fp_n100000:
+mov D, 0
+fp_d10000:
+jlt fp_e10000, A, 10000
+sub A, 10000
+add D, 1
+jmp fp_d10000
+fp_e10000:
+jgt fp_w10000, D, 0
+jgt fp_w10000, B, 0
+jmp fp_n10000
+fp_w10000:
+add D, 48
+putc D
+mov B, 1
+fp_n10000:
+mov D, 0
+fp_d1000:
+jlt fp_e1000, A, 1000
+sub A, 1000
+add D, 1
+jmp fp_d1000
+fp_e1000:
+jgt fp_w1000, D, 0
+jgt fp_w1000, B, 0
+jmp fp_n1000
+fp_w1000:
+add D, 48
+putc D
+mov B, 1
+fp_n1000:
+mov D, 0
+fp_d100:
+jlt fp_e100, A, 100
+sub A, 100
+add D, 1
+jmp fp_d100
+fp_e100:
+jgt fp_w100, D, 0
+jgt fp_w100, B, 0
+jmp fp_n100
+fp_w100:
+add D, 48
+putc D
+mov B, 1
+fp_n100:
+mov D, 0
+fp_d10:
+jlt fp_e10, A, 10
+sub A, 10
+add D, 1
+jmp fp_d10
+fp_e10:
+jgt fp_w10, D, 0
+jgt fp_w10, B, 0
+jmp fp_n10
+fp_w10:
+add D, 48
+putc D
+mov B, 1
+fp_n10:
+add A, 48
+putc A
+putc 10
+mov A, C
+add A, 4
+load B, A
+mov A, B
+mov B, C
+add B, 5
+load B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add A, B
+mov B, C
+add B, 6
+load B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add B, B
+add A, B
+mov B, C
+add B, 7
+load B, B
+jeq sz_ok, B, 0
+putc 88
+putc 10
+exit
+sz_ok:
+mov B, 0
+mov D, 0
+sz_d1000000:
+jlt sz_e1000000, A, 1000000
+sub A, 1000000
+add D, 1
+jmp sz_d1000000
+sz_e1000000:
+jgt sz_w1000000, D, 0
+jgt sz_w1000000, B, 0
+jmp sz_n1000000
+sz_w1000000:
+add D, 48
+putc D
+mov B, 1
+sz_n1000000:
+mov D, 0
+sz_d100000:
+jlt sz_e100000, A, 100000
+sub A, 100000
+add D, 1
+jmp sz_d100000
+sz_e100000:
+jgt sz_w100000, D, 0
+jgt sz_w100000, B, 0
+jmp sz_n100000
+sz_w100000:
+add D, 48
+putc D
+mov B, 1
+sz_n100000:
+mov D, 0
+sz_d10000:
+jlt sz_e10000, A, 10000
+sub A, 10000
+add D, 1
+jmp sz_d10000
+sz_e10000:
+jgt sz_w10000, D, 0
+jgt sz_w10000, B, 0
+jmp sz_n10000
+sz_w10000:
+add D, 48
+putc D
+mov B, 1
+sz_n10000:
+mov D, 0
+sz_d1000:
+jlt sz_e1000, A, 1000
+sub A, 1000
+add D, 1
+jmp sz_d1000
+sz_e1000:
+jgt sz_w1000, D, 0
+jgt sz_w1000, B, 0
+jmp sz_n1000
+sz_w1000:
+add D, 48
+putc D
+mov B, 1
+sz_n1000:
+mov D, 0
+sz_d100:
+jlt sz_e100, A, 100
+sub A, 100
+add D, 1
+jmp sz_d100
+sz_e100:
+jgt sz_w100, D, 0
+jgt sz_w100, B, 0
+jmp sz_n100
+sz_w100:
+add D, 48
+putc D
+mov B, 1
+sz_n100:
+mov D, 0
+sz_d10:
+jlt sz_e10, A, 10
+sub A, 10
+add D, 1
+jmp sz_d10
+sz_e10:
+jgt sz_w10, D, 0
+jgt sz_w10, B, 0
+jmp sz_n10
+sz_w10:
+add D, 48
+putc D
+mov B, 1
+sz_n10:
+add A, 48
+putc A
+putc 10
+exit
+nomatch:
+putc 78
+putc 79
+putc 77
+putc 65
+putc 84
+putc 67
+putc 72
+putc 10
+exit

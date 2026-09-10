@@ -1,0 +1,2 @@
+{"cases": [{"c": {"output": "ABA", "status": "HALTED", "steps": 148}, "program": "ABA", "python": {"output": "ABA", "status": "HALTED", "steps": 148}}, {"c": {"output": "AAB", "status": "HALTED", "steps": 111}, "program": "AAB", "python": {"output": "AAB", "status": "HALTED", "steps": 111}}, {"c": {"output": "ABC", "status": "HALTED", "steps": 162}, "program": "ABC_seed99", "python": {"output": "ABC", "status": "HALTED", "steps": 162}}], "schema": "malbolge-engine-crosscheck-v1"}
+ENGINE_CROSSCHECK=PASS cases=3

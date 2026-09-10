@@ -1,0 +1,4 @@
+putc 79  # O
+putc 75  # K
+putc 10  # newline
+exit

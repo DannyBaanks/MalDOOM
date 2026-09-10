@@ -1,0 +1,7 @@
+{
+  "wad": "doom1.wad",
+  "bytes": 4196020,
+  "sha256": "1d7d43be501e67d927e415e0b8f3e29c3bf33075e859721816f652a526cac771",
+  "header_hex": "49574144f0040000b4b73f00",
+  "framing": "host hex-encodes 12 header bytes to 24 ASCII chars; decode+parse all in-VM; raw binary cannot cross Unshackled UTF-8-gated stdin"
+}

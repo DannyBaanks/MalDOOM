@@ -1,0 +1,33 @@
+getc A
+jeq reread, A, 10
+jeq check, A, 13
+jmp check
+reread:
+getc A
+check:
+jlt bad, A, 48
+jgt bad, A, 57
+sub A, 48  # n
+mov B, 0  # doubled
+mov C, 0  # i
+kloop:
+jge kdone, C, A
+add B, 2
+add C, 1
+jmp kloop
+kdone:
+add B, 1  # result = n*2+1
+jlt bad2, B, 1
+jgt bad2, B, 9
+add B, 48
+putc B
+putc 10
+exit
+bad:
+putc 63  # ?
+putc 10
+exit
+bad2:
+putc 88  # X
+putc 10
+exit

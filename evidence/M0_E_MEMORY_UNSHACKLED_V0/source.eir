@@ -1,0 +1,24 @@
+mov A, 10
+store A, 1000
+mov A, 20
+store A, 1001
+mov A, 30
+store A, 1002
+load A, 1000
+load B, 1001
+add A, B
+load B, 1002
+add A, B  # A = 60
+mov B, 0  # tens
+divloop:
+jlt divdone, A, 10
+sub A, 10
+add B, 1
+jmp divloop
+divdone:
+add B, 48
+putc B
+add A, 48
+putc A
+putc 10
+exit

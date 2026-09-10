@@ -1,0 +1,5 @@
+putc 65
+putc 66
+putc 67
+exit
+
