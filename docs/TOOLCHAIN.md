@@ -84,3 +84,27 @@ ls vendor/8cc/           # eir branch
 ```
 
 Record exact output, SHA-256, wall time in `evidence/`.
+
+## Windows EIR Frontend Workaround
+
+The vendored `8cc` EIR frontend builds on Windows with MinGW after two local
+source adjustments in `vendor/elvm/8cc/main.c`:
+
+1. Include the POSIX headers only when `__eir__` is not defined. The EIR path
+   does not use `fork`, `exec`, or `waitpid`.
+2. Call `set_output_file(stdout)` in the `__eir__` path. Without this,
+   `outputfp` remains NULL.
+
+Build with `gcc`, not the Makefile's Unix-only default `cc`. In `__eir__`
+mode, feed C on stdin; the frontend emits EIR on stdout. Redirect compiler
+output with a binary-safe command shell, because PowerShell redirection can
+produce UTF-16, which LMFAO rejects.
+
+The complete path was verified on 2026-09-10 in
+`evidence/PIPELINE_E2E_V0/SUMMARY.md`:
+
+```
+C -> 8cc (__eir__) -> EIR -> elc -hell -> HeLL -> LMFAO -> .mu -> Unshackled
+```
+
+Observed outputs were `A`, `OK`, and `40+2=42`.
