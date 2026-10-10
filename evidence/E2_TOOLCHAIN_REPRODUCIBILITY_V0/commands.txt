@@ -1,0 +1,16 @@
+# E2 — reproducibility of the sealed M0_KILLER artifact on the Linux toolchain
+# Executed 2026-10-10. Source: evidence/M0_KILLER_UNSHACKLED_V0/source.eir
+# (sealed sha256 beb9d967...)
+
+$ ./vendor/elvm/out/elc -hell <copy of source.eir> > killer.hell
+# exit 0. Content byte-identical to sealed artifact.hell modulo CRLF:
+#   diff <(tr -d '\r' < artifact.hell) killer.hell  ->  0 lines
+
+$ ./vendor/LMFAO/bin/lmfao -o killer.mu killer.hell
+# exit 0. Content byte-identical to sealed artifact.mu except one trailing \r:
+#   sealed tail b'54RQ\r\n'  vs  repro tail b'654RQ\n'; rstrip('\r\n') equal -> True
+
+$ printf '0\n' | ./vendor/Unshackled killer.mu | xxd
+00000000: 310a     -> '1\n', matches run.json expected
+
+$ sed 's/$/\r/' killer.hell | lmfao -o x.mu -> same hash as LF input (line endings of .hell do not matter)

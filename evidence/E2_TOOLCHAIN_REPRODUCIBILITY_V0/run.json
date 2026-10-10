@@ -1,0 +1,36 @@
+{
+  "experiment": "E2_TOOLCHAIN_REPRODUCIBILITY_V0",
+  "date": "2026-10-10",
+  "claim": "The Linux-rebuilt toolchain reproduces the sealed M0_KILLER_UNSHACKLED_V0 artifacts byte-exactly, with the single exception of one trailing CR that the Windows LMFAO emitted.",
+  "source": {
+    "path": "evidence/M0_KILLER_UNSHACKLED_V0/source.eir",
+    "sha256": "beb9d967c48708a45f64da40cee371e45fb1ea82162c4e18795796e6821cf797"
+  },
+  "hell": {
+    "sealed_sha256": "b6508b850a528d4bc99f69393d03c05a6053f1ae39406793e10016d766d1dcf0",
+    "repro_sha256": "2134ff3f00f23e3204bc4759b0323f1b3f8d8c66f8c6ecb413cf24df6b7d24c5",
+    "identical_modulo_crlf": true,
+    "note": "diff after tr -d '\\r' is empty"
+  },
+  "mu": {
+    "sealed_sha256": "3b9bdf37eb708ec751d10f0dea32edde4375e526ce56fd2dd440f5a22819ba10",
+    "repro_sha256": "e9023624b1f8fb3a68e54b2430d1e9622ed826ee691121fd49a62a7ab7227701",
+    "identical_after_trailing_eol_strip": true,
+    "note": "sealed ends 54RQ\\r\\n (2888171 B), repro ends 654RQ\\n (2888170 B)"
+  },
+  "functional": {
+    "input": "0\n",
+    "observed_hex": "310a",
+    "expected": "1\n",
+    "match": true
+  },
+  "lmfao": {
+    "built_from": "vendor/LMFAO/src (patched %option noyywrap), flex 2.6.4 + bison 3.8.2, gcc 13.3",
+    "note": "the vendored Windows lmfao.exe (350fb581...) was an ignored working file and was destroyed by 'make clean'; it is rebuildable from this source and its hash remains recorded in M0_KILLER_UNSHACKLED_V0/run.json"
+  },
+  "NOT_DEMONSTRATED": [
+    "byte-identity of the .mu on a Windows host (only the trailing CR differs; not re-verified on Windows)",
+    "any M2/M3 milestone — not attempted here",
+    "performance of the ELVM-libc C path: a freestanding putchar program through libc produced a 183 MB .mu with no output in 60 s (E3 scope)"
+  ]
+}
