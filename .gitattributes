@@ -1,0 +1,3 @@
+# Normalize line endings: the tree is canonical LF (sealed evidence hashes were
+# computed on LF bytes). Prevents a Windows-side checkout from reintroducing CRLF.
+* text=auto eol=lf
