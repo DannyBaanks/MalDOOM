@@ -1,0 +1,29 @@
+# E1 — Linux toolchain migration, executed 2026-10-09/10 (UTC-6), host: Ubuntu 24.04, gcc 13.3.0
+# All commands from repo root unless noted.
+
+$ gcc -O3 -o vendor/Unshackled vendor/Unshackled.c
+# exit 0, no output. Binary: 21128 B.
+
+$ printf '0\n' | ./vendor/Unshackled evidence/M0_KILLER_UNSHACKLED_V0/artifact.mu | xxd
+00000000: 310a                                      1.
+# exit 0 — matches run.json expected '1\n' (Windows had observed '1\r\n').
+
+$ cd vendor/elvm && mkdir -p out
+$ gcc -std=gnu99 -O2 -w -I. -o out/elc ir/ir.c ir/table.c target/*.c
+# exit 0, binary 664344 B.
+$ make out/8cc
+# exit 0 (cc -o 8cc main.o ... )
+
+$ cd vendor/elvm
+$ ./out/8cc -S -I. -Ilibc -I8cc/include -o /tmp/e1/quoted.eir /tmp/e1/quoted.c
+# quoted.c: #include "libc/stdio.h" / int main(){ putchar(79); putchar(75); putchar(10); return 0; }
+# exit 0. Output is ELVM EIR (mov D, SP / putc A / exit), extension .eir.
+# NOTE: '#include <stdio.h>' only compiles when the source lives inside vendor/elvm.
+
+$ ./out/elc -hell /tmp/e1/quoted.eir > /tmp/e1/quoted.hell
+# exit 0, 199214 lines of HeLL.
+
+$ cd /home/danny/Development/ISyCo Git/MALDOOM && python3 -m pytest -q tests/
+# ....  [100%]  4 passed in 17.08s
+# (before the migration: 1 passed, 3 failed — PermissionError on vendor/Unshackled.c,
+#  M0_KILLER path assumption, and the M0_* artifact glob including M0_REPORT.md)

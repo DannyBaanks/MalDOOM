@@ -108,3 +108,38 @@ C -> 8cc (__eir__) -> EIR -> elc -hell -> HeLL -> LMFAO -> .mu -> Unshackled
 ```
 
 Observed outputs were `A`, `OK`, and `40+2=42`.
+
+## Linux Build Host (verified 2026-10-10)
+
+The Windows host that produced `evidence/M0-M3a` is gone. The toolchain was
+rebuilt on Linux (Ubuntu 24.04, gcc 13.3) and the offline suite is green
+(4/4). Exact commands, all from the repo root:
+
+```bash
+# 1. Unshackled VM (the tests' expected binary name is vendor/Unshackled)
+gcc -O3 -o vendor/Unshackled vendor/Unshackled.c
+
+# 2. ELVM tools: elc (EIR -> HeLL) and 8cc (C -> EIR)
+cd vendor/elvm && mkdir -p out
+gcc -std=gnu99 -O2 -w -I. -o out/elc ir/ir.c ir/table.c target/*.c
+make out/8cc                 # builds elvm's copy of 8cc (no flex/bison needed)
+
+# 3. C -> EIR -> HeLL, verified end to end:
+./vendor/elvm/out/elc -hell /path/to/prog.eir > prog.hell
+```
+
+Two Linux-only recipes learned the hard way:
+
+1. **`#include <stdio.h>` only resolves when the C file lives inside
+   `vendor/elvm/`** (8cc searches angle includes relative to the source file's
+   directory, not only `-I`). Copy/keep sources there, then:
+   `cd vendor/elvm && ./out/8cc -S -I. -Ilibc -I8cc/include -o out.eir src.c`
+   (`elvm/libc/*.h` is ELVM's own libc shim — required, `vendor/8cc/include`
+   alone has no stdio.)
+2. **elc takes the target as a flag:** `elc -hell file.eir > file.hell`
+   (`elc hell file.eir` errors with "no target").
+
+Still blocked on Linux: **LMFAO** (HeLL -> .mu) needs `flex`/`bison`
+(`apt install flex bison`; the Windows build patched `lmfao.l` with
+`%option noyywrap`). Until then, .mu artifacts are produced on Windows or by
+the hand-written EIR path of commit 35bc289.

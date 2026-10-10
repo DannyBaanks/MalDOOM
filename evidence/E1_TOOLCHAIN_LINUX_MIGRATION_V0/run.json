@@ -1,0 +1,38 @@
+{
+  "experiment": "E1_TOOLCHAIN_LINUX_MIGRATION_V0",
+  "date": "2026-10-10",
+  "host": {
+    "os": "Ubuntu 24.04",
+    "gcc": "13.3.0",
+    "zig": "not used here"
+  },
+  "claim": "The MALDOOM toolchain (Unshackled VM, elc, 8cc) builds and runs on Linux; the offline test suite is green; the C->EIR->HeLL chain works end to end.",
+  "toolchain_built": {
+    "vendor/Unshackled": "f0d6b047e1c36515c3923c0e8eef3cb1818034211c4d6051c5b2f996d7ccb565",
+    "vendor/elvm/out/elc": "fbd9b5255bcaf71a86907f0a4aef3dbd0ec6baec958d12101c45ef3c7b5735a5",
+    "vendor/elvm/out/8cc": "7d0e9a4286f2b863a512c8e5e34a28dea10edd08fce00318c97bd2a372d6ac4c"
+  },
+  "chain_probe": {
+    "source": "freestanding putchar(79)/putchar(75)/putchar(10), elvm libc include",
+    "eir_sha256": "not archived (probe artifact, outside repo)",
+    "hell_lines": 199214,
+    "blocked_hop": "LMFAO (.hell -> .mu) needs flex/bison, not installed on this host"
+  },
+  "killer_replay": {
+    "input": "0\n",
+    "observed_hex": "310a",
+    "expected": "1\n",
+    "match": true
+  },
+  "test_suite": {
+    "before": "1 passed, 3 failed",
+    "after": "4 passed",
+    "command": "python3 -m pytest -q tests/"
+  },
+  "NOT_DEMONSTRATED": [
+    "LMFAO rebuilt on Linux (flex/bison missing) — no .mu is produced on this host yet",
+    "Full Doom tick (M3) — not attempted",
+    "scripts/test_walbolge*.py still fail to collect: the walbolge module is not present in this repo (lives in the sibling Walbolge repo; copy-not-integrate is pending)",
+    "No performance benchmark of the Unshackled VM (that is E3)"
+  ]
+}
