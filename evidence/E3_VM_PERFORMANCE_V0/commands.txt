@@ -1,0 +1,17 @@
+# E3 — Unshackled VM performance on the Linux host (gcc 13.3 -O2)
+# Executed 2026-10-10. The step counter comes from an instrumented COPY of
+# vendor/Unshackled.c built in /tmp (repo binary untouched).
+
+$ printf '0\n' | unsh_counted evidence/M0_KILLER_UNSHACKLED_V0/artifact.mu
+STEPS 10347959 ; wall 3.19s   -> 3.24M steps/s
+$ printf '2\n' | unsh_counted evidence/M0_KILLER_UNSHACKLED_V0/artifact.mu
+STEPS 12336200 ; wall 3.34s   -> 3.69M steps/s
+
+# Lean ELVM path (no libc): putchar(79)/putchar(75)/putchar(10)
+$ cd vendor/elvm && ./out/8cc -S -o lean.eir freestanding_ok.c
+$ ./out/elc -hell lean.eir > lean.hell      # 3588 lines
+$ lmfao -o lean.mu lean.hell                # 2622526 bytes
+$ unsh_counted lean.mu                      # STEPS 15260812, wall 3.58s, output OK
+
+# Windows reference for the same killer inputs: 11-24 s per run
+# (evidence/M0_KILLER_UNSHACKLED_V0/run.json).

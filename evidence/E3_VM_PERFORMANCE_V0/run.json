@@ -1,0 +1,39 @@
+{
+  "experiment": "E3_VM_PERFORMANCE_V0",
+  "date": "2026-10-10",
+  "host": "Ubuntu 24.04, gcc 13.3.0 -O2, instrumented copy of Unshackled.c (repo binary unchanged)",
+  "claim": "The Linux-built Unshackled VM runs at ~3.2-3.7M steps/s; the HeLL backend carries a fixed ~10-15M-step and ~2.6 MB overhead per program regardless of program size.",
+  "measurements": [
+    {
+      "artifact": "M0_KILLER_UNSHACKLED_V0/artifact.mu",
+      "input": "0\n",
+      "steps": 10347959,
+      "wall_s": 3.19,
+      "steps_per_s": 3243862
+    },
+    {
+      "artifact": "M0_KILLER_UNSHACKLED_V0/artifact.mu",
+      "input": "2\n",
+      "steps": 12336200,
+      "wall_s": 3.34,
+      "steps_per_s": 3693467
+    },
+    {
+      "artifact": "lean putchar(79,75,10) via 8cc+elc+lmfao",
+      "input": "",
+      "steps": 15260812,
+      "wall_s": 3.58,
+      "steps_per_s": 4262255,
+      "mu_bytes": 2622526,
+      "hell_lines": 3588,
+      "output": "OK"
+    }
+  ],
+  "windows_reference": "evidence/M0_KILLER_UNSHACKLED_V0/run.json: 11-24 s per input",
+  "consequence_for_M3": "One Doom tick needs on the order of 1e10-1e12 steps (Doom tick ~35 Hz in C; thinkers, RNG, movement, WAD access all inside the VM). At 3.5M steps/s that is hours per tick, and the HeLL memory pre-initialization adds ~2.6 MB per program before any logic runs. M3 as literally specified (H(S_t+1)==H(S_t)_C for a real Doom tick) is NOT_DEMONSTRATED and its cost is not yet bounded; a scoped minimal-tick claim is the honest next target.",
+  "NOT_DEMONSTRATED": [
+    "steps for a real Doom tick (not measured — no such artifact exists)",
+    "any claim about M2/M3 completion",
+    "Windows-host performance after migration"
+  ]
+}
