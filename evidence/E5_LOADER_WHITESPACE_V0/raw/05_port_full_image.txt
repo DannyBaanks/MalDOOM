@@ -1,0 +1,8 @@
+port_bolge19  in=0  stdout=310a  steps=8623625
+port_bolge19  in=1  stdout=330a  steps=9171949
+port_bolge19  in=2  stdout=350a  steps=9725624
+port_bolge19  in=3  stdout=370a  steps=10254258
+port_bolge19  in=4  stdout=390a  steps=10820576
+rep=1  stdout=310a  steps=8623625
+rep=2  stdout=310a  steps=8623625
+rep=3  stdout=310a  steps=8623625

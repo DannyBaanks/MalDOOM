@@ -1,0 +1,4 @@
+head=0 canonical mod() -> 0 mod 94
+head=1 canonical mod() -> 23 mod 94
+head=2 canonical mod() -> 46 mod 94
+fast20 offs = 0 117 140 -> mod 94 = 0 23 46

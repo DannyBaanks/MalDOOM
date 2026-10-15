@@ -1,0 +1,11 @@
+# bounded probe: B19_MAXSTEPS=2000000, so a "maxsteps" row is a budget cut, not a halt.
+# artifact.mu under the strict loader needs ~8.6M steps, so it shows maxsteps here; see raw/05.
+spec	trim	result
+artifact.mu	0	=> halt steps=20163 outs=2 ins=3 c=117 d=86 a=573956343 | stdout=02ce
+artifact.mu	1	=> maxsteps steps=2000000 outs=0 ins=0 c=581130695 d=581130759 a=581130734 | stdout=
+init_module.mb	0	=> halt steps=19337 outs=0 ins=0 c=19435 d=19 a=710270897 | stdout=
+init_module.mb	1	=> halt steps=19301 outs=0 ins=0 c=19399 d=387450038 a=182815712 | stdout=
+core.mb	0	=> maxsteps steps=2000000 outs=0 ins=0 c=2000000 d=105 a=0 | stdout=
+core.mb	1	invalid character byte=7 v=99 instr=12 | stdout=
+lisp.mb	0	=> maxsteps steps=2000000 outs=0 ins=0 c=60 d=581130764 a=581130733 | stdout=
+lisp.mb	1	invalid character byte=19392 v=40 instr=67 | stdout=

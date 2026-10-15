@@ -1,0 +1,3 @@
+sealed artifact.mu  bytes=2888171 ws_bytes=2 positions=[2888169, 2888170] values=['0xd', '0xa']
+artifact_trunc.mu   bytes=2888169 sha256=fd390dd413224854d506ab00f50b3349d6c8039bbf1170f40be3c606d33b125e expected=OK
+artifact_tol.mu     bytes=2888174 sha256=0c8c85fbb4cb31c5839ca809291e2c798f40d58cd8a239e3c8249d9805fe083d expected=OK

@@ -1,0 +1,2 @@
+init_module trim=0 stdout=  => halt steps=19337 outs=0 ins=0 c=19435 d=19 a=710270897 overlay=220 elapsed=0ms
+init_module trim=1 stdout=  => halt steps=19301 outs=0 ins=0 c=19399 d=387450038 a=182815712 overlay=182 elapsed=0ms

@@ -1,0 +1,5 @@
+trim_bolge19  in=0  stdout=310a  steps=
+trim_bolge19  in=1  stdout=330a  steps=
+trim_bolge19  in=2  stdout=350a  steps=
+trim_bolge19  in=3  stdout=370a  steps=
+trim_bolge19  in=4  stdout=390a  steps=

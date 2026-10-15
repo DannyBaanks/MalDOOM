@@ -1,0 +1,78 @@
+{
+  "experiment": "E5_LOADER_WHITESPACE_V0",
+  "date": "2026-10-15",
+  "target": "TARGET_A Malbolge Unshackled",
+  "host": "Ubuntu 24.04 (Linux DannyISyCo 7.0.0-38-generic), x86_64, 12 cores, zig 0.16.0, gcc 13.3.0",
+  "question": "The three-engine cross-test found that bolge19 and fast20_fixed agree with each other and emit 02ce (garbage) on evidence/M0_KILLER_UNSHACKLED_V0/artifact.mu, while the canonical Unshackled VM emits the sealed oracle 310a. Why do LMFAO-generated .mu images break on fixed-19 engines?",
+  "answer": "The loader CONVENTION, not the epochal semantics. fast20-style engines map every file byte to one cell. The canonical Unshackled loader skips ' space, tab, CR, LF, requires 33<=v<127 and (v+pos)%94 in the opcode set, and increments pos (mod 564) only for accepted cells; on a non-conforming byte it prints 'invalid character' and ABORTS (vendor/Unshackled.c:628-648). artifact.mu is 2888171 bytes whose LAST TWO (CR@2888169, LF@2888170) are whitespace. The intolerant loader appends two junk cells and seeds the epochal crazy-chain from them, corrupting every cell past the image: pat=[10,581130723,10,...] instead of pat=[81,581130652,81,...]. LMFAO relocation reads that chain, so the trajectory collapses. The sharper form of the finding: two incompatible image conventions coexist in this tree - LMFAO emits opcode-aligned TEXT (.mu, init_module.mb) while the MalbolgeLISP epochal core is a RAW CELL DUMP - and no engine here implements both.",
+  "scope": "Loader semantics, instruction-pointer decode offsets, and throughput of one fixed specimen. No ladder milestone is claimed and no gameplay transition is computed anywhere in this experiment. The canonical host-only gate (README.md:16) is untouched: every S_t -> S_{t+1} measured here happens inside a Malbolge VM.",
+  "supersedes": "Nothing. E4_VM_CONFIG_PINNED_V0 (pinned canonical VM) is referenced, not modified; its unsh_pinned.c is rebuilt from that dir and hash-checked before use. This experiment explains the divergence that the cross-test recorded but could not resolve.",
+  "sealed_source_under_test": {
+    "path": "evidence/M0_KILLER_UNSHACKLED_V0/artifact.mu",
+    "sha256": "3b9bdf37eb708ec751d10f0dea32edde4375e526ce56fd2dd440f5a22819ba10",
+    "bytes": 2888171,
+    "modified_by_this_experiment": false,
+    "whitespace_bytes": [
+      {"position": 2888169, "hex": "0d"},
+      {"position": 2888170, "hex": "0a"}
+    ]
+  },
+  "engines": {
+    "bolge19_upstream": {"role": "fixed-19 native engine, UNMODIFIED (baseline)", "source_sha256": "cd77fdfc4e1ec6bf30fa9370cbcd633cac55db2f825f1a27b1f8a576e4521bc0", "source_sealed_here_as": "bolge19_upstream.zig", "binary_sha256": "da8de1c7a87a2a43ef9148f9a255cb24fcd0648ded0f60894bd2dc27bb0d6691", "build": "zig build-exe main.zig -O ReleaseFast -lc"},
+    "b19var": {"role": "scratch fork of bolge19 with runtime semantic switches B19_ROTW/B19_IO_CANON/B19_TRIM/B19_OFFS_ZERO/B19_CHECK", "source_sha256": "84d30e53c77c42eeaa18f0388f70428f9a561c966781ef95620f1f14d2e1201f", "source_sealed_here_as": "b19var_main.zig", "binary_sha256": "0cb87d493ed5dcf3b7a160d0dd4f773cb56c47ad29b425c703b9bf6d1c8e5391", "baseline_validated": "with all switches at fast20 defaults it reproduces bolge19 byte-exact (steps=20163 c=117 d=86 a=573956343 stdout=02ce) before being used as an instrument"},
+    "fast20_fixed": {"role": "patched upstream Icz/kspalaiologos VM - same fixed-19 model, independent codebase", "source_sha256": "76b32d5fab6ec39301b1fc0fac20bea321d0c5918d424c8fcfbec18f89a36f26", "source_location": "malbolge-lisp-forensics/src/patches/fast20_fixed.c", "binary_sha256": "f81803e29c704019f80fdfc202fac5d364614869bc26806ce50f73473d8221a1", "build": "gcc -O3"},
+    "unsh_pinned": {"role": "canonical Unshackled VM with pinned startup config (E4)", "source_sha256": "941d5bbd4ffca009f3284ff951ba96ef38194ecf0347413ca3604a23a481659a", "source_location": "evidence/E4_VM_CONFIG_PINNED_V0/unsh_pinned.c", "binary_sha256": "c56f55860b3e4a0225b53eac30242351303df7b8e4ba91efe68d2ce84be5070d", "build": "gcc -O2", "pin": {"rotwidth0": 10, "growth_slack": 3, "growth_step": 5, "det_growth": 1, "seed": 7}}
+  },
+  "fixtures": {
+    "note": "Never stored - make_fixtures.py regenerates both from the sealed image and verifies its sha256 first",
+    "artifact_trunc.mu": {"sha256": "fd390dd413224854d506ab00f50b3349d6c8039bbf1170f40be3c606d33b125e", "bytes": 2888169, "construction": "sealed image minus its 2 trailing whitespace bytes"},
+    "artifact_tol.mu": {"sha256": "0c8c85fbb4cb31c5839ca809291e2c798f40d58cd8a239e3c8249d9805fe083d", "bytes": 2888174, "construction": "the 2888169 code chars + 5 whitespace bytes ' \\r\\n\\t\\n' - a tolerance probe, not a 2-byte trim"}
+  },
+  "measurements": [
+    {"id": "bug_reproduces_on_every_killer_input", "raw": "raw/01_bolge19_on_sealed.txt", "finding": "UNMODIFIED bolge19 emits 02ce for all five sealed inputs (0..4), never the oracle stdout. The failure is not input-dependent.", "status": "DEMONSTRATED"},
+    {"id": "root_cause_is_loader_whitespace_intolerance", "raw": "raw/04_tolerance_control.txt", "finding": "On artifact_tol.mu (5 junk bytes) the canonical loader VM prints 310a in 10,347,959 steps; unmodified bolge19 prints NOTHING on the same file; bolge19 with the canonical loader ported (B19_TRIM=1) prints 310a in 8,623,625 steps. Same specimen, three loaders, three outcomes - the loader is the variable.", "status": "DEMONSTRATED"},
+    {"id": "pre_trim_restores_5_of_5", "raw": "raw/02_trim_bolge19_5of5.txt raw/03_trim_fast20.txt", "finding": "artifact_trunc.mu with the UNMODIFIED engines: bolge19 gives 310a 330a 350a 370a 390a (steps 8623625 9171949 9725624 10254258 10820576); fast20_fixed gives the identical stdout and identical final registers (c=581135934 d=581139251 a=10). Two independent fixed-19 codebases, both restored by removing 2 bytes.", "status": "DEMONSTRATED"},
+    {"id": "loader_port_is_exactly_equivalent_to_pre_trim", "raw": "raw/05_port_full_image.txt", "finding": "B19_TRIM=1 on the FULL untruncated sealed image gives 5/5 with step counts identical to the pre-trim route (8623625/9171949/9725624/10254258/10820576) and repeats 3x deterministically. The trailing whitespace contributed no program content - only chain corruption.", "status": "DEMONSTRATED"},
+    {"id": "io_convention_is_not_the_cause", "raw": "semantic_sweep_152.tsv", "finding": "Refutes the cross-test's leading hypothesis. io=0 (raw) and io=1 (canonical newline=END-2 / EOF=END-1 sentinels) rows are byte-identical with identical step counts. Raw mode reaches the same output by a different route: the LF read is the literal 10 that gets printed.", "status": "DEMONSTRATED"},
+    {"id": "rotation_window_has_a_floor_but_is_not_the_wall", "raw": "semantic_sweep_152.tsv", "finding": "Matches occur only where trim=1 AND offs active AND w in {14..19}. Fixed windows w<=13 never match. Consistent with the canonical VM starting rotwidth=10+rand()%6 and GROWING (E4: 10->20); a fixed small window cannot substitute for epochal growth. Steps by window: 14->9852167, 15->5995542, 16->6912647, 17->7759736, 18->8623625, 19->9484189.", "status": "DEMONSTRATED"},
+    {"id": "offs_are_load_bearing", "raw": "semantic_sweep_152.tsv", "finding": "Zeroing fast20's per-region offsets gives 0/5.", "status": "DEMONSTRATED"},
+    {"id": "offs_derived_from_the_canonical_sign_class", "raw": "raw/07_offs_derivation.txt", "finding": "Unshackled.c decodes with pos=mod(c,564) and mod()=value - head*(3^w-1)/2 + head*(29524 mod m) (mod m). For a 19-trit ring with head=c/3^18 that yields 0, 23, 46 (mod 94); fast20/bolge19 offs 0, 117, 140 reduce to 0, 23, 46. Exact match, so the offsets are the 3-adic SIGN-CLASS correction of the canonical instruction pointer, not a quirk. The earlier reading 'canonical decode is just (mem[c]+c)%94, so offs are a fast20 deviation' is WRONG - that form holds only for head=T0.", "status": "DEMONSTRATED"},
+    {"id": "throughput_gap_over_the_reference_vm", "raw": "raw/06_throughput.txt", "finding": "bolge19: 8623625 steps in 0.10 s process wall (internal elapsed 95 ms) => ~86-91 M steps/s. Canonical pinned VM: 10347959 steps in 1.61-1.77 s internal / 3.01-3.18 s process wall => 5.8-6.4 M steps/s internal. Speedup ~14x on the VM's own dispatch clock, ~25x on process wall (the reference VM spends ~1.4 s tearing down its bignum memory tree, which its internal timer does not count). The conservative figure stated is 14x.", "status": "DEMONSTRATED"},
+    {"id": "two_image_conventions_coexist", "raw": "raw/09_specimen_census.txt raw/10_convention_matrix.txt", "finding": "Matrix over four pinned images (bounded probe B19_MAXSTEPS=2000000, so a maxsteps row is a budget cut, not a halt): artifact.mu - strict loader gives the 310a oracle, raw loader gives 02ce garbage halting at 20,163; init_module.mb - BOTH loaders halt, raw at 19,337 and strict at 19,301; core.mb (371,312,023 B, ZERO whitespace) - raw runs, strict ABORTS 'invalid character byte=7 v=99 instr=12'; lisp.mb (371,331,415 B, one LF MID-FILE at 19,391) - raw runs, strict ABORTS 'invalid character byte=19392 v=40 instr=67'. LMFAO emits opcode-aligned text; the MalbolgeLISP epochal core is a raw cell dump. No engine here implements both conventions.", "status": "DEMONSTRATED"},
+    {"id": "container_control_lisp_is_init_plus_core", "raw": "raw/09_specimen_census.txt", "finding": "lisp.mb is exactly init_module.mb || core.mb: 19,392 + 371,312,023 = 371,331,415 and lisp[:19392] == init_module (prefix equality here; full-concatenation sha256 equality 092df5cd… was verified separately on 2026-10-15). So the single LF inside lisp.mb IS init_module's terminator, sitting at the seam, and raw loading shifts the entire 371 MB core one cell late relative to a canonical load.", "status": "DEMONSTRATED"},
+    {"id": "static_prediction_matches_runtime_rejection", "raw": "raw/09_specimen_census.txt raw/10_convention_matrix.txt", "finding": "The census predicts arithmetically that the first non-opcode core byte is at core-offset 0 with value=40 instr=67; the engine independently rejects at file byte 19,392 with v=40 instr=67. The loadability boundary is not an engine quirk.", "status": "DEMONSTRATED"},
+    {"id": "provenance_of_the_19337_step_claim", "raw": "raw/11_init_module_loaders.txt", "finding": "The forensics repo's headline 'identical agreement at exactly 19,337 steps, both engines' is init_module.mb under the RAW loader: steps=19337 c=19435 d=19 a=710270897, reproduced deterministically. Under the canonical strict loader the same bytes give 19,301 steps and different final registers (c=19399 d=387450038 a=182815712). The engines agreed because they share a convention, not because either was validated against Unshackled. This closes the open question of how the 19,337 column was produced.", "status": "DEMONSTRATED"},
+    {"id": "trim_only_repairs_trailing_whitespace", "raw": "FINDINGS.md", "finding": "artifact.mu's whitespace is at EOF so dropping it displaces nothing - that is why a 2-byte pre-trim restores 5/5. A MID-FILE whitespace byte (lisp.mb) displaces every cell after it, so a trim is not a valid repair there; only the loader port is.", "status": "DEMONSTRATED"},
+    {"id": "canonical_vm_on_the_native_specimen", "raw": "raw/12_canonical_on_native.txt", "finding": "unsh_pinned on init_module.mb was SIGKILLed (exit 137, OOM) before halting on this host (~3 GB available, bignum memory tree). The canonical-vs-fixed19 comparison could therefore NOT be made on a native LMFAO specimen - it was made only on the sealed M0 artifact. No divergence claim is made about init_module under the canonical VM beyond what the strict loader's accept/reject rule predicts.", "status": "NOT_DEMONSTRATED"}
+  ],
+  "controls": [
+    "b19var was validated against unmodified bolge19 (byte-exact stdout, steps, final registers) before being used to isolate variables",
+    "three loaders were run on the SAME specimen file, so the loader is the only changing factor",
+    "two independent fixed-19 codebases (Zig bolge19, C fast20_fixed) restored by the same 2-byte fixture",
+    "every engine source is sha256-checked before build; a drifted source makes e5_capture.sh SKIP the phase rather than silently build a different binary",
+    "fixtures are regenerated, never stored, and make_fixtures.py refuses to write inside the sealed M0_KILLER dir",
+    "sealed artifact.mu and E4 files verified unchanged after the experiment (sha256 in hashes.txt)"
+  ],
+  "negative_results_kept": [
+    "the pre-registered hypothesis (newline/EOF encoding causes the divergence) is REFUTED by the sweep",
+    "trim=0 with offsets zeroed: 0/5 in every window",
+    "canonical VM on init_module.mb: OOM kill, no comparison obtained"
+  ],
+  "not_demonstrated": [
+    "That bolge19+trim is a faithful epochal emulation. It is an EQUIVALENT for this artifact: its step count (8.62 M) differs from the pinned canonical (10.35 M) and the per-input deltas differ.",
+    "That w>=14 suffices for other LMFAO images - only the sealed M0 artifact went through the sweep.",
+    "That fast20's fixed-18 mrot (pins trit 18 while mcrz spans 19) is harmless in general; it happens not to matter for this artifact.",
+    "That fast20_fixed's step counter is usable - it printed ~1.05e14 for a ~10 M-step run. Its stdout and final registers do match bolge19 exactly.",
+    "Whether the trailing CRLF came from LMFAO on the Windows build host or from repo handling.",
+    "Any milestone on the M0-M7 ladder. M2 full S_0 and M3 full tick remain NOT_DEMONSTRATED; a ~14x throughput lever does not by itself reach a playable tick."
+  ],
+  "implications_for_maldoom": [
+    "MALDOOM consumes LMFAO output, so its fast native target must use the STRICT loader. bolge19/fast20 run LMFAO .mu correctly only once the loader is ported - with the raw loader they silently execute a different program.",
+    "The 324 M steps/s figure recorded for fast20 on lisp.mb is valid FOR RAW IMAGES. It is not evidence that the same throughput applies to .mu text without the loader port; after the port, this experiment measures ~86-91 M steps/s on the 8.62 M-step M0 run.",
+    "A Doom tick at 1e10-1e12 steps moves from hours to roughly 2 min - 3 h at ~86 M steps/s. That recovers about one order of magnitude of the ~3 needed; the cost wall stands, it just moves.",
+    "Step-count and trace-hash claims must name the engine AND the loader convention: the same bytes under two loaders are two different programs (init_module.mb: 19,337 vs 19,301 steps, different final registers).",
+    "Any future 'cross-engine agreement' claim between two engines that share a loader is not independent evidence. Agreement must be sought across conventions, not within one."
+  ],
+  "writes": "This dir only. vendor/Unshackled.c, evidence/M0_KILLER_UNSHACKLED_V0/* and evidence/E4_VM_CONFIG_PINNED_V0/* are byte-untouched (verified by sha256sum -c before and after).",
+  "reproduce": "E5_WORK=$(mktemp -d /home/danny/tmp_e5_XXXXXX) E5_OUT=$E5_WORK/raw bash e5_capture.sh   # add E5_SWEEP=1 for the 152-config sweep (~4 min, single-threaded)"
+}

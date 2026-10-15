@@ -1,0 +1,5 @@
+bolge19  sealed_in=0  02ce
+bolge19  sealed_in=1  02ce
+bolge19  sealed_in=2  02ce
+bolge19  sealed_in=3  02ce
+bolge19  sealed_in=4  02ce

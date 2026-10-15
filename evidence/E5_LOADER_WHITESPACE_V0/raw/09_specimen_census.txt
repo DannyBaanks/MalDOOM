@@ -1,0 +1,11 @@
+artifact.mu      bytes=     2888171 sha=3b9bdf37eb708ec7… ws=  2 at [2888169, 2888170] (at EOF) types=CR,LF
+                convention: LMFAO/HeLL .mu - opcode-aligned TEXT for the strict loader
+init_module.mb   bytes=       19392 sha=4b3080fd250a4193… ws=  1 at [19391] (at EOF) types=LF
+                convention: LMFAO init module - opcode-aligned TEXT
+core.mb          bytes=   371312023 sha=70e9155bbe44b58a… ws=  0 at [] (none) types=-
+                convention: MalbolgeLISP epochal core - RAW CELL DUMP
+lisp.mb          bytes=   371331415 sha=092df5cdc240de33… ws=  1 at [19391] (MID-FILE) types=LF
+                convention: init_module.mb || core.mb - mixed container
+
+container control: lisp[:19392] == init_module -> True; size 19392+371312023 == 371331415; full concatenation hash equality was verified separately on 2026-10-15
+strict-rule probe on core.mb: after 19391 accepted init cells the first non-opcode core byte is at core-offset 0: value=40 instr=67 not in [4, 5, 23, 39, 40, 62, 68, 81] -> the reference loader aborts ('invalid character') on this image

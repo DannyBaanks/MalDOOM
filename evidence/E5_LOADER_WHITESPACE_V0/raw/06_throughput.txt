@@ -1,0 +1,15 @@
+bolge19: imagen=2888169 celdas zona=[60951,121902) pat=[81,581130652,81...]
+bolge19: HALT steps=8623625 c=581135934 d=581139251 a=10 elapsed=0s
+trim_bolge19_wall=0.10
+bolge19: imagen=2888169 celdas zona=[60951,121902) pat=[81,581130652,81...]
+bolge19: HALT steps=8623625 c=581135934 d=581139251 a=10 elapsed=0s
+trim_bolge19_wall=0.10
+bolge19: imagen=2888169 celdas zona=[60951,121902) pat=[81,581130652,81...]
+bolge19: HALT steps=8623625 c=581135934 d=581139251 a=10 elapsed=0s
+trim_bolge19_wall=0.11
+UNSH_PIN STEPS 10347959 WALL 1.742s SPS 5940077 cfg{seed=7 rotwidth0=10 slack=3 gstep=5 det=1 prob=1073741823} final{rotwidth=20 max_wordwidth=10}
+pinned_canonical_wall=3.16
+UNSH_PIN STEPS 10347959 WALL 1.661s SPS 6230329 cfg{seed=7 rotwidth0=10 slack=3 gstep=5 det=1 prob=1073741823} final{rotwidth=20 max_wordwidth=10}
+pinned_canonical_wall=3.05
+UNSH_PIN STEPS 10347959 WALL 1.612s SPS 6419425 cfg{seed=7 rotwidth0=10 slack=3 gstep=5 det=1 prob=1073741823} final{rotwidth=20 max_wordwidth=10}
+pinned_canonical_wall=3.01

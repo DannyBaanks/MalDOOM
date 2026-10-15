@@ -1,0 +1,3 @@
+canonical_loader (E4 pin)   stdout=310a  STEPS 10347959
+intolerant_loader (bolge19) stdout=  <- the bug, same file
+ported_loader (b19var TRIM) stdout=310a  halt steps=8623625

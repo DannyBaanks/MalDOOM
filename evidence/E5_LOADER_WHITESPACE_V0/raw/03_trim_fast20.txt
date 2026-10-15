@@ -1,0 +1,5 @@
+trim_fast20   in=0  stdout=310a
+trim_fast20   in=1  stdout=330a
+trim_fast20   in=2  stdout=350a
+trim_fast20   in=3  stdout=370a
+trim_fast20   in=4  stdout=390a

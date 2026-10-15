@@ -1,0 +1,54 @@
+# E5 - exact commands. Everything below runs from this directory; e5_capture.sh
+# does the whole battery and writes to its own scratch dir (never into ./raw).
+
+E5=$(pwd)
+W=$(mktemp -d /home/danny/tmp_e5_XXXXXX)
+
+## full battery, sealed form
+E5_WORK="$W" E5_OUT="$W/raw" bash e5_capture.sh
+## add the 152-config sweep (~4 min, single-threaded, one run at a time)
+E5_WORK="$W" E5_OUT="$W/raw" E5_SWEEP=1 bash e5_capture.sh
+
+## individual steps, for reading the claims one at a time
+python3 make_fixtures.py "$W"                     # regenerates artifact_trunc.mu / artifact_tol.mu
+python3 specimen_census.py                        # whitespace census + container + loadability controls
+
+zig build-exe bolge19_upstream.zig -O ReleaseFast -lc -femit-bin="$W/bolge19"   # zig 0.16.0, UNMODIFIED engine
+zig build-exe b19var_main.zig      -O ReleaseFast -lc -femit-bin="$W/b19var"     # fork with B19_* switches
+gcc -O2 -w -o "$W/unsh_pinned" ../E4_VM_CONFIG_PINNED_V0/unsh_pinned.c           # canonical VM, E4 pin
+gcc -O3 -w -o "$W/fast20_fixed" "/home/danny/Development/ISyCo Git/malbolge-lisp-forensics/src/patches/fast20_fixed.c"
+
+A="/home/danny/Development/ISyCo Git/MALDOOM/evidence/M0_KILLER_UNSHACKLED_V0/artifact.mu"
+RT="/home/danny/Development/ISyCo/CoEvoLang/experiments/malbolge_lisp_petri_dish/runtime"
+
+# baseline: the bug, on all five sealed killer inputs -> 02ce every time
+for i in 0 1 2 3 4; do printf '%s\n' "$i" | "$W/bolge19" "$A"; done
+
+# route 1: pre-trim the image (valid because the whitespace is at EOF), unmodified engines
+for i in 0 1 2 3 4; do printf '%s\n' "$i" | "$W/bolge19"      "$W/artifact_trunc.mu"; done   # 310a 330a 350a 370a 390a
+for i in 0 1 2 3 4; do printf '%s\n' "$i" | "$W/fast20_fixed" "$W/artifact_trunc.mu"; done   # same stdout + registers
+
+# route 2: port the canonical loader, full untruncated image
+for i in 0 1 2 3 4; do printf '%s\n' "$i" | B19_TRIM=1 "$W/b19var" "$A"; done
+
+# the tolerance control - one file, three loaders
+printf '0\n' | UNSH_SEED=7 UNSH_ROTWIDTH=10 UNSH_GROWTH_SLACK=3 UNSH_GROWTH_STEP=5 UNSH_DET_GROWTH=1 \
+  "$W/unsh_pinned" "$W/artifact_tol.mu"                                       # 310a, STEPS 10347959
+printf '0\n' | "$W/bolge19" "$W/artifact_tol.mu"                              # no output at all
+printf '0\n' | B19_TRIM=1 "$W/b19var" "$W/artifact_tol.mu"                    # 310a, halt steps=8623625
+
+# the two-convention matrix (bounded at 2M steps so a maxsteps row is not a halt)
+for spec in init_module.mb core.mb lisp.mb; do for t in 0 1; do
+  printf '0\n' | B19_MAXSTEPS=2000000 B19_TRIM=$t "$W/b19var" "$RT/$spec"
+done; done
+
+# the 19,337 provenance check
+for t in 0 1; do printf '0\n' | B19_TRIM=$t "$W/b19var" "$RT/init_module.mb"; done   # 19337 vs 19301
+
+# offs[] derivation (pure arithmetic, no engine)
+python3 -c "
+m=564
+for r in (0,1,2): print(r, (-r*((3**19-1)//2) + r*(29524 % m)) % m % 94)
+END=1162261467; T=END//3
+a1=94-((END-1)//6-29524)%94; a2=94-((END-1)//3-59048)%94
+print(0,(a1-T)%94+94,(a2-2*T)%94+94)"

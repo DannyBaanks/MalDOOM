@@ -1,0 +1,6 @@
+attempt: unsh_pinned (E4 pin) on init_module.mb, host with ~3 GB available
+/bin/bash: línea 22: 877989 Hecho                   printf '0\n'
+     877990 Terminado (killed)      | UNSH_SEED=7 UNSH_ROTWIDTH=10 UNSH_GROWTH_SLACK=3 UNSH_GROWTH_STEP=5 UNSH_DET_GROWTH=1 ./unsh_pinned "$RT/init_module.mb" > c.o 2> c.e
+exit=137  stdout=
+report: 
+free: Mem:           15205       11520        3124           8         832        3685
