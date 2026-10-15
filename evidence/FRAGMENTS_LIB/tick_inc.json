@@ -1,0 +1,18 @@
+{
+  "name": "tick_inc",
+  "length": 27,
+  "mal_length": 27,
+  "sha256": "cf2cccc7ba191b1fa123997b01e0140dee62ae3137213e761fb1a0474189a14a",
+  "valid_chars": true,
+  "inst_counts": {
+    "p": 18,
+    "*": 8,
+    "v": 1
+  },
+  "description": "TICK_INC: tick = (tick + 1) % 59049 at [d] (RIPPLE-CARRY STUB - ~40 ops, needs full 100+ impl)",
+  "entry_d": 1002,
+  "clobbers": [
+    "a",
+    "tape[d]"
+  ]
+}

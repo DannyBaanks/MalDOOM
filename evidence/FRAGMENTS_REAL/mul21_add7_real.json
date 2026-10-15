@@ -1,0 +1,19 @@
+{
+  "name": "mul21_add7_real",
+  "length": 38,
+  "mal_length": 38,
+  "sha256": "a0dcea057b951399e61f6afc0a8fb71bd00dc532bca86cbbef4d74a07aed0bcb",
+  "valid_chars": true,
+  "inst_counts": {
+    "p": 27,
+    "*": 10,
+    "v": 1
+  },
+  "description": "MUL21_ADD7 REAL: state = state*21+7 % 59049 (shift-add ternary, ~200 ops, NEEDS VERIFICATION)",
+  "entry_d": 1003,
+  "clobbers": [
+    "a",
+    "tape[d]"
+  ],
+  "verified": false
+}

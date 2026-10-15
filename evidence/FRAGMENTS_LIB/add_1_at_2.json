@@ -1,0 +1,18 @@
+{
+  "name": "add_1_at_2",
+  "length": 13,
+  "mal_length": 13,
+  "sha256": "14aa189388c49dc408fe2d81134c470649c60d8caeeed8490134fac1ce8a502a",
+  "valid_chars": true,
+  "inst_counts": {
+    "p": 11,
+    "*": 1,
+    "v": 1
+  },
+  "description": "ADD_1: word at BASE+2 += 1 (STUB)",
+  "entry_d": 1002,
+  "clobbers": [
+    "a",
+    "tape[d]"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "tick_inc",
+  "description": "tick_inc at BASE+2 (stub - needs ripple-carry implementation)",
+  "entry_c": 0,
+  "entry_d": 1002,
+  "sha256": "b1b97c255ba6d0bb000b041e22d214ef1c23d605a5a1518c163bf26b01976f8b"
+}

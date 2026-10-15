@@ -1,0 +1,19 @@
+{
+  "name": "checksum_real",
+  "length": 1,
+  "mal_length": 1,
+  "sha256": "4ae81572f06e1b88fd5ced7a1a000945432e83e1551e6f721ee9c00b8cc33260",
+  "valid_chars": true,
+  "inst_counts": {
+    "v": 1
+  },
+  "description": "CHECKSUM REAL: crazy-fold 378 words (STUB - needs loop)",
+  "entry_d": 1000,
+  "clobbers": [
+    "a",
+    "c",
+    "d",
+    "tape[BASE..BASE+378]"
+  ],
+  "verified": false
+}

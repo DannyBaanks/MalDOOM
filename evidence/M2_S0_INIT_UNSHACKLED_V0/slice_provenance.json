@@ -1,0 +1,39 @@
+{
+  "wad": {
+    "file": "doom1.wad",
+    "sha256": "1d7d43be501e67d927e415e0b8f3e29c3bf33075e859721816f652a526cac771",
+    "size": 4196020
+  },
+  "framing": "hex of the raw THINGS lump bytes + '.' terminator; content-blind (no semantic interpretation by the host)",
+  "slices": [
+    {
+      "map": "E1M1",
+      "dir_index": 6,
+      "things_index": 7,
+      "filepos": 67500,
+      "size": 1380,
+      "records": 138,
+      "hex_chars": 2761,
+      "player1": {
+        "x": 1056,
+        "y": -3616,
+        "angle": 90
+      }
+    },
+    {
+      "map": "E1M2",
+      "dir_index": 17,
+      "filepos": 123220,
+      "size": 2620,
+      "records": 262,
+      "player1": {
+        "x": -32,
+        "y": -240,
+        "angle": 90
+      },
+      "note": "filepos/size taken by the generator from the real WAD directory",
+      "things_index": 18
+    }
+  ],
+  "artifact_identity": "the same source.eir (sha256 3d765b60...) compiles ONE artifact.mu that answers both slices \u2014 COMPILE_ONCE discipline, as in M2a"
+}

@@ -1,0 +1,594 @@
+# M2_S0_INIT: stdin = hex-framed THINGS lump bytes + '.' terminator.
+# VM decodes, walks 10-byte thing records, censuses and captures the
+# player-1 start, then emits S0V1 x y angle things p1.
+# Layout: RET=2000; BUF=3000..3009; RIDX=3100; THINGS=3101; P1=3102; PX=3103; PY=3104; PANGLE=3105.
+jmp main
+hexpair:
+jlt hex_hi09, A, 48
+jgt hex_hiAF, A, 57
+sub A, 48
+jmp hex_hidone
+hex_hiAF:
+jlt hex_hierr, A, 65
+jgt hex_hiAF2, A, 70
+sub A, 55
+jmp hex_hidone
+hex_hiAF2:
+jlt hex_hierr, A, 97
+jgt hex_hierr, A, 102
+sub A, 87
+jmp hex_hidone
+hex_hidone:
+mov D, A
+add D, D
+add D, D
+add D, D
+add D, D
+jlt hex_lo09, B, 48
+jgt hex_loAF, B, 57
+sub B, 48
+jmp hex_lodone
+hex_loAF:
+jlt hex_loerr, B, 65
+jgt hex_loAF2, B, 70
+sub B, 55
+jmp hex_lodone
+hex_loAF2:
+jlt hex_loerr, B, 97
+jgt hex_loerr, B, 102
+sub B, 87
+hex_lodone:
+add D, B
+load C, 2000
+jmp C
+hex_hi09:
+hex_lo09:
+hex_hierr:
+hex_loerr:
+putc 69
+putc 10
+exit
+main:
+mov A, 0
+store A, 3100
+mov A, 0
+store A, 3101
+mov A, 0
+store A, 3102
+mov A, 0
+store A, 3103
+mov A, 0
+store A, 3104
+mov A, 0
+store A, 3105
+byte_loop:
+getc A
+jeq finish, A, 46
+getc B
+mov C, byte_ret
+store C, 2000
+jmp hexpair
+byte_ret:
+load A, 3100
+add A, 3000
+store D, A
+load A, 3100
+add A, 1
+store A, 3100
+jlt byte_loop, A, 10
+mov A, 0
+store A, 3100
+load A, 3101
+add A, 1
+store A, 3101
+mov A, 3006
+load B, A
+mov A, 3007
+load A, A
+add A, A
+add A, A
+add A, A
+add A, A
+add A, A
+add A, A
+add A, A
+add A, A
+add A, B
+jne record_done, A, 1
+load A, 3102
+add A, 1
+store A, 3102
+mov A, 3000
+load B, A
+mov A, 3001
+load A, A
+add A, A
+add A, A
+add A, A
+add A, A
+add A, A
+add A, A
+add A, A
+add A, A
+add A, B
+store A, 3103
+mov A, 3002
+load B, A
+mov A, 3003
+load A, A
+add A, A
+add A, A
+add A, A
+add A, A
+add A, A
+add A, A
+add A, A
+add A, A
+add A, B
+store A, 3104
+mov A, 3004
+load B, A
+mov A, 3005
+load A, A
+add A, A
+add A, A
+add A, A
+add A, A
+add A, A
+add A, A
+add A, A
+add A, A
+add A, B
+store A, 3105
+record_done:
+jmp byte_loop
+finish:
+load A, 3100
+jeq finish_ok, A, 0
+putc 80
+putc 10
+exit
+finish_ok:
+putc 83
+putc 48
+putc 86
+putc 49
+putc 32
+putc 120
+putc 61
+mov A, 3103
+load A, A
+jlt x_pos, A, 32768
+putc 45
+mov D, 65536
+sub D, A
+mov A, D
+x_pos:
+mov B, 0
+mov D, 0
+x_d100000:
+jlt x_e100000, A, 100000
+sub A, 100000
+add D, 1
+jmp x_d100000
+x_e100000:
+jgt x_w100000, D, 0
+jgt x_w100000, B, 0
+jmp x_n100000
+x_w100000:
+add D, 48
+putc D
+mov B, 1
+x_n100000:
+mov D, 0
+x_d10000:
+jlt x_e10000, A, 10000
+sub A, 10000
+add D, 1
+jmp x_d10000
+x_e10000:
+jgt x_w10000, D, 0
+jgt x_w10000, B, 0
+jmp x_n10000
+x_w10000:
+add D, 48
+putc D
+mov B, 1
+x_n10000:
+mov D, 0
+x_d1000:
+jlt x_e1000, A, 1000
+sub A, 1000
+add D, 1
+jmp x_d1000
+x_e1000:
+jgt x_w1000, D, 0
+jgt x_w1000, B, 0
+jmp x_n1000
+x_w1000:
+add D, 48
+putc D
+mov B, 1
+x_n1000:
+mov D, 0
+x_d100:
+jlt x_e100, A, 100
+sub A, 100
+add D, 1
+jmp x_d100
+x_e100:
+jgt x_w100, D, 0
+jgt x_w100, B, 0
+jmp x_n100
+x_w100:
+add D, 48
+putc D
+mov B, 1
+x_n100:
+mov D, 0
+x_d10:
+jlt x_e10, A, 10
+sub A, 10
+add D, 1
+jmp x_d10
+x_e10:
+jgt x_w10, D, 0
+jgt x_w10, B, 0
+jmp x_n10
+x_w10:
+add D, 48
+putc D
+mov B, 1
+x_n10:
+add A, 48
+putc A
+putc 32
+putc 121
+putc 61
+mov A, 3104
+load A, A
+jlt y_pos, A, 32768
+putc 45
+mov D, 65536
+sub D, A
+mov A, D
+y_pos:
+mov B, 0
+mov D, 0
+y_d100000:
+jlt y_e100000, A, 100000
+sub A, 100000
+add D, 1
+jmp y_d100000
+y_e100000:
+jgt y_w100000, D, 0
+jgt y_w100000, B, 0
+jmp y_n100000
+y_w100000:
+add D, 48
+putc D
+mov B, 1
+y_n100000:
+mov D, 0
+y_d10000:
+jlt y_e10000, A, 10000
+sub A, 10000
+add D, 1
+jmp y_d10000
+y_e10000:
+jgt y_w10000, D, 0
+jgt y_w10000, B, 0
+jmp y_n10000
+y_w10000:
+add D, 48
+putc D
+mov B, 1
+y_n10000:
+mov D, 0
+y_d1000:
+jlt y_e1000, A, 1000
+sub A, 1000
+add D, 1
+jmp y_d1000
+y_e1000:
+jgt y_w1000, D, 0
+jgt y_w1000, B, 0
+jmp y_n1000
+y_w1000:
+add D, 48
+putc D
+mov B, 1
+y_n1000:
+mov D, 0
+y_d100:
+jlt y_e100, A, 100
+sub A, 100
+add D, 1
+jmp y_d100
+y_e100:
+jgt y_w100, D, 0
+jgt y_w100, B, 0
+jmp y_n100
+y_w100:
+add D, 48
+putc D
+mov B, 1
+y_n100:
+mov D, 0
+y_d10:
+jlt y_e10, A, 10
+sub A, 10
+add D, 1
+jmp y_d10
+y_e10:
+jgt y_w10, D, 0
+jgt y_w10, B, 0
+jmp y_n10
+y_w10:
+add D, 48
+putc D
+mov B, 1
+y_n10:
+add A, 48
+putc A
+putc 32
+putc 97
+putc 110
+putc 103
+putc 108
+putc 101
+putc 61
+mov A, 3105
+load A, A
+mov B, 0
+mov D, 0
+ang_d100000:
+jlt ang_e100000, A, 100000
+sub A, 100000
+add D, 1
+jmp ang_d100000
+ang_e100000:
+jgt ang_w100000, D, 0
+jgt ang_w100000, B, 0
+jmp ang_n100000
+ang_w100000:
+add D, 48
+putc D
+mov B, 1
+ang_n100000:
+mov D, 0
+ang_d10000:
+jlt ang_e10000, A, 10000
+sub A, 10000
+add D, 1
+jmp ang_d10000
+ang_e10000:
+jgt ang_w10000, D, 0
+jgt ang_w10000, B, 0
+jmp ang_n10000
+ang_w10000:
+add D, 48
+putc D
+mov B, 1
+ang_n10000:
+mov D, 0
+ang_d1000:
+jlt ang_e1000, A, 1000
+sub A, 1000
+add D, 1
+jmp ang_d1000
+ang_e1000:
+jgt ang_w1000, D, 0
+jgt ang_w1000, B, 0
+jmp ang_n1000
+ang_w1000:
+add D, 48
+putc D
+mov B, 1
+ang_n1000:
+mov D, 0
+ang_d100:
+jlt ang_e100, A, 100
+sub A, 100
+add D, 1
+jmp ang_d100
+ang_e100:
+jgt ang_w100, D, 0
+jgt ang_w100, B, 0
+jmp ang_n100
+ang_w100:
+add D, 48
+putc D
+mov B, 1
+ang_n100:
+mov D, 0
+ang_d10:
+jlt ang_e10, A, 10
+sub A, 10
+add D, 1
+jmp ang_d10
+ang_e10:
+jgt ang_w10, D, 0
+jgt ang_w10, B, 0
+jmp ang_n10
+ang_w10:
+add D, 48
+putc D
+mov B, 1
+ang_n10:
+add A, 48
+putc A
+putc 32
+putc 116
+putc 104
+putc 105
+putc 110
+putc 103
+putc 115
+putc 61
+mov A, 3101
+load A, A
+mov B, 0
+mov D, 0
+th_d100000:
+jlt th_e100000, A, 100000
+sub A, 100000
+add D, 1
+jmp th_d100000
+th_e100000:
+jgt th_w100000, D, 0
+jgt th_w100000, B, 0
+jmp th_n100000
+th_w100000:
+add D, 48
+putc D
+mov B, 1
+th_n100000:
+mov D, 0
+th_d10000:
+jlt th_e10000, A, 10000
+sub A, 10000
+add D, 1
+jmp th_d10000
+th_e10000:
+jgt th_w10000, D, 0
+jgt th_w10000, B, 0
+jmp th_n10000
+th_w10000:
+add D, 48
+putc D
+mov B, 1
+th_n10000:
+mov D, 0
+th_d1000:
+jlt th_e1000, A, 1000
+sub A, 1000
+add D, 1
+jmp th_d1000
+th_e1000:
+jgt th_w1000, D, 0
+jgt th_w1000, B, 0
+jmp th_n1000
+th_w1000:
+add D, 48
+putc D
+mov B, 1
+th_n1000:
+mov D, 0
+th_d100:
+jlt th_e100, A, 100
+sub A, 100
+add D, 1
+jmp th_d100
+th_e100:
+jgt th_w100, D, 0
+jgt th_w100, B, 0
+jmp th_n100
+th_w100:
+add D, 48
+putc D
+mov B, 1
+th_n100:
+mov D, 0
+th_d10:
+jlt th_e10, A, 10
+sub A, 10
+add D, 1
+jmp th_d10
+th_e10:
+jgt th_w10, D, 0
+jgt th_w10, B, 0
+jmp th_n10
+th_w10:
+add D, 48
+putc D
+mov B, 1
+th_n10:
+add A, 48
+putc A
+putc 32
+putc 112
+putc 49
+putc 61
+mov A, 3102
+load A, A
+mov B, 0
+mov D, 0
+p1_d100000:
+jlt p1_e100000, A, 100000
+sub A, 100000
+add D, 1
+jmp p1_d100000
+p1_e100000:
+jgt p1_w100000, D, 0
+jgt p1_w100000, B, 0
+jmp p1_n100000
+p1_w100000:
+add D, 48
+putc D
+mov B, 1
+p1_n100000:
+mov D, 0
+p1_d10000:
+jlt p1_e10000, A, 10000
+sub A, 10000
+add D, 1
+jmp p1_d10000
+p1_e10000:
+jgt p1_w10000, D, 0
+jgt p1_w10000, B, 0
+jmp p1_n10000
+p1_w10000:
+add D, 48
+putc D
+mov B, 1
+p1_n10000:
+mov D, 0
+p1_d1000:
+jlt p1_e1000, A, 1000
+sub A, 1000
+add D, 1
+jmp p1_d1000
+p1_e1000:
+jgt p1_w1000, D, 0
+jgt p1_w1000, B, 0
+jmp p1_n1000
+p1_w1000:
+add D, 48
+putc D
+mov B, 1
+p1_n1000:
+mov D, 0
+p1_d100:
+jlt p1_e100, A, 100
+sub A, 100
+add D, 1
+jmp p1_d100
+p1_e100:
+jgt p1_w100, D, 0
+jgt p1_w100, B, 0
+jmp p1_n100
+p1_w100:
+add D, 48
+putc D
+mov B, 1
+p1_n100:
+mov D, 0
+p1_d10:
+jlt p1_e10, A, 10
+sub A, 10
+add D, 1
+jmp p1_d10
+p1_e10:
+jgt p1_w10, D, 0
+jgt p1_w10, B, 0
+jmp p1_n10
+p1_w10:
+add D, 48
+putc D
+mov B, 1
+p1_n10:
+add A, 48
+putc A
+putc 10
+exit

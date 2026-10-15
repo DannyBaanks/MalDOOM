@@ -1,0 +1,18 @@
+{
+  "name": "player_move_x_real",
+  "length": 1,
+  "mal_length": 1,
+  "sha256": "4ae81572f06e1b88fd5ced7a1a000945432e83e1551e6f721ee9c00b8cc33260",
+  "valid_chars": true,
+  "inst_counts": {
+    "v": 1
+  },
+  "description": "PLAYER_MOVE_X REAL: needs COS_TABLE lookup + mul (STUB)",
+  "entry_d": 1004,
+  "clobbers": [
+    "a",
+    "tape[BASE+4]",
+    "tape[BASE+7]"
+  ],
+  "verified": false
+}

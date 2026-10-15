@@ -1,0 +1,18 @@
+{
+  "name": "add_889_at_3",
+  "length": 26,
+  "mal_length": 26,
+  "sha256": "115fcc6b78cc569f7de1cf09c089c6b36e1023da0b0f5f6e83b22369bdbcf34f",
+  "valid_chars": true,
+  "inst_counts": {
+    "p": 19,
+    "*": 6,
+    "v": 1
+  },
+  "description": "ADD_889: word at BASE+3 += 889 (STUB)",
+  "entry_d": 1003,
+  "clobbers": [
+    "a",
+    "tape[d]"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "add_28_at_3",
+  "length": 15,
+  "mal_length": 15,
+  "sha256": "b5ea01ce273d007af2f8436d0d5eb6677083e438b4d99a5d5802935a8356f091",
+  "valid_chars": true,
+  "inst_counts": {
+    "p": 12,
+    "*": 2,
+    "v": 1
+  },
+  "description": "ADD_28: word at BASE+3 += 28 (STUB)",
+  "entry_d": 1003,
+  "clobbers": [
+    "a",
+    "tape[d]"
+  ]
+}

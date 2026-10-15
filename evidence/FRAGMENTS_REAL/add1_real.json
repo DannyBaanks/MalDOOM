@@ -1,0 +1,19 @@
+{
+  "name": "add1_real",
+  "length": 51,
+  "mal_length": 51,
+  "sha256": "3a5cccb08e24ca99962bc44299d052497cb57f3f05fcf88d6dd76139ae7a560a",
+  "valid_chars": true,
+  "inst_counts": {
+    "p": 40,
+    "*": 10,
+    "v": 1
+  },
+  "description": "ADD 1 REAL: [d] = ([d] + 1) % 59049 (Lou Scheffer pattern, ~95 ops, NEEDS VERIFICATION)",
+  "entry_d": 1002,
+  "clobbers": [
+    "a",
+    "tape[d]"
+  ],
+  "verified": false
+}

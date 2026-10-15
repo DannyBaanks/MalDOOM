@@ -1,0 +1,18 @@
+{
+  "name": "ADD1_L10",
+  "program": "iiiiiiiiii",
+  "sha256": "b8509e6fa220be814478428a89bc49e41497a61f4524df96712b5163c811be8f",
+  "length": 10,
+  "final_state": {
+    "output": "",
+    "steps": 11,
+    "terminated": true,
+    "reason": 1,
+    "final_c": 10,
+    "final_a": 0,
+    "final_d": 10
+  },
+  "verified_in": [
+    "zig_vm_batch"
+  ]
+}

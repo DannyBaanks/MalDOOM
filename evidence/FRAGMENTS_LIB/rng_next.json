@@ -1,0 +1,18 @@
+{
+  "name": "rng_next",
+  "length": 58,
+  "mal_length": 58,
+  "sha256": "bdbaa3a57a92da736a9b0bcbed30f7977054cd71b9951a439ddbdc6781bb99ea",
+  "valid_chars": true,
+  "inst_counts": {
+    "p": 37,
+    "*": 20,
+    "v": 1
+  },
+  "description": "RNG_NEXT: state = (state * 21 + 7) % 59049 at [d] (STUB - needs ternary mul)",
+  "entry_d": 1003,
+  "clobbers": [
+    "a",
+    "tape[d]"
+  ]
+}
