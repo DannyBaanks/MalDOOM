@@ -1,0 +1,30 @@
+# E9 prior-disclosure precedent: does the published history already contain the marker classes the 79 untracked files carry?
+# command: git grep -I -l <pattern> HEAD  (files in the committed tree that already match)
+# run: 2026-10-15, repo MALDOOM, HEAD=4416109 (public)
+
+Walbolge                   already-in-HEAD-files=2
+Autobolge                  already-in-HEAD-files=8
+Malbolge-Translator        already-in-HEAD-files=3
+Malbolge-Engine            already-in-HEAD-files=2
+ISyCo Git                  already-in-HEAD-files=14
+C:\\\\Development          already-in-HEAD-files=0
+api[_-]key                 already-in-HEAD-files=1
+token                      already-in-HEAD-files=5
+BEGIN .*PRIVATE KEY        already-in-HEAD-files=0
+/home/[a-z]                already-in-HEAD-files=15
+
+# credential-class detail:
+HEAD:docs/CLASSIC_CHECKPOINTS.md
+HEAD:docs/GIT_PUBLICATION_REPORT.md
+HEAD:docs/TARGETS.md
+HEAD:evidence/CLASSIC_ANCHOR_SMOKE_V1/PROTOCOL_FROZEN.md
+HEAD:evidence/E8_COMMIT_SIDE_ALIGNMENT_V0/E8_ALIGNMENT.md
+HEAD:evidence/E8_COMMIT_SIDE_ALIGNMENT_V0/raw/06_content_scan_staged.txt
+HEAD:experiments/CLASSIC_ANCHOR_SMOKE_V1/README.md
+
+# CORRECTION (appended before sealing): the C:\\Development row above is a quoting error in this script,
+# the single-quoted pattern asked ERE for two literal backslashes. Re-run with the right quoting:
+C:\Development          already-in-HEAD-files=5
+
+# files matching -i 'api_key|secret|password|PRIVATE KEY' are prose matches in docs and in E8's own scan
+# output, not credentials; E8/raw/06_content_scan_staged.txt already recorded 0 credential hits over staged blobs.

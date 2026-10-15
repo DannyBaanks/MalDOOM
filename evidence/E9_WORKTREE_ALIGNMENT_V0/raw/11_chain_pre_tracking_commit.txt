@@ -1,0 +1,25 @@
+# E9 chain check, taken BEFORE the tracking commit (so the 45 new seals are on disk but not yet in HEAD)
+# E9 three-way chain check over all manifests, stored side = HEAD
+# manifests                     = 51
+# sealed entries total          = 419
+# disk bytes == seal            = 410
+# HEAD bytes == seal            = 363
+# disk == seal == HEAD (3-way)  = 363
+# entries absent from HEAD      = 49
+# mismatches                    = 56
+
+evidence/EPOCH_TRANSPARENCY_V0/program.op  seal=645f11d2ba3f  disk=645f11d2ba3f(=)  HEAD=NONE(x)
+evidence/EPOCH_TRANSPARENCY_V0/evidence.json  seal=5992e0caf7a1  disk=4945e8042cad(x)  HEAD=NONE(x)
+evidence/EPOCH_TRANSPARENCY_V1/program.op  seal=de9c91a5073f  disk=de9c91a5073f(=)  HEAD=NONE(x)
+
+### group=evidence
+# E9 three-way chain check over evidence manifests, stored side = HEAD
+# manifests                     = 48
+# sealed entries total          = 409
+# disk bytes == seal            = 400
+# HEAD bytes == seal            = 353
+# disk == seal == HEAD (3-way)  = 353
+# entries absent from HEAD      = 49
+# mismatches                    = 56
+
+evidence/EPOCH_TRANSPARENCY_V0/program.op  seal=645f11d2ba3f  disk=645f11d2ba3f(=)  HEAD=NONE(x)

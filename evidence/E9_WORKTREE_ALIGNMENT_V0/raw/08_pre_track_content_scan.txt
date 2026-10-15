@@ -1,0 +1,87 @@
+# E9 pre-track content scan
+# untracked total: 95 | foreign (to track): 79 | this experiment's own files: 16
+
+total bytes to publish: 13681119 (13.68 MB) | files containing NUL: 0 | CR bytes: 1614 | NUL bytes: 0
+
+## credential: 0 hit(s)
+
+## abs-path: 2 hit(s)
+  fix_imports.py:11: b'rt json\nimport sys\nsys.path.insert(0, r"C:\\\\Development\\\\ISyCo Git\\\\Walbolge")\nsys.path.insert('
+  fix_imports.py:12: b'Co Git\\\\Walbolge")\nsys.path.insert(0, r"C:\\\\Development\\\\ISyCo Git\\\\Malbolge-Translator")\nfrom '
+
+## hostname: 0 hit(s)
+
+## private-sibling: 137 hit(s)
+  docs/EPOCH_FRAGMENTS_SPEC.md:272: b'cution\n\xe2\x94\x9c\xe2\x94\x80\xe2\x94\x80 engine_run.json      # Malbolge-Engine execution\n\xe2\x94\x9c\xe2\x94\x80\xe2\x94\x80 walbolge_trace.json'
+  docs/EPOCH_FRAGMENTS_SPEC.md:273: b'cution\n\xe2\x94\x9c\xe2\x94\x80\xe2\x94\x80 walbolge_trace.json  # Walbolge trace\n\xe2\x94\x9c\xe2\x94\x80\xe2\x94\x80 SHA256SUMS.txt\n\xe2\x94\x94\xe2\x94\x80\xe2\x94'
+  docs/EPOCH_FRAGMENTS_SPEC.md:293: b'\n\n---\n\n## HERRAMIENTAS DE S\xc3\x8dNTESIS\n\n- `Malbolge-Translator backend.search_continuation()` para fra'
+  docs/EPOCH_FRAGMENTS_SPEC.md:294: b'` para fragments que producen output\n- `Malbolge-Translator backend.search_bridge()` para state tra'
+  docs/EPOCH_FRAGMENTS_SPEC.md:296: b'transition spec (ver siguiente paso)\n- `Autobolge Zig DSL` para b\xc3\xbasqueda exhaustiva con '
+  fix_imports.py:3: b'import sys\n\nwith open(r"C:\\Development\\ISyCo Git\\MALDOOM\\tests\\test_epoch_transparency_v'
+  fix_imports.py:11: b's\nsys.path.insert(0, r"C:\\\\Development\\\\ISyCo Git\\\\Walbolge")\nsys.path.insert(0, r"C:\\\\De'
+  fix_imports.py:11: b'insert(0, r"C:\\\\Development\\\\ISyCo Git\\\\Walbolge")\nsys.path.insert(0, r"C:\\\\Development\\'
+  fix_imports.py:12: b')\nsys.path.insert(0, r"C:\\\\Development\\\\ISyCo Git\\\\Malbolge-Translator")\nfrom dataclasses'
+  fix_imports.py:12: b'insert(0, r"C:\\\\Development\\\\ISyCo Git\\\\Malbolge-Translator")\nfrom dataclasses\'\'\'\n\ncontent = conten'
+  fix_imports.py:17: b'e(old, new)\n\nwith open(r"C:\\Development\\ISyCo Git\\MALDOOM\\tests\\test_epoch_transparency_v'
+  scripts/fragment_codegen.py:182: b"olge page\n# - Lou Scheffer's quines\n# - Malbolge-Translator generated code\n\n\n# \xe2\x94\x80\xe2\x94\x80\xe2\x94\x80 Test / Ver"
+  scripts/fragment_codegen.py:189: b' bool:\n    """Verifica fragmento usando Walbolge trace."""\n    try:\n        import sys\n '
+  scripts/fragment_codegen.py:192: b'    sys.path.insert(0, r"C:\\Development\\ISyCo Git\\Walbolge")\n        from walbolge.trace '
+  scripts/fragment_codegen.py:192: b'th.insert(0, r"C:\\Development\\ISyCo Git\\Walbolge")\n        from walbolge.trace import tr'
+  scripts/fragment_codegen.py:195: b'\n    except ImportError:\n        print("Walbolge not available for verification")\n      '
+  scripts/fragment_codegen.py:201: b' \n    # Configurar estado inicial\n    # Walbolge trace_program usa classic=False por def'
+  scripts/fragment_codegen.py:252: b'hi Iizawa")\n    print("  - O buscar con Autobolge Zig DSL + state constraints")\n\n\nif __na'
+  scripts/fragment_library.py:384: b'ficar cada fragmento en Oracle + gost + Malbolge-Engine")\n    print("  4. Registrar como anchor'
+  scripts/fragment_real.py:303: b'ficar CADA fragmento en Oracle + gost + Malbolge-Engine")\n    print("  4. Registrar como anchor'
+  scripts/search_add1_bolge.py:3: b'D1 Search \xe2\x80\x94 Hybrid: bolge.exe batch + Walbolge trace verification\n1. bolge.exe batch ('
+  scripts/search_add1_bolge.py:5: b'G2): fast execution with final state\n2. Walbolge trace (on_step): full tape verification'
+  scripts/search_add1_bolge.py:11: b'sys\nsys.path.insert(0, r"C:\\Development\\ISyCo Git\\MALDOOM")\nsys.path.insert(0, r"C:\\Devel'
+  scripts/search_add1_bolge.py:12: b'M")\nsys.path.insert(0, r"C:\\Development\\ISyCo Git\\Autobolge\\zig")\nsys.path.insert(0, r"C:'
+  scripts/search_add1_bolge.py:12: b'th.insert(0, r"C:\\Development\\ISyCo Git\\Autobolge\\zig")\nsys.path.insert(0, r"C:\\Developme'
+  scripts/search_add1_bolge.py:13: b'g")\nsys.path.insert(0, r"C:\\Development\\ISyCo Git\\Walbolge")\n\nfrom scripts.search_bolge_b'
+  scripts/search_add1_bolge.py:13: b'th.insert(0, r"C:\\Development\\ISyCo Git\\Walbolge")\n\nfrom scripts.search_bolge_batch impo'
+  scripts/search_add1_bolge.py:40: b'self, bolge_exe: str = r"C:\\Development\\ISyCo Git\\Autobolge\\zig\\bolge.exe"):\n        self'
+  scripts/search_add1_bolge.py:40: b'e_exe: str = r"C:\\Development\\ISyCo Git\\Autobolge\\zig\\bolge.exe"):\n        self.bolge_exe'
+  scripts/search_add1_bolge.py:74: b'             os.unlink(p)\n\n\n# \xe2\x94\x80\xe2\x94\x80\xe2\x94\x80 Walbolge Verification \xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94'
+  scripts/search_add1_bolge.py:191: b'LDOOM ADD1 SEARCH \xe2\x80\x94 bolge.exe batch + Walbolge trace")\n    print("=" * 70)\n    \n    # '
+  scripts/search_add1_bolge.py:195: b'ed = load_seed_program(r"C:\\Development\\ISyCo Git\\MALPAD\\evidence\\m2_state\\truth_machine.'
+  scripts/search_add1_bolge.py:225: b'LDOOM ADD1 SEARCH \xe2\x80\x94 bolge.exe batch + Walbolge trace")\n    print("=" * 70)\n    \n    se'
+  scripts/search_add1_bolge.py:228: b'ed = load_seed_program(r"C:\\Development\\ISyCo Git\\MALPAD\\evidence\\m2_state\\truth_machine.'
+  scripts/search_add1_guided.py:4: b'ruth_machine.mal\nUses bolge.exe batch + Walbolge trace verification.\n"""\n\nfrom __future_'
+  scripts/search_add1_guided.py:9: b'sys\nsys.path.insert(0, r"C:\\Development\\ISyCo Git\\MALDOOM")\nsys.path.insert(0, r"C:\\Devel'
+  scripts/search_add1_guided.py:10: b'M")\nsys.path.insert(0, r"C:\\Development\\ISyCo Git\\Autobolge\\zig")\nsys.path.insert(0, r"C:'
+  scripts/search_add1_guided.py:10: b'th.insert(0, r"C:\\Development\\ISyCo Git\\Autobolge\\zig")\nsys.path.insert(0, r"C:\\Developme'
+  scripts/search_add1_guided.py:11: b'g")\nsys.path.insert(0, r"C:\\Development\\ISyCo Git\\Walbolge")\n\nfrom scripts.search_bolge_b'
+  scripts/search_add1_guided.py:11: b'th.insert(0, r"C:\\Development\\ISyCo Git\\Walbolge")\n\nfrom scripts.search_bolge_batch impo'
+  scripts/search_add1_guided.py:115: b'self, bolge_exe: str = r"C:\\Development\\ISyCo Git\\Autobolge\\zig\\bolge.exe"):\n        self'
+  scripts/search_add1_guided.py:115: b'e_exe: str = r"C:\\Development\\ISyCo Git\\Autobolge\\zig\\bolge.exe"):\n        self.bolge_exe'
+  scripts/search_add1_guided.py:173: b'n p1[:point] + p2[point:]\n\n\n# \xe2\x94\x80\xe2\x94\x80\xe2\x94\x80 Walbolge Verification \xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94'
+  scripts/search_add1_guided.py:228: b'self, bolge_exe: str = r"C:\\Development\\ISyCo Git\\Autobolge\\zig\\bolge.exe"):\n        self'
+  scripts/search_add1_guided.py:228: b'e_exe: str = r"C:\\Development\\ISyCo Git\\Autobolge\\zig\\bolge.exe"):\n        self.bolge_exe'
+  scripts/search_add1_guided.py:290: b'DOOM ADD1 GUIDED SEARCH \xe2\x80\x94 bolge.exe + Walbolge")\n    print("=" * 70)\n    \n    seed = l'
+  scripts/search_add1_guided.py:293: b' \n    seed = load_seed(r"C:\\Development\\ISyCo Git\\MALPAD\\evidence\\m2_state\\truth_machine.'
+  scripts/search_add1_guided.py:296: b'opulation = [load_seed(r"C:\\Development\\ISyCo Git\\MALPAD\\evidence\\m2_state\\truth_machine.'
+  scripts/search_add1_guided.py:354: b'rations")\n    return None\n\n\n# \xe2\x94\x80\xe2\x94\x80\xe2\x94\x80 Walbolge Verification \xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94'
+  scripts/search_add1_guided.py:409: b'self, bolge_exe: str = r"C:\\Development\\ISyCo Git\\Autobolge\\zig\\bolge.exe"):\n        self'
+  scripts/search_add1_guided.py:409: b'e_exe: str = r"C:\\Development\\ISyCo Git\\Autobolge\\zig\\bolge.exe"):\n        self.bolge_exe'
+  scripts/search_add1_guided.py:471: b'DOOM ADD1 GUIDED SEARCH \xe2\x80\x94 bolge.exe + Walbolge")\n    print("=" * 70)\n    \n    seed = l'
+  scripts/search_add1_guided.py:474: b' \n    seed = load_seed(r"C:\\Development\\ISyCo Git\\MALPAD\\evidence\\m2_state\\truth_machine.'
+  scripts/search_add1_guided.py:477: b'opulation = [load_seed(r"C:\\Development\\ISyCo Git\\MALPAD\\evidence\\m2_state\\truth_machine.'
+  scripts/search_add1_guided.py:535: b'rations")\n    return None\n\n\n# \xe2\x94\x80\xe2\x94\x80\xe2\x94\x80 Walbolge Verification \xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94'
+  scripts/search_add1_guided.py:591: b'DD1 GUIDED SEARCH \xe2\x80\x94 bolge.exe batch + Walbolge")\n    print("=" * 70)\n    \n    bolge_ru'
+  scripts/search_add1_guided.py:608: b'sys\nsys.path.insert(0, r"C:\\Development\\ISyCo Git\\MALDOOM")\nsys.path.insert(0, r"C:\\Devel'
+  scripts/search_add1_guided.py:609: b'M")\nsys.path.insert(0, r"C:\\Development\\ISyCo Git\\Autobolge\\zig")\nsys.path.insert(0, r"C:'
+  scripts/search_add1_guided.py:609: b'th.insert(0, r"C:\\Development\\ISyCo Git\\Autobolge\\zig")\nsys.path.insert(0, r"C:\\Developme'
+  scripts/search_add1_guided.py:610: b'g")\nsys.path.insert(0, r"C:\\Development\\ISyCo Git\\Walbolge")\n\nfrom scripts.search_bolge_b'
+  … 77 more
+
+## binary: 0 hit(s)
+
+## largest 8 files
+    13,116,592  evidence/M2_S0_INIT_UNSHACKLED_V0/artifact.mu
+       314,996  evidence/M2_S0_INIT_UNSHACKLED_V0/artifact.hell
+        29,954  scripts/search_add1_guided.py
+        16,068  scripts/synthesize_fragment.py
+        15,559  evidence/EPOCH_TRANSPARENCY_V1/evidence.json
+        13,345  scripts/fragment_library.py
+        11,787  scripts/search_state_transition.py
+        11,584  scripts/search_bolge_batch.py

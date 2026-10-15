@@ -1,0 +1,12 @@
+# E9 staged-scope gate for the tracking commit (run before committing)
+# staged paths: 85  |  status breakdown by first field:
+     85 A
+
+# any non-addition (D/R/M) in the staged set? -> 0 lines
+# bytes on disk for the staged set: 13684836
+
+# gate 1: staged blob bytes == worktree bytes for every path (proves no filter touched them under '* -text')
+  compared=85 mismatched=0
+
+# gate 2: credential scan over the staged blobs
+  blobs scanned=85 credential hits=0

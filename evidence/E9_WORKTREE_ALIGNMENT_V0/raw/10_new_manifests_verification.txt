@@ -1,0 +1,15 @@
+# E9 — the six new manifests, checked with the repo's own canonical tool
+# command: (cd evidence/<dir> && LC_ALL=C.UTF-8 sha256sum -c --quiet SHA256SUMS.txt); rc=0 and no output = every entry verifies
+docs/CLAIMS.md size=6038 CR=0 NUL=0
+.gitignore    size=232 CR=0 NUL=0
+
+evidence/FRAGMENTS_LIB         ALL 18 VERIFY
+evidence/FRAGMENTS_REAL        ALL 10 VERIFY
+evidence/FRAGMENTS_STUBS       ALL 4 VERIFY
+evidence/FRAGMENTS_VERIFIED    ALL 2 VERIFY
+evidence/M2_S0_INIT_UNSHACKLED_V0 ALL 10 VERIFY
+evidence/STATE_TRANSITIONS     ALL 1 VERIFY
+
+# refused (already sealed, committed unchanged):
+evidence/EPOCH_TRANSPARENCY_V0  REFUSED: manifest exists
+evidence/EPOCH_TRANSPARENCY_V1  REFUSED: manifest exists

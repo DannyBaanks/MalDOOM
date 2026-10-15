@@ -1,0 +1,15 @@
+# E9 proof: the normalisation touched no sealed entry
+sealed entry paths in repo            = 374
+paths rewritten to LF                 = 53
+intersection (rewritten AND sealed)   = 0
+paths refused (kept as-is, sealed)    = 7
+refused paths are sealed entries      = True
+
+refused list:
+  evidence/M0_A_CONST/SHA256SUMS.txt
+  evidence/M0_B_ARITH/SHA256SUMS.txt
+  evidence/M0_C_BRANCH/SHA256SUMS.txt
+  evidence/M0_D_LOOP/SHA256SUMS.txt
+  evidence/M0_E_MEMORY/SHA256SUMS.txt
+  evidence/M0_F_INPUT/SHA256SUMS.txt
+  evidence/M0_KILLER/SHA256SUMS.txt
