@@ -230,3 +230,33 @@ Relocation: this file was written during the closure to `ISyCo Git/reports/git-p
 not a repository. It now lives at `MALDOOM/docs/GIT_PUBLICATION_REPORT.md` under version control; the earlier
 path is the only place it ever existed before this commit, and the move carried no content change other than
 this addendum.
+
+## Addendum 2026-10-15 (3) — the 119 CR-stripped committed blobs are aligned and published (E8)
+
+The open decision of addendum (2) was given the same day ("SÍ, LÁNZALO"), and `evidence/E8_COMMIT_SIDE_ALIGNMENT_V0/`
+executes it. Nothing on disk was touched: the defect was on the stored side only.
+
+| step | result | basis |
+|---|---|---|
+| measure | 346 sealed entries: 216 aligned, **119 `CR-STRIPPED`**, 2 never committed, 9 E7's irrecoverable — 0 entries outside these four relations | `raw/01` |
+| `git add` as fixer | **silent no-op: restaged=0, refused=119.** The index holds the LF blob together with the worktree's size and mtime, so Git considers the file clean | `raw/02a` |
+| route used | `git hash-object -w` + `git update-index --cacheinfo` (index-only; worktree bytes and mtimes untouched; reversible per path with `git reset -q -- <path>`) | `raw/02`, restaged=119 refused=0 |
+| guard | five assertions per path re-checked at the moment of staging: still a candidate, `SHA-256(worktree)==seal`, `HEAD==fold(worktree)` and `!=seal`, `git hash-object == SHA-1(worktree)` (clean filters are identity), never a manifest | `raw/02` |
+| pre-commit review | staged set was **exactly** those 119 paths, no deletion/rename/addition; staged content folds back to HEAD byte for byte, so the commit adds no content that is not a CR (delta 77,731 bytes over 77,731 changed lines); credential scan over the staged blobs: 0 hits, 0 suspicious filenames | `raw/03`, `raw/04`, `raw/06` |
+| after | repo-wide **362** sealed entries, **351** with `worktree == seal == HEAD`, **11** mismatches — precisely E7's documented set (9 irrecoverable + 2 untracked `program.op`) and no larger | `raw/07`, `raw/10` |
+| E7's own acceptance test | `stored_cr_analysis.py`: *"hypothesis holds for **0** entries"* (was 119) | `raw/08` |
+
+Commits: `61437d3` (the 119 blobs), `a0b4bcd` (E8 evidence, 16 entries sealed with LF and no self-entry),
+`4b86138` (post-commit chain check addendum), plus this addendum. Pushed to `origin master` as a normal
+fast-forward — no force, no tags, no releases, no other branch, remote URL unchanged, no history rewritten.
+
+**Consequences to keep in mind.** `b3d372b` and every earlier commit still contain the LF renderings: they are
+superseded, not erased, so a clone made before this push must be updated with a normal `git pull` and not
+compared against the seals in place. The published evidence bytes now match what `SHA256SUMS.txt` has always
+described, which means the integrity of the older commits is unchanged as *claims* and corrected as *storage*.
+What E8 does **not** demonstrate: the sealed programs were not re-executed, so behaviour rests on the original
+runs, and the Windows-`core.autocrlf` mechanism remains an inference (`[NOT_DEMONSTRATED]`).
+
+Seal ledger, closed: 312 entries counted before E8's own manifest — 295 verifying at the start of E7, 303 after
+its 8 repairs, 351 three-way aligned after E8. The 9 that still fail are unsatisfiable or lost and are documented
+in `E7_DISPOSITION.md` §4; they are no longer "pending".
