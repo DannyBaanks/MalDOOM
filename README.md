@@ -75,6 +75,48 @@ Dos targets, nunca conflados:
 
 ---
 
+## Cadena de integridad de la evidencia (E1-E8)
+
+Renglon aparte del escalon M0-M7: estas corridas no ejecutan DOOM ni cambian ninguna etiqueta de
+reclamo. Lo que establecen es que la evidencia **commiteada** es la evidencia **sellada**.
+
+E1 migracion del toolchain a Linux · E2 reproducibilidad del toolchain · E3 rendimiento de la VM ·
+E4 config de VM fijada (pinned) · E5 convencion del loader de LMFAO (imagenes `.mu` en motores de
+ancho fijo) · E6 integridad de sellos · E7 disposicion de los sellos que fallaban · E8 alineacion del
+lado commiteado.
+
+Medido 2026-10-15 sobre arbol de trabajo, indice y `HEAD`:
+
+| relacion | cifra |
+|---|---|
+| manifiestos `evidence/**/SHA256SUMS.txt` | 40 |
+| entradas selladas | 362 |
+| verifican en el worktree | 353 |
+| tres vias `worktree == sello == HEAD` | **351** |
+| fallos | 9 |
+
+Los 9 no son trabajo abierto y no estan ocultados: 7 son `evidence/M0_*/SHA256SUMS.txt`, que se sellan
+a si mismos (no existen bytes que satisfagan esa linea), y 2 son
+`evidence/EPOCH_TRANSPARENCY_V{0,1}/evidence.json`, cuyos bytes sellados no estan en ninguna parte —
+ni worktree, ni base de objetos, ni HEAD. Prueba y descartes: `evidence/E7_SEAL_DISPOSITION_V0/` y
+`evidence/E8_COMMIT_SIDE_ALIGNMENT_V0/E8_ALIGNMENT.md`.
+
+Convencion desde E5: manifiestos en LF y **sin auto-entrada**. `.gitattributes` fija `* -text`, asi que
+Git no convierte finales de linea; lo commiteado son los bytes exactos.
+
+### Advertencia operacional (medida, no folclore)
+
+- `git status`, `git diff HEAD` y **`git add` pueden ser no-ops silenciosos**: la entrada del indice
+  lleva el tamano y el mtime del worktree mientras guarda otro blob. Paso en E6 y en E8; el intento con
+  `git add` dio `restaged=0 / refused=119` y la unica ruta que funciono fue por indice
+  (`git hash-object -w` + `git update-index --cacheinfo`), sin tocar un byte del worktree.
+- `sha256sum -c` **por si solo no es un chequeo de integridad**: compara worktree contra sello y pasa
+  aunque lo commiteado difiera. El chequeo obligatorio aqui es el de tres vias.
+- `scripts/build_m0.py` **no** sirve como verificador: `build_m0.py:65` escribe dentro de
+  `evidence/<M0_*>/` y re-drifta archivos sellados en el lugar.
+
+---
+
 ## Experimento quine-outward
 
 `experiments/QUINE_OUTWARD_V0/` estudia el quine real de Lutter Malbolge
@@ -157,20 +199,22 @@ Desde un clone limpio (autosuficiente; sin dependencia externa/privada):
 
 ```bash
 # self-test del interprete vendored (Wikipedia Hello World -> HALTED)
-py vendor/malbolge/malbolge.py
+# re-ejecutado en Linux 2026-10-15: status=HALTED steps=48, output='Hello, world.', exit 0
+python3 vendor/malbolge/malbolge.py
 
 # experimentos quine-outward (desde experiments/QUINE_OUTWARD_V0/src/)
-py microcell.py        # microcelda mas pequena distinguible
-py seam.py             # costura minima para coexistencia
-py macrocell.py        # elevacion
-py regen.py            # regeneracion / cuenca
-py input_state.py      # input -> estado persistente
-py vm_parity.py        # paridad modelo vs VM real (region pasiva)
+python3 microcell.py        # microcelda mas pequena distinguible
+python3 seam.py             # costura minima para coexistencia
+python3 macrocell.py        # elevacion
+python3 regen.py            # regeneracion / cuenca
+python3 input_state.py      # input -> estado persistente
+python3 vm_parity.py        # paridad modelo vs VM real (region pasiva)
 ```
 
-Cada script escribe su JSON de evidencia al lado (o imprime). Las herramientas corren con
-`py <script>.py` desde el directorio `src/` para que el `_common.py` vendored resuelva
-la raiz del repositorio.
+Los seis scripts del quine imprimen su JSON por stdout y **no escriben archivos** (verificado en el
+codigo, 2026-10-15), asi que relanzarlos no mueve la evidencia. Corren con `python3 <script>.py` desde
+`src/` para que el `_common.py` vendored resuelva la raiz del repositorio. El host actual es
+Ubuntu 24.04; los comandos `py` y PowerShell de las notas de 2026-09 son historicos.
 
 ---
 
@@ -187,8 +231,26 @@ la raiz del repositorio.
 - `evidence/PURE_CONTINUATION_ANCHOR_V0/` — A→B→C→HALT clasico en una VM (TARGET_B).
 - `evidence/UNSHACKLED_CONTINUATION_ANCHOR_V0/` — A/AA/AB/ABC HeLL nativo (TARGET_A).
 - `evidence/DOOM_NATIVE_BASELINE/` — runs de referencia nativos de Doom.
+- `evidence/E1_*` … `evidence/E8_*` — la cadena de integridad (herramientas, `raw/` y reporte de cada
+  paso; ver la seccion E1-E8 arriba).
 
 La evidencia cruda es historica y nunca se reescribe para encajar en una narrativa.
+
+Dos avisos de lectura: `evidence/M0_REPORT.md` es el informe por hito de M0 (de ahi salen las
+etiquetas del escalon), y `docs/CLAIMS.md` es el registro de reclamos y **no se ha promovido** desde
+2026-09-03 — sigue en `NOT_DEMONSTRATED` para M0/M1 aunque existan `evidence/M0_REPORT.md` y
+`evidence/M0_*_UNSHACKLED_V0/`. La discrepancia esta abierta; este README no la resuelve ni sube
+ningun label.
+
+---
+
+## Publicacion
+
+Repo publico `https://github.com/DannyBaanks/MalDOOM`, rama `master`, sin CI configurada
+(`check-runs` = 0, consultado por API, no asumido). La auditoria de publicacion y la matriz de
+integridad por commit estan en `docs/GIT_PUBLICATION_REPORT.md`. Un clone anterior a 2026-10-15 trae
+los renderings LF de los archivos que E8 alineo: necesita `git pull`. No se reescribio historia, asi
+que las versiones previas siguen siendo objetos validos del historial.
 
 ---
 
@@ -210,6 +272,12 @@ La evidencia cruda es historica y nunca se reescribe para encajar en una narrati
   `elvm`): `vendor/*` esta git-ignored, asi que un clone limpio trae los
   artefactos `.mu` y sus hashes pero no los binarios del toolchain. Recetas de
   build y SHAs en cada `run.json`.
+- Estado medido 2026-10-15: **60 archivos trackeados tienen `worktree != HEAD` con `git status`
+  limpio** (README.md era el 61; este commit lo alinea). Los 60 son CR-only (el blob commiteado es el worktree sin los retornos de carro) y ninguno
+  es una entrada cuyo worktree verifique su sello, asi que la cadena E1-E8 de arriba sigue en pie. No
+  estan reparados a proposito: repararlos es decision pendiente, no un olvido. Entre ellos esta
+  `.gitignore`, que ademas lleva 14 bytes NUL (una regla `__pycache__/` duplicada en UTF-16); la
+  version ASCII de esa regla esta activa, asi que el defecto es de higiene y no de comportamiento.
 
 ---
 
