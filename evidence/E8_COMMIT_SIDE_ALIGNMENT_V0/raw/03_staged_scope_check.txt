@@ -1,0 +1,11 @@
+# E8: the staged set must be exactly the 119 restaged paths, nothing else
+staged (git diff --cached --name-only): 119
+restaged (raw/02 RESTAGED rows)       : 119
+the two lists are IDENTICAL
+
+# git status --porcelain by state (119 staged modifications; untracked dirs collapsed):
+     30 ??
+    119 M 
+
+# tracked deletions/renames/adds other than M: 
+(none above = ok)

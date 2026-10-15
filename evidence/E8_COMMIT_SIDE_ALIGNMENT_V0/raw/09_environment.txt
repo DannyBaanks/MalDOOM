@@ -1,0 +1,21 @@
+# E8 environment capture 2026-10-15T09:50:37-06:00
+host: DannyISyCo  user: danny
+uname: Linux DannyISyCo 7.0.0-38-generic #38~24.04.4-Ubuntu SMP PREEMPT_DYNAMIC Mon Sep 14 16:37:11 UTC 2 x86_64 x86_64 x86_64 GNU/Linux
+shell: /bin/bash
+LANG=es_ES.UTF-8  LC_ALL=unset
+git: git version 2.43.0
+coreutils sha256sum: sha256sum (GNU coreutils) 9.4
+python3: Python 3.12.3
+repo: /home/danny/Development/ISyCo Git/MALDOOM
+HEAD: 61437d3f2fd67963fe33f9dfb32bf23e29ee2a5e
+branch: master  upstream: origin/master
+remote: https://github.com/DannyBaanks/MalDOOM.git
+worktree state after commit (untracked collapsed):
+     30 ??
+.gitattributes:
+# Evidence repo: sealed SHA-256 hashes are computed on the exact committed
+# bytes (CRLF, as generated on the Windows build host). No line-ending
+# conversion may ever touch the tree, or the evidence chain breaks.
+* -text
+core.autocrlf: unset
+index hooks: none (see raw/06)

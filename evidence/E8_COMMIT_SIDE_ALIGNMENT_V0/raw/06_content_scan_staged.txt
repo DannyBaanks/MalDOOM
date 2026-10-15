@@ -1,0 +1,9 @@
+# E8 content scan over the 119 STAGED blobs (not the worktree): does the commit introduce anything that is not a CR?
+# patterns: private keys, AWS/GitHub/Slack tokens, api key/secret/password assignments
+# files with hits: 0 of 119
+
+# staged paths containing credentials by NAME:
+(none)
+
+# hooks present (non-sample):
+(none)

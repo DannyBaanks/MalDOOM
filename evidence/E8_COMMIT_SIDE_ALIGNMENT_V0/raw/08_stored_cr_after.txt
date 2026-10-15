@@ -1,0 +1,8 @@
+# E7 collateral analysis — worktree == seal, HEAD != seal
+# hypothesis: HEAD bytes == worktree bytes with every CR removed (index-time normalisation)
+
+path	seal	HEAD	relation
+evidence/EPOCH_TRANSPARENCY_V0/program.op	645f11d2ba3f	ABSENT	not in HEAD
+evidence/EPOCH_TRANSPARENCY_V1/program.op	de9c91a5073f	ABSENT	not in HEAD
+
+# hypothesis holds for 0 entries; 0 entries differ in another way; 2 sealed entries are not in HEAD at all
