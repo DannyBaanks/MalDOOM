@@ -1,0 +1,78 @@
+### command: python3 evidence/E9_WORKTREE_ALIGNMENT_V0/tools/reconcile_canonical_tools.py
+### date: 2026-10-15T17:14:10Z | HEAD: d248ee1 | branch: master
+### tool sha256: c573b9177186a8f259996f13f10da43c0ad42a022e51078c296d488784819d0e
+### sha256sum --version: sha256sum (GNU coreutils) 9.4 | python: Python 3.12.3
+
+# E9 appended correction — `sha256sum -c` vs `chain_check.py`, every manifest on disk
+# repo: /home/danny/Development/ISyCo Git/MALDOOM
+# manifests on disk        = 52
+# physical nonblank lines  = 442
+# lines the canonical parser accepts = 441
+# lines the canonical parser rejects = 1
+
+## 1. rejected lines, with the byte offset of the cause
+path = vendor/quines/SHA256SUMS.txt
+  first 8 bytes   = ef bb bf 44 43 41 38 34
+  UTF-8 BOM at    = 0
+  size            = 91 bytes, 1 line(s)
+  parsed line     = ﻿DCA8476F8B70C8462C32F66...  (65 chars in field 1)
+
+## 2. per-manifest `sha256sum -c`, run from the manifest's own directory (the canonical recipe)
+manifest	rc	OK	CONTENT-FAILED	OPEN-OR-READ-FAILED	parsed-lines	stderr
+evidence/EPOCH_TRANSPARENCY_V0/SHA256SUMS.txt	1	1	1	0	2	sha256sum: WARNING: 1 computed checksum did NOT match
+evidence/EPOCH_TRANSPARENCY_V1/SHA256SUMS.txt	1	1	1	0	2	sha256sum: WARNING: 1 computed checksum did NOT match
+evidence/M0_A_CONST/SHA256SUMS.txt	1	6	1	0	7	sha256sum: WARNING: 1 computed checksum did NOT match
+evidence/M0_B_ARITH/SHA256SUMS.txt	1	6	1	0	7	sha256sum: WARNING: 1 computed checksum did NOT match
+evidence/M0_C_BRANCH/SHA256SUMS.txt	1	6	1	0	7	sha256sum: WARNING: 1 computed checksum did NOT match
+evidence/M0_D_LOOP/SHA256SUMS.txt	1	6	1	0	7	sha256sum: WARNING: 1 computed checksum did NOT match
+evidence/M0_E_MEMORY/SHA256SUMS.txt	1	6	1	0	7	sha256sum: WARNING: 1 computed checksum did NOT match
+evidence/M0_F_INPUT/SHA256SUMS.txt	1	6	1	0	7	sha256sum: WARNING: 1 computed checksum did NOT match
+evidence/M0_KILLER/SHA256SUMS.txt	1	14	1	0	15	sha256sum: WARNING: 1 computed checksum did NOT match
+vendor/quines/SHA256SUMS.txt	1	0	0	0	0	sha256sum: SHA256SUMS.txt: no properly formatted checksum lines found
+# totals: rc!=0 manifests = 10 | OK = 432 | CONTENT-FAILED = 9 | OPEN-OR-READ-FAILED = 0 | lines sha256sum was given = 441
+
+## 3. control: the same check run from the repo root instead of the manifest directory
+entries are stored relative to their manifest, so a root-side run resolves nothing and proves nothing about content; it is shown only to rule that shape out as the source of raw/13's figures
+root-side run: rc!=0 manifests = 52 | OK = 0 | CONTENT-FAILED = 0 | OPEN-OR-READ-FAILED = 441
+# 0/441 against 432/0 for the same bytes: the manifest-directory recipe is the only one of the two that measures content
+
+## 4. does the rejected line hide an integrity failure?
+vendor/quines/quine_lutter.malbolge
+  seal in manifest (case as written) = DCA8476F8B70C8462C32F661F63C5F8B1AD6C33946B3C7A9A35186C824117D98
+  sha256 of the bytes on disk        = dca8476f8b70c8462c32f661f63c5f8b1ad6c33946b3c7a9a35186c824117d98
+  equal ignoring case = True
+  -> the manifest holds exactly one entry and its digest is correct; only the line PREFIX is unparsable, so this is a format defect, not a mismatch
+
+## 5. CR-bearing manifests (the reason the canonical parser, not sha256sum, decides the 9)
+manifests containing CR = 9
+  evidence/EPOCH_TRANSPARENCY_V0/SHA256SUMS.txt
+  evidence/EPOCH_TRANSPARENCY_V1/SHA256SUMS.txt
+  evidence/M0_A_CONST/SHA256SUMS.txt
+  evidence/M0_B_ARITH/SHA256SUMS.txt
+  evidence/M0_C_BRANCH/SHA256SUMS.txt
+  evidence/M0_D_LOOP/SHA256SUMS.txt
+  evidence/M0_E_MEMORY/SHA256SUMS.txt
+  evidence/M0_F_INPUT/SHA256SUMS.txt
+  evidence/M0_KILLER/SHA256SUMS.txt
+
+## 6. reconciliation
+chain_check.py, same disk, same moment:
+  manifests                  = 52
+  sealed entries total       = 441
+  disk bytes == seal         = 432
+  HEAD bytes == seal         = 432
+  disk == seal == HEAD (3-way) = 432
+  entries absent from HEAD   = 0
+  mismatches                 = 9
+
+sha256sum -c, canonical recipe: 432 OK + 9 CONTENT-FAILED = 441 lines it accepted out of 442 physical lines
+chain_check.py:                 432 disk==seal + 9 mismatches = 441 lines its parser accepted
+nonzero-exit manifests          = 10 = 9 content mismatches (one manifest each) + 1 unparsable manifest(s) that report ZERO FAILED lines
+# the two tools agree on the mismatch count; the extra nonzero exit is the BOM line, counted by neither parser as an entry
+# raw/13's canonical-tool line read 'verifies = 431 / failing = 10'. 441 - 10 = 431: that pair is the count of manifests exiting non-zero subtracted from the entry total, so it is a manifest-level tally reported with entry-level labels.
+# the entry-level figures for these same bytes are 432 verifying and 9 failing. raw/13 stands as recorded; this file is the appended correction.
+
+## 7. disposition
+vendor/quines/SHA256SUMS.txt is NOT repaired here: it is vendor-drop bytes, and stripping its BOM would change a file whose seal already matches its payload. Same class as the .gitignore NUL bytes recorded in the README — a hygiene defect, deferred by decision rather than oversight.
+NOT_DEMONSTRATED: that GNU sha256sum ever accepts a BOM-prefixed line, or that any other tool in this repo reads this manifest. The claim here is only that the two tools on these bytes agree on 9.
+### exit=0

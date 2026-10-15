@@ -1,0 +1,57 @@
+# E9 post-commit state (captured after the E9 commits; sealed by SHA256SUMS_addendum.txt)
+# date: 2026-10-15T17:05:42Z | HEAD: d248ee1 | branch: master
+
+## git view
+tracked files             = 597
+untracked files (-uall)   = 1
+tracked modifications       = 0
+staged but uncommitted      = 0
+
+## tracked files where worktree != HEAD (the E7-frozen set only)
+## tracked files where worktree != HEAD
+path	size_worktree	size_HEAD	relation	seal_status
+evidence/M0_A_CONST/SHA256SUMS.txt	564	558	CRLF-PAIRS-EXACT	listed-not-verifying:evidence/M0_A_CONST/SHA256SUMS.txt
+evidence/M0_B_ARITH/SHA256SUMS.txt	564	558	CRLF-PAIRS-EXACT	listed-not-verifying:evidence/M0_B_ARITH/SHA256SUMS.txt
+evidence/M0_C_BRANCH/SHA256SUMS.txt	564	558	CRLF-PAIRS-EXACT	listed-not-verifying:evidence/M0_C_BRANCH/SHA256SUMS.txt
+evidence/M0_D_LOOP/SHA256SUMS.txt	564	558	CRLF-PAIRS-EXACT	listed-not-verifying:evidence/M0_D_LOOP/SHA256SUMS.txt
+evidence/M0_E_MEMORY/SHA256SUMS.txt	564	558	CRLF-PAIRS-EXACT	listed-not-verifying:evidence/M0_E_MEMORY/SHA256SUMS.txt
+evidence/M0_F_INPUT/SHA256SUMS.txt	550	544	CRLF-PAIRS-EXACT	listed-not-verifying:evidence/M0_F_INPUT/SHA256SUMS.txt
+evidence/M0_KILLER/SHA256SUMS.txt	1198	1184	CRLF-PAIRS-EXACT	listed-not-verifying:evidence/M0_KILLER/SHA256SUMS.txt
+# divergent total: 7
+
+## three-way chain check
+# E9 three-way chain check over all manifests, stored side = HEAD
+# manifests                     = 52
+# sealed entries total          = 441
+# disk bytes == seal            = 432
+# HEAD bytes == seal            = 432
+# disk == seal == HEAD (3-way)  = 432
+# entries absent from HEAD      = 0
+# mismatches                    = 9
+
+
+# E9 three-way chain check over evidence manifests, stored side = HEAD
+# manifests                     = 49
+# sealed entries total          = 431
+# disk bytes == seal            = 422
+# HEAD bytes == seal            = 422
+# disk == seal == HEAD (3-way)  = 422
+# entries absent from HEAD      = 0
+# mismatches                    = 9
+
+
+## mismatch list (9)
+evidence/EPOCH_TRANSPARENCY_V0/evidence.json  seal=5992e0caf7a1  disk=4945e8042cad(x)  HEAD=4945e8042cad(x)
+evidence/EPOCH_TRANSPARENCY_V1/evidence.json  seal=bb2d59588d8c  disk=e7205903a14b(x)  HEAD=e7205903a14b(x)
+evidence/M0_A_CONST/SHA256SUMS.txt  seal=ac76e6ac58e1  disk=419acb542e94(x)  HEAD=3ca1ab7d1a22(x)
+evidence/M0_B_ARITH/SHA256SUMS.txt  seal=6381b0080062  disk=c5a60a20be14(x)  HEAD=e4bef521a7cd(x)
+evidence/M0_C_BRANCH/SHA256SUMS.txt  seal=843d7f7c0e8e  disk=36827bfe43e8(x)  HEAD=1d7c55e806f0(x)
+evidence/M0_D_LOOP/SHA256SUMS.txt  seal=f10d63ebc01f  disk=d42a5dbee247(x)  HEAD=3e464304cc43(x)
+evidence/M0_E_MEMORY/SHA256SUMS.txt  seal=8162e7f37c6b  disk=1daef690eab9(x)  HEAD=9e8f40c3f1d1(x)
+evidence/M0_F_INPUT/SHA256SUMS.txt  seal=8fc2e799a38f  disk=84d28f2350c2(x)  HEAD=13bf80c3d69c(x)
+evidence/M0_KILLER/SHA256SUMS.txt  seal=f8b72be934b2  disk=fd247f09931f(x)  HEAD=f33642f691fa(x)
+
+## canonical tool tally: LC_ALL=C.UTF-8 sha256sum -c over every manifest
+  manifests checked, entries total = 441
+  entries whose worktree verifies  = 431
+  entries failing (`sha256sum -c`) = 10
