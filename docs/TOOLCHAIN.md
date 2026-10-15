@@ -143,3 +143,45 @@ Still blocked on Linux: **LMFAO** (HeLL -> .mu) needs `flex`/`bison`
 (`apt install flex bison`; the Windows build patched `lmfao.l` with
 `%option noyywrap`). Until then, .mu artifacts are produced on Windows or by
 the hand-written EIR path of commit 35bc289.
+
+## Pinned Unshackled VM (verified 2026-10-14, evidence/E4_VM_CONFIG_PINNED_V0)
+
+`vendor/Unshackled.c` draws its rotation-width policy from `srand(time(NULL))`
+at startup (`rotwidth = 10 + rand()%6`, `growth_slack`, `growth_step`,
+`growth_prob`, `det_growth`). Consequence, measured: **the same immutable `.mu`
+executes between 10,347,259 and 22,996,958 steps depending on the draw** — a
+2.22x spread over 153 runs. stdout never changed. So a bare step count is not a
+fact about an artifact, and E3's two step numbers came from two different draws.
+
+For any step-count, trace or timing claim, build the pinned clone instead of
+the raw vendor source:
+
+```bash
+mkdir -p "$HOME/tmp_e4" && cd "$HOME/tmp_e4"
+gcc -O2 -w -o unsh_pinned "$REPO/evidence/E4_VM_CONFIG_PINNED_V0/unsh_pinned.c"
+printf '0\n' | UNSH_ROTWIDTH=10 UNSH_GROWTH_SLACK=3 UNSH_GROWTH_STEP=5 UNSH_DET_GROWTH=1 \
+  ./unsh_pinned "$REPO/evidence/M0_KILLER_UNSHACKLED_V0/artifact.mu"
+```
+
+Raw telemetry, verbatim (`evidence/E4_VM_CONFIG_PINNED_V0/raw/10_pin_verbatim.txt`):
+
+```
+UNSH_PIN STEPS 10347959 WALL 1.518s SPS 6815549 cfg{seed=7 rotwidth0=10 slack=3 gstep=5 det=1 prob=1073741823} final{rotwidth=20 max_wordwidth=10}
+1
+```
+
+Rules learned the hard way, both binding for evidence:
+
+1. **Pin with `det_growth=1`.** It consumes no `rand()` inside the dispatch
+   loop, so the run is seed-invariant (verified with seeds 1/7/4242).
+   `det_growth=0` with `growth_slack>0` varies with seed *and* with
+   `growth_prob`; `det_growth=0` with `slack=0` degenerates to the forced
+   branch and is deterministic.
+2. **Never report a single wall time.** Within-level run-to-run spread is
+   2.1-4.4% over 5 reps; the first single-shot probe of this session claimed
+   `-O1` was slow, and 5 reps refuted it. Reference throughput at the pin is
+   **~6.5M steps/s (-O2)**, roughly 1.9x what `evidence/E3` recorded.
+
+Full sweep and its raw logs: `evidence/E4_VM_CONFIG_PINNED_V0/commands.txt`;
+re-run with `E4_QUICK=1 ./evidence/E4_VM_CONFIG_PINNED_V0/e4_capture.sh`, which
+writes to its own scratch dir and cannot overwrite the sealed logs.

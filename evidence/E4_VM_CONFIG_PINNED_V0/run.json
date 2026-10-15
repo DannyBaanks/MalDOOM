@@ -1,0 +1,118 @@
+{
+  "experiment": "E4_VM_CONFIG_PINNED_V0",
+  "date": "2026-10-14",
+  "target": "TARGET_A Malbolge Unshackled",
+  "host": "Ubuntu 24.04 (Linux DannyISyCo 7.0.0-38-generic), gcc 13.3.0, x86_64, 12 cores",
+  "scope": "The Unshackled reference VM only: reproducibility of step counts and throughput as a function of its startup rotation-width/growth policy. No milestone gate is claimed, no ladder label changes, no gameplay transition is computed anywhere in this experiment.",
+  "supersedes": "evidence/E3_VM_PERFORMANCE_V0 for the throughput figure. E3's two step counts are reproduced exactly here; E3's steps/s figure is not reachable from the pristine source at any -O level. E3 is left byte-untouched (its run.json/commands.txt/SHA256SUMS.txt are not modified); this dir is the new version.",
+  "artifact": {
+    "path": "evidence/M0_KILLER_UNSHACKLED_V0/artifact.mu",
+    "sha256": "3b9bdf37eb708ec751d10f0dea32edde4375e526ce56fd2dd440f5a22819ba10",
+    "bytes": 2888171
+  },
+  "source_under_test": {
+    "vendor_unshackled_c_sha256": "d772b096e925a0f32ac283e59e666bcccc4b5febc2287fd1e0d2bbbb9372c3a7",
+    "unsh_pinned_c_sha256": "941d5bbd4ffca009f3284ff951ba96ef38194ecf0347413ca3604a23a481659a",
+    "patch": "unsh_pinned.c = vendor/Unshackled.c + #include <sys/time.h> + env-readable startup config (UNSH_SEED/UNSH_ROTWIDTH/UNSH_GROWTH_SLACK/UNSH_GROWTH_STEP/UNSH_DET_GROWTH/UNSH_GROWTH_PROB) + step counter and one UNSH_PIN report line at hlt. See patch_unsh.py. No change to Malbolge semantics."
+  },
+  "canonical_pin": {
+    "rotwidth0": 10,
+    "growth_slack": 3,
+    "growth_step": 5,
+    "det_growth": 1,
+    "seed": "irrelevant (det=1 consumes no rand() inside the dispatch loop)",
+    "rationale": "Reproduces E3's input-0 step count exactly, is seed-invariant, and keeps the widest reachable rotwidth trajectory low (final rotwidth 20), so it is a conservative speed reference.",
+    "steps_input_0": 10347959,
+    "steps_input_1": 10941639,
+    "steps_input_2": 11540670,
+    "steps_input_3": 12114660,
+    "steps_input_4": 12726334
+  },
+  "measurements": [
+    {
+      "id": "step_count_is_not_a_property_of_the_artifact",
+      "raw": "raw/01..05",
+      "runs": 153,
+      "finding": "Across the reachable det=1 config space, input 0 executes between 10,347,259 and 22,996,958 steps - a 2.22x spread on one immutable .mu. stdout stayed 310a in every input-0 run and 350a in every input-2 run.",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "id": "e3_step_counts_reproduced",
+      "raw": "raw/02, raw/03",
+      "finding": "E3's 10,347,959 (input 0) occurs at rotwidth/slack/gstep = (10,3,5), (10,5,5), (11,3,4), (11,5,4). E3's 12,336,200 (input 2) occurs at rotwidth 13 with slack 0..3 and gstep 8. No single config yields both.",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "id": "e3_rows_came_from_two_independent_draws",
+      "raw": "raw/02, raw/03",
+      "finding": "Because no config reproduces both numbers, E3's two rows were produced by two separate srand(time(NULL)) draws and were never mutually comparable. That is the mechanism by which E3 became unreproducible.",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "id": "det_growth_is_the_determinism_switch",
+      "raw": "raw/04, raw/05",
+      "finding": "det=1 is seed-invariant (seeds 1/7/4242 -> 10,347,959 and 11,540,670 identically). det=0 with slack=0 degenerates to the forced branch and is also deterministic (10,347,609 for all seeds and probs). det=0 with slack>0 varies with BOTH seed and prob: at rotwidth 13/slack 3/gstep 8, seeds 7/99/123 give 11,138,598 / 11,138,073 / 12,719,001, and at seed 99 prob 0.5*RAND_MAX gives 12,719,001 where prob 0.2 and 0.8 give 11,138,073.",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "id": "throughput_at_the_pin",
+      "raw": "raw/08 (5 reps per level), raw/06 (single-shot, kept as a negative result)",
+      "finding": "Same source, same 10,347,959 steps: -O0 mean 2.244 s (4.61M steps/s), -O1 mean 1.572 s (6.58M), -O2 mean 1.572 s (6.59M), -O3 mean 1.573 s (6.58M). Reference figure: ~6.5M steps/s at -O2, i.e. about 1.9x E3's reported 3.2-3.7M. E3's 3.19 s is slower than this source at ANY optimisation level measured here.",
+      "caution": "Within-level run-to-run spread over 5 reps is 2.1-4.4 percent, so -O1/-O2/-O3 are not separable at this resolution and only -O0 is clearly slower. A single-shot comparison is not trustworthy: the first ad-hoc single-shot probe this session (logs kept at /home/danny/tmp_engine_test/e4_raw, not sealed here) put -O1 at 3.44M steps/s, which 5 reps refute at 6.58M steps/s. Report n>=5.",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "id": "vendor_vm_unmodified_wall_time",
+      "raw": "raw/07",
+      "finding": "6 runs of the unmodified vendor VM on input 0: 2.80-3.62 s wall, because each run draws its own config and therefore its own step count. Consistent with E3's 3.19 s, which is what an unpinned run looks like.",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "id": "m0_killer_oracle_reproduces_on_linux",
+      "raw": "raw/09_killer_all_inputs_pin.tsv, raw/09_expected_vs_observed.txt",
+      "finding": "At the canonical pin, all five sealed killer inputs produce stdout byte-identical to the observed strings recorded in evidence/M0_KILLER_UNSHACKLED_V0/run.json (310a, 330a, 350a, 370a, 390a). 5/5 MATCH.",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "id": "capture_reproduces_from_the_sealed_copy",
+      "raw": "this dir",
+      "finding": "e4_capture.sh was re-run from its sealed location; the step, final-rotwidth and stdout columns of raw/01..05 and raw/09 are identical to the sealed logs (153 runs). Only wall time differs, as expected.",
+      "status": "DEMONSTRATED"
+    }
+  ],
+  "cr_findings": {
+    "sealed_observed_bin": "310d0a (CRLF) for observed_0.bin; all five observed_*.bin carry 0d0a",
+    "linux_vm_stdout": "310a (LF only)",
+    "run_json_recorded_observed": "1\\n (LF) - which the Linux VM reproduces exactly",
+    "reading": "The CR exists only in the observed_*.bin files, i.e. in the Windows-era capture path, not in the VM's behaviour and not in run.json's recorded expectation. Behaviour under Linux matches the sealed expectation string; re-sealing the five .bin files is a decision for Danny, not done here."
+  },
+  "consequence_for_M3": "1.9x does not move 'hours per Doom tick' across an order of magnitude, so E3's strategic conclusion stands unchanged: a full real Doom tick is cost-bounded, and a scoped minimal-state tick remains the honest target. What changes is the evidentiary rule: any MALDOOM claim that compares step counts, traces, or hashes of a .mu run MUST name the rotation-width/growth config, because a bare step count varies by 2.22x on the same artifact and is otherwise meaningless.",
+  "claims_table": [
+    {"claim": "Unshackled VM step count depends on the startup width/growth config, not only on the artifact", "status": "DEMONSTRATED"},
+    {"claim": "A pinned config makes the reference VM reproducible and seed-invariant", "status": "DEMONSTRATED"},
+    {"claim": "The pinned VM reproduces all five M0_KILLER expected outputs on Linux", "status": "DEMONSTRATED"},
+    {"claim": "Reference VM throughput on this host is ~6.5M steps/s at -O2 (pinned config)", "status": "DEMONSTRATED"},
+    {"claim": "E3's 3.2-3.7M steps/s figure is explained by a specific build/telemetry cause", "status": "NOT_DEMONSTRATED"},
+    {"claim": "Any milestone (M0-M7) advanced by this experiment", "status": "NOT_DEMONSTRATED - none touched"}
+  ],
+  "NOT_DEMONSTRATED": [
+    "Why E3 measured 3.19 s for the same 10,347,959 steps. E3's instrumented binary was built in /tmp and never preserved; the leading hypothesis is per-step telemetry overhead in unsh_counted, but it cannot be tested. The measured -O0..-O3 range here (2.24-1.57 s) does not reach 3.19 s.",
+    "That the canonical pin is the right pin for Doom. It was chosen for reproducibility and to match E3's input-0 count, not for any gameplay reason.",
+    "That LMFAO .mu images run at all on the fixed-19 MalbolgeLISP engines (fast20_fixed / bolge19). Measured elsewhere on 2026-10-14: both emit 02ce instead of the killer's output. Cause untested (I/O convention is the leading hypothesis).",
+    "Steps for a real Doom tick - still no such artifact exists.",
+    "Cross-host or cross-compiler reproducibility of any wall time in this dir. Only step counts and stdout are portable promises.",
+    "That growth beyond max_wordwidth=10 is exercised by this program; every config measured here stopped at max_wordwidth 10, so the sweep probes policy, not deep Unshackled behaviour."
+  ],
+  "controls": [
+    "artifact.mu sha256 verified before and after the sweep (raw/00_environment.txt); vendor/Unshackled.c not modified",
+    "unmodified vendor VM timed separately (raw/07) to show the unpinned baseline",
+    "seed varied 1/7/4242 at fixed config (raw/05) and prob varied at fixed seed (raw/04)",
+    "single-shot -O probe preserved (raw/06) as the refuted control for raw/08"
+  ],
+  "host_computation_audit": "PASS - the host process only writes one digit to the VM's stdin, reads its stdout, counts its own loop iterations and reads the clock. No Doom symbols, no gameplay state, no expected-answer injection; the expected outputs are compared against a sealed run.json after the fact, outside the VM.",
+  "reproduction": {
+    "quick": "E4_QUICK=1 E4_WORK=/home/danny/tmp_engine_test/repro_e4 ./evidence/E4_VM_CONFIG_PINNED_V0/e4_capture.sh  (11 runs, ~20 s)",
+    "full": "E4_WORK=/home/danny/tmp_engine_test/repro_e4 ./evidence/E4_VM_CONFIG_PINNED_V0/e4_capture.sh  (153 runs, ~15 min)",
+    "note": "Writes to its own scratch OUT dir; never touches raw/."
+  }
+}

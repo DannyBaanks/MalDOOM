@@ -1,0 +1,6 @@
+input	expected_hex_from_run_json	observed_hex	sigma
+0	310a	310a	MATCH
+1	330a	330a	MATCH
+2	350a	350a	MATCH
+3	370a	370a	MATCH
+4	390a	390a	MATCH

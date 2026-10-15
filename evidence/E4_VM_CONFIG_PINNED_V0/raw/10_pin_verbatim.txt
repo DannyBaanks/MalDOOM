@@ -1,0 +1,18 @@
+# command (run from repo root, 2026-10-14):
+# gcc -O2 -w -o unsh_pinned evidence/E4_VM_CONFIG_PINNED_V0/unsh_pinned.c
+# for i in 0 1 2 3 4; do printf "$i\n" | UNSH_ROTWIDTH=10 UNSH_GROWTH_SLACK=3 \
+#   UNSH_GROWTH_STEP=5 UNSH_DET_GROWTH=1 unsh_pinned evidence/M0_KILLER_UNSHACKLED_V0/artifact.mu; done
+# stderr verbatim below (stdout is recorded as hex in raw/09_killer_all_inputs_pin.tsv
+# and checked against run.json in raw/09_expected_vs_observed.txt).
+# binary: c56f55860b3e4a0225b53eac30242351303df7b8e4ba91efe68d2ce84be5070d (gcc -O2 -w, this host)
+# these step counts are identical to raw/05 and raw/09; wall time is not portable.
+## input 0
+UNSH_PIN STEPS 10347959 WALL 1.518s SPS 6815549 cfg{seed=7 rotwidth0=10 slack=3 gstep=5 det=1 prob=1073741823} final{rotwidth=20 max_wordwidth=10}
+## input 1
+UNSH_PIN STEPS 10941639 WALL 1.658s SPS 6601171 cfg{seed=7 rotwidth0=10 slack=3 gstep=5 det=1 prob=1073741823} final{rotwidth=20 max_wordwidth=10}
+## input 2
+UNSH_PIN STEPS 11540670 WALL 1.805s SPS 6394424 cfg{seed=7 rotwidth0=10 slack=3 gstep=5 det=1 prob=1073741823} final{rotwidth=20 max_wordwidth=10}
+## input 3
+UNSH_PIN STEPS 12114660 WALL 1.873s SPS 6469215 cfg{seed=7 rotwidth0=10 slack=3 gstep=5 det=1 prob=1073741823} final{rotwidth=20 max_wordwidth=10}
+## input 4
+UNSH_PIN STEPS 12726334 WALL 2.003s SPS 6353789 cfg{seed=7 rotwidth0=10 slack=3 gstep=5 det=1 prob=1073741823} final{rotwidth=20 max_wordwidth=10}

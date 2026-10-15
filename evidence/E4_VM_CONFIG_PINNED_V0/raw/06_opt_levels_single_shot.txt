@@ -1,0 +1,4 @@
+-O0 UNSH_PIN STEPS 10347959 WALL 2.255s SPS 4588134 cfg{seed=7 rotwidth0=10 slack=3 gstep=5 det=1 prob=1073741823} final{rotwidth=20 max_wordwidth=10}
+-O1 UNSH_PIN STEPS 10347959 WALL 1.602s SPS 6458783 cfg{seed=7 rotwidth0=10 slack=3 gstep=5 det=1 prob=1073741823} final{rotwidth=20 max_wordwidth=10}
+-O2 UNSH_PIN STEPS 10347959 WALL 1.583s SPS 6537375 cfg{seed=7 rotwidth0=10 slack=3 gstep=5 det=1 prob=1073741823} final{rotwidth=20 max_wordwidth=10}
+-O3 UNSH_PIN STEPS 10347959 WALL 1.562s SPS 6624029 cfg{seed=7 rotwidth0=10 slack=3 gstep=5 det=1 prob=1073741823} final{rotwidth=20 max_wordwidth=10}

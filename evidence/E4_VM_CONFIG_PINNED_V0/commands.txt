@@ -1,0 +1,53 @@
+# E4 — Unshackled VM: pinned rotation-width / growth config, on Linux.
+# Executed 2026-10-14 on the Linux host. vendor/Unshackled.c untouched; nothing
+# outside evidence/E4_VM_CONFIG_PINNED_V0/ was written.
+
+## Why
+`vendor/Unshackled.c` draws its rotation-width policy from `srand(time(NULL))`
+at startup: rotwidth = 10+rand()%6, growth_slack = rand()%6,
+growth_step = 4+rand()%9, growth_prob (biased draw), det_growth = rand()%2.
+So the same `.mu` executes a DIFFERENT NUMBER OF STEPS on every run, and
+E3's `unsh_counted` binary was built in /tmp and is not preserved. This
+experiment pins the config and re-measures.
+
+## The patch (see patch_unsh.py, unsh_pinned.c)
+1. `#include <sys/time.h>` (missing; `gettimeofday` was implicitly declared).
+2. Config read from the environment, defaulting to the original random draw:
+   UNSH_SEED, UNSH_ROTWIDTH, UNSH_GROWTH_SLACK, UNSH_GROWTH_STEP,
+   UNSH_DET_GROWTH, UNSH_GROWTH_PROB.
+3. A step counter plus one report line at `hlt`:
+   UNSH_PIN STEPS <n> WALL <s>s SPS <n> cfg{...} final{rotwidth=.. max_wordwidth=..}
+No change to Malbolge semantics.
+
+## Build
+$ gcc -O2 -w -o unsh_pinned evidence/E4_VM_CONFIG_PINNED_V0/unsh_pinned.c
+$ gcc -O2 -w -o unsh_vendor vendor/Unshackled.c
+
+## Canonical pin (proposed)
+$ printf '0\n' | UNSH_ROTWIDTH=10 UNSH_GROWTH_SLACK=3 UNSH_GROWTH_STEP=5 UNSH_DET_GROWTH=1 \
+      unsh_pinned evidence/M0_KILLER_UNSHACKLED_V0/artifact.mu
+UNSH_PIN STEPS 10347959 WALL 1.518s SPS 6815549 cfg{seed=7 rotwidth0=10 slack=3 gstep=5 det=1 prob=1073741823} final{rotwidth=20 max_wordwidth=10}
+(verbatim telemetry for all five inputs: raw/10_pin_verbatim.txt; wall time is
+host-local and not part of the claim — step counts are)
+-> raw/05_canonical_pin.tsv (seeds 1/7/4242 -> identical step counts)
+-> raw/09_killer_all_inputs_pin.tsv + raw/09_expected_vs_observed.txt (5/5 MATCH)
+
+## Full sweep (153 runs, one command)
+$ E4_WORK=/home/danny/tmp_engine_test/repro_sealed ./evidence/E4_VM_CONFIG_PINNED_V0/e4_capture.sh
+Raw logs: raw/00_environment.txt, raw/01..09 (TSV).
+The sealed raw/ is the output of exactly this script; E4_QUICK=1 re-runs only
+the pin phases. OUT defaults to a scratch dir so a re-run cannot overwrite raw/.
+
+## Key outputs
+raw/01  rotwidth 10..15 (slack 0, gstep 8, det 1), inputs 0 and 2
+raw/02  slack 0..5 x gstep {4,8,12} at rotwidth 13, det 1
+raw/03  det=1 grid rotwidth 10..12 x slack {0,3,5} x gstep 4..12, input 0
+        -> 10347959 (E3's input-0 figure) appears at (10,3,5),(10,5,5),(11,3,4),(11,5,4)
+        -> 12336200 (E3's input-2 figure) appears at rotwidth 13, slack 0..3, gstep 8 (raw/02)
+raw/04  det=0 controls: slack 0 is seed/prob-invariant; slack 3 varies with both
+raw/06  single-shot -O comparison — PRESERVED AS A NEGATIVE RESULT (it is noise)
+raw/07  vendor VM unmodified, wall only: 2.80 2.92 3.02 3.07 3.08 3.62 s
+raw/08  -O replicated 5x each at the pin, identical 10347959 steps
+raw/09  all five sealed killer inputs at the pin + raw/09_expected_vs_observed.txt
+raw/10  verbatim stderr of the pin runs (separate one-off command, header of the
+        file gives it exactly; step counts equal raw/05 and raw/09, wall does not)
