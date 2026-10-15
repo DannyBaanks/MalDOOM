@@ -1,0 +1,45 @@
+# E7 witness proof — every worktree file whose exact bytes hash to the seal of each
+# entry classified RECOVERABLE-witness. The entry itself is excluded from the search.
+
+evidence/M0_A_CONST_UNSHACKLED_V0/source.c
+  seal                            = 143616b309c47ea47846d3b6856462b17a53a9ea3aad8623419a3bd5ecc6656a
+  files hashing to the seal       = 2
+    - engine/M0_A_CONST.c
+    - evidence/M0_A_CONST/source.c
+
+evidence/M0_B_ARITH_UNSHACKLED_V0/source.c
+  seal                            = a7aae71fc6e172129eba2401aef11aa69bfdab9197e0d9ad25d5b8664ec74d14
+  files hashing to the seal       = 2
+    - engine/M0_B_ARITH.c
+    - evidence/M0_B_ARITH/source.c
+
+evidence/M0_C_BRANCH_UNSHACKLED_V0/source.c
+  seal                            = 52c12113150e3994ab20c00091e284f855be671273b0fddc0782b85916102a1c
+  files hashing to the seal       = 2
+    - engine/M0_C_BRANCH.c
+    - evidence/M0_C_BRANCH/source.c
+
+evidence/M0_D_LOOP_UNSHACKLED_V0/source.c
+  seal                            = 0e184443a2a5d2211ce68a10c76c23b723c10966e84d015f3e50f8ee2e834ea7
+  files hashing to the seal       = 2
+    - engine/M0_D_LOOP.c
+    - evidence/M0_D_LOOP/source.c
+
+evidence/M0_E_MEMORY_UNSHACKLED_V0/source.c
+  seal                            = 2440d507eb7e22313e19d2d5015c42b455c504c2336689c91beb09ba95bbc203
+  files hashing to the seal       = 2
+    - engine/M0_E_MEMORY.c
+    - evidence/M0_E_MEMORY/source.c
+
+evidence/M0_F_INPUT_UNSHACKLED_V0/source.c
+  seal                            = 87c296e3a6adc5323c127ca72d3b00fb44607485c92ab1d740f027eee2acbece
+  files hashing to the seal       = 2
+    - engine/M0_F_INPUT.c
+    - evidence/M0_F_INPUT/source.c
+
+evidence/M0_KILLER_UNSHACKLED_V0/source.c
+  seal                            = 1f92a9ccf0a32896d8e8fe42214b892873f9afe0a8a17e0f25e490ac4d461db2
+  files hashing to the seal       = 2
+    - engine/M0_KILLER.c
+    - evidence/M0_KILLER/source.c
+

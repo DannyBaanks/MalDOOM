@@ -1,0 +1,44 @@
+# E7 repo-wide seal tally, per manifest. Method:
+#   for each evidence/**/SHA256SUMS.txt: (cd dir && LC_ALL=C.UTF-8 sha256sum -c SHA256SUMS.txt)
+#   count lines ending ': OK' and ': FAILED'.  Generated 2026-10-15T14:46:42Z (post-repair, pre-commit).
+# columns: manifest  entries  OK  FAILED  missing
+evidence/CLASSIC_ANCHOR_SMOKE_V0/SHA256SUMS.txt                 11  11   0   0
+evidence/CLASSIC_ANCHOR_SMOKE_V1/P1_NON_ECHO_BRANCH/SHA256SUMS.txt   3   3   0   0
+evidence/CLASSIC_ANCHOR_SMOKE_V1/P2_TERNARY_NON_ECHO_FRONTIER/SHA256SUMS.txt   2   2   0   0
+evidence/CLASSIC_ANCHOR_SMOKE_V1/P3_SEED_AS_ANCHOR/SHA256SUMS.txt   3   3   0   0
+evidence/CLASSIC_ANCHOR_SMOKE_V1/P4_TERNARY_STATEFUL_COUNTER/SHA256SUMS.txt   1   1   0   0
+evidence/CLASSIC_ANCHOR_SMOKE_V1/P5_STATE_CROSS_READ/SHA256SUMS.txt   2   2   0   0
+evidence/CLASSIC_ANCHOR_SMOKE_V1/SHA256SUMS.txt                  6   6   0   0
+evidence/CLASSIC_DEATH_REBIRTH_V0/SHA256SUMS.txt                 3   3   0   0
+evidence/DOOM_NATIVE_BASELINE/SHA256SUMS.txt                    12  12   0   0
+evidence/DOOM_SMOKE/SHA256SUMS.txt                               6   6   0   0
+evidence/E1_TOOLCHAIN_LINUX_MIGRATION_V0/SHA256SUMS.txt          2   2   0   0
+evidence/E2_TOOLCHAIN_REPRODUCIBILITY_V0/SHA256SUMS.txt          4   4   0   0
+evidence/E3_VM_PERFORMANCE_V0/SHA256SUMS.txt                     2   2   0   0
+evidence/E4_VM_CONFIG_PINNED_V0/SHA256SUMS.txt                  17  17   0   0
+evidence/E5_LOADER_WHITESPACE_V0/SHA256SUMS.txt                 22  22   0   0
+evidence/E6_SEAL_INTEGRITY_V0/SHA256SUMS.txt                    13  13   0   0
+evidence/EPOCH_TRANSPARENCY_V0/SHA256SUMS.txt                    2   1   1   0
+evidence/EPOCH_TRANSPARENCY_V1/SHA256SUMS.txt                    2   1   1   0
+evidence/M0_A_CONST/SHA256SUMS.txt                               7   6   1   0
+evidence/M0_A_CONST_UNSHACKLED_V0/SHA256SUMS.txt                 6   6   0   0
+evidence/M0_B_ARITH/SHA256SUMS.txt                               7   6   1   0
+evidence/M0_B_ARITH_UNSHACKLED_V0/SHA256SUMS.txt                 6   6   0   0
+evidence/M0_C_BRANCH/SHA256SUMS.txt                              7   6   1   0
+evidence/M0_C_BRANCH_UNSHACKLED_V0/SHA256SUMS.txt                6   6   0   0
+evidence/M0_D_LOOP/SHA256SUMS.txt                                7   6   1   0
+evidence/M0_D_LOOP_UNSHACKLED_V0/SHA256SUMS.txt                  6   6   0   0
+evidence/M0_E_MEMORY/SHA256SUMS.txt                              7   6   1   0
+evidence/M0_E_MEMORY_UNSHACKLED_V0/SHA256SUMS.txt                6   6   0   0
+evidence/M0_F_INPUT/SHA256SUMS.txt                               7   6   1   0
+evidence/M0_F_INPUT_UNSHACKLED_V0/SHA256SUMS.txt                 8   8   0   0
+evidence/M0_HELL_VM/SHA256SUMS.txt                               8   8   0   0
+evidence/M0_KILLER/SHA256SUMS.txt                               15  14   1   0
+evidence/M0_KILLER_UNSHACKLED_V0/SHA256SUMS.txt                 10  10   0   0
+evidence/M1_WAD_HEADER_UNSHACKLED_V0/SHA256SUMS.txt             12  12   0   0
+evidence/M2A_LUMP_FIND_UNSHACKLED_V0/SHA256SUMS.txt             17  17   0   0
+evidence/M3A_P_RANDOM_UNSHACKLED_V0/SHA256SUMS.txt              12  12   0   0
+evidence/PURE_CONTINUATION_ANCHOR_V0/SHA256SUMS.txt             32  32   0   0
+evidence/UNSHACKLED_CONTINUATION_ANCHOR_V0/SHA256SUMS.txt       13  13   0   0
+---
+TOTAL                                                          312 303   9   0

@@ -1,0 +1,45 @@
+# E7 — state of the two EPOCH_TRANSPARENCY evidence dirs (both entirely UNTRACKED: git status shows '??')
+# command: ls -la evidence/EPOCH_TRANSPARENCY_V{0,1} ; cat manifest ; sha256sum -c ; sha256sum of disk bytes
+
+=== evidence/EPOCH_TRANSPARENCY_V0 ===
+total 20
+drwxrwxrwx  2 danny danny 4096 sep  8 01:17 .
+drwxrwxrwx 44 danny danny 4096 oct 15 08:23 ..
+-rw-rw-rw-  1 danny danny 1476 sep  8 01:25 evidence.json
+-rw-rw-rw-  1 danny danny  124 sep  8 01:25 program.op
+-rw-rw-rw-  1 danny danny  159 sep  8 01:25 SHA256SUMS.txt
+--- manifest (CR-stripped view) ---
+645f11d2ba3f1a105f73c1b4304e5560467d756c226a5302bc1ec044f598e268  program.op
+5992e0caf7a129fb049dbb7ec0109d88b1d7c04604efd3865a6d6fb821f7e0aa  evidence.json
+--- sha256sum -c (LC_ALL=C.UTF-8) ---
+program.op: OK
+evidence.json: FAILED
+sha256sum: WARNING: 1 computed checksum did NOT match
+--- actual disk hashes ---
+4945e8042cada151816a890cd1e11d006cf26c65a8bf147f9af75655cad07733  evidence.json
+645f11d2ba3f1a105f73c1b4304e5560467d756c226a5302bc1ec044f598e268  program.op
+2dfe123a6ee723ea47b55f10b429a7e93570fef43f5549f9508f8cc7f861a442  SHA256SUMS.txt
+--- git ls-files (tracked?) ---
+  (empty above = nothing in this dir is tracked)
+
+=== evidence/EPOCH_TRANSPARENCY_V1 ===
+total 32
+drwxrwxrwx  2 danny danny  4096 sep  8 01:59 .
+drwxrwxrwx 44 danny danny  4096 oct 15 08:23 ..
+-rw-rw-rw-  1 danny danny 15559 sep  8 03:15 evidence.json
+-rw-rw-rw-  1 danny danny   354 sep  8 03:15 program.op
+-rw-rw-rw-  1 danny danny   159 sep  8 03:15 SHA256SUMS.txt
+--- manifest (CR-stripped view) ---
+de9c91a5073f5d082fa166e57a6af2a3b2cdaa65b429c03030c14287f8549364  program.op
+bb2d59588d8c833b773e5cf1f5a92a6a80f051c9a9b668cb4bd88b1bf34a8feb  evidence.json
+--- sha256sum -c (LC_ALL=C.UTF-8) ---
+program.op: OK
+evidence.json: FAILED
+sha256sum: WARNING: 1 computed checksum did NOT match
+--- actual disk hashes ---
+e7205903a14b0febde86d0ce663783e17608512a614de351efe9b71d4fe5c72c  evidence.json
+de9c91a5073f5d082fa166e57a6af2a3b2cdaa65b429c03030c14287f8549364  program.op
+6ffb2d69e63fb4044cccace3d73d3dda0287a842b6293f0f590ac18a24bfd222  SHA256SUMS.txt
+--- git ls-files (tracked?) ---
+  (empty above = nothing in this dir is tracked)
+

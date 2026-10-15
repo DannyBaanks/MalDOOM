@@ -1,0 +1,26 @@
+# E7 placement proof — evidence/UNSHACKLED_CONTINUATION_ANCHOR_V0/ABC.eir
+# seal line in evidence/UNSHACKLED_CONTINUATION_ANCHOR_V0/SHA256SUMS.txt: 1c80e709647edfbf66f612f0a6fb399a6e4a54ab49a32c024ab9e844f0361034  ABC.eir
+
+MEASURED STATES
+  before (worktree at measurement, full CRLF): 35 bytes, CR=5, LF=5
+  before (worktree at measurement, full CRLF): sha256=a09a833309fbc04d7251043e4f1470491d808d6a425deeb066c677efd8e81adc
+  before (worktree at measurement, full CRLF): raw bytes = b'putc 65\r\nputc 66\r\nputc 67\r\nexit\r\n\r\n'
+  HEAD blob (Git-committed rendering, conversion already applied): 30 bytes, CR=0, LF=5
+  HEAD blob (Git-committed rendering, conversion already applied): sha256=9d066272e99f9ddab412b6e0d0fbbde87bf2dc75a2d55d93486908d9d0b496b5
+  HEAD blob (Git-committed rendering, conversion already applied): raw bytes = b'putc 65\nputc 66\nputc 67\nexit\n\n'
+  seal (target)              = 1c80e709647edfbf66f612f0a6fb399a6e4a54ab49a32c024ab9e844f0361034
+
+EXHAUSTIVE CR-PLACEMENT SEARCH over the line breaks of the HEAD blob
+  line breaks available      = 5 -> 2**5 = 32 subsets, positions [7, 15, 23, 28, 29]
+  search result              = 1 unique placement of 2^5
+  unique winning subset      = CR inserted before byte offsets [29] of the folded blob
+  candidate: 31 bytes, CR=1, LF=5
+  candidate: sha256=1c80e709647edfbf66f612f0a6fb399a6e4a54ab49a32c024ab9e844f0361034
+  candidate: raw bytes = b'putc 65\nputc 66\nputc 67\nexit\n\r\n'
+  candidate == seal?         = True
+
+POST-REPAIR STATE
+  worktree: 31 bytes, CR=1, LF=5
+  worktree: sha256=1c80e709647edfbf66f612f0a6fb399a6e4a54ab49a32c024ab9e844f0361034
+  worktree: raw bytes = b'putc 65\nputc 66\nputc 67\nexit\n\r\n'
+  worktree == seal?          = True
