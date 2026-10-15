@@ -1,0 +1,101 @@
+# git reports a clean tree while the byte-level seal fails. Read-only proof.
+
+## no line-ending conversion is configured for these paths
+$ git config --get core.autocrlf        -> (unset)
+$ git config --get core.eol             -> (unset)
+evidence/M0_KILLER_UNSHACKLED_V0/observed_0.bin: text: unset
+evidence/M0_KILLER_UNSHACKLED_V0/observed_0.bin: eol: unspecified
+
+## .gitattributes (repo root)
+# Evidence repo: sealed SHA-256 hashes are computed on the exact committed
+# bytes (CRLF, as generated on the Windows build host). No line-ending
+# conversion may ever touch the tree, or the evidence chain breaks.
+* -text
+
+## git status for the sealed directory: clean
+$ git status --porcelain -- evidence/M0_KILLER_UNSHACKLED_V0
+(no output above = git sees nothing)
+
+## the index entry vs its own blob: sizes disagree
+evidence/M0_KILLER_UNSHACKLED_V0/observed_0.bin
+  ctime: 1789957027:894735090
+  mtime: 1789012703:0
+  dev: 66306	ino: 687245
+  uid: 1000	gid: 1000
+  size: 3	flags: 0
+index blob sha1 = d00491fd7e5bb6fa28c517a0bb32b8b506539d4d
+index blob bytes = 2
+index blob content:
+00000000: 310a                                     1.
+worktree content:
+00000000: 310d 0a                                  1..
+$ git hash-object --no-filters evidence/M0_KILLER_UNSHACKLED_V0/observed_0.bin
+  -> f33dfa25aa16a97ca941fe1d9cabdc3689179f3f
+$ git rev-parse HEAD:evidence/M0_KILLER_UNSHACKLED_V0/observed_0.bin
+  -> d00491fd7e5bb6fa28c517a0bb32b8b506539d4d
+
+## the seal, recomputed
+$ sha256sum -c SHA256SUMS.txt (this directory only)
+observed_0.bin: La suma no coincide
+observed_1.bin: La suma no coincide
+observed_2.bin: La suma no coincide
+observed_3.bin: La suma no coincide
+observed_4.bin: La suma no coincide
+source.c: La suma no coincide
+sha256sum: ATENCIÓN: 6 sumas calculadas NO coincidieron
+
+## interpretation
+The index records stat size 3 while its blob is 2 bytes; with no conversion
+configured, git compares stat data, sees a match, and never re-hashes. So a
+clean status is not evidence that a byte-level seal holds.
+
+## appended 2026-10-15: the same blindness with stat data that matches perfectly
+
+evidence/DOOM_SMOKE/headless.c is CRLF on disk (2553 B, sha1 8e6c25b8...) and its
+committed blob is the LF rendering (2521 B, sha1 cdc854ce...). The index agrees
+with HEAD, and its stat data agrees with the worktree, so git never looks at the
+bytes:
+
+  $ git ls-files -s evidence/DOOM_SMOKE/headless.c
+    100644 cdc854ce97744b900da9ae219925affb978f5066 0  evidence/DOOM_SMOKE/headless.c
+  $ git rev-parse HEAD:evidence/DOOM_SMOKE/headless.c
+    cdc854ce97744b900da9ae219925affb978f5066
+  $ git hash-object --no-filters evidence/DOOM_SMOKE/headless.c
+    8e6c25b849e7a573244fcba47f0f37239283102c
+  index mtime 1788319272 = disk mtime 2026-09-01 21:21:12, index size 2553 = disk size 2553
+  $ git status --porcelain -- evidence/DOOM_SMOKE/headless.c
+    (no output)
+  $ git diff HEAD --numstat -- evidence/DOOM_SMOKE/headless.c
+    (no output)
+
+No assume-unchanged and no skip-worktree is involved: `git ls-files -v` reports
+395 entries, every one flagged H (uppercase = normal). The blindness comes from
+stat data alone, so it survives `.gitattributes` changes and cannot be detected
+with `git status`.
+
+## appended 2026-10-15: conversion WAS configured when these blobs were written
+
+$ git log --oneline -- .gitattributes
+  534d6dd fix(gitattributes): disable EOL conversion, not force LF
+  58a3473 chore: normalize line endings to LF (mechanical) + .gitattributes
+
+Both dated 2026-10-09 (21:01:18 and 21:10:33 -0600). The version 58a3473
+committed, before it was reverted 9 minutes later, was:
+
+  # Normalize line endings: the tree is canonical LF (sealed evidence hashes were
+  # computed on LF bytes). Prevents a Windows-side checkout from reintroducing CRLF.
+  * text=auto eol=lf
+
+That comment is itself false for a large share of the seals: measured in
+E6_FINDINGS.md, 103 sealed files are CRLF on disk with a CRLF seal, and 6 more
+use lone-CR breaks, so "sealed evidence hashes were computed on LF bytes" could
+not have been true for them. The response in 534d6dd (`* -text`) was the right
+one — it stops any future conversion — but it left every blob written earlier as
+an LF rendering, and it does nothing about worktrees that had already drifted.
+Before 58a3473 there was no .gitattributes at all: the 103 lf_to_crlf and 13
+CONTENT-committed files were added by Windows-era commits (faf65bc 2026-09-03,
+35bc289 2026-09-09, d7c07a1 2026-09-06) whose blobs are the LF rendering of the
+sealed CRLF bytes. Which host setting performed that conversion is
+NOT_DEMONSTRATED here: core.autocrlf=true is the Git for Windows installer
+default and would produce exactly this signature, but the Windows build host's
+config was on the disk lost on 2026-09-23 and cannot be read.

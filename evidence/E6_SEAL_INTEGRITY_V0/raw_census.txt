@@ -1,0 +1,79 @@
+# E6 supporting measurements, 2026-10-15, all read-only, run from the repository root
+
+$ git config --get core.autocrlf; git config --get core.eol
+(both unset: exit 1)
+
+$ git check-attr text eol -- evidence/M0_KILLER_UNSHACKLED_V0/observed_0.bin
+evidence/M0_KILLER_UNSHACKLED_V0/observed_0.bin: text: unset
+evidence/M0_KILLER_UNSHACKLED_V0/observed_0.bin: eol: unspecified
+
+$ git ls-files -v | count by flag letter
+    395 H
+
+$ git log --oneline -- .gitattributes
+534d6dd fix(gitattributes): disable EOL conversion, not force LF
+58a3473 chore: normalize line endings to LF (mechanical) + .gitattributes
+
+$ git log -1 --format="%h %ad %s" --date=iso-local <each .gitattributes commit>
+58a3473 2026-10-09 21:01:18 -0600 chore: normalize line endings to LF (mechanical) + .gitattributes
+534d6dd 2026-10-09 21:10:33 -0600 fix(gitattributes): disable EOL conversion, not force LF
+
+$ git show 58a3473:.gitattributes   (the reverted version)
+# Normalize line endings: the tree is canonical LF (sealed evidence hashes were
+# computed on LF bytes). Prevents a Windows-side checkout from reintroducing CRLF.
+* text=auto eol=lf
+
+$ git show HEAD:.gitattributes      (current)
+# Evidence repo: sealed SHA-256 hashes are computed on the exact committed
+# bytes (CRLF, as generated on the Windows build host). No line-ending
+# conversion may ever touch the tree, or the evidence chain breaks.
+* -text
+
+## last-touching commit per drift group
+--- group worktree_vs_seal=exact committed_vs_seal=lf_to_crlf
+     76 35bc289 2026-09-09
+     27 faf65bc 2026-09-03
+--- group worktree_vs_seal=crlf_to_lf committed_vs_seal=exact
+     30 35bc289 2026-09-09
+      2 d7c07a1 2026-09-06
+--- group worktree_vs_seal=exact committed_vs_seal=CONTENT
+     13 faf65bc 2026-09-03
+--- group worktree_vs_seal=exact committed_vs_seal=exact
+     54 faf65bc 2026-09-03
+     20 35bc289 2026-09-09
+     17 1660819 2026-10-15
+      4 e442a68 2026-10-09
+      2 36fc274 2026-10-09
+      2 231998f 2026-10-09
+
+## worktree mtime (minute) per drift group
+--- group exact / lf_to_crlf
+     76 2026-09-09 21:58
+     18 2026-09-01 21:09
+      3 2026-09-01 21:54
+      2 2026-09-01 21:21
+      1 2026-09-01 21:55
+      1 2026-09-01 21:31
+      1 2026-09-01 21:05
+      1 2026-09-01 20:55
+--- group crlf_to_lf / exact
+     32 2026-09-09 21:58
+--- group exact / CONTENT
+      7 2026-09-01 21:09
+      4 2026-09-01 22:16
+      1 2026-09-01 21:22
+      1 2026-09-01 21:21
+
+## NUL presence (git text auto-detection control)
+--- the 103 CRLF-sealed files: files containing a NUL byte
+0
+--- line-ending kind / NUL for the 99 byte-exact files
+      1 CRLF NUL
+     87 LF_ONLY noNUL
+      5 LF_ONLY NUL
+      6 LONE_CR NUL
+--- line-ending kind / NUL for the 32 repairable files
+     32 CRLF noNUL
+
+## blast radius of the proposed restore
+files=32 dirs=13 worktree_bytes=163678 CR_bytes=2696 bytes_after=160982

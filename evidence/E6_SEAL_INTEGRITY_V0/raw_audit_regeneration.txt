@@ -1,0 +1,86 @@
+# control: re-running the audit AFTER this evidence directory was sealed (2026-10-15)
+
+  $ python3 evidence/E6_SEAL_INTEGRITY_V0/tools/seal_audit.py > /home/danny/tmp_e6/audit.tsv
+    exit 0, empty stderr
+  $ diff -q /home/danny/tmp_e6/audit.tsv evidence/E6_SEAL_INTEGRITY_V0/raw_audit.tsv
+    differs - this file explains exactly how, and why the sealed capture is kept.
+
+## headers
+  sealed capture: seal_files	32
+  fresh run:      seal_files	33
+  data rows: sealed 288  fresh 298
+
+## rows only in the fresh run (10)
+  evidence/E6_SEAL_INTEGRITY_V0/E6_FINDINGS.md
+  evidence/E6_SEAL_INTEGRITY_V0/drift_snapshot.tsv
+  evidence/E6_SEAL_INTEGRITY_V0/mech_proof_git_blindness.txt
+  evidence/E6_SEAL_INTEGRITY_V0/raw_audit.tsv
+  evidence/E6_SEAL_INTEGRITY_V0/raw_census.txt
+  evidence/E6_SEAL_INTEGRITY_V0/restore_manifest.txt
+  evidence/E6_SEAL_INTEGRITY_V0/tools/derive_lists.py
+  evidence/E6_SEAL_INTEGRITY_V0/tools/seal_audit.py
+  evidence/E6_SEAL_INTEGRITY_V0/tools/witness_search.py
+  evidence/E6_SEAL_INTEGRITY_V0/witness_search.tsv
+
+## rows only in the sealed capture (0)
+  (none)
+
+## sealed rows whose classification moved: 0
+  (none - all 288 originally audited entries classify identically)
+
+## group summaries (fresh run)
+summary
+  exact          lf_to_crlf     crlf_to_lf     git_clean  103
+  exact          exact          exact          git_clean  99
+  exact          UNTRACKED      UNTRACKED      git_clean  34
+  crlf_to_lf     exact          crlf_to_lf     git_clean  32
+  CONTENT        CONTENT        crlf_to_lf     git_clean  15
+  exact          CONTENT        crlf_to_lf     git_clean  13
+  CONTENT        UNTRACKED      UNTRACKED      git_clean  2
+
+## group summaries (sealed capture)
+summary
+  exact          lf_to_crlf     crlf_to_lf     git_clean  103
+  exact          exact          exact          git_clean  99
+  crlf_to_lf     exact          crlf_to_lf     git_clean  32
+  exact          UNTRACKED      UNTRACKED      git_clean  24
+  CONTENT        CONTENT        crlf_to_lf     git_clean  15
+  exact          CONTENT        crlf_to_lf     git_clean  13
+  CONTENT        UNTRACKED      UNTRACKED      git_clean  2
+
+## witness_search.tsv re-run
+  $ python3 evidence/E6_SEAL_INTEGRITY_V0/tools/witness_search.py > /home/danny/tmp_e6/wit.tsv
+    exit 0; diff -q against the sealed witness_search.tsv: identical
+
+## interpretation
+seal_audit.py globs evidence/*/SHA256SUMS.txt, so writing this directory's own
+manifest added a 33rd manifest with 10 entries. Every one of those files is
+untracked and its worktree matches its seal, so the only movement is group 6
+(exact / UNTRACKED): 24 -> 34. No pre-existing row changed category, and the 32
+repairable files, the 103 CRLF seals and the 99 byte-exact rows are identical in
+both runs.
+
+The sealed raw_audit.tsv is kept as the capture that produced the findings; this
+delta is appended rather than overwritten (AGENTS.md 5.10: never rewrite raw
+evidence, append corrections). Caveat, stated plainly: the same mechanism will add
+this control file to the fresh run on the next re-run, and any future manifest
+under evidence/ moves these two numbers again. That self-reference is precisely the
+defect documented for the 7 M0_*/SHA256SUMS.txt files, so the honest convention here
+is: raw_audit.tsv is a dated capture, not a live count.
+
+## addendum (same day, after this file was sealed) — the effect reproduced live
+
+  $ python3 evidence/E6_SEAL_INTEGRITY_V0/tools/seal_audit.py > /home/danny/tmp_e6/audit2.tsv
+    seal_files 33, 299 rows (11 E6 rows: the manifest seals one more file now)
+    0 of the 288 shared rows changed category.
+
+  10 of the 11 E6 rows are exact / UNTRACKED. The eleventh is this document:
+
+    evidence/E6_SEAL_INTEGRITY_V0/E6_FINDINGS.md    CONTENT  UNTRACKED  UNTRACKED
+
+  because E6_FINDINGS.md was edited after SHA256SUMS.txt recorded its hash. So the
+  directory reproduced, within one hour and on itself, exactly the group-7 pattern
+  (content changed after sealing) that the audit flags as the only genuinely
+  unexplained shape. The remedy is the ordinary one: re-seal the working directory
+  once its content is final, which is why SHA256SUMS.txt here is written LAST, after
+  every edit, and never contains a self-entry.

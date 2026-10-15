@@ -1,0 +1,31 @@
+path	same_text_modulo_cr	cr_placement	seal_witness
+evidence/CLASSIC_ANCHOR_SMOKE_V1/CLASSIC_RUNTIME_AUDIT.md	YES	1 placement(s), e.g. CR before breaks [3]	evidence/CLASSIC_ANCHOR_SMOKE_V1/CLASSIC_RUNTIME_AUDIT.md
+evidence/CLASSIC_ANCHOR_SMOKE_V1/GENERATOR_AUDIT.md	YES	1 placement(s), e.g. CR before breaks [7]	evidence/CLASSIC_ANCHOR_SMOKE_V1/GENERATOR_AUDIT.md
+evidence/CLASSIC_ANCHOR_SMOKE_V1/HOST_AUDIT.md	YES	SKIPPED (13 breaks > 12)	evidence/CLASSIC_ANCHOR_SMOKE_V1/HOST_AUDIT.md
+evidence/CLASSIC_ANCHOR_SMOKE_V1/RESULT.md	YES	1 placement(s), e.g. CR before breaks [10]	evidence/CLASSIC_ANCHOR_SMOKE_V1/RESULT.md
+evidence/DOOM_SMOKE/headless.c	YES	SKIPPED (75 breaks > 12)	doomgeneric_headless.c; evidence/DOOM_SMOKE/headless.c
+evidence/DOOM_SMOKE/run.json	YES	SKIPPED (14 breaks > 12)	evidence/DOOM_SMOKE/run.json
+evidence/EPOCH_TRANSPARENCY_V0/evidence.json	n/a	SKIPPED (39 breaks > 12)	NONE
+evidence/EPOCH_TRANSPARENCY_V1/evidence.json	n/a	SKIPPED (1266 breaks > 12)	NONE
+evidence/M0_A_CONST/source.c	YES	1 placement(s), e.g. CR before breaks [10]	engine/M0_A_CONST.c; evidence/M0_A_CONST/source.c
+evidence/M0_A_CONST/SHA256SUMS.txt	YES	NONE	NONE
+evidence/M0_A_CONST_UNSHACKLED_V0/source.c	YES	1 placement(s), e.g. CR before breaks [10]	engine/M0_A_CONST.c; evidence/M0_A_CONST/source.c
+evidence/M0_B_ARITH/SHA256SUMS.txt	YES	NONE	NONE
+evidence/M0_B_ARITH/source.c	YES	SKIPPED (19 breaks > 12)	engine/M0_B_ARITH.c; evidence/M0_B_ARITH/source.c
+evidence/M0_B_ARITH_UNSHACKLED_V0/source.c	YES	SKIPPED (19 breaks > 12)	engine/M0_B_ARITH.c; evidence/M0_B_ARITH/source.c
+evidence/M0_C_BRANCH/source.c	YES	SKIPPED (24 breaks > 12)	engine/M0_C_BRANCH.c; evidence/M0_C_BRANCH/source.c
+evidence/M0_C_BRANCH/SHA256SUMS.txt	YES	NONE	NONE
+evidence/M0_C_BRANCH_UNSHACKLED_V0/source.c	YES	SKIPPED (24 breaks > 12)	engine/M0_C_BRANCH.c; evidence/M0_C_BRANCH/source.c
+evidence/M0_D_LOOP/source.c	YES	1 placement(s), e.g. CR before breaks [11]	engine/M0_D_LOOP.c; evidence/M0_D_LOOP/source.c
+evidence/M0_D_LOOP/SHA256SUMS.txt	YES	NONE	NONE
+evidence/M0_D_LOOP_UNSHACKLED_V0/source.c	YES	1 placement(s), e.g. CR before breaks [11]	engine/M0_D_LOOP.c; evidence/M0_D_LOOP/source.c
+evidence/M0_E_MEMORY/source.c	YES	SKIPPED (18 breaks > 12)	engine/M0_E_MEMORY.c; evidence/M0_E_MEMORY/source.c
+evidence/M0_E_MEMORY/SHA256SUMS.txt	YES	NONE	NONE
+evidence/M0_E_MEMORY_UNSHACKLED_V0/source.c	YES	SKIPPED (18 breaks > 12)	engine/M0_E_MEMORY.c; evidence/M0_E_MEMORY/source.c
+evidence/M0_F_INPUT/source.c	YES	SKIPPED (22 breaks > 12)	engine/M0_F_INPUT.c; evidence/M0_F_INPUT/source.c
+evidence/M0_F_INPUT/SHA256SUMS.txt	YES	NONE	NONE
+evidence/M0_F_INPUT_UNSHACKLED_V0/source.c	YES	SKIPPED (22 breaks > 12)	engine/M0_F_INPUT.c; evidence/M0_F_INPUT/source.c
+evidence/M0_KILLER/source.c	YES	SKIPPED (24 breaks > 12)	engine/M0_KILLER.c; evidence/M0_KILLER/source.c
+evidence/M0_KILLER/SHA256SUMS.txt	YES	SKIPPED (14 breaks > 12)	NONE
+evidence/M0_KILLER_UNSHACKLED_V0/source.c	YES	SKIPPED (24 breaks > 12)	engine/M0_KILLER.c; evidence/M0_KILLER/source.c
+evidence/UNSHACKLED_CONTINUATION_ANCHOR_V0/ABC.eir	YES	1 placement(s), e.g. CR before breaks [4]	NONE
