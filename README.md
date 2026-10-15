@@ -75,7 +75,7 @@ Dos targets, nunca conflados:
 
 ---
 
-## Cadena de integridad de la evidencia (E1-E8)
+## Cadena de integridad de la evidencia (E1-E9)
 
 Renglon aparte del escalon M0-M7: estas corridas no ejecutan DOOM ni cambian ninguna etiqueta de
 reclamo. Lo que establecen es que la evidencia **commiteada** es la evidencia **sellada**.
@@ -83,23 +83,31 @@ reclamo. Lo que establecen es que la evidencia **commiteada** es la evidencia **
 E1 migracion del toolchain a Linux · E2 reproducibilidad del toolchain · E3 rendimiento de la VM ·
 E4 config de VM fijada (pinned) · E5 convencion del loader de LMFAO (imagenes `.mu` en motores de
 ancho fijo) · E6 integridad de sellos · E7 disposicion de los sellos que fallaban · E8 alineacion del
-lado commiteado.
+lado commiteado · E9 alineacion del arbol de trabajo, escaneo previo a trackear y sellado de lo que
+no tenia manifiesto.
 
-Medido 2026-10-15 sobre arbol de trabajo, indice y `HEAD`:
+Medido 2026-10-15 sobre arbol de trabajo, indice y `HEAD` (`evidence/E9_WORKTREE_ALIGNMENT_V0/`):
 
 | relacion | cifra |
 |---|---|
-| manifiestos `evidence/**/SHA256SUMS.txt` | 40 |
-| entradas selladas | 362 |
-| verifican en el worktree | 353 |
-| tres vias `worktree == sello == HEAD` | **351** |
+| manifiestos en el repo (`SHA256SUMS*.txt`, incluye addenda y `vendor/**`) | 52 |
+| entradas selladas | 441 |
+| verifican en el worktree | 432 |
+| tres vias `worktree == sello == HEAD` | **432** |
+| entradas ausentes de `HEAD` | 0 |
 | fallos | 9 |
+
+Ojo con el denominador: E7/E8 contaron solo `SHA256SUMS.txt` dentro de `evidence/` (40 manifiestos /
+362 entradas / 351 en tres vias). E9 cuenta todos los manifiestos del repo con el patron
+`SHA256SUMS*.txt`, que anade los 2 addenda, los 3 de `vendor/**` (10/10 verifican) y los 7 nuevos de
+esta ronda. Las cifras no son comparables sin decir eso; la herramienta es
+`evidence/E9_WORKTREE_ALIGNMENT_V0/tools/chain_check.py`.
 
 Los 9 no son trabajo abierto y no estan ocultados: 7 son `evidence/M0_*/SHA256SUMS.txt`, que se sellan
 a si mismos (no existen bytes que satisfagan esa linea), y 2 son
 `evidence/EPOCH_TRANSPARENCY_V{0,1}/evidence.json`, cuyos bytes sellados no estan en ninguna parte —
-ni worktree, ni base de objetos, ni HEAD. Prueba y descartes: `evidence/E7_SEAL_DISPOSITION_V0/` y
-`evidence/E8_COMMIT_SIDE_ALIGNMENT_V0/E8_ALIGNMENT.md`.
+ni worktree, ni base de objetos, ni HEAD. Prueba y descartes: `evidence/E7_SEAL_DISPOSITION_V0/`,
+`evidence/E8_COMMIT_SIDE_ALIGNMENT_V0/E8_ALIGNMENT.md` y `evidence/E9_WORKTREE_ALIGNMENT_V0/E9_ALIGNMENT.md`.
 
 Convencion desde E5: manifiestos en LF y **sin auto-entrada**. `.gitattributes` fija `* -text`, asi que
 Git no convierte finales de linea; lo commiteado son los bytes exactos.
@@ -110,10 +118,16 @@ Git no convierte finales de linea; lo commiteado son los bytes exactos.
   lleva el tamano y el mtime del worktree mientras guarda otro blob. Paso en E6 y en E8; el intento con
   `git add` dio `restaged=0 / refused=119` y la unica ruta que funciono fue por indice
   (`git hash-object -w` + `git update-index --cacheinfo`), sin tocar un byte del worktree.
+- E9 anadio un caso distinto: tras normalizar 53 archivos a LF, `git status` marcaba los 53 con ` M`
+  y **`git diff HEAD` media 0 bytes**. `git add` fallo (exit 123) porque 5 de esas rutas caen bajo
+  `vendor/*` en `.gitignore` y Git se niega a anadir paths ignorados aunque ya esten trackeados. La
+  herramienta correcta para refrescar el stat cache de un archivo **trackeado** es
+  `git update-index -- <paths>`; dejo `git status` en 0 lineas y `git diff --cached` en 0 bytes.
 - `sha256sum -c` **por si solo no es un chequeo de integridad**: compara worktree contra sello y pasa
   aunque lo commiteado difiera. El chequeo obligatorio aqui es el de tres vias.
 - `scripts/build_m0.py` **no** sirve como verificador: `build_m0.py:65` escribe dentro de
-  `evidence/<M0_*>/` y re-drifta archivos sellados en el lugar.
+  `evidence/<M0_*>/` y re-drifta archivos sellados en el lugar. Otro tanto `fix_imports.py`, que
+  reescribe `tests/test_epoch_transparency_v2.py` y hardcodea rutas de Windows.
 
 ---
 
@@ -231,16 +245,22 @@ Ubuntu 24.04; los comandos `py` y PowerShell de las notas de 2026-09 son histori
 - `evidence/PURE_CONTINUATION_ANCHOR_V0/` — A→B→C→HALT clasico en una VM (TARGET_B).
 - `evidence/UNSHACKLED_CONTINUATION_ANCHOR_V0/` — A/AA/AB/ABC HeLL nativo (TARGET_A).
 - `evidence/DOOM_NATIVE_BASELINE/` — runs de referencia nativos de Doom.
-- `evidence/E1_*` … `evidence/E8_*` — la cadena de integridad (herramientas, `raw/` y reporte de cada
-  paso; ver la seccion E1-E8 arriba).
+- `evidence/E1_*` … `evidence/E9_*` — la cadena de integridad (herramientas, `raw/` y reporte de cada
+  paso; ver la seccion E1-E9 arriba).
+- `evidence/FRAGMENTS_{LIB,REAL,STUBS,VERIFIED}/`, `evidence/STATE_TRANSITIONS/`,
+  `evidence/M2_S0_INIT_UNSHACKLED_V0/`, `evidence/EPOCH_TRANSPARENCY_V{0,1}/` — la linea Clasica de
+  ADD1 / transiciones de estado (blocker #2), trackeada y sellada en E9. Son **negativos**:
+  `"verified": false`, `found: false`, `epoch_transparency_pass: false`. Se sellan bytes, no se
+  endosan resultados.
 
 La evidencia cruda es historica y nunca se reescribe para encajar en una narrativa.
 
 Dos avisos de lectura: `evidence/M0_REPORT.md` es el informe por hito de M0 (de ahi salen las
 etiquetas del escalon), y `docs/CLAIMS.md` es el registro de reclamos y **no se ha promovido** desde
 2026-09-03 — sigue en `NOT_DEMONSTRATED` para M0/M1 aunque existan `evidence/M0_REPORT.md` y
-`evidence/M0_*_UNSHACKLED_V0/`. La discrepancia esta abierta; este README no la resuelve ni sube
-ningun label.
+`evidence/M0_*_UNSHACKLED_V0/`. La discrepancia esta abierta; E9 le anadio una seccion fechada
+(2026-10-15) que enlaza cada reclamo con su evidencia y con lo que aun lo mantiene abajo, **sin subir
+ningun label**. Este README no la resuelve.
 
 ---
 
@@ -272,12 +292,15 @@ que las versiones previas siguen siendo objetos validos del historial.
   `elvm`): `vendor/*` esta git-ignored, asi que un clone limpio trae los
   artefactos `.mu` y sus hashes pero no los binarios del toolchain. Recetas de
   build y SHAs en cada `run.json`.
-- Estado medido 2026-10-15: **60 archivos trackeados tienen `worktree != HEAD` con `git status`
-  limpio** (README.md era el 61; este commit lo alinea). Los 60 son CR-only (el blob commiteado es el worktree sin los retornos de carro) y ninguno
-  es una entrada cuyo worktree verifique su sello, asi que la cadena E1-E8 de arriba sigue en pie. No
-  estan reparados a proposito: repararlos es decision pendiente, no un olvido. Entre ellos esta
-  `.gitignore`, que ademas lleva 14 bytes NUL (una regla `__pycache__/` duplicada en UTF-16); la
-  version ASCII de esa regla esta activa, asi que el defecto es de higiene y no de comportamiento.
+- Estado medido 2026-10-15 (despues de E9): quedan **7 archivos trackeados con `worktree != HEAD` y
+  `git status` limpio** — son exactamente los 7 `evidence/M0_*/SHA256SUMS.txt` que se sellan a si mismos
+  y que E7 declaro congelados. E9 normalizo los otros 53 a LF en el disco: **cero commits y cero bytes
+  nuevos publicados**, y `raw/07` prueba que ninguna de las 53 rutas es una entrada sellada. El
+  desglose real es 49 reconstruibles por regla (CRLF-pares) y 11 solo desde un snapshot (finales
+  mezclados); antes de tocar nada se midio que ninguno era testigo unico de un sello, lo que corrigio
+  una afirmacion previa de este mismo task. `.gitignore` ya no lleva los 14 bytes NUL (era un
+  `__pycache__/` en UTF-16 duplicado de la regla ASCII activa) y se probo que el comportamiento de
+  ignore no cambio: mismos 20 paths trackeados-pero-ignorados.
 
 ---
 
