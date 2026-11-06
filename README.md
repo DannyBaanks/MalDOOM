@@ -1,11 +1,17 @@
-# MALDOOM
+# MALDOOM v2.0 — Estado Interactivo y Gameplay Falsable en Malbolge Clásico
 
-> Un proyecto de investigacion que intenta construir estado interactivo
-> progresivamente mas rico dentro de Malbolge Clasico (3^10 / 59049 celdas de memoria).
+[![Version](https://img.shields.io/badge/version-2.0-blue.svg)](https://github.com/DannyBaanks/MalDOOM)
+[![Substrate](https://img.shields.io/badge/substrate-Malbolge%20Classic%2059049-purple.svg)]()
+[![Law 1](https://img.shields.io/badge/first%20law-HOST%20ZERO%20GAMEPLAY-red.svg)]()
 
-El proyecto trata a Malbolge mismo como sustrato computacional. El codigo host
+> Un proyecto de investigación que intenta construir estado interactivo
+> progresivamente más rico dentro de Malbolge Clásico (3^10 / 59,049 celdas de memoria).
+
+El proyecto trata a Malbolge mismo como sustrato computacional. El código host
 puede correr experimentos, alimentar input, colectar traces y renderizar evidencia, pero
-no debe implementar la semantica del juego que se reclama.
+no debe implementar la semántica del juego que se reclama.
+
+Parte de la **Suite Experimental de Juegos y Estado v2.0** del ecosistema Malbolge de ISyCo.
 
 **Evidencia antes de narrativa.**
 
